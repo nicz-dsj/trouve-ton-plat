@@ -19,14 +19,10 @@
         }
         else if (isset($_SESSION['logged']) && $_SESSION['logged'] == 2){
             ?>
-            <p class='alert alert-danger'><b> Cet identifiant est inconnu !</b></p>
+            <p class='alert alert-danger'><b> Mauvais mail ou mot de passe!</b></p>
             <?php
         }
-        else if (isset($_SESSION['logged']) && $_SESSION['logged'] == 3){
-            ?>
-            <p class='alert alert-danger'><b> Mot de passe incorrect !</b></p>
-            <?php
-        }
+
         ?>
         <form action="index.php?page=login" method="post">
             <div class='inline form-group'>
