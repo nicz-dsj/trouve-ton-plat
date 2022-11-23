@@ -1,0 +1,21 @@
+<?php
+
+require_once(PATH_MODELS.'Connexion.php');
+
+function checkPseudo($nouvPseudo){
+  $connexion = Connexion::getInstance()->getBdd();
+  $query = $connexion->prepare('SELECT pseudoUtilisateur FROM Utilisateur WHERE pseudoUtilisateur=?');
+  $query->execute(array($nouvPseudo,));
+  $result = $query->fetch(PDO::FETCH_ASSOC);
+  $query->closeCursor();
+  return $result;
+}
+
+function addUser($id,$pseudo,$date,$mail,$pwd,$desc)
+{
+  $connexion = Connexion::getInstance()->getBdd();
+  $query = $connexion->prepare('INSERT INTO Utilisateur VALUES (?, ?, ?, ?, ?, ?, 0');
+  $query->execute(array($id,$pseudo,$date,$mail,$pwd,$desc));
+  $query->closeCursor();
+  return $result;
+}

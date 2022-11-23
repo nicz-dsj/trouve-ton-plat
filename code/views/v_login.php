@@ -7,6 +7,10 @@
 <?php require_once(PATH_VIEWS.'alert.php');?>
 
 <!--  Début de la page -->
+<head>
+<link rel="stylesheet" href="<?= PATH_CSS?>login.css">
+<link rel="stylesheet" href="<?= PATH_CSS?>style.css">
+</head>
 <h1><b><?= TITRE_PAGE_LOGIN ?></b></h1>
 
 <!--  Fin de la page -->
@@ -30,11 +34,19 @@
                 <p><b>Identifiant</b></p>
                 <p><input type = "text" name = "login"></p>
                 <p><b>Mot de passe </b></p>
-                <p><input type = "text" name = "password"></p>
+                <p><input type = "password" name = "password"></p>
+
+                <input type="checkbox" id="checkSouv" name="seSouvenir" value="Se souvenir de moi">
+                <label for="seSouvenir">Se souvenir de moi ?</label>
+
                 <p> <input class='btn btn-primary' type="submit" value="Se connecter"></p>
+
             </div>
 
         </form>
+        <p> Pas encore de compte ? Inscrivez-vous ! <a href="index.php?page=insc"><button id="btnInsc">S'inscrire</button></a></p>
 
 <!--  Pied de page -->
-<?php require_once(PATH_VIEWS.'footer.php'); 
+<script src="<?= PATH_SCRIPTS?>script_login.js"></script>
+<?php require_once(PATH_VIEWS.'footer.php');
+

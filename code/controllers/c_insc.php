@@ -1,8 +1,13 @@
 <?php
 
-require_once(PATH_MODELS.'m_login.php');
+require_once(PATH_MODELS.'m_insc.php');
 
-if(isset($_POST['login']) && isset($_POST['password'])){
+if(isset($_POST['pseudo']) && isset($_POST['mail']) && isset($_POST['pwd']) && isset($_POST['pwdC']) && isset($_POST['desc'])){
+
+    echo($_POST['pseudo']);
+    if(checkPseudo(finiEcrirePseudo()) == finiEcrirePseudo()){
+        header('Location: index.php');
+    }
 
     $password = getPwd($_POST['login']);
 
