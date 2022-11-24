@@ -2,12 +2,18 @@
 
 require_once(PATH_MODELS.'m_insc.php');
 
-if(isset($_POST['pseudo']) && isset($_POST['mail']) && isset($_POST['pwd']) && isset($_POST['pwdC']) && isset($_POST['desc'])){
-
-    echo($_POST['pseudo']);
-    if(checkPseudo(finiEcrirePseudo()) == finiEcrirePseudo()){
-        header('Location: index.php');
+if(isset($_GET['pseudo'])){
+    $pseudo = htmlspecialchars($_GET['pseudo']);
+    $result = checkPseudo($pseudo);
+    if($result){
+        echo "Ce pseudo est déjà utilisé";
     }
+    else{
+        echo "Ce pseudo est disponible";
+    }
+}
+
+if(isset($_POST['pseudo']) && isset($_POST['mail']) && isset($_POST['pwd']) && isset($_POST['pwdC']) && isset($_POST['desc'])){
 
     $password = getPwd($_POST['login']);
 

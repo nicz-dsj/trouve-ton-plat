@@ -3,7 +3,6 @@ var timerFin = 2000;
 var pseudo = document.getElementsByName("pseudo")[0];
 var mail = document.getElementsByName("mail")[0]
 
-
 function ecrit(){
     clearTimeout(timer);
     if (document.getElementsByName("pseudo")[0].value) {
@@ -12,10 +11,24 @@ function ecrit(){
 }
 
 function finiEcrirePseudo() {
-    var php_var = "<?php echo $php_var; ?>";
-    document.cookie = "pse = " + pseudo.val;
-    return(pseudo.val);
+    pseudoUsed();
 }
 
+function pseudoUsed() {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "http://localhost/index.php?page=insc?pseudo=" + pseudo.value, true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4) {
+            if (xhr.status == 200) {
+                if (xhr.responseText == "true") {
+                    pseudo.style.backgroundColor = "red";
+                } else {
+                    pseudo.style.backgroundColor = "green";
+                }
+            }
+        }
+    }
+    xhr.send();
+}
 pseudo.addEventListener('keyup',ecrit);
 
