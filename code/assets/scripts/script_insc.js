@@ -12,7 +12,7 @@ var phraseMo = document.getElementById("statutMo");
 var phraseMoC = document.getElementById("statutMoC");
 
 const regexMail = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,'g');
-const pwdValue = "";
+var pwdValue = "";
 
 function ecritPseudo(){
     clearTimeout(timer);
@@ -99,11 +99,12 @@ function ecritMdp(){
 }
 
 function finiEcrireMdp() {
+    pwdValue = pwd.value;
     mdpConforme();
+    mdpCConforme()
 }
 
 function mdpConforme(){
-    pwdValue = pwd.value;
     if(pwdValue.split("").length<8){
         pwd.style.backgroundColor = "#ff5967";
         phraseMo.innerHTML="Ce mot de passe est trop court !";
@@ -134,7 +135,7 @@ function mdpCConforme(){
         phraseMoC.innerHTML="Ce mot de passe ne correspond pas !";
     }
     else{
-        pwd.style.backgroundColor = "white";
+        pwdC.style.backgroundColor = "white";
         phraseMoC.innerHTML="";
     }
 }
