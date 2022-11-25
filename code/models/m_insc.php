@@ -11,6 +11,16 @@ function checkPseudo($nouvPseudo){
   return $result;
 }
 
+function checkmail($nouvMail){
+  $connexion = Connexion::getInstance()->getBdd();
+  $query = $connexion->prepare('SELECT mail FROM Utilisateur WHERE mail=?');
+  $query->execute(array($nouvMail,));
+  $result = $query->fetch(PDO::FETCH_ASSOC);
+  $query->closeCursor();
+  return $result;
+}
+
+
 function addUser($id,$pseudo,$date,$mail,$pwd,$desc)
 {
   $connexion = Connexion::getInstance()->getBdd();

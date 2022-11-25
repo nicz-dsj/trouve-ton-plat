@@ -15,40 +15,31 @@
 
 <!--  Fin de la page -->
 
-        <?php
-        if(isset($_SESSION['logged']) && $_SESSION['logged'] == 1){
-            ?>
-            <p class='alert alert-success'><b> Vous êtes connecté(e)</b></p>
-            <?php
-        }
-        else if (isset($_SESSION['logged']) && $_SESSION['logged'] == 2){
-            ?>
-            <p class='alert alert-danger'><b> Mauvais mail ou mot de passe!</b></p>
-            <?php
-        }
-
-        ?>
-        <form action="index.php?page=login" method="post">
+        <form action="index.php?page=insc" method="post">
             <div class='inline form-group'>
-            
+
                 <div id=pseudoN>
                 <p><b>Identifiant</b></p>
                 <p><input type = "text" name = "pseudo"></p>
+                <span id="statut"></span>
                 </div>  
 
                 <div id=mailN>
                 <p><b>Adresse mail</b></p>
                 <p><input type = "email" name = "mail"></p>
+                <span id="statutM"></span>
                 </div>  
                 
                 <div id=mdpN>
                 <p><b>Mot de passe</b></p>
                 <p><input type = "password" name = "pwd"></p>
+                <span id="statutMo"></span>
                 </div>  
                 
                 <div id=mdpCN>
                 <p><b>Confirmation du mot de passe</b></p>
                 <p><input type = "password" name = "pwdC"></p>
+                <span id="statutMoC"></span>
                 </div>  
                 
                 <div id=descN>
