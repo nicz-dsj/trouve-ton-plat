@@ -20,12 +20,19 @@ function checkmail($nouvMail){
   return $result;
 }
 
+function getMaxId(){
+  $connexion = Connexion::getInstance()->getBdd();
+  $query = $connexion->prepare('SELECT MAX(idUtilisateur) FROM Utilisateur');
+  $query->execute();
+  $result = $query->fetch(PDO::FETCH_ASSOC);
+  $query->closeCursor();
+  return $result;
+}
 
 function addUser($id,$pseudo,$date,$mail,$pwd,$desc)
 {
   $connexion = Connexion::getInstance()->getBdd();
-  $query = $connexion->prepare('INSERT INTO Utilisateur VALUES (?, ?, ?, ?, ?, ?, 0');
+  $query = $connexion->prepare('INSERT INTO Utilisateur (idUtilisateur,pseudoUtilisateur,dateInscription,mail,motDePasse,description) VALUES (?, ?, ?, ?, ?, ?, 0');
   $query->execute(array($id,$pseudo,$date,$mail,$pwd,$desc));
   $query->closeCursor();
-  return $result;
 }

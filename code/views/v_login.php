@@ -16,15 +16,18 @@
 <!--  Fin de la page -->
 
         <?php
+
         if(isset($_SESSION['logged']) && $_SESSION['logged'] == 1){
             ?>
             <p class='alert alert-success'><b> Vous êtes connecté(e)</b></p>
             <?php
+            $_SESSION = array();
         }
         else if (isset($_SESSION['logged']) && $_SESSION['logged'] == 2){
             ?>
-            <p class='alert alert-danger'><b> Mauvais mail ou mot de passe!</b></p>
+            <p class='alert alert-danger'> <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span><b> Mauvais mail ou mot de passe!</b></p>
             <?php
+            $_SESSION = array();
         }
 
         ?>
@@ -32,9 +35,9 @@
             <div class='inline form-group'>
             
                 <p><b>Identifiant</b></p>
-                <p><input type = "text" name = "login"></p>
+                <p><input type = "text" name = "login" required></p>
                 <p><b>Mot de passe </b></p>
-                <p><input type = "password" name = "password"></p>
+                <p><input type = "password" name = "password" required></p>
 
                 <input type="checkbox" id="checkSouv" name="seSouvenir" value="Se souvenir de moi">
                 <label for="seSouvenir">Se souvenir de moi ?</label>

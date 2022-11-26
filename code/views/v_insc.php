@@ -15,30 +15,30 @@
 
 <!--  Fin de la page -->
 
-        <form action="index.php?page=insc" method="post">
+        <form action="index.php?page=insc" method="post" name="inscription">
             <div class='inline form-group'>
 
                 <div id=pseudoN>
                 <p><b>Identifiant</b></p>
-                <p><input type = "text" name = "pseudo"></p>
+                <p><input type = "text" name = "pseudo" required></p>
                 <span id="statut"></span>
                 </div>  
 
                 <div id=mailN>
                 <p><b>Adresse mail</b></p>
-                <p><input type = "email" name = "mail"></p>
+                <p><input type = "email" name = "mail" required></p>
                 <span id="statutM"></span>
                 </div>  
                 
                 <div id=mdpN>
                 <p><b>Mot de passe</b></p>
-                <p><input type = "password" name = "pwd"></p>
+                <p><input type = "password" name = "pwd" required></p>
                 <span id="statutMo"></span>
                 </div>  
                 
                 <div id=mdpCN>
                 <p><b>Confirmation du mot de passe</b></p>
-                <p><input type = "password" name = "pwdC"></p>
+                <p><input type = "password" name = "pwdC" required></p>
                 <span id="statutMoC"></span>
                 </div>  
                 
