@@ -23,7 +23,7 @@
 	<ul class="nav navbar-nav navbar-right">
 				<?php if(isset($_SESSION['logged']) && $_SESSION['logged'] == 1){ ?>
 					<li <?php echo ($page=='login' ? 'class="active"':'')?>>
-						<a href="index.php?page=deconnexion" >
+						<a href="index.php?page=deconnexion" onclick="return confirm('Souhaitez-vous vraiment vous déconnecter ?');">
 							<?= MENU_DECONNEXION ?>
 						</a>
 					</li>
@@ -45,7 +45,7 @@
 		<ul class="nav navbar-nav">
 		<li <?php echo ($page=='accueil' ? 'class="active"':'')?>>
 			<a href="index.php">
-				<?= MENU_AJOUT ?>
+				<?= MENU_PROFIL ?>
 			</a>
 		</li>
 		<?php
