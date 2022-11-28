@@ -5,40 +5,67 @@
 
 <!--  Zone message d'alerte -->
 <?php require_once(PATH_VIEWS.'alert.php');?>
+<?php
+
+if(isset($_SESSION['logged']) && $_SESSION['logged'] == 1){
+    ?>
+    <p class='alert alert-success'><b> Vous êtes connecté(e)</b></p>
+    <?php
+    $_SESSION = array();
+}
+else if (isset($_SESSION['logged']) && $_SESSION['logged'] == 2){
+    ?>
+    <p class='alert alert-danger'> <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span><b> Mauvais mail ou mot de passe!</b></p>
+    <?php
+    $_SESSION = array();
+}
+
+?>
 
 <!--  Début de la page -->
+<head>
+<link rel="stylesheet" href="<?= PATH_CSS?>connexion_style.css">
+<link rel="stylesheet" href="<?= PATH_CSS?>style.css">
+</head>
 <h1><b><?= TITRE_PAGE_LOGIN ?></b></h1>
 
 <!--  Fin de la page -->
 
-        <?php
-        if(isset($_SESSION['logged']) && $_SESSION['logged'] == 1){
-            ?>
-            <p class='alert alert-success'><b> Vous êtes connecté(e)</b></p>
-            <?php
-        }
-        else if (isset($_SESSION['logged']) && $_SESSION['logged'] == 2){
-            ?>
-            <p class='alert alert-danger'><b> Cet identifiant est inconnu !</b></p>
-            <?php
-        }
-        else if (isset($_SESSION['logged']) && $_SESSION['logged'] == 3){
-            ?>
-            <p class='alert alert-danger'><b> Mot de passe incorrect !</b></p>
-            <?php
-        }
-        ?>
+        <div class="container">
+                    <div class="container_form">
+                        <div class="container_form_title">
+                            <div class="container_form_title_text" id="inscription">
+                                <h1>Inscription</h1>
+                            </div>
+                            <div class="container_form_title_text" id="connexion">
+                                <h1>Connexion</h1>
+                            </div>
+                        </div>
+
+        <div class="container_form_content">
         <form action="index.php?page=login" method="post">
-            <div class='inline form-group'>
             
-                <p><b>Identifiant</b></p>
-                <p><input type = "text" name = "login"></p>
-                <p><b>Mot de passe </b></p>
-                <p><input type = "text" name = "password"></p>
-                <p> <input class='btn btn-primary' type="submit" value="Se connecter"></p>
+            <div class="container_form_content_input_connexion" id="composantConnexion">
+                <label for="id"><b>Identifiant</b></label>
+                <p><input type="text" name="login" placeholder="Identifiant" required></p>
             </div>
 
+            <div class="container_form_content_input_connexion" id="composantConnexion2">
+            <label for="mdp"><b>Mot de passe </b></label>
+                <p><input type="password" name="password"  placeholder="Mot de passe"></p>
+            </div>
+
+            <div class="container_form_content_button_connexion" id="composantConnexion3">
+                <input type="submit" value="Se connecter">
+            </div>
+            </div>
+            </div>
+        </div>
+        </div>
         </form>
 
 <!--  Pied de page -->
-<?php require_once(PATH_VIEWS.'footer.php'); 
+<script src="<?= PATH_SCRIPTS?>script_connexion.js"></script>
+<script src="<?= PATH_SCRIPTS?>script_hamburger.js"></script>
+<?php require_once(PATH_VIEWS.'footer.php');
+
