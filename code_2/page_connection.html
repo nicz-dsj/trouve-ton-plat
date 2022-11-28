@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trouve Ton Plat - Connexion</title>
+    <link rel="stylesheet" href="assets/styles/connection_style.css">
+    <link rel="stylesheet" href="assets/styles/header_style.css">
+</head>
+<body>
+    <header>
+        <div class ="bar">
+        <div class="menu_deroulant">
+          <div class="container_header">
+              <div class = "menuLogo"></div>
+              <div class = "menuLogo"></div>
+              <div class = "menuLogo"></div>
+          </div>
+          <div class="logo_ttp">
+            <img src="assets/img/logo_ttp.png" alt="logo" />
+            <p>Trouve ton plat</p>
+          </div>
+          <div class="con">
+          </div>
+        </div>
+        <ul class = "menu">
+          <li><a href="page_accueil.html">Accueil</a></li>
+          <li><a href="#"> Rechercher plats</a></li>
+          <li><a href="#"> Rechercher ingrédients</a></li>
+          <li><a href="#"> Proposer une recette</a></li>
+          <li><a href="#"> Evènements</a></li>
+          <li><a href="#"> Découvrir</a></li>
+        </ul>
+        </div>
+      </header>
+    <main>
+        <div class="container">
+            <div class="container_form">
+                <div class="container_form_title">
+                    <div class="container_form_title_text" id="inscription">
+                        <h1>Inscription</h1>
+                    </div>
+                    <div class="container_form_title_text connexionSelected" id="connexion">
+                        <h1>Connexion</h1>
+                    </div>
+                </div>
+                <div class="container_form_content">
+                    <form action="index.php" method="post">
+                        <div class="container_form_content_input_inscription connexionSelected" id ="composantInscription">
+                            <label for="email">Email:</label>
+                            <input type="email" name="email" id="email" placeholder="Email">
+                        </div>
+                        <div class="container_form_content_input_inscription connexionSelected" id ="composantInscription2">
+                            <label for="username">Nom d'utilisateur:</label>
+                            <input type="username" name="password" id="username" placeholder="Nom d'utilisateur">
+                        </div> 
+                        <div class="container_form_content_input_inscription connexionSelected" id="composantInscription3">
+                            <label for="password">Mot de passe:</label>
+                            <input type="password" name="password" id="password" placeholder="Mot de passe">
+                        </div>
+                        <div class="container_pre_aler">
+                            <div class="container_form_content_input_inscription connexionSelected" id="composantInscription4">
+                                <label for="preference">Préférence:</label>
+                                <input type="preference" name="pref" id="pref" placeholder="Préférence (falcultatif)">
+                            </div>
+                            <div class="container_form_content_input_inscription connexionSelected" id="composantInscription5">
+                                <label for="allergie">Allergie:</label>
+                                <input type="allergie" name="aler" id="aler" placeholder="Allergies (falcultatif)">
+                            </div>
+                        </div>
+                        <div class="container_form_content_button_inscription connexionSelected" id="composantInscription6">
+                            <input type="submit" value="S'inscrire">
+                        </div>
+                        <div class="container_form_content_input_connexion" id="composantConnexion">
+                            <label for="email">Email: </label>
+                            <input type="email" name="email" id="email" placeholder="Email">
+                        </div>
+                        <div class="container_form_content_input_connexion" id="composantConnexion2">
+                            <label for="password">Mot de passe: </label>
+                            <input type="password" name="password" id="password" placeholder="Mot de passe">
+                        </div>
+                        <div class="container_form_content_button_connexion" id="composantConnexion3">
+                            <input type="submit" value="Se connecter">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    <script src="assets/scripts/script_hamburger.js"></script>
+    <script src="assets/scripts/script_connexion.js"></script>
+</body>
+</html>
