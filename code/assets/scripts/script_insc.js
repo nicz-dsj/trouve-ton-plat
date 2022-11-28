@@ -27,7 +27,7 @@ function finiEcrirePseudo() {
 
 function pseudoUsed() {
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://localhost/index.php?page=insc&pseudo=" + pseudo.value, true);
+    xhr.open("GET", "https://iutdoua-web.univ-lyon1.fr/~p2102056/SAES3/sae-deuxieme-annee/code/index.php?page=insc&pseudo=" + pseudo.value, true);
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4) {
             if (xhr.status == 200) {
@@ -74,7 +74,7 @@ function mailConforme(){
 
 function mailUsed() {
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://localhost/index.php?page=insc&mail=" + mail.value, true);
+    xhr.open("GET", "https://iutdoua-web.univ-lyon1.fr/~p2102056/SAES3/sae-deuxieme-annee/code/index.php?page=insc&mail=" + mail.value, true);
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4) {
             if (xhr.status == 200) {
