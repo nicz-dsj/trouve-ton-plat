@@ -1,14 +1,30 @@
-.container{
-    margin: 0 auto;
+/*centre le container login*/
+.container_login{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    padding : 10px;
     margin-top: 3%;
     width: 100%;
     max-width: 400px;
-    padding: 10px;
-    height: 100%;
     background-color:rgba(0,0, 0, 0.5);
     display: flex;
     justify-content: center;
-    align-items: center;
+    border-radius: 10px;
+}
+.container_inscr{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    padding : 10px;
+    margin-top: 10vh;
+    width: 100%;
+    max-width: 400px;
+    background-color:rgba(0,0, 0, 0.5);
+    display: flex;
+    justify-content: center;
     border-radius: 10px;
 }
 #connexion{
@@ -25,15 +41,46 @@
     background-color: rgba(0,0, 0, 0.7);
     border-radius: 10px;
 }
-
+/*
+#composantConnexion.inscriptionSelected{
+    display:none
+}
+#composantConnexion2.inscriptionSelected{
+    display:none;
+}
+#composantConnexion3.inscriptionSelected{
+    display:none;
+}
+#composantInscription.connexionSelected{
+    display:none;
+}
+#composantInscription2.connexionSelected{
+    display:none;
+}
+#composantInscription3.connexionSelected{
+    display:none;
+}
+#composantInscription4.connexionSelected{
+    display:none;
+}
+#composantInscription5.connexionSelected{
+    display:none;
+}
+#composantInscription6.connexionSelected{
+    display:none;
+}
+*/
 h1{
     color: #fff;
     font-size: 1.7em;
     font-weight: 1000;
     text-align: center;
-    cursor: pointer;
 }
 .container_form{
+    /* mettre un scroll vertical uniquement si le contenu dépasse la hauteur de la fenêtre */
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* masquer les barres de défilement */
     width: 100%;
     height: 100%;
     display: flex;
@@ -87,8 +134,8 @@ form{
 .container_form_content_input_connexion{
     transition: all 0.7s ease-in-out ;
     display: none;
-    margin-top: 30px;
-    width: 100%;
+    margin-top: 10px;
+    width: 55vh;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -97,8 +144,8 @@ form{
 }
 .container_form_content_input_inscription{
     display: none;
-    margin-top: 30px;
-    width: 100%;
+    margin-top: 10px;
+    width: 55vh;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -115,6 +162,11 @@ form{
     padding-left:5px;
     font-size: 1.1em;
     font-weight: 1000;
+}
+.container_form_content_input_inscription span{
+    color: rgb(255, 0, 0);
+    font-size: 0.9em;
+
 }
 .container_form_content_input_connexion input{
     width: 80%;
@@ -143,7 +195,7 @@ form{
 }
 
 .container_form_content_input_connexion label{
-    margin-bottom:10px;
+    margin: bottom 5px;
     width: 80%;
     height: 100%;
     display: flex;
@@ -154,7 +206,6 @@ form{
     font-weight: 800;
 }
 .container_form_content_input_inscription label{
-    margin-bottom:10px;
     width: 80%;
     height: 100%;
     display: flex;
@@ -171,7 +222,7 @@ form{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top:40px ;
+    margin-top:20px ;
     margin-bottom:15px;
 }
 .container_form_content_button_connexion{
@@ -180,7 +231,7 @@ form{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top:40px ;
+    margin-top:20px ;
     margin-bottom:15px;
 }
 .container_form_content_button_inscription input{
@@ -205,12 +256,23 @@ form{
     font-size: 1.1em;
     font-weight: 1000;
 }
-.container_pre_aler{
-    display:flex;
+.container_form_content_input_inscription textarea{
+    width: 80%;
+    height:10vh;
+    border: #fff solid 2px;
+    border-radius: 5px;
+    background-color:rgba(0,0, 0, 0.5);
+    color: #fff;
+    padding-left:5px;
+    font-size: 1.1em;
+    font-weight: 1000;
+    resize: none;
 }
-.container_pre_aler input::placeholder{
-    font-size: 0.9em;
-    font-weight: 600;
+.container_form_content_input_inscription textarea::placeholder{
+    color: rgba(94, 91, 91);
+}
+.container_form_content_input_inscription textarea:focus{
+    outline: none;
 }
 .container_form_content_button_inscription input:hover{
     border-radius: 6px;

@@ -12,7 +12,7 @@
 
 		<!-- En-tête -->
 		<header class="header" >
-			<section class="container" >
+			<section class="container_header" >
 				<div class = "row">
 					<div class="col-md-10 col-sm-10 col-xs-12">
 					</div>
@@ -22,7 +22,7 @@
 		<!-- Menu -->
 		<?php include(PATH_VIEWS.'menu.php'); ?>
 		<!-- Vue -->
-			<section class="container">
+			<section class="container_header">
 				<div class = "row">
 
 

@@ -32,11 +32,11 @@ function pseudoUsed() {
         if (xhr.readyState == 4) {
             if (xhr.status == 200) {
                 if (xhr.responseText.includes("true")) {
-                    pseudo.style.backgroundColor = "#ff5967";
+                    pseudo.style.backgroundColor = "rgba(255, 89, 103, 0.3)"; /*rouge transparent */
                     phraseP.innerHTML="Ce pseudo est déjà utilisé !";
                     verifInsc();
                 } else {
-                    pseudo.style.backgroundColor = "#abf7b1";
+                    pseudo.style.backgroundColor = "rgba(171, 247, 177, 0.3)"; /*vert transparent */
                     phraseP.innerHTML="Ce pseudo est disponible !";
                     verifInsc();
                 }
@@ -66,7 +66,7 @@ function mailConforme(){
         mailUsed();
     }
     else{
-        mail.style.backgroundColor = "#ff5967";
+        mail.style.backgroundColor = "rgba(255, 89, 103, 0.3)"; /*rouge transparent */
         phraseM.innerHTML="Ce mail n'existe pas !";
         verifInsc();
     }
@@ -79,11 +79,12 @@ function mailUsed() {
         if (xhr.readyState == 4) {
             if (xhr.status == 200) {
                 if (xhr.responseText.includes("true")) {
-                    mail.style.backgroundColor = "#ff5967";
+                    /* mail.style.backgroundColor est de couleur rouge transparante */
+                    mail.style.backgroundColor = "rgba(255, 89, 103, 0.3)"; /*rouge transparent */
                     phraseM.innerHTML="Ce mail est déjà utilisé !";
                     verifInsc();
                 } else {
-                    mail.style.backgroundColor = "#abf7b1";
+                    mail.style.backgroundColor ="rgba(171, 247, 177, 0.3)"; /*vert transparent */
                     phraseM.innerHTML="Ce mail est disponible !";
                     verifInsc();
                 }
@@ -111,12 +112,12 @@ function finiEcrireMdp() {
 
 function mdpConforme(){
     if(pwdValue.split("").length<8){
-        pwd.style.backgroundColor = "#ff5967";
+        pwd.style.backgroundColor = "rgba(255, 89, 103, 0.3)"; /*rouge transparent */
         phraseMo.innerHTML="Ce mot de passe est trop court !";
         verifInsc();
     }
     else{
-        pwd.style.backgroundColor = "white";
+        pwd.style.backgroundColor = "rgba(171, 247, 177, 0.3)"; /*vert transparent */
         phraseMo.innerHTML="";
         verifInsc();
     }
@@ -138,19 +139,19 @@ function finiEcrireMdpC() {
 function mdpCConforme(){
     var pwdCValue = pwdC.value;
     if(pwdCValue != pwdValue){
-        pwdC.style.backgroundColor = "#ff5967";
+        pwdC.style.backgroundColor = "rgba(255, 89, 103, 0.3)"; /*rouge transparent */
         phraseMoC.innerHTML="Ce mot de passe ne correspond pas !";
         verifInsc();
     }
     else{
-        pwdC.style.backgroundColor = "white";
+        pwdC.style.backgroundColor = "rgba(171, 247, 177, 0.3)"; /*vert transparent */
         phraseMoC.innerHTML="";
         verifInsc();
     }
 }
 
 function verifInsc(){
-    if(pseudo.style.backgroundColor == "rgb(171, 247, 177)" && mail.style.backgroundColor == "rgb(171, 247, 177)" && pwd.style.backgroundColor == "white" && pwdC.style.backgroundColor == "white"){
+    if(pseudo.style.backgroundColor == "rgba(171, 247, 177,0.3)" && mail.style.backgroundColor == "rgb(171, 247, 1770.3)" && pwd.style.backgroundColor == "rgba(171, 247, 177, 0.3)" && pwdC.style.backgroundColor == "rgba(171, 247, 177, 0.3)"){
         document.getElementsByName("inscription")[0].removeAttribute("onsubmit");
         document.getElementsByName("inscription")[0].setAttribute("action", "index.php?page=insc");
     }

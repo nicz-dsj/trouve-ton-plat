@@ -27,43 +27,39 @@ else if (isset($_SESSION['logged']) && $_SESSION['logged'] == 2){
 <link rel="stylesheet" href="<?= PATH_CSS?>connexion_style.css">
 <link rel="stylesheet" href="<?= PATH_CSS?>style.css">
 </head>
-<h1><b><?= TITRE_PAGE_LOGIN ?></b></h1>
 
 <!--  Fin de la page -->
 
-        <div class="container">
-                    <div class="container_form">
-                        <div class="container_form_title">
-                            <div class="container_form_title_text" id="inscription">
-                                <h1>Inscription</h1>
-                            </div>
-                            <div class="container_form_title_text" id="connexion">
-                                <h1>Connexion</h1>
-                            </div>
-                        </div>
+<div class="container_login">
+    <div class="container_form">
+        <div class="container_form_title">
+            <div class="container_form_title_text" id="inscription">
+                <h1>Inscription</h1>
+            </div>
+                <div class="container_form_title_text" id="connexion">
+                    <h1>Connexion</h1>
+                </div>
+            </div>
 
         <div class="container_form_content">
-        <form action="index.php?page=login" method="post">
+            <form action="index.php?page=login" method="post">
             
-            <div class="container_form_content_input_connexion" id="composantConnexion">
-                <label for="id"><b>Identifiant</b></label>
-                <p><input type="text" name="login" placeholder="Identifiant" required></p>
-            </div>
+                <div class="container_form_content_input_connexion" id="composantConnexion">
+                    <label for="id">Identifiant</label>
+                    <input type="text" name="login" placeholder="Identifiant" required>
+                </div>
 
-            <div class="container_form_content_input_connexion" id="composantConnexion2">
-            <label for="mdp"><b>Mot de passe </b></label>
-                <p><input type="password" name="password"  placeholder="Mot de passe"></p>
-            </div>
+                <div class="container_form_content_input_connexion" id="composantConnexion2">
+                    <label for="mdp">Mot de passe</label>
+                    <input type="password" name="password"  placeholder="Mot de passe">
+                </div>
 
-            <div class="container_form_content_button_connexion" id="composantConnexion3">
-                <input type="submit" value="Se connecter">
-            </div>
-            </div>
-            </div>
+                <div class="container_form_content_button_connexion" id="composantConnexion3">
+                    <input type="submit" value="Se connecter">
+                </div>
+            </form>
         </div>
-        </div>
-        </form>
-
+        
 <!--  Pied de page -->
 <script src="<?= PATH_SCRIPTS?>script_connexion.js"></script>
 <script src="<?= PATH_SCRIPTS?>script_hamburger.js"></script>

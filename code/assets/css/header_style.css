@@ -22,7 +22,6 @@ body{
 
 /* POUR LE HEADER QUI EST COMMUN A TOUTES LES PAGES */
 .logo_ttp{
-    display:flex;
     flex-direction: column;
     position: absolute;
     top: 2px;
