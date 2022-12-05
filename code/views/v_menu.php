@@ -12,7 +12,7 @@
 <!-- Menu du site -->
 <div class ="bar">
       <div class="menu_deroulant">
-        <div class="container_header">
+        <div class="container_hamburger">
             <div class = "menuLogo"></div>
             <div class = "menuLogo"></div>
             <div class = "menuLogo"></div>

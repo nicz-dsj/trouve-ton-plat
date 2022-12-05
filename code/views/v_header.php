@@ -21,9 +21,6 @@
 		</header>
 		<!-- Menu -->
 		<?php include(PATH_VIEWS.'menu.php'); ?>
-		<!-- Vue -->
-			<section class="container_header">
-				<div class = "row">
 
 
 				

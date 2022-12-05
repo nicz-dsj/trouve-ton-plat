@@ -1,4 +1,4 @@
-var logo = document.querySelector('.container_header');
+var logo = document.querySelector('.container_hamburger');
 var menu = document.querySelector('.menu');
 
 console.log('coucou');
