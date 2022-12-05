@@ -1,0 +1,8 @@
+#exemple{
+    display: none;
+}
+
+body {
+    display: flex;
+    align-content:flex-end;
+}
