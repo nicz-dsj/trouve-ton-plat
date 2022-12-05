@@ -10,18 +10,31 @@
  */
 ?>
 <!-- Menu du site -->
+<div class ="bar">
+      <div class="menu_deroulant">
+        <div class="container_hamburger">
+            <div class = "menuLogo"></div>
+            <div class = "menuLogo"></div>
+            <div class = "menuLogo"></div>
+        </div>
 
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <ul class="nav navbar-nav">
-				<li <?php echo ($page=='accueil' ? 'class="active"':'')?>>
-					<a href="index.php">
-						<?= MENU_ACCUEIL ?>
-					</a>
-				</li>
-    </ul>
-	<ul class="nav navbar-nav navbar-right">
-				<?php if(isset($_SESSION['logged']) && $_SESSION['logged'] == 1){ ?>
+        <div class="logo_ttp">
+          <img src="assets/img/logo_ttp.png" alt="logo" />
+          <p>Trouve ton plat</p>
+        </div>
+
+<?php if(isset($_SESSION['logged']) && $_SESSION['logged'] == 1){ ?>
+		<ul class="nav navbar-nav">
+		<li <?php echo ($page=='accueil' ? 'class="active"':'')?>>
+			<a href="index.php">
+				<?= MENU_PROFIL ?>
+			</a>
+		</li>
+		<?php
+	}?>
+
+        <div class="con">
+          <?php if(isset($_SESSION['logged']) && $_SESSION['logged'] == 1){ ?>
 					<li <?php echo ($page=='login' ? 'class="active"':'')?>>
 						<a href="index.php?page=deconnexion" onclick="return confirm('Souhaitez-vous vraiment vous déconnecter ?');">
 							<?= MENU_DECONNEXION ?>
@@ -40,17 +53,21 @@
 
 				<?php
 			} ?>
-	</ul>
-	<?php if(isset($_SESSION['logged']) && $_SESSION['logged'] == 1){ ?>
-		<ul class="nav navbar-nav">
-		<li <?php echo ($page=='accueil' ? 'class="active"':'')?>>
+        </div>
+      </div>
+      <ul class = "menu">
+
+        <li <?php echo ($page=='accueil' ? 'class="active"':'')?>>
 			<a href="index.php">
-				<?= MENU_PROFIL ?>
+				<?= MENU_ACCUEIL ?>
 			</a>
 		</li>
-		<?php
-	}
-	?>
+        <li><a href="#"> Rechercher ingrédients</a></li>
+        <li><a href="#"> Proposer une recette</a></li>
+        <li><a href="#"> Evènements</a></li>
+        <li><a href="#"> Découvrir</a></li>
+      </ul>
+
   </div>
 </nav>
 

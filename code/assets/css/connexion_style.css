@@ -1,0 +1,288 @@
+/*centre le container login*/
+.container_login{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    padding : 10px;
+    margin-top: 3%;
+    width: 100%;
+    max-width: 60vh;
+    background-color:rgba(0,0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+}
+.container_inscr{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    padding : 10px;
+    margin-top: 10vh;
+    width: 100%;
+    max-width: 60vh;
+    background-color:rgba(0,0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+}
+#connexion{
+    z-index: 10;
+    cursor: pointer;;
+}
+#inscription{
+    z-index: 10;
+    cursor: pointer;
+}
+#inscription.inscriptionSelected{
+    background-color: rgba(0,0, 0, 0.7);
+    border-radius: 10px;
+}
+#connexion.connexionSelected{
+    background-color: rgba(0,0, 0, 0.7);
+    border-radius: 10px;
+}
+/*
+#composantConnexion.inscriptionSelected{
+    display:none
+}
+#composantConnexion2.inscriptionSelected{
+    display:none;
+}
+#composantConnexion3.inscriptionSelected{
+    display:none;
+}
+#composantInscription.connexionSelected{
+    display:none;
+}
+#composantInscription2.connexionSelected{
+    display:none;
+}
+#composantInscription3.connexionSelected{
+    display:none;
+}
+#composantInscription4.connexionSelected{
+    display:none;
+}
+#composantInscription5.connexionSelected{
+    display:none;
+}
+#composantInscription6.connexionSelected{
+    display:none;
+}
+*/
+h1{
+    color: #fff;
+    font-size: 1.7em;
+    font-weight: 1000;
+    text-align: center;
+}
+.container_form{
+    /* mettre un scroll vertical uniquement si le contenu dépasse la hauteur de la fenêtre */
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* masquer les barres de défilement */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border: #fff solid 1px;
+    box-shadow: 0px 1px 1px #888, 0px -2px 10px rgba(255, 255, 255,0.2);
+    border-radius: 10px;
+}
+.container_form_title{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: #fff solid 1px;
+    border-radius: 10px;
+}
+.container_form_title_text{
+    width: 100%;
+}
+.container_form_title_text:first-child{
+    border-right: #fff solid 2px;
+    border-radius: 10px;
+}
+.container_form_title_text:last-child{
+    border-left: #fff solid 2px;
+    border-radius: 10px;
+}
+.container_form_title_text:hover{
+    background-color:rgba(0,0, 0, 0.5);
+    border-radius: 10px;
+}
+form{
+    width: 95%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.container_form_content{
+    margin-top:10px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.container_form_content_input_connexion{
+    transition: all 0.7s ease-in-out ;
+    display: none;
+    margin-top: 10px;
+    width: 55vh;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.container_form_content_input_inscription{
+    display: none;
+    margin-top: 10px;
+    width: 55vh;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.container_form_content_input_inscription input{
+    width: 80%;
+    height:5vh;
+    border: #fff solid 2px;
+    border-radius: 5px;
+    background-color:rgba(0,0, 0, 0.5);
+    color: #fff;
+    padding-left:5px;
+    font-size: 1.1em;
+    font-weight: 1000;
+}
+.container_form_content_input_inscription span{
+    color: rgb(255, 0, 0);
+    font-size: 0.9em;
+
+}
+.container_form_content_input_connexion input{
+    width: 80%;
+    height:5vh;
+    border: #fff solid 2px;
+    border-radius: 5px;
+    background-color:rgba(0,0, 0, 0.5);
+    color: #fff;
+    padding-left:5px;
+    font-size: 1.1em;
+    font-weight: 1000;
+}
+.container_form_content_input_inscription input::placeholder{
+    color: rgba(94, 91, 91);
+}
+.container_form_content_input_connexion input::placeholder{
+    color: rgba(94, 91, 91);
+}
+
+
+.container_form_content_input_connexion input:focus{
+    outline: none;
+}
+.container_form_content_input_inscription input:focus{
+    outline: none;
+}
+
+.container_form_content_input_connexion label{
+    margin: bottom 5px;
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: #fff;
+    font-size: 1.4em;
+    font-weight: 800;
+}
+.container_form_content_input_inscription label{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: #fff;
+    font-size: 1.4em;
+    font-weight: 800;
+}
+
+.container_form_content_button_inscription{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:20px ;
+    margin-bottom:15px;
+}
+.container_form_content_button_connexion{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top:20px ;
+    margin-bottom:15px;
+}
+.container_form_content_button_inscription input{
+    border-radius: 6px;
+    height:4.5vh;
+    padding-left: 10%;
+    padding-right: 10%;
+    border: #fff solid 3px;
+    background-color:rgba(0,0, 0, 0.6);
+    color: #fff;
+    font-size: 1.1em;
+    font-weight: 1000;
+    cursor: pointer;
+}
+.container_form_content_button_connexion input{
+    border-radius: 6px;
+    height:4.5vh;
+    padding-left: 10%;
+    padding-right: 10%;
+    border: #fff solid 3px;
+    background-color:rgba(0,0, 0, 0.6);
+    color: #fff;
+    font-size: 1.1em;
+    font-weight: 1000;
+    cursor: pointer;
+}
+.container_form_content_input_inscription textarea{
+    width: 80%;
+    height:10vh;
+    border: #fff solid 2px;
+    border-radius: 5px;
+    background-color:rgba(0,0, 0, 0.5);
+    color: #fff;
+    padding-left:5px;
+    font-size: 1.1em;
+    font-weight: 1000;
+    resize: none;
+}
+.container_form_content_input_inscription textarea::placeholder{
+    color: rgba(94, 91, 91);
+}
+.container_form_content_input_inscription textarea:focus{
+    outline: none;
+}
+.container_form_content_button_inscription input:hover{
+    border-radius: 6px;
+    background-color:rgba(0,0, 0, 0.8);
+}
+.container_form_content_button_connexion input:hover{
+    border-radius: 6px;
+    background-color:rgba(0,0, 0, 0.8);
+}

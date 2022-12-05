@@ -1,0 +1,60 @@
+@media screen and (max-width:1100px){
+    .container_page_videos{
+        margin-top: 8vh;
+        display:flex;
+        flex-direction: column;
+    }
+}
+
+/* POUR LA PAGE D'ACCUEIL */
+.container_page_banderole{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0, 0, 0.4);
+}
+.texte_decouverte{
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: 700;
+    z-index: 1;
+}
+.texte_decouverte p{
+    margin-left:3vh;
+    margin-top:0.5vh;
+    margin-bottom: 1vh;
+    font-size: 2vh;
+}
+.texte_decouverte h2{
+    margin-left:3vh;
+    margin-top:1vh;
+    font-size: 3vh;
+}
+.container_page_videos{
+    margin-top: 8vh;
+    display:flex;
+    /* met en space between les 2 div */
+    justify-content: space-around;
+}
+.video{
+    box-shadow: 0px 1px 1px #888, 0px -2px 10px rgba(255, 255, 255,0.2);
+    position:relative;
+    height:300px;
+}
+.texte_video{
+    overflow: hidden;
+    position:absolute;
+    top: 0;
+    right:0;
+    font-size: 2vh;
+    color:#fff;
+    background: rgba(0,0, 0, 0.5);
+    width: 60%;
+    height: 100%;
+    text-align: center;
+}
+.texte_video p{
+    overflow: hidden;
+    font-size: 2.6vh;
+}
