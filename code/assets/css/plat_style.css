@@ -45,6 +45,7 @@
 }
 
 .container_resultats{
+    flex-wrap: wrap;
     margin: 0 auto;
     width: 95%;
     text-align: center;
@@ -53,13 +54,20 @@
 }
 
 .container_plat{
-    margin-left:20px;   
+    margin-left:10px;
+    margin-right:10px;  
     margin-top: 5vh;
     width:35vh;
     background-color: rgba(0,0, 0, 0.5);
     border : 2px solid #fff;
     border-radius: 7px;
     text-align: center;
+    transition: 0.25s;
+}
+
+.container_plat:hover{
+    transform: scale(1.1);
+    cursor: pointer;
 }
 
 .container_plat_img{
@@ -74,11 +82,12 @@
     border-radius:7px;
     width: 100%;
     height: 100%;
+    -webkit-user-drag: none;
 }
 
 .container_plat_texte{
     margin-top: 5px;
-    font-size: 1.2em;
+    font-size: 1.2vw;
     font-weight: 1000;
     color: #fff;
 }

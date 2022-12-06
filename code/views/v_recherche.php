@@ -10,12 +10,25 @@
 <head>
 <link rel="stylesheet" href="<?= PATH_CSS?>plat_style.css">
 <link rel="stylesheet" href="<?= PATH_CSS?>style.css">
+
 <script src="assets/scripts/script_hamburger.js"></script>
+
 </head>
 
     <main>
     <div class = "container_recherche">
-        <input type="text" placeholder="Inserez vos ingrédients:">
+        <input type="text" placeholder="Inserez vos ingrédients:" list="platsLi">
+        <datalist id="platsLi">
+            <?php
+
+                foreach($ingredients as $ingredient){
+                    ?>
+                    <option value = "<?php echo $ingredient ?>"><?php echo $ingredient ?></option> 
+                    <?php
+                } 
+            ?>
+        </datalist>
+
         <button type="submit"><img src="assets/img/recherche.png"></button>
     </div>
     <div class="container_resultats">
