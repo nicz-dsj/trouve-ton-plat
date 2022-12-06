@@ -12,18 +12,19 @@
 <link rel="stylesheet" href="<?= PATH_CSS?>style.css">
 
 <script src="assets/scripts/script_hamburger.js"></script>
+<script src="assets/scripts/script_recherche.js"></script>
 
 </head>
 
     <main>
     <div class = "container_recherche">
-        <input type="text" placeholder="Inserez vos ingrédients:" list="platsLi">
+        <input type="text" placeholder="Inserez vos ingrédients:" list="platsLi" id="inpPlats">
         <datalist id="platsLi">
             <?php
 
                 foreach($ingredients as $ingredient){
                     ?>
-                    <option value = "<?php echo $ingredient ?>"><?php echo $ingredient ?></option> 
+                    <option value = "<?php echo $ingredient['Nom'] ?>"><?php echo $ingredient['Nom'] ?></option> 
                     <?php
                 } 
             ?>

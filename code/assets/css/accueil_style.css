@@ -6,6 +6,10 @@
     }
 }
 
+body {
+    overflow-y: hidden;
+}
+
 /* POUR LA PAGE D'ACCUEIL */
 .container_page_banderole{
     display: flex;
