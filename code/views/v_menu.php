@@ -62,7 +62,11 @@
 				<?= MENU_ACCUEIL ?>
 			</a>
 		</li>
-        <li><a href="#"> Rechercher ingrédients</a></li>
+        <li <?php echo ($page=='recherche' ? 'class="active"':'')?>>
+			<a href="?page=recherche">
+				<?= MENU_PLAT ?>
+			</a>
+		</li>
         <li><a href="#"> Proposer une recette</a></li>
         <li><a href="#"> Evènements</a></li>
         <li><a href="#"> Découvrir</a></li>

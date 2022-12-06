@@ -11,7 +11,6 @@
 <link rel="stylesheet" href="<?= PATH_CSS?>accueil_style.css">
 <link rel="stylesheet" href="<?= PATH_CSS?>style.css">
 </head>
-<h1><?= TITRE_PAGE_ACCUEIL_TOUS ?></h1>
 
 
 
