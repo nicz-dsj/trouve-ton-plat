@@ -16,6 +16,7 @@ dinput.addEventListener('keydown', (e) => {
 
                if(listIngr.includes(valeur) === false) {
                   listIngr.push(valeur);
+                  update();
                   console.log(listIngr);
                };
                dinput.value = '';
@@ -33,7 +34,14 @@ dinput.addEventListener('input', (e) => {
     
     if(listIngr.includes(valeur) === false) {
       listIngr.push(valeur);
+      update();
       console.log(listIngr);
    };
   }
 });
+
+function update(){
+   for(let j = 1; j <= listIngr.length; j++){
+      console.log("oui");
+   }
+}
