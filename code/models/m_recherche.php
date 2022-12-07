@@ -11,3 +11,12 @@ function getIngredients(){
     $query->closeCursor();
     return $result;
 }
+
+function getPlats(){
+    $connexion = Connexion::getInstance()->getBdd();
+    $query = $connexion->prepare('SELECT * FROM Plat');
+    $query->execute();
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+    $query->closeCursor();
+    return $result;
+}

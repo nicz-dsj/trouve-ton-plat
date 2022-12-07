@@ -34,41 +34,23 @@
     </div>
     <div class="container_resultats">
 
-        <div class="container_plat">
-            <div class="container_plat_img">
-                <img src="assets/img/pates.jpg" alt="plateau">
-            </div>
-            <div class="container_plat_texte">
-                <h2>template_pour_aro</h2>
-            </div>
-        </div>
+        <?php
 
-        <div class="container_plat">
-            <div class="container_plat_img">
-                <img src="assets/img/pates.jpg" alt="plateau">
-            </div>
-            <div class="container_plat_texte">
-                <h2>template_pour_aro</h2>
-            </div>
-        </div>
+        foreach($plats as $plat){
+            ?>
 
-        <div class="container_plat">
-            <div class="container_plat_img">
-                <img src="assets/img/pates.jpg" alt="plateau">
+            <div class="container_plat" id="plat_<?php echo $plat['IdPlat'] ?>">
+                <div class="container_plat_img">
+                    <img src="assets/img/plats/<?php echo $plat['IdPlat'] ?>.jpg" alt="plateau">
+                </div>
+                <div class="container_plat_texte">
+                    <h2><?php echo $plat['Nom'] ?></h2>
+                </div>
             </div>
-            <div class="container_plat_texte">
-                <h2>template_pour_aro</h2>
-            </div>
-        </div>
-
-        <div class="container_plat">
-            <div class="container_plat_img">
-                <img src="assets/img/pates.jpg" alt="plateau">
-            </div>
-            <div class="container_plat_texte">
-                <h2>template_pour_aro</h2>
-            </div>
-        </div>
+ 
+            <?php
+        } 
+        ?>
 
     </div>
     </main>
