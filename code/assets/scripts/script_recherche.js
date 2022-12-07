@@ -1,10 +1,16 @@
 //Quand la touche entrée est pressée, on ajoute le texte de la recherche dans une liste
 
-document.getElementById('inpPlats').addEventListener('keypress', (e) => {
-   const key = e.key;
-   if (key === "Enter") {
-      var text = document.getElementById("inpPlats").value;
-      var liste = document.getElementById("platsLi");
-      console.log(text);
-   }
+const opts = document.getElementById('platsLi').childNodes;
+const dinput = document.getElementById('inpPlats');
+let eventSource = null;
+let value = '';
+
+dinput.addEventListener('keydown', (e) => {
+  eventSource = e.key ? 'input' : 'list';
+});
+dinput.addEventListener('input', (e) => {
+  value = e.target.value;
+  if (eventSource === 'list') {
+    alert('CLICKED! ' + value);
+  }
 });

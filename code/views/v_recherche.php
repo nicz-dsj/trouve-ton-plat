@@ -12,13 +12,13 @@
 <link rel="stylesheet" href="<?= PATH_CSS?>style.css">
 
 <script src="assets/scripts/script_hamburger.js"></script>
-<script src="assets/scripts/script_recherche.js"></script>
+<script src="assets/scripts/script_recherche.js" defer></script>
 
 </head>
 
     <main>
     <div class = "container_recherche">
-        <input type="text" placeholder="Inserez vos ingrédients:" list="platsLi" id="inpPlats">
+        <input type="text" placeholder="Inserez vos ingrédients:" list="platsLi" id="inpPlats" >
         <datalist id="platsLi">
             <?php
 
