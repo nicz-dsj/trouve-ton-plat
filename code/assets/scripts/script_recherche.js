@@ -2,15 +2,38 @@
 
 const opts = document.getElementById('platsLi').childNodes;
 const dinput = document.getElementById('inpPlats');
+const listIngr = [];
 let eventSource = null;
-let value = '';
+let valeur = '';
 
 dinput.addEventListener('keydown', (e) => {
-  eventSource = e.key ? 'input' : 'list';
+   eventSource = e.key ? 'input' : 'list';
+   valeur = (dinput.value);
+      if (e.key === 'Enter') {
+         for(let i = 1; i <= opts.length; i+=2) {
+            if (opts[i].value === valeur) {
+               alert('WROTE! ' + valeur);
+
+               if(listIngr.includes(valeur) === false) {
+                  listIngr.push(valeur);
+                  console.log(listIngr);
+               };
+               dinput.value = '';
+               eventSource = null;
+               valeur = '';
+               i=opts.length;
+            };
+         };
+      };
 });
 dinput.addEventListener('input', (e) => {
-  value = e.target.value;
+   valeur = e.target.value;
   if (eventSource === 'list') {
-    alert('CLICKED! ' + value);
+    alert('CLICKED! ' + valeur);
+    
+    if(listIngr.includes(valeur) === false) {
+      listIngr.push(valeur);
+      console.log(listIngr);
+   };
   }
 });
