@@ -1,3 +1,9 @@
+var recherche = document.getElementsByName("frecherche")[0];
+var button = document.getElementsByTagName("button")[0];
+
+
+var test = ["Quiche","Gateau","Cookie"];
+
 //Quand la touche entrée est pressée, on ajoute le texte de la recherche dans une liste
 
 const opts = document.getElementById('platsLi').childNodes;
