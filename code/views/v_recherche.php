@@ -54,7 +54,7 @@
 
     </div>
 
-    <form action="index.php?page=recherche" method="get" name="recherche">
+    <form action="index.php?page=recherche" method="post" name="recherche">
         <label> Rentrez le nom de votre plat : </label>
         <input type="text" id="frecherche" name="frecherche" placeholder="Quiche, Gateau, Cookie, ..."><br>
         <input type="submit">

@@ -38,6 +38,7 @@ function getAssocSize(){
     $query->closeCursor();
     return $result;
 }
+
 function recherchePlat($recherche)
 {
   $connexion = Connexion::getInstance()->getBdd();
