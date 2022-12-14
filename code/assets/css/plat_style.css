@@ -1,0 +1,42 @@
+/*centre la bar de recherche*/
+.container_recherche{
+    margin: 0 auto;
+    margin-top:20vh;
+    width: 50%;
+    text-align: center;
+}
+.container_recherche input{
+    width: 80%;
+    height:5vh;
+    border: #fff solid 2px;
+    border-radius: 5px;
+    background-color:rgba(0,0, 0, 0.5);
+    color: #fff;
+    padding-left:5px;
+    font-size: 1.1em;
+    font-weight: 1000;
+}
+/* aligne le boutton et l'input de la bar de recherche*/
+.container_recherche button{
+    margin-left: 10px;
+    width: 10%;
+    height:5vh;
+    border: #fff solid 2px;
+    border-radius: 5px;
+    background-color:rgba(0,0, 0, 0.5);
+    color: #fff;
+    font-size: 1.1em;
+    font-weight: 1000;
+}
+.container_recherche button img{
+    width: 100%;
+    height: 100%;
+}
+
+.container_recherche input::placeholder{
+    color: rgba(94, 91, 91);
+}
+
+.container_recherche input:focus{
+    outline: none;
+}

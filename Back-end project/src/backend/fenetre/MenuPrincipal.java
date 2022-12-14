@@ -254,7 +254,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
             ResultSet resultat = nomOrdre.executeQuery("SELECT nom FROM Plat");
             while (resultat.next()) {
                 String nom = resultat.getString("nom");
-                
                 System.out.println(nom);
             }
             resultat.close();
