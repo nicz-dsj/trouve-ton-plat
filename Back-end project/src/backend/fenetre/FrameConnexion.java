@@ -4,36 +4,58 @@
  */
 package backend.fenetre;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Aro
  */
-public class FrameConnexion extends javax.swing.JFrame {
+public class FrameConnexion extends javax.swing.JDialog {
 
     // Accès base de données
     /**
      * Variable correspondant à l'adresse de la base de donnée
      */
-    private String BDHost = "mysql-trouvetonplat.alwaysdata.net";
+    private String BDHost;
     /**
      * Variable correspondant au nom de la base de donnée
      */
-    private String BDDBName = "trouvetonplat_bd";
+    private String BDDBName;
     /**
      * Variable correspondant au nom d'utilisateur
      */
-    private String BDUser = "289080";
+    private String BDUser;
     /**
      * Variable correspondant au mot de passe
      */
-    private String BDPWD = "trouveton784512";
+    private String BDPWD;
 
     /**
      * Creates new form FrameConnexion
      */
-    public FrameConnexion() {
+    public FrameConnexion(JFrame frame) {
+        super(frame);
+        
+        this.BDHost = "mysql-trouvetonplat.alwaysdata.net";
+        this.BDDBName = "trouvetonplat_bd";
+        this.BDUser = "289080";
+        this.BDPWD = "trouveton784512";
+        
         initComponents();
     }
+    
+    public FrameConnexion(JFrame frame, String BDHost, String BDDBName, String BDUser, String BDPWD){
+        super(frame);
+        
+        this.BDHost = BDHost;
+        this.BDDBName = BDDBName;
+        this.BDUser = BDUser;
+        this.BDPWD = BDPWD;
+        
+        initComponents();
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -56,7 +78,7 @@ public class FrameConnexion extends javax.swing.JFrame {
         bAnnuler = new javax.swing.JButton();
         bAppliquer = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Configuration de la connexion");
 
         lHost.setText("Nom d'hôte :");
@@ -204,14 +226,18 @@ public class FrameConnexion extends javax.swing.JFrame {
         this.BDDBName = tfDBName.getText();
         this.BDUser = tfUser.getText();
         this.BDPWD = tfPWD.getText();
+        this.dispose();
     }//GEN-LAST:event_bSauvegarderActionPerformed
 
     private void bAnnulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAnnulerActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_bAnnulerActionPerformed
 
     private void bAppliquerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAppliquerActionPerformed
-        // TODO add your handling code here:
+        this.BDHost = tfHost.getText();
+        this.BDDBName = tfDBName.getText();
+        this.BDUser = tfUser.getText();
+        this.BDPWD = tfPWD.getText();
     }//GEN-LAST:event_bAppliquerActionPerformed
 
     /**
@@ -244,7 +270,7 @@ public class FrameConnexion extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrameConnexion().setVisible(true);
+                new FrameConnexion(null).setVisible(true);
             }
         });
     }
