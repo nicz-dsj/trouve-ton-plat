@@ -7,6 +7,7 @@ var test = ["Quiche","Gateau","Cookie"];
 //Quand la touche entrée est pressée, on ajoute le texte de la recherche dans une liste
 
 const opts = document.getElementById('platsLi').childNodes;
+console.log(opts);
 const dinput = document.getElementById('inpPlats');
 const listIngr = [];
 let eventSource = null;
@@ -16,13 +17,13 @@ dinput.addEventListener('keydown', (e) => {
    eventSource = e.key ? 'input' : 'list';
    valeur = (dinput.value);
       if (e.key === 'Enter') {
-         for(let i = 1; i <= opts.length; i+=2) {
-            if (opts[i].value === valeur) {
+         for(let i = 1; i <= opts.length; i++) {
+            if (opts[i*2-1].value === valeur) {
                alert('WROTE! ' + valeur);
 
                if(listIngr.includes(valeur) === false) {
                   listIngr.push(valeur);
-                  update();
+                  update(i);
                   console.log(listIngr);
                };
                dinput.value = '';
@@ -40,20 +41,22 @@ dinput.addEventListener('input', (e) => {
     
     if(listIngr.includes(valeur) === false) {
       listIngr.push(valeur);
-      update();
+      for(let i = 1; i <= opts.length; i++) {
+         if (opts[i*2-1].value === valeur) {
+            update(i);
+         };
+      };
       console.log(listIngr);
    };
   }
 });
 
-function update(){
-   for(let j = 1; j <= listIngr.length; j++){
-      console.log("oui");
-   }
-}
-
-let zeb = document.getElementsByClassName("listeIngre");
-
-for(let i;i<zeb.length;i++){
-   console.log(zeb[i]);
+function update(j){
+   let plats = document.getElementsByClassName("container_plat");
+   
+   for(let i = 0; i <= plats.length; i++){
+      if(!(plats[i].dataset.ing.includes(j))){
+         plats[i].style.display="none";
+      }
+   };
 }

@@ -14,8 +14,6 @@ for($i=1; $i<sizeof($liAssoc);$i++){
 
     for($j=0; $j<sizeof($liAssoc[$i]);$j++){
         $liAssocHTML[$i][$j] = $liAssoc[$i][$j]["IdIngredient"];
-
-        echo($liAssocHTML[$i][$j]);
     }
 
 }

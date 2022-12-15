@@ -15,9 +15,35 @@
 <script src="assets/scripts/script_recherche.js" defer></script>
 
 </head>
-
     <main>
+
+        
+    <div id="rechercheHdud">
+
+    <div id="tagsD">
+
+        <div class="centered"> 
+            Champignon
+        </div>
+
+        <div class="centered"> 
+            Champignon
+        </div>
+
+        <div class="centered"> 
+            Champignon
+        </div>
+
+        <div class="centered"> 
+            Champignon
+        </div>
+
+
+    </div>
+
     <div class = "container_recherche">
+
+
         <input type="text" placeholder="Inserez vos ingrédients:" list="platsLi" id="inpPlats" >
         <datalist id="platsLi">
             <?php
@@ -32,6 +58,9 @@
 
         <button type="submit"><img src="assets/img/recherche.png"></button>
     </div>
+    
+    </div>
+
     <div class="container_resultats">
 
         <?php
@@ -39,7 +68,16 @@
         foreach($plats as $plat){
             ?>
 
-            <div class="container_plat" id="<?php echo $plat['IdPlat'] ?>">
+            <div class="container_plat" id="<?php echo $plat['IdPlat'] ?>" data-ing="<?php 
+
+            for($j=0; $j<sizeof($liAssocHTML[$plat['IdPlat']]);$j++){
+                echo($liAssocHTML[$plat['IdPlat']][$j]);
+                echo "-";
+            }
+            
+        
+            ?>">
+
                 <div class="container_plat_img">
                     <img src="assets/img/plats/<?php echo $plat['IdPlat'] ?>.jpg" alt="Image de <?php echo $plat['Nom'] ?>">
                 </div>
@@ -64,24 +102,7 @@
     </div>
     <script href="./assets/scripts/script_recherche.js"></script>
     </main>
-
-
-    <div id=ingreDiv>
-    <?php
-
-    for($i=1; $i<sizeof($liAssocHTML)+1;$i++){
-
-        for($j=0; $j<sizeof($liAssocHTML[$i]);$j++){
-        ?>
-
-        <input class = "listeIngre" type="hidden" value="<?=$i?>-<?=$liAssocHTML[$i][$j]?>">
-
-        <?php
-        }
-    } 
-    ?>
-    </div>
-
+    
 </body>
 </html>
 
