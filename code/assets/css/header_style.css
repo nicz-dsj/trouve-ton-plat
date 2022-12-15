@@ -27,6 +27,8 @@ body{
     left: 50%;
     transform: translate(-50%, 0);
     z-index: 1;
+    display:flex;
+    align-items: center;
 }
 .con{
     float:right;
@@ -55,8 +57,6 @@ body{
 }
 .logo_ttp img{
     position:relative;
-    left:8vh;
-    height: 6vh;
     width:6vh;
 }
 .bar{

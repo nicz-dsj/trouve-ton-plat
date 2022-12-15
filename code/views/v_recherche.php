@@ -39,7 +39,7 @@
         foreach($plats as $plat){
             ?>
 
-            <div class="container_plat" id="plat_<?php echo $plat['IdPlat'] ?>">
+            <div class="container_plat" id="<?php echo $plat['IdPlat'] ?>">
                 <div class="container_plat_img">
                     <img src="assets/img/plats/<?php echo $plat['IdPlat'] ?>.jpg" alt="Image de <?php echo $plat['Nom'] ?>">
                 </div>
@@ -64,6 +64,23 @@
     </div>
     <script href="./assets/scripts/script_recherche.js"></script>
     </main>
+
+
+    <div id=ingreDiv>
+    <?php
+
+    for($i=1; $i<sizeof($liAssocHTML)+1;$i++){
+
+        for($j=0; $j<sizeof($liAssocHTML[$i]);$j++){
+        ?>
+
+        <input class = "listeIngre" type="hidden" value="<?=$i?>-<?=$liAssocHTML[$i][$j]?>">
+
+        <?php
+        }
+    } 
+    ?>
+    </div>
 
 </body>
 </html>

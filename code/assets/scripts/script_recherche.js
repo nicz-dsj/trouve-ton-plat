@@ -51,3 +51,9 @@ function update(){
       console.log("oui");
    }
 }
+
+let zeb = document.getElementsByClassName("listeIngre");
+
+for(let i;i<zeb.length;i++){
+   console.log(zeb[i]);
+}
