@@ -22,23 +22,6 @@
 
     <div id="tagsD">
 
-        <div class="centered"> 
-            Champignon
-        </div>
-
-        <div class="centered"> 
-            Champignon
-        </div>
-
-        <div class="centered"> 
-            Champignon
-        </div>
-
-        <div class="centered"> 
-            Champignon
-        </div>
-
-
     </div>
 
     <div class = "container_recherche">

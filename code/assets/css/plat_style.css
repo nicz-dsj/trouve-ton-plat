@@ -113,12 +113,12 @@
     margin-top: 10vh;
 }
 
-.centered {
+.tagsIn {
     text-align: center;
     font-size:0.85vw;
     justify-content: center;
     background: url('./../img/tagLeft.png') no-repeat, url("./../img/tag.png") no-repeat, url("./../img/tagRight.png") no-repeat;
-    background-size: 20px 80%, 92px 80%, 20px 80%;
+    background-size: 19% 80%, 64% 80%, 18% 80%;
     background-position: left, center, right;
     height:5vh;
     display:flex;
@@ -127,5 +127,15 @@
     padding-left:1%;
     padding-right:3%;
     margin-right:0.4vh;
+    caret-color: transparent;
+    cursor: default;
+  }
+
+  .tagsIn:hover{
+    color:red;
+    cursor: pointer;
+    background: url('./../img/tagLeftDel.png') no-repeat, url("./../img/tagDel.png") no-repeat, url("./../img/tagRightDel.png") no-repeat;
+    background-size: 19% 80%, 64% 80%, 18% 80%;
+    background-position: left, center, right;
   }
   
