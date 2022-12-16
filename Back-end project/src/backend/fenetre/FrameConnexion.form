@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
     <Property name="title" type="java.lang.String" value="Configuration de la connexion"/>
@@ -114,7 +114,7 @@
     <Component class="javax.swing.JTextField" name="tfDBName">
       <Properties>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="BDDBName" type="code"/>
+          <Connection code="owner.getBDDBName()" type="code"/>
         </Property>
       </Properties>
       <Events>
@@ -124,7 +124,7 @@
     <Component class="javax.swing.JTextField" name="tfHost">
       <Properties>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="BDHost" type="code"/>
+          <Connection code="owner.getBDHost()" type="code"/>
         </Property>
       </Properties>
       <Events>
@@ -134,7 +134,7 @@
     <Component class="javax.swing.JTextField" name="tfUser">
       <Properties>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="BDUser" type="code"/>
+          <Connection code="owner.getBDUser()" type="code"/>
         </Property>
       </Properties>
       <Events>
@@ -144,7 +144,7 @@
     <Component class="javax.swing.JTextField" name="tfPWD">
       <Properties>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="BDPWD" type="code"/>
+          <Connection code="owner.getBDPWD()" type="code"/>
         </Property>
       </Properties>
       <Events>

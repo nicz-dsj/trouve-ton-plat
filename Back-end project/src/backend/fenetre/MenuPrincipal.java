@@ -4,6 +4,7 @@
  */
 package backend.fenetre;
 
+import com.mysql.cj.jdbc.result.ResultSetMetaData;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -52,6 +53,39 @@ public class MenuPrincipal extends javax.swing.JFrame {
         initComponentPerso();
     }
 
+    public String getBDHost() {
+        return BDHost;
+    }
+
+    public void setBDHost(String BDHost) {
+        this.BDHost = BDHost;
+    }
+
+    public String getBDDBName() {
+        return BDDBName;
+    }
+
+    public void setBDDBName(String BDDBName) {
+        this.BDDBName = BDDBName;
+    }
+
+    public String getBDUser() {
+        return BDUser;
+    }
+
+    public void setBDUser(String BDUser) {
+        this.BDUser = BDUser;
+    }
+
+    public String getBDPWD() {
+        return BDPWD;
+    }
+
+    public void setBDPWD(String BDPWD) {
+        this.BDPWD = BDPWD;
+    }
+
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -72,6 +106,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -130,6 +165,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem2);
 
+        jMenuItem3.setText("jMenuItem3");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem3);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -149,6 +192,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+       System.out.println(BDUser);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -197,13 +244,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 
     private void initComponentPerso() {
-        frameConnexion = new FrameConnexion(this, BDHost, BDDBName, BDUser, BDPWD);
+        frameConnexion = new FrameConnexion(this);
         String data[][] = {{"Name1", "FirstName1", "Age1"}, {"Name2", "FirstName2", "Age2"}, {"Name3", "FirstName3", "Age3"}};
         String test = "test";
         String columnNames[] = {"Name", "FirstName", "Age"};
@@ -225,7 +273,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         try {
             // TODO code application logic here
             Class.forName("com.mysql.jdbc.Driver");
-            Connection connexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/sae", "root", "");
+            Connection connexion = DriverManager.getConnection("jdbc:mysql://" + this.BDHost + "/" + this.BDDBName, this.BDUser, this.BDPWD);
+            //Connection connexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/sae", "root", "");
+            //Connection connexion = DriverManager.getConnection("jdbc:mysql://mysql-trouvetonplat.alwaysdata.net/trouvetonplat_bd", "289080", "trouveton784512");
             Statement nomOrdre = connexion.createStatement();
             ResultSet resultat = nomOrdre.executeQuery("SELECT nom FROM Plat");
             while (resultat.next()) {
@@ -249,9 +299,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
             // TODO code application logic here
             System.out.println("asadasda");
             Class.forName("com.mysql.jdbc.Driver");
-            Connection connexion = DriverManager.getConnection("jdbc:mysql://mysql-trouvetonplat.alwaysdata.net/trouvetonplat_bd", "289080", "trouveton784512");
+            Connection connexion = DriverManager.getConnection("jdbc:mysql://" + this.BDHost + "/" + this.BDDBName, this.BDUser, this.BDPWD);
             Statement nomOrdre = connexion.createStatement();
             ResultSet resultat = nomOrdre.executeQuery("SELECT nom FROM Plat");
+            ResultSetMetaData resultatMetaData = (ResultSetMetaData) resultat.getMetaData();
+            resultatMetaData.getColumnCount()
             while (resultat.next()) {
                 String nom = resultat.getString("nom");
                 System.out.println(nom);

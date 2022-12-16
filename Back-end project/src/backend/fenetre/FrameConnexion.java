@@ -10,49 +10,46 @@ import javax.swing.JFrame;
  *
  * @author Aro
  */
-public class FrameConnexion extends javax.swing.JDialog {
+public class FrameConnexion extends javax.swing.JFrame {
 
     // Accès base de données
     /**
      * Variable correspondant à l'adresse de la base de donnée
      */
-    private String BDHost;
-    /**
-     * Variable correspondant au nom de la base de donnée
-     */
-    private String BDDBName;
-    /**
-     * Variable correspondant au nom d'utilisateur
-     */
-    private String BDUser;
-    /**
-     * Variable correspondant au mot de passe
-     */
-    private String BDPWD;
+    private MenuPrincipal owner;
 
     /**
      * Creates new form FrameConnexion
      */
-    public FrameConnexion(JFrame frame) {
-        super(frame);
+    public FrameConnexion(MenuPrincipal owner) {
+        super();
         
-        this.BDHost = "mysql-trouvetonplat.alwaysdata.net";
-        this.BDDBName = "trouvetonplat_bd";
-        this.BDUser = "289080";
-        this.BDPWD = "trouveton784512";
+        this.owner = owner;
+        this.owner.setBDHost("mysql-trouvetonplat.alwaysdata.net");
+        this.owner.setBDDBName("trouvetonplat_bd");
+        this.owner.setBDUser("289080");
+        this.owner.setBDPWD("trouveton784512");
         
         initComponents();
     }
     
     public FrameConnexion(JFrame frame, String BDHost, String BDDBName, String BDUser, String BDPWD){
-        super(frame);
+        super();
         
-        this.BDHost = BDHost;
-        this.BDDBName = BDDBName;
-        this.BDUser = BDUser;
-        this.BDPWD = BDPWD;
+        this.owner.setBDHost(BDHost);
+        this.owner.setBDDBName(BDDBName);
+        this.owner.setBDUser(BDUser);
+        this.owner.setBDPWD(BDPWD);
         
         initComponents();
+    }
+
+    public MenuPrincipal getOwner() {
+        return owner;
+    }
+
+    public void setOwner(MenuPrincipal owner) {
+        this.owner = owner;
     }
     
     
@@ -89,28 +86,28 @@ public class FrameConnexion extends javax.swing.JDialog {
 
         lPWD.setText("Mot de passe :");
 
-        tfDBName.setText(BDDBName);
+        tfDBName.setText(owner.getBDDBName());
         tfDBName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfDBNameActionPerformed(evt);
             }
         });
 
-        tfHost.setText(BDHost);
+        tfHost.setText(owner.getBDHost());
         tfHost.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfHostActionPerformed(evt);
             }
         });
 
-        tfUser.setText(BDUser);
+        tfUser.setText(owner.getBDUser());
         tfUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfUserActionPerformed(evt);
             }
         });
 
-        tfPWD.setText(BDPWD);
+        tfPWD.setText(owner.getBDPWD());
         tfPWD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfPWDActionPerformed(evt);
@@ -222,10 +219,10 @@ public class FrameConnexion extends javax.swing.JDialog {
     }//GEN-LAST:event_tfPWDActionPerformed
 
     private void bSauvegarderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSauvegarderActionPerformed
-        this.BDHost = tfHost.getText();
-        this.BDDBName = tfDBName.getText();
-        this.BDUser = tfUser.getText();
-        this.BDPWD = tfPWD.getText();
+        this.owner.setBDHost(tfHost.getText());
+        this.owner.setBDDBName(tfDBName.getText());
+        this.owner.setBDUser(tfUser.getText());
+        this.owner.setBDPWD(tfPWD.getText());
         this.dispose();
     }//GEN-LAST:event_bSauvegarderActionPerformed
 
@@ -234,12 +231,14 @@ public class FrameConnexion extends javax.swing.JDialog {
     }//GEN-LAST:event_bAnnulerActionPerformed
 
     private void bAppliquerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAppliquerActionPerformed
-        this.BDHost = tfHost.getText();
-        this.BDDBName = tfDBName.getText();
-        this.BDUser = tfUser.getText();
-        this.BDPWD = tfPWD.getText();
+        this.owner.setBDHost(tfHost.getText());
+        this.owner.setBDDBName(tfDBName.getText());
+        this.owner.setBDUser(tfUser.getText());
+        this.owner.setBDPWD(tfPWD.getText());
     }//GEN-LAST:event_bAppliquerActionPerformed
 
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -289,3 +288,4 @@ public class FrameConnexion extends javax.swing.JDialog {
     private javax.swing.JTextField tfUser;
     // End of variables declaration//GEN-END:variables
 }
+
