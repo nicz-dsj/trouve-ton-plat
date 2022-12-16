@@ -8,6 +8,7 @@ const opts = document.getElementById('platsLi').childNodes;
 console.log(opts);
 const dinput = document.getElementById('inpPlats');
 let listIngr = [];
+let listIngrNum = [];
 let eventSource = null;
 let valeur = '';
 
@@ -24,6 +25,8 @@ dinput.addEventListener('keydown', (e) => {
                if(listIngr.includes(valeur) === false) {
                   listIngr.push(valeur);
 
+                  listIngrNum.push(i);
+
                   var element = document.createElement("div");
                   element.classList.add("tagsIn")
                   element.innerHTML = valeur;
@@ -32,14 +35,18 @@ dinput.addEventListener('keydown', (e) => {
                   element.addEventListener('click', (e) => {
 
                      let listTemp =  [];
-
+                     let listTempNum =  [];
+            
                      for (let j = 0; j < listIngr.length; j++) {
                         if (listIngr[j] !== element.innerHTML) {
                            listTemp.push(listIngr[j]);
                         }
+                        if (listIngrNum[j] != i)
+                           listTempNum.push(listIngrNum[j]);
                      }
-
+            
                      listIngr = listTemp;
+                     listIngrNum = listTempNum
 
                      element.parentNode.removeChild(element);
 
@@ -67,6 +74,8 @@ dinput.addEventListener('input', (e) => {
 
       for(let i = 1; i <= opts.length; i++) {
          if (opts[i*2-1].value === valeur) {
+            
+            listIngrNum.push(i);
 
             var element = document.createElement("div");
             element.classList.add("tagsIn")
@@ -75,14 +84,18 @@ dinput.addEventListener('input', (e) => {
             element.addEventListener('click', (e) => {
 
                let listTemp =  [];
+               let listTempNum =  [];
       
                for (let j = 0; j < listIngr.length; j++) {
                   if (listIngr[j] !== element.innerHTML) {
                      listTemp.push(listIngr[j]);
                   }
+                  if (listIngrNum[j] != i)
+                     listTempNum.push(listIngrNum[j]);
                }
       
                listIngr = listTemp;
+               listIngrNum = listTempNum
       
                element.parentNode.removeChild(element);
       
@@ -121,4 +134,9 @@ function updateDel(j){
          plats[i].style.display="";
       }
    };
+   for(let k= 0; k < listIngrNum.length; k++){
+      console.log(listIngrNum[0]);
+      update(listIngrNum[k]);
+   };
+
 }
