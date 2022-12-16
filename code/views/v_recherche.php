@@ -23,7 +23,6 @@
     <div id="tagsD">
 
     </div>
-
     <div class = "container_recherche">
 
 
@@ -38,10 +37,14 @@
                 } 
             ?>
         </datalist>
-
-        <button type="submit"><img src="assets/img/recherche.png"></button>
     </div>
-    
+    <div class = "container_recherche_v2">
+        <form action="index.php?page=recherche" method="post" name="recherche">
+            <input type="text" id="inpPlats" name="frecherche" placeholder="Quiche, Gateau, Cookie, ..."><br>
+            <button type="submit"><img src="assets/img/recherche.png"></button>
+        </form>
+        
+    </div>
     </div>
 
     <div class="container_resultats">
@@ -73,15 +76,6 @@
         } 
         ?>
 
-    </div>
-
-    <form action="index.php?page=recherche" method="post" name="recherche">
-        <label> Rentrez le nom de votre plat : </label>
-        <input type="text" id="frecherche" name="frecherche" placeholder="Quiche, Gateau, Cookie, ..."><br>
-        <input type="submit">
-    </form>
-    <div class="elements">
-        
     </div>
     <script href="./assets/scripts/script_recherche.js"></script>
     </main>
