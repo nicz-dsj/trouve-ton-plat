@@ -11,7 +11,7 @@ if(isset($_SESSION['logged']) && $_SESSION['logged'] == 1){
     ?>
     <p class='alert alert-success'><b> Vous êtes connecté(e)</b></p>
     <?php
-    $_SESSION = array();
+
 }
 else if (isset($_SESSION['logged']) && $_SESSION['logged'] == 2){
     ?>
@@ -51,7 +51,7 @@ else if (isset($_SESSION['logged']) && $_SESSION['logged'] == 2){
 
                 <div class="container_form_content_input_connexion" id="composantConnexion2">
                     <label for="mdp">Mot de passe</label>
-                    <input type="password" name="password"  placeholder="Mot de passe">
+                    <input type="password" name="password"  placeholder="Mot de passe" required>
                 </div>
 
                 <div class="container_form_content_button_connexion" id="composantConnexion3">

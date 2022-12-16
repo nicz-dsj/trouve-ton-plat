@@ -20,5 +20,4 @@ if(isset($_POST['login']) && isset($_POST['password'])){
 
 
 }
-
 require_once(PATH_VIEWS.$page.'.php');
