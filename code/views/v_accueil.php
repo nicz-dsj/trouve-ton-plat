@@ -6,6 +6,7 @@
 <!--  Zone message d'alerte -->
 <?php require_once(PATH_VIEWS.'alert.php');?>
 
+
 <!--  Début de la page -->
 <head>
 <link rel="stylesheet" href="<?= PATH_CSS?>accueil_style.css">
