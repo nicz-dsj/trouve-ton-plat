@@ -159,7 +159,7 @@
     color:red;
     cursor: pointer;
     background: url('./../img/tagLeftDel.png') no-repeat, url("./../img/tagDel.png") no-repeat, url("./../img/tagRightDel.png") no-repeat;
-    background-size: 20px 80%, calc(100% - 40px) 80%, 20px 80%;
+    background-size: 20px 80%, calc(101% - 40px) 80%, 20px 80%;
     background-position: left, center, right;
   }
 
