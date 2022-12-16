@@ -15,8 +15,8 @@ import java.util.logging.Logger;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-
 import static javax.swing.JOptionPane.showMessageDialog;
+
 /**
  *
  * @author Aro
@@ -85,7 +85,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         this.BDPWD = BDPWD;
     }
 
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -194,7 +193,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-       System.out.println(BDUser);
+        System.out.println(BDUser);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
@@ -292,27 +291,37 @@ public class MenuPrincipal extends javax.swing.JFrame {
             Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public void requeteBD(String sql) {
         // TODO code application logic here
         try {
             // TODO code application logic here
+            int rowCount = 0;
             System.out.println("asadasda");
             Class.forName("com.mysql.jdbc.Driver");
             Connection connexion = DriverManager.getConnection("jdbc:mysql://" + this.BDHost + "/" + this.BDDBName, this.BDUser, this.BDPWD);
             Statement nomOrdre = connexion.createStatement();
-            ResultSet resultat = nomOrdre.executeQuery("SELECT nom FROM Plat");
-            ResultSetMetaData resultatMetaData = (ResultSetMetaData) resultat.getMetaData();
-            resultatMetaData.getColumnCount()
+            ResultSet resultat = nomOrdre.executeQuery("SELECT * FROM Plat");
+            ResultSetMetaData resultatMD = (ResultSetMetaData) resultat.getMetaData();
+            resultatMD.getColumnCount();
+            if (resultat.last()) {
+                rowCount = resultat.getRow();
+                resultat.beforeFirst();
+            }
+            /*String columnNames[] = new String[resultatMD.getColumnCount()];
+            for(int i = 0; i < resultatMD.getColumnCount(); i++){
+                columnNames[i] = resultatMD.getColumnName(i);
+            }
+            int[][] name = new int[resultatMD.getColumnCount()][rowCount];*/
             while (resultat.next()) {
-                String nom = resultat.getString("nom");
+                String nom = resultat.getString("idPlat");
                 System.out.println(nom);
             }
             resultat.close();
             nomOrdre.close();
             connexion.close();
         } catch (SQLException ex) {
-            showMessageDialog(null,"Impossible de se connecter a la base, "
+            showMessageDialog(null, "Impossible de se connecter a la base, "
                     + "vérifiez votre connexion internet et la configuration "
                     + "de la connexion à la base de donnée");
             System.out.println("Impossible de se connecter a la base, "
