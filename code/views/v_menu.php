@@ -67,7 +67,11 @@
 				<?= MENU_PLAT ?>
 			</a>
 		</li>
-        <li><a href="#"> Proposer une recette</a></li>
+        <li <?php echo ($page=='proposer_plat' ? 'class="active"':'')?>>
+			<a href="?page=proposer_plat">
+				<?= MENU_PROPOSER_PLAT ?>
+			</a>
+		</li>
         <li><a href="#"> Evènements</a></li>
         <li><a href="#"> Découvrir</a></li>
       </ul>

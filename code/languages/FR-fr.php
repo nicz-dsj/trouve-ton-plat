@@ -13,6 +13,7 @@ define('MENU_DECONNEXION','Deconnexion');
 define('MENU_INSCRIPTION','Inscription');
 define('MENU_PROFIL','Mon Compte');
 define('MENU_PLAT','Trouve Ton Plat');
+define('MENU_PROPOSER_PLAT','Proposer un plat');
 
 define('TEXTE_PAGE_404','Oops, la page demandée n\'existe pas !');
 define('MESSAGE_ERREUR',"Une erreur s'est produite");

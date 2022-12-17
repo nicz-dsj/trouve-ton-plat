@@ -23,6 +23,7 @@
 .container_recherche img{
     width:100%;
     height: 100%;
+    cursor: pointer;
 }
 .container_recherche input{
     width: 100%;
@@ -80,6 +81,7 @@
 .container_recherche_v2 button img{
     width:100%;
     height: 100%;
+    cursor: pointer;
 }
 
 .container_recherche_v2 form input::placeholder{
