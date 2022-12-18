@@ -8,6 +8,7 @@ if(isset($_POST['login']) && isset($_POST['password'])){
     if($password){
         if(password_verify($_POST['password'], $password["motDePasse"])){
             $_SESSION['logged'] = 1;
+            $_SESSION['user'] = $_POST['login'];
             header('Location: index.php');
         }
         else {
@@ -20,5 +21,4 @@ if(isset($_POST['login']) && isset($_POST['password'])){
 
 
 }
-
 require_once(PATH_VIEWS.$page.'.php');

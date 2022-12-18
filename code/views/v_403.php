@@ -13,8 +13,8 @@
 
 <div class="container_page">
     <div class="content">
-        <h1>Erreur 404</h1>
-        <p>Cette page n'existe pas<p>
+        <h1>Erreur 403</h1>
+        <p>L'accès à cette page vous est refusé<p>
     </div>
 </div>
 <script src="<?= PATH_SCRIPTS ?>script_hamburger.js"></script>

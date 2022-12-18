@@ -13,6 +13,7 @@
 
 <script src="assets/scripts/script_hamburger.js"></script>
 <script src="assets/scripts/script_recherche.js" defer></script>
+<script src="./assets/scripts/script_switch_recherche.js" defer></script>
 
 </head>
     <main>
@@ -23,7 +24,7 @@
     <div id="tagsD">
 
     </div>
-    <div class = "container_recherche">
+    <div class = "container_recherche" id="container_recherche">
 
 
         <input type="text" placeholder="Inserez vos ingrédients:" list="platsLi" id="inpPlats" >
@@ -37,12 +38,14 @@
                 } 
             ?>
         </datalist>
+        <button id="b_rech"><img src="assets/img/fleche_switch.png" ></button>
     </div>
-    <div class = "container_recherche_v2">
+    <div class = "container_recherche_v2" id = "container_recherche_v2">
         <form action="index.php?page=recherche" method="post" name="recherche">
-            <input type="text" id="inpPlats" name="frecherche" placeholder="Quiche, Gateau, Cookie, ..."><br>
-            <button type="submit"><img src="assets/img/recherche.png"></button>
+            <input type="text" id="inpPlats" name="frecherche" placeholder="Inserez votre plat:"><br>
         </form>
+        <button id="b_rech_2"><img src="assets/img/fleche_switch_2.png"></button>
+
         
     </div>
     </div>
@@ -77,7 +80,7 @@
         ?>
 
     </div>
-    <script href="./assets/scripts/script_recherche.js"></script>
+
     </main>
     
 </body>
