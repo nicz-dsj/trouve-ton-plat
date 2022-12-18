@@ -3,10 +3,10 @@
 const DEBUG = true; // production : false; dev : true
 
 // Accès base de données
-const BD_HOST = 'mysql-trouvetonplat.alwaysdata.net';
+const BD_HOST = 'localhost';
 const BD_DBNAME = 'trouvetonplat_bd';
-const BD_USER = '289080';
-const BD_PWD = 'trouveton784512';
+const BD_USER = 'root';
+const BD_PWD = '';
 
 // Langue du site
 const LANG ='FR-fr';

@@ -25,16 +25,17 @@
 
 <?php if(isset($_SESSION['logged']) && $_SESSION['logged'] == 1){ ?>
 		<ul class="nav navbar-nav">
-		<li <?php echo ($page=='accueil' ? 'class="active"':'')?>>
-			<a href="index.php">
-				<?= MENU_PROFIL ?>
-			</a>
-		</li>
+		
 		<?php
 	}?>
 
         <div class="con">
           <?php if(isset($_SESSION['logged']) && $_SESSION['logged'] == 1){ ?>
+				<li <?php echo ($page=='accueil' ? 'class="active"':'')?>>
+					<a href="index.php?page=profil&nom=<?= $_SESSION['user'] ?>">
+						<?= MENU_PROFIL ?>
+					</a>
+				</li>
 					<li <?php echo ($page=='login' ? 'class="active"':'')?>>
 						<a href="index.php?page=deconnexion" onclick="return confirm('Souhaitez-vous vraiment vous déconnecter ?');">
 							<?= MENU_DECONNEXION ?>
