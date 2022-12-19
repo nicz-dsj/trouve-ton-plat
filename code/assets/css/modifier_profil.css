@@ -12,10 +12,9 @@
 .container_page{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     position: relative;
-    height: 150vh;
+    height: 100vh;
 }
 
 .container_editpage{
@@ -43,11 +42,31 @@
 }
 
 .container_editpage fieldset{
+    border: 2px dashed white;
     border-radius: 5px;
 }
 
 .container_form{
     padding: 2em;
+}
+
+@media screen and (max-width: 700px){
+    .container_page{
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 200vh;
+        overflow: hidden;
+    }
+    .container_editpage{
+        align-items: center;
+        background-color: transparent;
+        top: 0;
+    }
+
+    .container_form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 .container_form .title{
@@ -97,6 +116,14 @@
     display: flex;
     cursor: pointer;
 }
+
+@media screen and (max-width: 600px){
+    .container_editavatar div{
+        width: 100px;
+        height: 100px;
+    }
+}
+
 
 .avatarbtn:hover{
     background-color: rgba(0, 0, 0, 0.5);
@@ -221,7 +248,7 @@ form .helpmessage{
     height: 7em;
     margin-bottom: 5px;
     color: white;
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.5);
     border: 2px white solid;
     border-radius: 5px;
     padding: 0 5px 0;
@@ -247,6 +274,16 @@ form .helpmessage{
     font-size: 15px;
     border: 1px solid white;
     transition: 0.5s;
+}
+
+@media screen and (max-width: 700px){
+    .container_editpreferences{
+        flex-direction: column;
+    }
+
+    .container_editpreferences button{
+        margin: 0.6em 0 ;
+    }
 }
 
 .container_editpreferences button:hover{
@@ -282,6 +319,12 @@ form .helpmessage{
     z-index: 2;
 }
 
+@media screen and (max-width: 700px){
+    .container_overmenu{
+        height: 200vh;
+    }
+}
+
 .container_overmenu .content{
     position: fixed;
     margin-top: 6em;
@@ -293,8 +336,9 @@ form .helpmessage{
     border-radius: 10px;
 }
 
-@media screen and (max-width: 500px){
+@media screen and (max-width: 700px){
     #avatarmenu .content{
+        margin-top: 2em;
         height: 70vh;
     }
 }
