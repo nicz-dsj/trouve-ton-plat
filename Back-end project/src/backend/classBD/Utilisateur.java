@@ -8,6 +8,6 @@ package backend.classBD;
  *
  * @author Aro
  */
-public class getData {
+public class Utilisateur {
     
 }
