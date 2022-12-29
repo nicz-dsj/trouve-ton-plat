@@ -8,39 +8,36 @@
 
 <!--  Début de la page -->
 <head>
-<link rel="stylesheet" href="<?= PATH_CSS?>plat_style.css">
-<link rel="stylesheet" href="<?= PATH_CSS?>style.css">
+<link rel="stylesheet" href="<?= PATH_CSS?>proposer_plat.css">
 
 <script src="assets/scripts/script_hamburger.js"></script>
-<script src="assets/scripts/script_recherche.js" defer></script>
-<script src="./assets/scripts/script_switch_recherche.js" defer></script>
 
 </head>
 <main>
-<div class="container_inscr">
-        <div class="container_form_content">
+<div class="container_propo">
+        <div class="container_form_content_propo">
                 <form action="index.php?page=proposer_plat" method="post" name="proposer">
                     <div class='inline form-group'>
 
-                        <div>
+                        <div class="input">
                             <label for="text">Nom du plat:</label>
                             <input type="text" name="nomPlat" id="nomPlat" placeholder="Nom du plat" required>
                             <span id="statutNomPlat"></span>
                         </div>
 
-                        <div >
+                        <div class="input">
                         <label for = "text">Description:</label>
                         <input type="text" name="descr" id="descr" placeholder="Description" required>
                         <span id="statutDescr"></span>
                         </div>  
                         
-                        <div>
+                        <div class="input">
                         <label for="text">Catégorie:</label>
-                        <input type="text" name="categorie" id="categorie" placeholder="Catégorie" required>
+                        <input type="text" name="categorie" id="categorie" placeholder="c'est un chiffre ici jsp pourquoi" required>
                         <span id="statutCat"></span>
                         </div>
                         
-                        <div>
+                        <div class="input">
                         <label for="texte">Recette:</label>
                         <input type="text" name="recette" id="recette" placeholder="Recette" required>
                         <span id="statutRec"></span>
@@ -51,7 +48,7 @@
                         
                         
                         
-                        <div> 
+                        <div class="input"> 
                             <input class='btn btn-primary' type="submit" value="Envoyer la candidature"></p>
                         </div>
 
