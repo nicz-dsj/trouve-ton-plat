@@ -33,7 +33,7 @@
                         
                         <div class="input">
                         <label for="text">Catégorie:</label>
-                        <input type="text" name="categorie" id="categorie" placeholder="c'est un chiffre ici jsp pourquoi" required>
+                        <input type="text" name="cat" id="categorie" placeholder="c'est un chiffre ici jsp pourquoi" required>
                         <span id="statutCat"></span>
                         </div>
                         
@@ -41,12 +41,7 @@
                         <label for="texte">Recette:</label>
                         <input type="text" name="recette" id="recette" placeholder="Recette" required>
                         <span id="statutRec"></span>
-                        </div>
-                        
-
-                        
-                        
-                        
+                        </div>               
                         
                         <div class="input"> 
                             <input class='btn btn-primary' type="submit" value="Envoyer la candidature"></p>

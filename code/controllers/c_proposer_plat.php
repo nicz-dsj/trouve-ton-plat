@@ -10,12 +10,10 @@ if(isset($_GET['nomPlat'])){
         echo "false";
     }
 }
+
 if(isset($_POST['nomPlat']) && isset($_POST['descr']) && isset($_POST['cat']) && isset($_POST['recette'])){
-    $id = $_SESSION['id'];
-    $nomPlat = htmlspecialchars($_POST['nomPlat']);
-    $descr = htmlspecialchars($_POST['descr']);
-    $cat =($_POST['cat']);
-    $recette = htmlspecialchars($_POST['recette']);
-    addPlat($nomPlat,$descr,$cat,$recette);
+    $idPlat = getMaxId() + 1;
+
+    addPlat($idPlat,$_POST['nomPlat'],$_POST['descr'],date("Y-m-d"),$_POST['cat'],$_POST['recette']);
 }
 require_once(PATH_VIEWS.$page.'.php');
