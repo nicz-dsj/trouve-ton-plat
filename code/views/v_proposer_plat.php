@@ -25,7 +25,7 @@
                             <span id="statutNomPlat"></span>
                         </div>
 
-                        <div class="input">
+                        <div class="input input_description">
                         <label for = "text">Description:</label>
                         <input type="text" name="descr" id="descr" placeholder="Description" required>
                         <span id="statutDescr"></span>
@@ -37,7 +37,7 @@
                         <span id="statutCat"></span>
                         </div>
                         
-                        <div class="input">
+                        <div class="input input_recette"">
                         <label for="texte">Recette:</label>
                         <input type="text" name="recette" id="recette" placeholder="Recette" required>
                         <span id="statutRec"></span>
