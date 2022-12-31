@@ -70,7 +70,7 @@
 		</li>
         <li><a href="#"> Proposer une recette</a></li>
         <li><a href="#"> Evènements</a></li>
-        <li><a href="#"> Découvrir</a></li>
+        <li><a href="index.php?page=decouvrir"> Découvrir</a></li>
       </ul>
 
   </div>

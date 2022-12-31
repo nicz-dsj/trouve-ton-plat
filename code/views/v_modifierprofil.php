@@ -90,7 +90,7 @@ else if (isset($_GET['modification']) && $_GET['modification'] == "fail"){
             </fieldset>
             <fieldset class="item" id="item4">
                 <legend class="itemtitle">Compte</legend>
-                <a href="index.php?page=supprimercompte&nom=<?= $utilisateur[0]['pseudoUtilisateur']?>">Fermer le compte</a>
+                <a href="index.php?page=supprimercompte">Fermer le compte</a>
             </fieldset>
         </fieldset>
     </div>
