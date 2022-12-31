@@ -82,7 +82,7 @@
     </div>
     <?php
         if((isset($_SESSION['logged']) && $_SESSION['logged'] == 1) && (isset($_SESSION['user']) && $_SESSION['user'] == $utilisateur[0]['pseudoUtilisateur'])){ ?>
-    <a href="?page=modifierprofil&nom=<?= $utilisateur[0]['pseudoUtilisateur'] ?>" id="editprofile">Modifier le profil</a> <?php
+    <a href="index.php?page=modifierprofil" id="editprofile">Modifier le profil</a> <?php
         }
     ?>
     <div class="description">
@@ -103,7 +103,7 @@
                 foreach($platsFavoris as $plat){ ?>
         <div class="plat">
             <img src="./assets/img/plats/<?= $plat['IdPlat'] ?>.jpg" width="150" height="150">
-            <p id="nomplat"><?= $plat['Nom'] ?></p>
+            <p class="nomplat"><?= $plat['Nom'] ?></p>
         </div>
         <?php
                 }
@@ -123,8 +123,8 @@
             else{
                 foreach($platsAjoutes as $plat){ ?>
         <div class="plat">
-            <img src="./assets/img/plats/<?= $plat['IdPlat'] ?>.jpg" width="150" height="150">
-            <p id="nomplat"><?= $plat['Nom'] ?></p>
+            <img src="./assets/img/plats/<?= $plat['IdPlat'] ?>.jpg" width="200" height="200">
+            <p class="nomplat"><?= $plat['Nom'] ?></p>
         </div>
         <?php
                 }
