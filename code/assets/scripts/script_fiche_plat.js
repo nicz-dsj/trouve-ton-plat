@@ -36,10 +36,16 @@ request.onload = function () {
     description.getElementsByTagName("p")[0].innerHTML = dataPlat.Description;
     categorie.getElementsByTagName("p")[0].innerHTML = dataCategorie.Nom;
     image.getElementsByTagName("img")[0].src = "assets/img/plats/" + dataPlat.IdPlat + ".jpg";
-    createur.getElementsByTagName("h2")[0].innerHTML = "Par " + dataUser.pseudoUtilisateur;
     note.getElementsByTagName("p")[0].innerHTML = dataPlat.Note;
     date.getElementsByTagName("p")[0].innerHTML = dataPlat.DatePublication;
     recette.getElementsByTagName("p")[0].innerHTML = dataPlat.recette;
+
+    createur.getElementsByTagName("h2")[0].textContent = "Par ";
+    let redirect = document.createElement('a');
+    redirect.href = `index.php?page=profil&nom=${dataUser.pseudoUtilisateur}`;
+    redirect.appendChild(document.createTextNode(dataUser.pseudoUtilisateur));
+    console.log(redirect);
+    createur.getElementsByTagName("h2")[0].appendChild(redirect);
   } else {
     // Affiche un message
     console.error("Erreur lors de la récupération des données");
