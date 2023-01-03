@@ -12,8 +12,12 @@
 
 <script src="assets/scripts/script_hamburger.js"></script>
 <script src="assets/scripts/script_recherche.js" defer></script>
+<<<<<<< HEAD
 <script src="assets/scripts/script_switch_recherche.js" defer></script>
 <script src="assets/scripts/script_click_plat.js" defer></script>
+=======
+<script src="./assets/scripts/script_switch_recherche.js" defer></script>
+>>>>>>> 01a5071cb2108b4fe002c7bbfd93e24705edce1e
 
 </head>
     <main>

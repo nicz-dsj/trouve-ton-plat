@@ -1,0 +1,178 @@
+.container_profil{
+    margin: 3em 20em 0;
+    padding: 4em;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+@media screen and (max-width: 1300px) {
+    .container_profil{
+        background-color: rgba(0, 0, 0, 0.5);
+        margin: 0;
+    }
+}
+
+.container_informations{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 2em;
+}
+
+.user{
+    padding: 1em 1.5em 1em;
+    border-radius: 10px;
+    border: 2px dashed white;
+    display: flex;
+    margin-bottom: 0.5em;
+}
+
+
+
+.user #avatar{
+    border-radius: 100%;
+    margin-right: 1.2em;
+}
+
+.user .text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@media screen and (max-width: 500px) {
+    .user{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .user #avatar{
+        margin: 0;
+        margin-bottom: 5px;
+    }
+    
+    .user .text{
+        align-items: center;
+    }
+}
+
+.user #username{
+    font-size: 30px;
+    margin-bottom: 7px;
+}
+
+.user .banmessage{
+    padding: 5px;
+    border-radius: 5px;
+    background-color: red;
+}
+
+#editprofile{
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 12px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    width: 8em;
+    text-align: center;
+    transition: 0.5s;
+}
+
+#editprofile:hover{
+    color: black;
+    background-color: white;
+}
+
+.preferences{
+    padding: 0.6em;
+    border-radius: 10px;
+    border: 2px dashed white;
+}
+
+.preferences .title{
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 5px;
+}
+
+.preferences p{
+    font-size: 17px;
+}
+
+.preferences .list{
+    margin: 0.6em;
+}
+
+@media screen and (max-width: 1000px) {
+    .container_informations{
+        flex-direction: column;
+    }
+}
+
+
+.description{
+    margin: 2em 0 2em;
+}
+
+.description .title{
+    font-size: 25px;
+    border-bottom: 3px dotted white;
+    margin-bottom: 6px;
+    padding: 5px;
+}
+
+.description .content{
+    font-size: 20px;
+    text-align: justify;
+}
+
+#realisations{
+    margin-bottom: 30px;
+}
+
+.container_liste .title{
+    font-size: 30px;
+    border-bottom: 3px dotted white;
+    margin-bottom: 6px;
+    padding: 5px;
+}
+
+.container_liste .liste{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.empty{
+    width: 100%;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container_liste .plat{
+    cursor: pointer;
+    width: 200px;
+    height: 230px;
+    background-color: black;
+    border: 3px solid white;
+    padding: 3px;
+    border-radius: 5px;
+    margin: 10px;
+    transition: transform 0.5s;
+}
+
+.container_liste .plat:hover{
+    transform: scale(1.1);
+}
+
+.container_liste .plat p{
+    font-weight: bold;
+    font-size: 15px;
+    text-align: center;
+}
+
