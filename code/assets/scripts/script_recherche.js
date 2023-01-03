@@ -5,7 +5,6 @@ var button = document.getElementsByTagName("button")[0];
 var test = ["Quiche","Gateau","Cookie"];
 
 const opts = document.getElementById('platsLi').childNodes;
-//console.log(opts);
 const dinput = document.getElementById('inpPlats');
 let listIngr = [];
 let listIngrNum = [];

@@ -8,12 +8,12 @@
 
 <!--  Début de la page -->
 <head>
-<link rel="stylesheet" href="<?= PATH_CSS?>plat_style.css">
-<link rel="stylesheet" href="<?= PATH_CSS?>style.css">
+<link rel="stylesheet" href="<?= PATH_CSS?>recherche_plat_style.css">
 
 <script src="assets/scripts/script_hamburger.js"></script>
 <script src="assets/scripts/script_recherche.js" defer></script>
-<script src="./assets/scripts/script_switch_recherche.js" defer></script>
+<script src="assets/scripts/script_switch_recherche.js" defer></script>
+<script src="assets/scripts/script_click_plat.js" defer></script>
 
 </head>
     <main>
@@ -27,7 +27,7 @@
     <div class = "container_recherche" id="container_recherche">
 
 
-        <input type="text" placeholder="Inserez vos ingrédients:" list="platsLi" id="inpPlats" >
+        <input type="text" placeholder="Insérez vos ingrédients:" list="platsLi" id="inpPlats" >
         <datalist id="platsLi">
             <?php
 
@@ -42,7 +42,7 @@
     </div>
     <div class = "container_recherche_v2" id = "container_recherche_v2">
         <form action="index.php?page=recherche" method="post" name="recherche">
-            <input type="text" id="inpPlats" name="frecherche" placeholder="Inserez votre plat:"><br>
+            <input type="text" id="inpPlats" name="frecherche" placeholder="Insérez votre plat:"><br>
         </form>
         <button id="b_rech_2"><img src="assets/img/fleche_switch_2.png"></button>
 

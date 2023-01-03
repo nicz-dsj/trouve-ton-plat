@@ -9,7 +9,6 @@
 <!--  Début de la page -->
 <head>
 <link rel="stylesheet" href="<?= PATH_CSS?>connexion_style.css"> 
-<link rel="stylesheet" href="<?= PATH_CSS?>style.css">
 </head>
 
 <!--  Fin de la page -->

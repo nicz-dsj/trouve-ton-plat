@@ -33,6 +33,10 @@ body{
 .con{
     float:right;
     margin-top:20px;
+    z-index: 1;
+    position:absolute;
+    display: flex;
+    right:3%;
 }
 .con a{
     color: #fff;
@@ -54,6 +58,7 @@ body{
     color: #fff;
     text-align: center;
     font-weight: 700;
+    caret-color: transparent;
 }
 .logo_ttp img{
     position:relative;
@@ -87,6 +92,7 @@ body{
     height:4px;
     width:30px;
     background-color:snow;
+    caret-color: transparent;
 }
 .menu{
     z-index:10;
@@ -101,6 +107,7 @@ body{
 
 }
 .menu li{
+    caret-color: transparent;
     z-index: 2;
     list-style-type: none;
     border-bottom: 1px solid snow;
@@ -119,6 +126,7 @@ menu li:last-child{
     border-bottom:none;
 }
 .menu li a{
+    caret-color: transparent;
     color: snow;
     text-decoration:none;
     font-size:20px;
