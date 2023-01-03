@@ -23,7 +23,7 @@
                 <p class="title">Selon vos préférences de catégorie</p>
                 <div class="liste">
                 <?php
-                for($i = 0; $i < count($platsCategorie) && $i < 30; $i++){
+                for($i = 0; $i < count($platsCategorie) && $i < 10; $i++){
                     ?>
                     <div class="plat">
                         <img src="./assets/img/plats/<?= $platsCategorie[$i]['IdPlat'] ?>.jpg" width="200" height="200">
@@ -38,7 +38,7 @@
                 <p class="title">Selon vos préférences d'ingrédients</p>
                 <div class="liste">
                 <?php
-                for($i = 0; $i < count($platsIngredients) && $i < 30; $i++){
+                for($i = 0; $i < count($platsIngredients) && $i < 10; $i++){
                     ?>
                     <div class="plat">
                         <img src="./assets/img/plats/<?= $platsIngredients[$i]['IdPlat'] ?>.jpg" width="200" height="200">
@@ -59,7 +59,7 @@
                 <p class="title">Dernières sorties</p>
                 <div class="liste">
                 <?php
-                for($i = 0; $i < count($plats) && $i < 30; $i++){
+                for($i = 0; $i < count($plats) && $i < 10; $i++){
                     ?>
                     <div class="plat">
                         <img src="./assets/img/plats/<?= $plats[$i]['IdPlat'] ?>.jpg" width="200" height="200">
@@ -74,16 +74,13 @@
                 <p class="title">Les mieux notés</p>
                 <div class="liste">
                 <?php
-                for($i = 0, $j = 0; $i < count($plats) && $j < 30; $i++){
-                    if($plats[$i]['Note'] >= 3){
-                        ?>
-                        <div class="plat">
-                            <img src="./assets/img/plats/<?= $plats[$i]['IdPlat'] ?>.jpg" width="200" height="200">
-                            <p class="nomplat"><?= $plats[$i]['Nom'] ?></p>
-                        </div>
-                        <?php
-                        $j++;
-                    }
+                for($i = 0; $i < count($platsMieuxNotes) && $i < 10; $i++){
+                    ?>
+                    <div class="plat">
+                        <img src="./assets/img/plats/<?= $platsMieuxNotes[$i]['IdPlat'] ?>.jpg" width="200" height="200">
+                        <p class="nomplat"><?= $platsMieuxNotes[$i]['Nom'] ?></p>
+                    </div>
+                    <?php
                 }
                 ?>
                 </div>

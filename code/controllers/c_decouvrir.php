@@ -3,6 +3,7 @@
 require_once(PATH_MODELS.'m_decouvrir.php');
 
 $plats = getPlats();
+$platsMieuxNotes = getPlatsMieuxNotes();
 
 if(isset($_SESSION['logged']) && $_SESSION['logged'] == 1 && isset($_SESSION['user'])){
     if(getUtilisateur($_SESSION['user']) != null){

@@ -36,6 +36,15 @@ function getPlats(){
     return $result;
 }
 
+function getPlatsMieuxNotes(){
+    $connexion = Connexion::getInstance()->getBdd();
+    $query = $connexion->prepare('SELECT * FROM Plat WHERE Note >= 3 ORDER BY Note DESC');
+    $query->execute();
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+    $query->closeCursor();
+    return $result;
+}
+
 function getPlatsCategorie($categories){
     $connexion = Connexion::getInstance()->getBdd();
     $sql = 'SELECT * FROM Plat WHERE';

@@ -106,7 +106,7 @@ if((isset($_SESSION['logged']) && $_SESSION['logged'] == 1) && isset($_SESSION['
         if(isset($_POST['prefcategoriesubmit'])){
             $valeur;
             if(!isset($_POST['prefcategorie'])){
-                if(count(prefCategorie) > 0){
+                if(count($prefCategorie) > 0){
                     $valeur = deleteAllPrefCategories($utilisateur[0]['idUtilisateur']);
                 }
                 else{
@@ -114,7 +114,7 @@ if((isset($_SESSION['logged']) && $_SESSION['logged'] == 1) && isset($_SESSION['
                 }
             }
             else{
-                if(count(prefCategorie) > 0){
+                if(count($prefCategorie) > 0){
                     $valeur = deleteAllPrefCategories($utilisateur[0]['idUtilisateur']);
                 }
                 $valeur = addPrefCategories($_POST['prefcategorie'], $utilisateur[0]['idUtilisateur']);
@@ -132,7 +132,7 @@ if((isset($_SESSION['logged']) && $_SESSION['logged'] == 1) && isset($_SESSION['
         if(isset($_POST['prefingredientsubmit'])){
             $valeur;
             if(!isset($_POST['prefingredient'])){
-                if(count(prefIngredient) > 0){
+                if(count($prefIngredients) > 0){
                     $valeur = deleteAllPrefIngredients($utilisateur[0]['idUtilisateur']);
                 }
                 else{
@@ -140,7 +140,7 @@ if((isset($_SESSION['logged']) && $_SESSION['logged'] == 1) && isset($_SESSION['
                 }
             }
             else{
-                if(count(prefIngredient) > 0){
+                if(count($prefIngredients) > 0){
                     $valeur = deleteAllPrefIngredients($utilisateur[0]['idUtilisateur']);
                 }
                 $valeur = addPrefIngredients($_POST['prefingredient'], $utilisateur[0]['idUtilisateur']);

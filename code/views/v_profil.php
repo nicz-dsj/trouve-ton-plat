@@ -41,11 +41,11 @@
                         echo 'Aucune préférence';
                     }
                     else{
-                        for($i = 0; $i < count($prefCategorie); $i++){
-                            if($i < 6 && $i < count($prefCategorie) - 1){
+                        for($i = 0; $i < count($prefCategorie) && $i <= 4; $i++){
+                            if($i < 3 && $i < count($prefCategorie) - 1){
                                 echo $prefCategorie[$i]['Nom'].", ";
                             }
-                            else if($i == 6 || $i == count($prefCategorie) - 1){
+                            else if($i == 3 || $i == count($prefCategorie) - 1){
                                 echo $prefCategorie[$i]['Nom'];
                             }
                             else{
@@ -63,11 +63,11 @@
                         echo 'Aucune préférence';
                     }
                     else{
-                        for($i = 0; $i < count($prefIngredients); $i++){
-                            if($i < 9 && $i != count($prefIngredients) - 1){
+                        for($i = 0; $i < count($prefIngredients) && $i <= 4; $i++){
+                            if($i < 3 && $i < count($prefIngredients) - 1){
                                 echo $prefIngredients[$i]['Nom'].", ";
                             }
-                            else if($i == 9 || $i == count($prefIngredients) - 1){
+                            else if($i == 3 || $i == count($prefIngredients) - 1){
                                 echo $prefIngredients[$i]['Nom'];
                             }
                             else{
