@@ -18,9 +18,14 @@
 
 <div id=bg_fiche_plat>
         <div id="fiche_plat">
+            
+            <div id="fiche_plat_haut">
             <div id="fiche_plat_img">
                 <img src="" alt="">
             </div>
+
+            <div id="fiche_plat_infos">
+
             <div id="fiche_plat_nom">
                 <h1 id=nom>NOM</h1>
             </div>
@@ -39,6 +44,9 @@
             <div id="fiche_plat_date">
                 <p id=date>Date</p>
             </div>
+            </div>
+            </div>
+
             <div id="fiche_plat_recette">
                 <p id=recette>Recette</p>
             </div>

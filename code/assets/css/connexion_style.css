@@ -108,6 +108,7 @@ h1{
 }
 .container_form_title_text{
     width: 100%;
+    caret-color: transparent;
 }
 .container_form_title_text:first-child{
     border-right: #fff solid 2px;

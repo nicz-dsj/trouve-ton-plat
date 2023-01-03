@@ -1,4 +1,7 @@
+// Récupère l'ID du plat à partir de l'URL
 const id = new URLSearchParams(window.location.search).get('id');
+
+// Récupère les éléments du DOM qui vont être mis à jour
 let nom = document.getElementById('fiche_plat_nom');
 let description = document.getElementById('fiche_plat_desc');
 let createur = document.getElementById('fiche_plat_creat');
@@ -8,28 +11,37 @@ let date = document.getElementById('fiche_plat_date');
 let recette = document.getElementById('fiche_plat_recette');
 let image = document.getElementById('fiche_plat_img');
 
+// Crée une nouvelle requête HTTP GET
 const request = new XMLHttpRequest();
-request.open('GET', 'http://localhost/sae-deuxieme-annee/code/index.php?page=fiche&id=' + id, true);
+
+// Ouvre la requête et envoie les données
+request.open('GET', '?page=fiche&id=' + id, true);
 request.send();
 
+// Définit la fonction à exécuter lorsque la réponse est reçue
 request.onload = function () {
   if (request.status >= 200 && request.status < 400) {
-    // Use a regular expression to extract the JSON from the response text
+    // Utilise une expression régulière pour extraire le JSON de la réponse
     const jsonStringPlat = request.responseText.match(/\{(.|\n)*\}/g)[0];
     const jsonStringUser = request.responseText.match(/\{(.|\n)*\}/g)[1];
+    const jsonStringCategorie = request.responseText.match(/\{(.|\n)*\}/g)[2];
+    
+    // Parse les données en JSON
     const dataPlat = JSON.parse(jsonStringPlat);
     const dataUser = JSON.parse(jsonStringUser);
+    const dataCategorie = JSON.parse(jsonStringCategorie);
 
+    // Met à jour le contenu HTML des éléments du DOM avec les données du JSON
     nom.getElementsByTagName("h1")[0].innerHTML = dataPlat.Nom;
     description.getElementsByTagName("p")[0].innerHTML = dataPlat.Description;
-    categorie.getElementsByTagName("p")[0].innerHTML = dataPlat.IdCategorie;
+    categorie.getElementsByTagName("p")[0].innerHTML = dataCategorie.Nom;
     image.getElementsByTagName("img")[0].src = "assets/img/plats/" + dataPlat.IdPlat + ".jpg";
-    createur.getElementsByTagName("h2")[0].innerHTML = dataUser.pseudoUtilisateur;
+    createur.getElementsByTagName("h2")[0].innerHTML = "Par " + dataUser.pseudoUtilisateur;
     note.getElementsByTagName("p")[0].innerHTML = dataPlat.Note;
     date.getElementsByTagName("p")[0].innerHTML = dataPlat.DatePublication;
     recette.getElementsByTagName("p")[0].innerHTML = dataPlat.recette;
-
   } else {
+    // Affiche un message
     console.error("Erreur lors de la récupération des données");
   }
 };

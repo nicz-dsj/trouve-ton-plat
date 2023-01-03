@@ -25,9 +25,8 @@ function getMaxId(){
     // recupere l'id de l'utilisateur
   $idUser = $_SESSION['id'];
   $connexion = Connexion::getInstance()->getBdd();
-  $query = $connexion->prepare('INSERT INTO Plat VALUES (?, ?, ?, ?, ?, 3, ?, ?, 0)');
-  var_dump(array($idPlat,$idUser,$cat,$nomPlat,$descr,$recette));
-  $query->execute(array($idPlat,$idUser,$cat,$nomPlat,$descr,$date,$recette));
+  $query = $connexion->prepare('INSERT INTO Plat VALUES (?, 1, ?, ?, ?, 3, ?, ?, 0)');
+  $query->execute(array($idPlat,$cat,$nomPlat,$descr,$date,$recette));
   $query->closeCursor();
 }
 

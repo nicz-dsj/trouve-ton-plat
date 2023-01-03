@@ -1,9 +1,8 @@
 <?php
 //isoler ici dans des constantes les textes affichés sur le site
-define('LOGO', 'Logo IUT'); // Affiché si image non trouvée
+define('LOGO', 'Logo IUT');
 
 define('TITRE_PAGE_ACCUEIL_TOUS', 'Accueil');
-define('TITRE_PAGE_PHOTO', 'Les détails sur cette photo');
 define('TITRE_PAGE_LOGIN', 'Connexion au compte');
 define('TITRE_PAGE_INSCRIPTION', 'Création de compte');
 

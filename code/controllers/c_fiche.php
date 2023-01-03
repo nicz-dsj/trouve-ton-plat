@@ -22,6 +22,15 @@ if(isset($_GET['id'])){
     ?>
 </p>
 
+<p id=platCat style="display:none;">
+    <?php
+    if(isset($_GET['id'])){
+        $cat = getCategorie($plat[0]['IdCategorie']);
+        echo json_encode($cat);
+    }
+    ?>
+</p>
+
 <?php
 require_once(PATH_VIEWS.$page.'.php');
 

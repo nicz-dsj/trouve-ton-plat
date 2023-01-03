@@ -1,5 +1,5 @@
 #bg_fiche_plat{
-    background-color:black;
+    background-color:rgb(0, 0, 0);
     width: 50%;
     position: absolute;
     border: 2px solid #fff;
@@ -9,15 +9,30 @@
 }
 
 #fiche_plat{
-    margin-left: 10px;
     width: 100%;
     height: 100%;
-
+    display: flex;
     border-radius: 7px;
+    flex-direction: column;
+}
+
+#fiche_plat_haut{
+    display: flex;
+    border-radius: 7px;
+    flex-direction: row;
+}
+
+#fiche_plat_infos{
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    color: #fff;
+    font-size: 1vw;
 }
 
 #fiche_plat_img{
-    margin: 0 auto;
+    margin-left:10px;
     width: 35vh;
     height: 35vh;
     border: 2px solid #fff;
@@ -30,4 +45,12 @@
     width: 100%;
     height: 100%;
     -webkit-user-drag: none;
+}
+
+#fiche_plat_recette{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: #fff;
 }
