@@ -101,7 +101,7 @@
             }
             else{
                 foreach($platsFavoris as $plat){ ?>
-        <div class="plat">
+        <div class="plat" id="<?= $plat['IdPlat'] ?>">
             <img src="./assets/img/plats/<?= $plat['IdPlat'] ?>.jpg" width="150" height="150">
             <p class="nomplat"><?= $plat['Nom'] ?></p>
         </div>
@@ -122,7 +122,7 @@
             }
             else{
                 foreach($platsAjoutes as $plat){ ?>
-        <div class="plat">
+        <div class="plat" id="<?= $plat['IdPlat'] ?>">
             <img src="./assets/img/plats/<?= $plat['IdPlat'] ?>.jpg" width="200" height="200">
             <p class="nomplat"><?= $plat['Nom'] ?></p>
         </div>
@@ -134,6 +134,15 @@
     </div>
 </div>
 <script src="<?= PATH_SCRIPTS?>script_hamburger.js"></script>
+<script>
+    const plats = document.getElementsByClassName('plat');
+    
+    for(let i = 0; i < plats.length; i++){
+        plats[i].addEventListener('click', function(){
+            window.location.href = `index.php?page=fiche&id=${plats[i].id}`;
+        });
+    }
+</script>
 
 
 <!--  Pied de page -->

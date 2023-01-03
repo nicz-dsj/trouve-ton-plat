@@ -25,7 +25,7 @@
                 <?php
                 for($i = 0; $i < count($platsCategorie) && $i < 10; $i++){
                     ?>
-                    <div class="plat">
+                    <div class="plat" id="<?= $platsCategorie[$i]['IdPlat'] ?>">
                         <img src="./assets/img/plats/<?= $platsCategorie[$i]['IdPlat'] ?>.jpg" width="200" height="200">
                         <p class="nomplat"><?= $platsCategorie[$i]['Nom'] ?></p>
                     </div>
@@ -40,7 +40,7 @@
                 <?php
                 for($i = 0; $i < count($platsIngredients) && $i < 10; $i++){
                     ?>
-                    <div class="plat">
+                    <div class="plat" id="<?= $platsIngredients[$i]['IdPlat'] ?>">
                         <img src="./assets/img/plats/<?= $platsIngredients[$i]['IdPlat'] ?>.jpg" width="200" height="200">
                         <p class="nomplat"><?= $platsIngredients[$i]['Nom'] ?></p>
                     </div>
@@ -61,7 +61,7 @@
                 <?php
                 for($i = 0; $i < count($plats) && $i < 10; $i++){
                     ?>
-                    <div class="plat">
+                    <div class="plat" id="<?= $plats[0]['IdPlat'] ?>">
                         <img src="./assets/img/plats/<?= $plats[$i]['IdPlat'] ?>.jpg" width="200" height="200">
                         <p class="nomplat"><?= $plats[$i]['Nom'] ?></p>
                     </div>
@@ -76,7 +76,7 @@
                 <?php
                 for($i = 0; $i < count($platsMieuxNotes) && $i < 10; $i++){
                     ?>
-                    <div class="plat">
+                    <div class="plat" id="<?= $platsMieuxNotes[$i]['IdPlat'] ?>">
                         <img src="./assets/img/plats/<?= $platsMieuxNotes[$i]['IdPlat'] ?>.jpg" width="200" height="200">
                         <p class="nomplat"><?= $platsMieuxNotes[$i]['Nom'] ?></p>
                     </div>
@@ -88,6 +88,15 @@
         </div>
     </div>
     <script src="<?= PATH_SCRIPTS?>script_hamburger.js"></script>
+    <script>
+        const plats = document.getElementsByClassName('plat');
+
+        for(let i = 0; i < plats.length; i++){
+            plats[i].addEventListener('click', function(){
+                window.location.href = `index.php?page=fiche&id=${plats[i].id}`;
+            });
+        }
+    </script>
 </body>
 
 <!--  Pied de page -->
