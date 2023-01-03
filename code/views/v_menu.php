@@ -19,7 +19,7 @@
         </div>
 
         <div class="logo_ttp">
-          <img src="assets/img/logo_ttp.png" alt="logo" />
+          <a href="./index.php"><img src="assets/img/logo_ttp.png" alt="logo" /></a>
           <p>Trouve ton plat</p>
         </div>
 
