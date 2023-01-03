@@ -1,0 +1,33 @@
+#bg_fiche_plat{
+    background-color:black;
+    width: 50%;
+    position: absolute;
+    border: 2px solid #fff;
+    border-radius: 7px;
+    left: 23.5%;
+    margin-top: 20px;
+}
+
+#fiche_plat{
+    margin-left: 10px;
+    width: 100%;
+    height: 100%;
+
+    border-radius: 7px;
+}
+
+#fiche_plat_img{
+    margin: 0 auto;
+    width: 35vh;
+    height: 35vh;
+    border: 2px solid #fff;
+    margin-top:10px;
+    border-radius: 7px;
+}
+
+#fiche_plat_img img{
+    border-radius:7px;
+    width: 100%;
+    height: 100%;
+    -webkit-user-drag: none;
+}
