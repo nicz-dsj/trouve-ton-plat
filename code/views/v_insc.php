@@ -54,7 +54,7 @@
                         
                         <div class="container_form_content_input_inscription" id="composantInscription3">
                         <label for="description">Description:</label>
-                        <textarea id = "txtDesc" placeholder="Je suis passionné de cuisine..."></textarea>
+                        <textarea id = "txtDesc" placeholder="Je suis passionné de cuisine..." name="desc"></textarea>
                         </div>
 
                         

@@ -151,9 +151,9 @@ function mdpCConforme(){
 }
 
 function verifInsc(){
-    if(pseudo.style.backgroundColor == "rgba(171, 247, 177,0.3)" && mail.style.backgroundColor == "rgb(171, 247, 1770.3)" && pwd.style.backgroundColor == "rgba(171, 247, 177, 0.3)" && pwdC.style.backgroundColor == "rgba(171, 247, 177, 0.3)"){
+    if(pseudo.style.backgroundColor == "rgba(171, 247, 177, 0.3)" && mail.style.backgroundColor == "rgba(171, 247, 177, 0.3)" && pwd.style.backgroundColor == "rgba(171, 247, 177, 0.3)" && pwdC.style.backgroundColor == "rgba(171, 247, 177, 0.3)"){
         document.getElementsByName("inscription")[0].removeAttribute("onsubmit");
-        document.getElementsByName("inscription")[0].setAttribute("action", "index.php?page=insc");
+        document.getElementsByName("inscription")[0].setAttribute("action", "?page=insc");
     }
     else{
         document.getElementsByName("inscription")[0].removeAttribute("action");

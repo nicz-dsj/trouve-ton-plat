@@ -23,10 +23,12 @@ if(isset($_GET['mail'])){
     }
 }
 
-if(isset($_POST['pseudo']) && isset($_POST['mail']) && isset($_POST['pwd']) && isset($_POST['pwdC']) && isset($_POST['desc'])){
-
+if(isset($_POST['pseudo']) && isset($_POST['mail']) && isset($_POST['pwd']) && isset($_POST['pwdC'])){
     $id= getMaxId() + 1;
-    addUser($id,$_POST['pseudo'],date("Y-m-d"),$_POST['mail'],password_hash($_POST['pwd'],PASSWORD_DEFAULT),$_POST['desc']);
+    if (isset($_POST['desc']))
+        addUser($id,$_POST['pseudo'],date("Y-m-d"),$_POST['mail'],password_hash($_POST['pwd'],PASSWORD_DEFAULT),$_POST['desc']);
+    else
+        addUser($id,$_POST['pseudo'],date("Y-m-d"),$_POST['mail'],password_hash($_POST['pwd'],PASSWORD_DEFAULT),null);
 }
 
 require_once(PATH_VIEWS.$page.'.php');

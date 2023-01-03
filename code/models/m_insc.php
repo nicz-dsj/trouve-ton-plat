@@ -73,9 +73,9 @@ function getMaxId(){
  */
 function addUser($id,$pseudo,$date,$mail,$pwd,$desc)
 {
+  $avatar = "avatar1";
   $connexion = Connexion::getInstance()->getBdd();
-  $query = $connexion->prepare('INSERT INTO Utilisateur VALUES (?, ?, ?, ?, ?, ?, 0)');
-  var_dump(array($id,$pseudo,$date,$mail,$pwd,$desc));
-  $query->execute(array($id,$pseudo,$date,$mail,$pwd,$desc));
+  $query = $connexion->prepare('INSERT INTO Utilisateur VALUES (?, ?, ?, ?, ?, ?, 0, ?)');
+  $query->execute(array($id,$pseudo,$date,$mail,$pwd,$desc,$avatar));
   $query->closeCursor();
 }
