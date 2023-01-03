@@ -39,3 +39,11 @@ function addUser($id,$pseudo,$date,$mail,$pwd,$desc)
   $query->execute(array($id,$pseudo,$date,$mail,$pwd,$desc,$avatar));
   $query->closeCursor();
 }
+function getCategorie(){
+  $connexion = Connexion::getInstance()->getBdd();
+  $query = $connexion->prepare('SELECT * FROM Categorie');
+  $query->execute();
+  $result = $query->fetchAll(PDO::FETCH_ASSOC);
+  $query->closeCursor();
+  return $result;
+}

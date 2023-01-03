@@ -27,19 +27,27 @@
 
                         <div class="input input_description">
                         <label for = "text">Description:</label>
-                        <input type="text" name="descr" id="descr" placeholder="Description" required>
+                        <textarea type="text" name="descr" id="descr" placeholder="Description" required></textarea>
                         <span id="statutDescr"></span>
                         </div>  
                         
                         <div class="input">
                         <label for="text">Catégorie:</label>
-                        <input type="text" name="cat" id="categorie" placeholder="c'est un chiffre ici jsp pourquoi" required>
+                        <select name="cat" id="cat-select" required>
+                            <?php
+                                foreach($categories as $cat){
+                                    ?>
+                                    <option value = "<?php echo $cat['IdCategorie'] ?>"><?php echo $cat['Nom'] ?></option> 
+                                    <?php  
+                                    } 
+                                ?>
+                        </select>
                         <span id="statutCat"></span>
                         </div>
                         
-                        <div class="input input_recette"">
+                        <div class="input input_recette">
                         <label for="texte">Recette:</label>
-                        <input type="text" name="recette" id="recette" placeholder="Recette" required>
+                        <textarea type="text" name="recette" id="recette" placeholder="Recette" required></textarea>
                         <span id="statutRec"></span>
                         </div>               
                         

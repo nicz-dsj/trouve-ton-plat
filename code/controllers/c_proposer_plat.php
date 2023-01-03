@@ -1,5 +1,8 @@
 <?php
-require_once(PATH_MODELS.'m_proposer_plat.php');
+require_once(PATH_MODELS.'m_proposer_plat.php'); 
+
+$categories = getCategorie();
+
 if(isset($_GET['nomPlat'])){
     $name = htmlspecialchars($_GET['nomPlat']);
     $result = checkNomPlat($name);
