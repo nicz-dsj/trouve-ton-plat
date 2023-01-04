@@ -20,13 +20,15 @@ function getMaxId(){
     return $result["MAX(IdPlat)"];
   }
 
-  function addPlat($idPlat,$nomPlat,$descr,$date,$cat,$recette)
+  function addPlat($idPlat,$nomPlat,$descr,$date,$cat,$recette, $img)
 {
-    // recupere l'id de l'utilisateur
-  $idUser = $_SESSION['id'];
+  $username = $_SESSION['user']; 
+  $id = getId($username);
+  $nom_img = ajoutImg($img,$nomPlat);
+  echo $nom_img;
   $connexion = Connexion::getInstance()->getBdd();
-  $query = $connexion->prepare('INSERT INTO Plat VALUES (?, 1, ?, ?, ?, 3, ?, ?, 0)');
-  $query->execute(array($idPlat,$cat,$nomPlat,$descr,$date,$recette));
+  $query = $connexion->prepare('INSERT INTO Plat VALUES (?, ?, ?, ?, ?, 3, ?, ?, 0,?)');
+  $query->execute(array($idPlat,$id,$cat,$nomPlat,$descr,$date,$recette,$nom_img));
   $query->closeCursor();
 }
 
@@ -46,4 +48,23 @@ function getCategorie(){
   $result = $query->fetchAll(PDO::FETCH_ASSOC);
   $query->closeCursor();
   return $result;
+}
+
+function getId($username){
+  $connexion = Connexion::getInstance()->getBdd();
+  $query = $connexion->prepare('SELECT IdUtilisateur FROM Utilisateur WHERE pseudoUtilisateur=?');
+  $query->execute(array($username));
+  $result = $query->fetch(PDO::FETCH_ASSOC);
+  $query->closeCursor();
+  return $result["IdUtilisateur"];
+}
+
+function ajoutImg($img,$nomPlat){
+  //recuperer le nom de l'img
+  $nomImg = $img['name'];
+  // le change par le nom du plat + l'extension
+  $nomImg = $nomPlat;
+  $cheminDossier = PATH_PLATS . $nomImg;
+  move_uploaded_file($nomImg, $cheminDossier);
+  return $nomImg;
 }

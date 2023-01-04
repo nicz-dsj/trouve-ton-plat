@@ -25,6 +25,7 @@ define('PATH_TEXTES','./languages/');
 define('PATH_CSS', PATH_ASSETS.'css/');
 define('PATH_IMAGES', PATH_ASSETS.'img/');
 define('PATH_SCRIPTS', PATH_ASSETS.'scripts/');
+define('PATH_PLATS', PATH_IMAGES.'plats/');
 
 //fichiers
 define('PATH_LOGO', PATH_IMAGES.'logo_iut.png');

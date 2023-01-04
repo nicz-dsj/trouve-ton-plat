@@ -49,7 +49,13 @@
                         <label for="texte">Recette:</label>
                         <textarea type="text" name="recette" id="recette" placeholder="Recette" required></textarea>
                         <span id="statutRec"></span>
-                        </div>               
+                        </div>     
+                        <!-- input file-->
+                        <div class="input input_file">
+                        <label for="text">Image:</label>
+                        <input type="file" name="img" id="image" placeholder="Image" required>
+                        <span id="statutImage"></span>
+                        </div>
                         
                         <div class="input"> 
                             <input class='btn btn-primary' type="submit" value="Envoyer la candidature"></p>

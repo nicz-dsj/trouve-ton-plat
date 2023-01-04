@@ -62,6 +62,21 @@
     font-size: 1.5em;
     text-align: center;
 }
+.input select:focus{
+    outline: none;
+}
+.input select option{
+    background-color:rgba(0,0, 0, 1);
+    color: white;
+    font-size: 1.5em;
+    text-align: center;
+}
+.input select option:hover{
+    background-color:rgba(0,0, 0, 0.8);
+    color: white;
+    font-size: 1.5em;
+    text-align: center;
+}
 .input_description textarea {
     width: 80%;
     height: 10vh;
@@ -117,7 +132,7 @@
 }
 .button_propo input:hover {
     border-radius: 8px;
-    background-color:rgba(0,0, 0, 0.8);
+    background-color:rgba(0,0, 0, 1);
 }
 .input label {
     margin: bottom 5px;
