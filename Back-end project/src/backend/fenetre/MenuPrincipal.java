@@ -4,8 +4,10 @@
  */
 package backend.fenetre;
 
+import com.mysql.cj.jdbc.exceptions.CommunicationsException;
 import com.mysql.cj.jdbc.result.ResultSetMetaData;
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -13,6 +15,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
@@ -109,23 +112,19 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         panelUtilisateurs = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        panelUtilisateur = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        CBUtilisateurs = new javax.swing.JComboBox<>();
         jButton5 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        recherche = new javax.swing.JTextField();
         panelEvenements = new javax.swing.JPanel();
         panelPlats = new javax.swing.JPanel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -140,7 +139,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
         jLabel11 = new javax.swing.JLabel();
-        jButton6 = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        CBPlats = new javax.swing.JComboBox<>();
+        jButton10 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
+        jButton13 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -149,6 +153,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Trouve Ton Plat - Admin");
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -159,7 +164,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Valider un plat");
+        jButton2.setText("Gérer les plats");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -181,6 +186,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jButton6.setText("Configurer connexion");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -188,17 +200,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(33, 33, 33)
-                                .addComponent(jButton4)))))
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -210,7 +216,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 348, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 340, Short.MAX_VALUE)
+                .addComponent(jButton6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton4)
                 .addContainerGap())
         );
@@ -219,133 +227,105 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jPanel3.setLayout(new java.awt.CardLayout());
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        panelUtilisateurs.setLayout(new java.awt.BorderLayout());
+
+        javax.swing.GroupLayout panelUtilisateurLayout = new javax.swing.GroupLayout(panelUtilisateur);
+        panelUtilisateur.setLayout(panelUtilisateurLayout);
+        panelUtilisateurLayout.setHorizontalGroup(
+            panelUtilisateurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 956, Short.MAX_VALUE)
+        );
+        panelUtilisateurLayout.setVerticalGroup(
+            panelUtilisateurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 385, Short.MAX_VALUE)
+        );
+
+        panelUtilisateurs.add(panelUtilisateur, java.awt.BorderLayout.CENTER);
+
+        jLabel1.setText("Utilisateurs :");
+
+        CBUtilisateurs.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        CBUtilisateurs.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CBUtilisateursItemStateChanged(evt);
+            }
+        });
+        CBUtilisateurs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                CBUtilisateursActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Utilisateur :");
-
-        jLabel2.setText("Nom Utilisateur : ");
-
-        jPanel5.setBackground(new java.awt.Color(148, 172, 89));
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
-        jLabel12.setText("Nom Utilisateur");
-
-        jLabel13.setText("Plats soumis :");
-
-        jLabel14.setText("Description :");
-
-        jTextField1.setText("jTextField1");
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel12))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel14)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel13)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(187, Short.MAX_VALUE))
-        );
-
-        jButton5.setText("Bannir/Debannir");
+        jButton5.setText("Actualiser");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout panelUtilisateursLayout = new javax.swing.GroupLayout(panelUtilisateurs);
-        panelUtilisateurs.setLayout(panelUtilisateursLayout);
-        panelUtilisateursLayout.setHorizontalGroup(
-            panelUtilisateursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelUtilisateursLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 183, Short.MAX_VALUE)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
-            .addGroup(panelUtilisateursLayout.createSequentialGroup()
+        jButton7.setText("Bannir/Debannir");
+        jButton7.setEnabled(false);
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Rechercher un utilisateur :");
+
+        recherche.setForeground(new java.awt.Color(102, 102, 102));
+        recherche.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                rechercheFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                rechercheFocusLost(evt);
+            }
+        });
+        recherche.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rechercheActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(CBUtilisateurs, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(recherche, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 206, Short.MAX_VALUE)
+                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        panelUtilisateursLayout.setVerticalGroup(
-            panelUtilisateursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelUtilisateursLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelUtilisateursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton7)
+                    .addComponent(jButton5)
+                    .addComponent(jLabel3)
+                    .addComponent(recherche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jButton5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                    .addComponent(CBUtilisateurs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
+
+        panelUtilisateurs.add(jPanel6, java.awt.BorderLayout.PAGE_START);
 
         jPanel3.add(panelUtilisateurs, "card2");
 
@@ -355,7 +335,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panelEvenements.setLayout(panelEvenementsLayout);
         panelEvenementsLayout.setHorizontalGroup(
             panelEvenementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 672, Short.MAX_VALUE)
+            .addGap(0, 958, Short.MAX_VALUE)
         );
         panelEvenementsLayout.setVerticalGroup(
             panelEvenementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -364,14 +344,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jPanel3.add(panelEvenements, "card3");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setText("Soumissions :");
+        panelPlats.setLayout(new java.awt.BorderLayout());
 
         jLabel4.setText("Soumis par :");
 
@@ -388,6 +361,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jLabel7.setText("Description :");
 
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
@@ -398,6 +372,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jLabel10.setText("Nom Utilisateur");
 
+        jTextArea2.setEditable(false);
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
         jScrollPane2.setViewportView(jTextArea2);
@@ -411,10 +386,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 946, Short.MAX_VALUE)
                     .addComponent(jScrollPane2)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -423,11 +400,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
                                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)))
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
+                                    .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -456,45 +431,81 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel11)
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
 
-        jButton6.setText("Valider");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        panelPlats.add(jPanel4, java.awt.BorderLayout.CENTER);
+
+        jLabel16.setText("Soumissions");
+
+        CBPlats.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        CBPlats.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                CBPlatsActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout panelPlatsLayout = new javax.swing.GroupLayout(panelPlats);
-        panelPlats.setLayout(panelPlatsLayout);
-        panelPlatsLayout.setHorizontalGroup(
-            panelPlatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelPlatsLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+        jButton10.setText("Actualiser");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+
+        jButton11.setText("Valider");
+        jButton11.setEnabled(false);
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
+
+        jButton13.setText("Supprimer");
+        jButton13.setEnabled(false);
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap(87, Short.MAX_VALUE)
+                .addComponent(CBPlats, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(189, 189, 189)
+                .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 183, Short.MAX_VALUE)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
-            .addGroup(panelPlatsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        panelPlatsLayout.setVerticalGroup(
-            panelPlatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelPlatsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelPlatsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jButton6))
+                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel7Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(875, Short.MAX_VALUE)))
         );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton11)
+                    .addComponent(jButton10)
+                    .addComponent(CBPlats, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton13))
+                .addContainerGap(39, Short.MAX_VALUE))
+            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel7Layout.createSequentialGroup()
+                    .addGap(41, 41, 41)
+                    .addComponent(jLabel16)
+                    .addContainerGap(43, Short.MAX_VALUE)))
+        );
+
+        panelPlats.add(jPanel7, java.awt.BorderLayout.NORTH);
 
         jPanel3.add(panelPlats, "card2");
 
@@ -566,25 +577,65 @@ public class MenuPrincipal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
         // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox3ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+            CBUtilisateurs.setModel(lister("idUtilisateur", "pseudoUtilisateur", "Utilisateur", "WHERE pseudoUtilisateur LIKE '%" + recherche.getText() + "%'"));
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void CBUtilisateursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBUtilisateursActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_CBUtilisateursActionPerformed
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void CBPlatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBPlatsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CBPlatsActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        PanelPlat temp = new PanelPlat();
+        panelPlats.remove(0);
+        panelPlats.add(temp, 0);
+        panelPlats.revalidate();
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+    private void rechercheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rechercheActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox3ActionPerformed
+    }//GEN-LAST:event_rechercheActionPerformed
+
+    private void rechercheFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_rechercheFocusGained
+
+    }//GEN-LAST:event_rechercheFocusGained
+
+    private void rechercheFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_rechercheFocusLost
+
+    }//GEN-LAST:event_rechercheFocusLost
+
+    private void CBUtilisateursItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CBUtilisateursItemStateChanged
+        String item = (String) CBUtilisateurs.getSelectedItem();
+        String idUtilisateur = item.split("0")[0];
+        PanelUtilisateur temp = afficherUtilisateur(idUtilisateur);
+        panelUtilisateurs.remove(0);
+        panelUtilisateurs.add(temp, 0);
+        panelUtilisateurs.revalidate();
+    }//GEN-LAST:event_CBUtilisateursItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -597,7 +648,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -625,22 +676,23 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> CBPlats;
+    private javax.swing.JComboBox<String> CBUtilisateurs;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JButton jButton7;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -655,89 +707,113 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel panelEvenements;
     private javax.swing.JPanel panelPlats;
+    private javax.swing.JPanel panelUtilisateur;
     private javax.swing.JPanel panelUtilisateurs;
+    private javax.swing.JTextField recherche;
     // End of variables declaration//GEN-END:variables
 
     private void initComponentPerso() {
         frameConnexion = new FrameConnexion(this);
-        String data[][] = {{"Name1", "FirstName1", "Age1"}, {"Name2", "FirstName2", "Age2"}, {"Name3", "FirstName3", "Age3"}};
-        String columnNames[] = {"Name", "FirstName", "Age"};
-        JTable tableUtilisateurs;
-        //jTable1.setModel(donneesUtilisateurs());
-        tableUtilisateurs = new JTable(data, columnNames);
-        //panelUtilisateurs.add(tableUtilisateurs);
-        JScrollPane sp = new JScrollPane(tableUtilisateurs);
-        panelUtilisateurs.add(sp);
-        //tableUtilisateurs.setBounds(30, 40, 200, 300);
+
         cardLayout = new CardLayout();
         jPanel3.setLayout(cardLayout);
         jPanel3.add(panelUtilisateurs, "U");
         jPanel3.add(panelPlats, "P");
         jPanel3.add(panelEvenements, "E");
+        
+        CBUtilisateurs.setModel(lister("idUtilisateur", "pseudoUtilisateur", "Utilisateur", "WHERE pseudoUtilisateur LIKE '%" + recherche.getText() + "%'"));
+        CBPlats.setModel(lister("idPlat", "nom", "Plat", ""));
 
     }
-
-    //Gestion panelUtilisateurs
-    public DefaultTableModel donneesUtilisateurs() {
-        String[][] data = new String[2][1];
-        int column = 0, row = 0;
-        String columnNames[] = new String[1];
+    
+    private PanelUtilisateur afficherUtilisateur(String idUtilisateur){
+        String[] platsSoumis = new String[1], platsFavoris = new String[1];
+        String description = new String(), pseudo = new String();
+        
+        Statement nomOrdre = connect();
+        
+        ResultSet resultat;
         try {
-            Connection connexion = DriverManager.getConnection("jdbc:mysql://" + this.BDHost + "/" + this.BDDBName, this.BDUser, this.BDPWD);
-            Statement nomOrdre = connexion.createStatement();
-
-            ResultSet resultat = nomOrdre.executeQuery("SELECT * FROM Plat");
-            ResultSetMetaData resultatMD = (ResultSetMetaData) resultat.getMetaData();
-            columnNames = new String[resultatMD.getColumnCount()];
-            data = new String[7][resultatMD.getColumnCount()];
-            while (column < resultatMD.getColumnCount()) {
-                columnNames[column] = resultatMD.getColumnName(column + 1);
-                column++;
+            resultat = nomOrdre.executeQuery("SELECT pseudoUtilisateur, description FROM Utilisateur WHERE idUtilisateur = '" + idUtilisateur + "'");
+            while(resultat.next()){
+                pseudo = resultat.getString("pseudoUtilisateur");
+                description = resultat.getString("description");
             }
-
-            while (resultat.next()) {
-                column = 0;
-                while (column < resultatMD.getColumnCount()) {
-                    data[row][column] = resultat.getString(columnNames[column]);
-                    column++;
-                }
-                row++;
-            }
-
         } catch (SQLException ex) {
             Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        return new DefaultTableModel(data, columnNames);
+        
+        
+        return new PanelUtilisateur(pseudo, description, platsSoumis, platsFavoris);
     }
+    
+    private PanelPlat afficherPlat(String idPlat){
+        String idUtilisateur = new String(),  pseudo = new String(), nom = new String(), note = new String(), description = new String(), recette = new String(), idCategorie = new String(), categorie = new String();
+        String[][] ingredients = new String[2][1], images = new String[1][1];
+        int nbIngredient = 0;
+        Statement nomOrdre = connect();
 
-    public String[][] addData(String[][] dataArray, String[] data) {
-        String[][] temp = new String[dataArray.length + 1][data.length];
-        for (int i = 0; i < dataArray.length; i++) {
-            temp[i] = dataArray[i];
+        try {
+            ResultSet resultat = nomOrdre.executeQuery("SELECT * FROM Plat WHERE idPlat = " + idPlat);
+            while(resultat.next()){
+                idUtilisateur = resultat.getString("idUtilisateur");
+                idCategorie = resultat.getString("idCategorie");
+                nom = resultat.getString("Nom");
+                description = resultat.getString("Description");
+                
+                recette = resultat.getString("recette");
+            }
+            resultat = nomOrdre.executeQuery("SELECT COUNT(idIngredient) FROM Composer WHERE idPlat = " + idPlat);
+            while(resultat.next())
+                ingredients = new String[2][resultat.getInt(1)];
+            
+            //resultat = nomOrdre.executeQuery("SELECT idIngredient FROM Composer WHERE idPlat = " + idPlat);
+            
+            //resultat = lister()
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
-        temp[dataArray.length] = data;
-        return temp;
+        return new PanelPlat(pseudo, nom, idPlat, categorie, note, ingredients[0], description, recette, images[0]);
     }
-    //Gestion panelPlats
+    
+    private DefaultComboBoxModel lister(String nomId, String nom, String table, String where){
+        String[] liste = new String[1];
+        int nb = 0;
 
-    //Gestion panelEvenements
+        try {
+            Statement nomOrdre = connect();
+
+            ResultSet resultat = nomOrdre.executeQuery("SELECT COUNT(" + nomId +") FROM " + table + " " + where);
+            while (resultat.next()) {
+                nb = resultat.getInt(1);
+            }
+            liste = new String[nb];
+            resultat = nomOrdre.executeQuery("SELECT " + nomId + ", " + nom + " FROM " + table  + " " + where);
+            int cpt = 0;
+            while (resultat.next()) {
+                liste[cpt] = resultat.getString(nomId) + " - " + resultat.getString(nom);
+                cpt++;
+            }
+     
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return new DefaultComboBoxModel(liste);
+    }
     /**
-     *
+     *  Ne sert à rien
      * @param sql
      */
     public void requeteLocalhost(String requete) {
@@ -745,10 +821,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         try {
             // TODO code application logic here
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connexion = DriverManager.getConnection("jdbc:mysql://" + this.BDHost + "/" + this.BDDBName, this.BDUser, this.BDPWD);
-            //Connection connexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/sae", "root", "");
-            //Connection connexion = DriverManager.getConnection("jdbc:mysql://mysql-trouvetonplat.alwaysdata.net/trouvetonplat_bd", "289080", "trouveton784512");
             Statement nomOrdre = connexion.createStatement();
             ResultSet resultat = nomOrdre.executeQuery("SELECT nom FROM Plat");
             while (resultat.next()) {
@@ -765,45 +839,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
             Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    public void requeteBD(String sql) {
-        // TODO code application logic here
+    
+    private Statement connect(){
         try {
-            // TODO code application logic here
-            int rowCount = 0;
-            System.out.println("asadasda");
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connexion = DriverManager.getConnection("jdbc:mysql://" + this.BDHost + "/" + this.BDDBName, this.BDUser, this.BDPWD);
-            Statement nomOrdre = connexion.createStatement();
-            ResultSet resultat = nomOrdre.executeQuery("SELECT * FROM Plat");
-            ResultSetMetaData resultatMD = (ResultSetMetaData) resultat.getMetaData();
-            resultatMD.getColumnCount();
-            //resultat.previous();
-            rowCount = resultat.getRow();
-            //resultat.beforeFirst();
-
-            /*String columnNames[] = new String[resultatMD.getColumnCount()];
-            for(int i = 0; i < resultatMD.getColumnCount(); i++){
-                columnNames[i] = resultatMD.getColumnName(i);
-            }
-            int[][] name = new int[resultatMD.getColumnCount()][rowCount];*/
-            while (resultat.next()) {
-                String nom = resultat.getString("idPlat");
-                System.out.println(nom);
-            }
-            resultat.close();
-            nomOrdre.close();
-            connexion.close();
-        } catch (SQLException ex) {
-            showMessageDialog(null, "Impossible de se connecter a la base, "
-                    + "vérifiez votre connexion internet et la configuration "
-                    + "de la connexion à la base de donnée");
-            System.out.println("Impossible de se connecter a la base, "
-                    + "vérifiez votre connexion internet et la configuration "
-                    + "de la connexion à la base de donnée");
-            System.exit(0);
-        } catch (ClassNotFoundException ex) {
+            return connexion.createStatement();
+        } catch (CommunicationsException ex){
             Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            System.out.println("Probleme de connexion à la base de donnee");
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        return null;
     }
 }
