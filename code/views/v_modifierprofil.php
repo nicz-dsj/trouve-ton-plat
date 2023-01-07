@@ -29,7 +29,7 @@ else if (isset($_GET['modification']) && $_GET['modification'] == "fail"){
 
 <div class="container_page">
     <div class="container_editpage">
-        <a href="index.php?page=profil&nom=<?= $utilisateur[0]['pseudoUtilisateur'] ?>" class="back"> < </a>
+        <a href="index.php?page=profil&id=<?= $utilisateur[0]['idUtilisateur'] ?>" class="back"> < </a>
         <fieldset class="container_form">
             <legend class="title">Modifier le profil</legend>
             <fieldset class="item" id="item1">

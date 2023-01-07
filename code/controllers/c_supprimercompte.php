@@ -1,8 +1,8 @@
 <?php
 require_once(PATH_MODELS.'m_supprimercompte.php');
 
-if((isset($_SESSION['logged']) && $_SESSION['logged'] == 1) && isset($_SESSION['user']) && getUtilisateur($_SESSION['user']) != null){
-    $utilisateur = getUtilisateur($_SESSION['user']);
+if((isset($_SESSION['logged']) && $_SESSION['logged'] == 1) && isset($_SESSION['id']) && getUtilisateur($_SESSION['id']) != null){
+    $utilisateur = getUtilisateur($_SESSION['id']);
 
     if(isset($_POST['currentpwd'])){
         if(password_verify($_POST['currentpwd'], $utilisateur[0]['motDePasse'])){

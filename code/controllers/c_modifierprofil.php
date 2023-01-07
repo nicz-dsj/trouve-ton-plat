@@ -1,12 +1,12 @@
 <?php
 require_once(PATH_MODELS.'m_modifierprofil.php');
 
-if((isset($_SESSION['logged']) && $_SESSION['logged'] == 1) && isset($_SESSION['user']) && getUtilisateur($_SESSION['user']) != null){
-    $utilisateur = getUtilisateur($_SESSION['user']);
+if((isset($_SESSION['logged']) && $_SESSION['logged'] == 1) && isset($_SESSION['id']) && getUtilisateur($_SESSION['id']) != null){
+        $utilisateur = getUtilisateur($_SESSION['id']);
         $categories = getCategories();
         $ingredients = getIngredients();
-        $prefCategorie = getPrefCategorie($_SESSION['user']);
-        $prefIngredients = getPrefIngredients($_SESSION['user']);
+        $prefCategorie = getPrefCategorie($_SESSION['id']);
+        $prefIngredients = getPrefIngredients($_SESSION['id']);
 
         if(isset($_POST['avatarsubmit']) && isset($_POST['avatar'])){
             $valeur = changeAvatar($_POST['avatar'], $utilisateur[0]['idUtilisateur']);
@@ -148,19 +148,6 @@ if((isset($_SESSION['logged']) && $_SESSION['logged'] == 1) && isset($_SESSION['
 
             if($valeur > 0){
                 header("Location:index.php?page=modifierprofil&modification=success");
-            }
-            else{
-                header("Location:index.php?page=modifierprofil&modification=fail");
-            }
-            header("Refresh:0");
-        }
-
-        if(isset($_POST['deletesubmit'])){
-            $valeur = deleteUser($utilisateur[0]['idUtilisateur']);
-            if($valeur > 0){
-                $_SESSION['user'] = array();
-                $_SESSION['logged'] = array();
-                header("Location:index.php");
             }
             else{
                 header("Location:index.php?page=modifierprofil&modification=fail");

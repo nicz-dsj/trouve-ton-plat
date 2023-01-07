@@ -10,6 +10,7 @@ let note = document.getElementById('fiche_plat_note');
 let date = document.getElementById('fiche_plat_date');
 let recette = document.getElementById('fiche_plat_recette');
 let image = document.getElementById('fiche_plat_img');
+const favbutton = document.querySelector('.favbutton');
 
 // Crée une nouvelle requête HTTP GET
 const request = new XMLHttpRequest();
@@ -35,17 +36,51 @@ request.onload = function () {
     nom.getElementsByTagName("h1")[0].innerHTML = dataPlat.Nom;
     description.getElementsByTagName("p")[0].innerHTML = dataPlat.Description;
     categorie.getElementsByTagName("p")[0].innerHTML = dataCategorie.Nom;
+    createur.getElementsByTagName("h2")[0].innerHTML = `Par <a href=index.php?page=profil&id=${dataUser.idUtilisateur}>${dataUser.pseudoUtilisateur}</a>`;
     image.getElementsByTagName("img")[0].src = "assets/img/plats/" + dataPlat.IdPlat + ".jpg";
     note.getElementsByTagName("p")[0].innerHTML = dataPlat.Note;
     date.getElementsByTagName("p")[0].innerHTML = dataPlat.DatePublication;
     recette.getElementsByTagName("p")[0].innerHTML = dataPlat.recette;
 
-    createur.getElementsByTagName("h2")[0].textContent = "Par ";
-    let redirect = document.createElement('a');
-    redirect.href = `index.php?page=profil&nom=${dataUser.pseudoUtilisateur}`;
-    redirect.appendChild(document.createTextNode(dataUser.pseudoUtilisateur));
-    console.log(redirect);
-    createur.getElementsByTagName("h2")[0].appendChild(redirect);
+    function checkFav(){
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", `index.php?page=fiche&id=${dataPlat.IdPlat}&fav=check`);
+      xhr.send();
+      xhr.onload = function(){
+        if(xhr.readyState === 4 && xhr.status === 200){
+          if(xhr.responseText.includes("favoris : oui")){
+            favbutton.classList.toggle('active');
+          }
+        }
+      }
+    }
+    
+    favbutton.addEventListener('click', function(){
+        if(favbutton.classList.contains('active')){
+          const xhr = new XMLHttpRequest();
+          
+          xhr.open("GET", `index.php?page=fiche&id=${dataPlat.IdPlat}&fav=suppr`, true);
+          xhr.send();
+          xhr.onload = function(){
+            if(xhr.readyState === 4 && xhr.status === 200){
+              favbutton.classList.toggle('active');
+            }
+          }
+        }
+        else{
+          const xhr = new XMLHttpRequest();
+    
+          xhr.open("GET", `index.php?page=fiche&id=${dataPlat.IdPlat}&fav=ajout`, true);
+          xhr.send();
+          xhr.onload = function(){
+            if(xhr.readyState === 4 && xhr.status === 200){
+              favbutton.classList.toggle('active');
+            }
+          }
+        }
+      });
+    
+      checkFav();
   } else {
     // Affiche un message
     console.error("Erreur lors de la récupération des données");

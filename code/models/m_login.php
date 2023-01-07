@@ -11,3 +11,12 @@ function getPwd($login)
   $query->closeCursor();
   return $result;
 }
+
+function getUtilisateur($login){
+  $connexion = Connexion::getInstance()->getBdd();
+  $query = $connexion->prepare('SELECT * FROM Utilisateur WHERE pseudoUtilisateur = ? OR mail = ?');
+  $query->execute(array($login,$login));
+  $result = $query->fetchAll(PDO::FETCH_ASSOC);
+  $query->closeCursor();
+  return $result;
+}

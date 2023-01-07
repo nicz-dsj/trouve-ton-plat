@@ -13,7 +13,7 @@
 
 <div class="container_page">
     <div class="content">
-        <a class="back" href="index.php?page=modifierprofil&nom=<?= $utilisateur[0]['pseudoUtilisateur']?>"> < </a>
+        <a class="back" href="index.php?page=modifierprofil"> < </a>
         <h1>Fermer le compte</h1>
         <p>Veuillez saisir votre mot de passe pour confirmer la fermeture de votre compte</p>
         <form method="post" action="index.php?page=supprimercompte&nom=<?= $utilisateur[0]['pseudoUtilisateur']?>">
