@@ -47,6 +47,18 @@
     -webkit-user-drag: none;
 }
 
+.favbutton{
+    background-image: url('../img/nofav.png');
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.favbutton.active{
+    background-image: url('../img/fav.png');
+}
+
 #fiche_plat_recette{
     margin-top: 10px;
     margin-bottom: 10px;

@@ -30,7 +30,24 @@ if(isset($_GET['id'])){
     }
     ?>
 </p>
-
 <?php
+
+if(isset($_GET['fav']) && isset($_SESSION['logged'])){
+    if($_GET['fav'] == 'ajout'){
+        addFavoris($_SESSION['id'], $id);
+    }
+    else if ($_GET['fav'] == 'suppr'){
+        removeFavoris($_SESSION['id'], $id);
+    }
+    else if($_GET['fav'] == 'check'){
+        if(checkFavoris($_SESSION['id'], $id) == true){
+            echo '<p style="display: none;">favoris : oui</p>';
+        }
+        else{
+            echo '<p style="display: none;">favoris : non</p>';
+        }
+    }
+}
+
 require_once(PATH_VIEWS.$page.'.php');
 

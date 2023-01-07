@@ -32,7 +32,7 @@
         <div class="con">
           <?php if(isset($_SESSION['logged']) && $_SESSION['logged'] == 1){ ?>
 				<li <?php echo ($page=='accueil' ? 'class="active"':'')?>>
-					<a href="index.php?page=profil&nom=<?= $_SESSION['user'] ?>">
+					<a href="index.php?page=profil&id=<?= $_SESSION['id'] ?>">
 						<?= MENU_PROFIL ?>
 					</a>
 				</li>

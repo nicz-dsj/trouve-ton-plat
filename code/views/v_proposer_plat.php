@@ -16,7 +16,7 @@
 <main>
 <div class="container_propo">
         <div class="container_form_content_propo">
-                <form action="index.php?page=proposer_plat" method="post" name="proposer">
+                <form action="index.php?page=proposer_plat" method="post" name="proposer" enctype="multipart/form-data">
                     <div class='inline form-group'>
 
                         <div class="input">
@@ -53,12 +53,12 @@
                         <!-- input file-->
                         <div class="input input_file">
                         <label for="text">Image:</label>
-                        <input type="file" name="img" id="image" placeholder="Image" required>
+                        <input type="file" name="image" id="image" required>
                         <span id="statutImage"></span>
                         </div>
                         
                         <div class="input"> 
-                            <input class='btn btn-primary' type="submit" value="Envoyer la candidature"></p>
+                            <input class='btn btn-primary' name="submit" type="submit" value="Envoyer la candidature"></p>
                         </div>
 
                     </div>

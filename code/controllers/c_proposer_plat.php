@@ -14,9 +14,9 @@ if(isset($_GET['nomPlat'])){
     }
 }
 
-if(isset($_POST['nomPlat']) && isset($_POST['descr']) && isset($_POST['cat']) && isset($_POST['recette']) && !empty($_FILES['img'])){
+if(isset($_POST['submit'])){
     $idPlat = getMaxId() + 1;
-
-    addPlat($idPlat,$_POST['nomPlat'],$_POST['descr'],date("Y-m-d"),$_POST['cat'],$_POST['recette'],$_FILES['img']);
+    $nomImg = ajoutImg($_FILES['image'], $_POST['nomPlat']);
+    addPlat($idPlat,$_SESSION['id'],$_POST['nomPlat'],$_POST['descr'],date("Y-m-d"),$_POST['cat'],$_POST['recette'],$nomImg);
 }
 require_once(PATH_VIEWS.$page.'.php');

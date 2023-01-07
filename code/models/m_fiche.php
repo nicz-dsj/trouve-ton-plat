@@ -59,3 +59,44 @@ function getCategorie($id){
     $query->closeCursor();
     return $result;
 }
+
+/**
+ * Ajoute dans la base le plat en favori
+ * 
+ * @param int $id L'ID de l'utilisateur
+ * @param int $id L'ID du plat
+ */
+function addFavoris($id_utilisateur, $id_plat){
+    $connexion = Connexion::getInstance()->getBdd();
+    $query = $connexion->prepare('INSERT INTO Favoris VALUES(?,?)');
+    $query->execute(array($id_plat, $id_utilisateur));
+    $query->closeCursor();
+}
+
+/**
+ * Supprime dans la base le plat en favori
+ * 
+ * @param int $id L'ID de l'utilisateur
+ * @param int $id L'ID du plat
+ */
+function removeFavoris($id_utilisateur, $id_plat){
+    $connexion = Connexion::getInstance()->getBdd();
+    $query = $connexion->prepare('DELETE FROM Favoris WHERE IdPlat = ? AND IdUtilisateur = ?');
+    $query->execute(array($id_plat, $id_utilisateur));
+    $query->closeCursor();
+}
+
+
+function checkFavoris($id_utilisateur, $id_plat){
+    $connexion = Connexion::getInstance()->getBdd();
+    $query = $connexion->prepare('SELECT * FROM Favoris WHERE IdPlat = ? AND IdUtilisateur = ?');
+    $query->execute(array($id_plat, $id_utilisateur));
+    $rows = $query->rowCount();
+    $query->closeCursor();
+    if($rows > 0){
+        return true;
+    }
+    else{
+        return false;
+    }
+}

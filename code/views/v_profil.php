@@ -26,7 +26,7 @@
                 ?>
                 <p id="datejoin" style="margin-bottom:5px">A rejoint le : <?= $utilisateur[0]['dateCreation'] ?></p>
                 <?php
-                    if((isset($_SESSION['logged']) && $_SESSION['logged'] == 1) && (isset($_SESSION['user']) && $_SESSION['user'] == $utilisateur[0]['pseudoUtilisateur'])){ ?>
+                    if((isset($_SESSION['logged']) && $_SESSION['logged'] == 1) && (isset($_SESSION['id']) && $_SESSION['id'] == $utilisateur[0]['idUtilisateur'])){ ?>
                 <p id="mail">Adresse mail : <?= $utilisateur[0]['mail'] ?> </a> <?php
                     }
                 ?>
@@ -81,7 +81,7 @@
         </div>
     </div>
     <?php
-        if((isset($_SESSION['logged']) && $_SESSION['logged'] == 1) && (isset($_SESSION['user']) && $_SESSION['user'] == $utilisateur[0]['pseudoUtilisateur'])){ ?>
+        if((isset($_SESSION['logged']) && $_SESSION['logged'] == 1) && (isset($_SESSION['id']) && $_SESSION['id'] == $utilisateur[0]['idUtilisateur'])){ ?>
     <a href="index.php?page=modifierprofil" id="editprofile">Modifier le profil</a> <?php
         }
     ?>
@@ -101,8 +101,8 @@
             }
             else{
                 foreach($platsFavoris as $plat){ ?>
-        <div class="plat">
-            <img src="./assets/img/plats/<?= $plat['IdPlat'] ?>.jpg" width="150" height="150">
+        <div class="plat" id="<?= $plat['IdPlat'] ?>">
+            <img src="./assets/img/plats/<?= $plat['IdPlat'] ?>.jpg" width="200" height="200">
             <p class="nomplat"><?= $plat['Nom'] ?></p>
         </div>
         <?php
@@ -122,7 +122,7 @@
             }
             else{
                 foreach($platsAjoutes as $plat){ ?>
-        <div class="plat">
+        <div class="plat" id="<?= $plat['IdPlat'] ?>">
             <img src="./assets/img/plats/<?= $plat['IdPlat'] ?>.jpg" width="200" height="200">
             <p class="nomplat"><?= $plat['Nom'] ?></p>
         </div>
@@ -134,6 +134,15 @@
     </div>
 </div>
 <script src="<?= PATH_SCRIPTS?>script_hamburger.js"></script>
+<script>
+    const plats = document.getElementsByClassName('plat');
+    
+    for(let i = 0; i < plats.length; i++){
+        plats[i].addEventListener('click', function(){
+            window.location.href = `index.php?page=fiche&id=${plats[i].id}`;
+        });
+    }
+</script>
 
 
 <!--  Pied de page -->

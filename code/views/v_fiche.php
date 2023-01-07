@@ -13,38 +13,45 @@
 <script src="assets/scripts/script_fiche_plat.js" defer></script>
 </head>
 
-<!-- Fin de la page -->
+<p><?= checkFavoris($_SESSION['id'], $id) ?></p>
 
+<!-- Fin de la page -->
 
 <div id=bg_fiche_plat>
         <div id="fiche_plat">
             
             <div id="fiche_plat_haut">
-            <div id="fiche_plat_img">
-                <img src="" alt="">
-            </div>
+                <div id="fiche_plat_img">
+                    <img src="" alt="">
+                </div>
 
-            <div id="fiche_plat_infos">
-
-            <div id="fiche_plat_nom">
-                <h1 id=nom>NOM</h1>
-            </div>
-            <div id="fiche_plat_desc">
-                <p id=description>description</p>
-            </div>
-            <div id="fiche_plat_creat">
-                <h2 id=creat>Utilisateur</h2>
-            </div>
-            <div id="fiche_plat_cat">
-                <p id=cat>Catégorie</p>
-            </div>
-            <div id="fiche_plat_note">
-                <p id=note>Note</p>
-            </div>
-            <div id="fiche_plat_date">
-                <p id=date>Date</p>
-            </div>
-            </div>
+                <div id="fiche_plat_infos">
+                    <div id="fiche_plat_nom">
+                        <h1 id=nom>NOM</h1>
+                    </div>
+                    <div id="fiche_plat_desc">
+                        <p id=description>Description</p>
+                    </div>
+                    <div id="fiche_plat_creat">
+                        <h2 id=creat>Utilisateur</h2>
+                    </div>
+                    <div id="fiche_plat_cat">
+                        <p id=cat>Catégorie</p>
+                    </div>
+                    <div id="fiche_plat_note">
+                        <p id=note>Note</p>
+                    </div>
+                    <div id="fiche_plat_date">
+                        <p id=date>Date</p>
+                    </div>
+                    <?php
+                    if(isset($_SESSION['logged']) && $_SESSION['logged'] == 1){
+                        ?>
+                    <div class="favbutton"></div>
+                        <?php
+                    }
+                    ?>
+                </div>
             </div>
 
             <div id="fiche_plat_recette">
