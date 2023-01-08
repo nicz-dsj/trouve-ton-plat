@@ -60,7 +60,8 @@
             </div>
 
             <div id="fiche_plat_recette">
-                <p id=recette>Recette</p>
+                <p id=recette style="display:none;">Recette</p>
+                <ul id=liste-etapes></ul>
             </div>
 
         </div>

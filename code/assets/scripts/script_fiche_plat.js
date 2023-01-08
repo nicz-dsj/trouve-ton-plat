@@ -123,7 +123,32 @@ request.onload = function () {
     recette.getElementsByTagName("p")[0].innerHTML = dataPlat.recette;
     afficherEtoiles(dataNote.MoyenneArr);
 
-    
+     // On récupère l'élément qui contient le texte
+     var texte = recette.getElementsByTagName("p")[0].innerHTML;
+     // On récupère l'élément qui contiendra la liste des étapes
+     var listeEtapes = document.getElementById('liste-etapes');
+     // On sépare le texte en lignes
+     var lignes = texte.split('\n');
+     console.log(lignes);
+     // On parcourt toutes les lignes
+     lignes.forEach(function(ligne) {
+      // On vérifie si la ligne commence par "ÉTAPE"
+      if (ligne.startsWith('ÉTAPE')) {
+        // Si c'est le cas, on sépare l'étape du texte
+        var infosEtape = ligne.split(':');
+        // On crée un élément de liste et on lui affecte l'étape et le texte comme contenu
+        var element = document.createElement('li');
+        element.innerHTML = "<br />"+ '<b>' + infosEtape[0] + '</b>: ' + infosEtape[1];
+        // On ajoute l'élément à la liste des étapes
+        listeEtapes.appendChild(element);
+      }
+      else {
+        // Si la ligne ne commence pas par "ÉTAPE", on l'ajoute au texte de l'étape précédente
+        var dernierElement = listeEtapes.lastChild;
+        dernierElement.innerHTML += ligne;
+      }
+    });
+
     function checkFav(){
       const xhr = new XMLHttpRequest();
       xhr.open("GET", `index.php?page=fiche&id=${dataPlat.IdPlat}&fav=check`);
