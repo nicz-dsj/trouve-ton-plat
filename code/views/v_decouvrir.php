@@ -18,38 +18,55 @@
         if(isset($_SESSION['logged']) && $_SESSION['logged'] == 1){
             ?>
         <div class="container_item" id="preferences">
+        <?php
+            if(count($prefCategories) > 0 || count($prefIngredients) > 0){
+            ?>
             <h2>🥣 Découvrez de nouveaux plats à réaliser chez vous selon vos préférences <?= $utilisateur[0]['pseudoUtilisateur'] ?> !</h2>
+            <?php
+                if(count($prefCategories) > 0){
+                ?>
             <div class="container_liste" id="categorie">
                 <p class="title">Selon vos préférences de catégorie</p>
                 <div class="liste">
                 <?php
-                for($i = 0; $i < count($platsCategorie) && $i < 10; $i++){
+                    for($i = 0; $i < count($platsCategorie) && $i < 10; $i++){
                     ?>
                     <div class="plat" id="<?= $platsCategorie[$i]['IdPlat'] ?>">
                         <img src="./assets/img/plats/<?= $platsCategorie[$i]['IdPlat'] ?>.jpg" width="200" height="200">
                         <p class="nomplat"><?= $platsCategorie[$i]['Nom'] ?></p>
                     </div>
                     <?php
-                }
+                    }
                 ?>
                 </div>
             </div>
+                <?php
+                }
+
+                if(count($prefIngredients) > 0){
+                ?>
             <div class="container_liste" id="ingredients">
                 <p class="title">Selon vos préférences d'ingrédients</p>
                 <div class="liste">
                 <?php
-                for($i = 0; $i < count($platsIngredients) && $i < 10; $i++){
+                    for($i = 0; $i < count($platsIngredients) && $i < 10; $i++){
                     ?>
                     <div class="plat" id="<?= $platsIngredients[$i]['IdPlat'] ?>">
                         <img src="./assets/img/plats/<?= $platsIngredients[$i]['IdPlat'] ?>.jpg" width="200" height="200">
                         <p class="nomplat"><?= $platsIngredients[$i]['Nom'] ?></p>
                     </div>
                     <?php
-                }
+                    }
                 ?>
                 </div>
             </div>
+            <?php
+                }
+            ?>
         </div>
+            <?php
+            }
+        ?>
             <?php
         }
         ?>
