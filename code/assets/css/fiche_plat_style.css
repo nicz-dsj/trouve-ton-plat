@@ -59,6 +59,7 @@ a:hover{
 #fiche_plat_ingredients{
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .ingred{
@@ -66,6 +67,10 @@ a:hover{
     width: 25%;
     /** align text to the center */
     text-align: center;
+    border: 1px solid #fff;
+    border-radius: 7px;
+    caret-color: transparent;
+    margin:1%;
 
 }
 

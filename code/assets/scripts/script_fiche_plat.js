@@ -138,7 +138,7 @@ request.onload = function () {
         var infosEtape = ligne.split(':');
         // On crée un élément de liste et on lui affecte l'étape et le texte comme contenu
         var element = document.createElement('li');
-        element.innerHTML = "<br />"+ '<b>' + infosEtape[0] + '</b>: ' + infosEtape[1];
+        element.innerHTML = "<br />"+ '<b>' + infosEtape[0] + '</b>: ' + infosEtape[1] + "<br />";
         // On ajoute l'élément à la liste des étapes
         listeEtapes.appendChild(element);
       }
