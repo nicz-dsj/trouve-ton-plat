@@ -1,59 +1,127 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package backend.fenetre;
-
-import javax.swing.JFrame;
 
 /**
  *
  * @author Aro
  */
-public class FrameConnexion extends javax.swing.JFrame {
+public class PanelConnexion extends javax.swing.JPanel {
 
+    // Accès base de données DEFAULT
+    /**
+     * Variable correspondant à l'adresse de la base de donnée
+     */
+    private final String DEFAULT_BD_HOST = "mysql-trouvetonplat.alwaysdata.net";
+    /**
+     * Variable correspondant au nom de la base de donnée
+     */
+    private final String DEFAULT_BD_DBNAME = "trouvetonplat_bd";
+    /**
+     * Variable correspondant au nom d'utilisateur
+     */
+    private final String DEFAULT_BD_USERNAME = "289080";
+    /**
+     * Variable correspondant au mot de passe
+     */
+    private final String DEFAULT_BD_PASSWORD = "trouveton784512";
+    
+    // Accès base de données LAST
+    /**
+     * Variable correspondant à l'adresse de la base de donnée
+     */
+    private String lastBDHost;
+    /**
+     * Variable correspondant au nom de la base de donnée
+     */
+    private String lastBDDBName;
+    /**
+     * Variable correspondant au nom d'utilisateur
+     */
+    private String lastBDUsername;
+    /**
+     * Variable correspondant au mot de passe
+     */
+    private String lastBDPWD;
+    
     // Accès base de données
     /**
      * Variable correspondant à l'adresse de la base de donnée
      */
-    private MenuPrincipal owner;
-
+    private String BDHost;
     /**
-     * Creates new form FrameConnexion
+     * Variable correspondant au nom de la base de donnée
      */
-    public FrameConnexion(MenuPrincipal owner) {
-        super();
-        
-        this.owner = owner;
-        this.owner.setBDHost("mysql-trouvetonplat.alwaysdata.net");
-        this.owner.setBDDBName("trouvetonplat_bd");
-        this.owner.setBDUser("289080");
-        this.owner.setBDPWD("trouveton784512");
-        
+    private String BDDBName;
+    /**
+     * Variable correspondant au nom d'utilisateur
+     */
+    private String BDUsername;
+    /**
+     * Variable correspondant au mot de passe
+     */
+    private String BDPWD;
+    
+    /**
+     * Creates new form PanelConnexion
+     */
+    public PanelConnexion() {
         initComponents();
+        this.lastBDHost = DEFAULT_BD_HOST;
+        this.lastBDDBName = DEFAULT_BD_DBNAME;
+        this.lastBDUsername = DEFAULT_BD_USERNAME;
+        this.lastBDPWD = DEFAULT_BD_PASSWORD;
+        defaultState();
     }
-    
-    public FrameConnexion(JFrame frame, String BDHost, String BDDBName, String BDUser, String BDPWD){
-        super();
-        
-        this.owner.setBDHost(BDHost);
-        this.owner.setBDDBName(BDDBName);
-        this.owner.setBDUser(BDUser);
-        this.owner.setBDPWD(BDPWD);
-        
+
+    public PanelConnexion(String BDHost, String BDDBName, String BDUser, String BDPWD) {
         initComponents();
+        this.lastBDHost = BDHost;
+        this.lastBDDBName = BDDBName;
+        this.lastBDUsername = BDUser;
+        this.lastBDPWD = BDPWD;
+        this.BDHost = BDHost;
+        this.BDDBName = BDDBName;
+        this.BDUsername = BDUser;
+        this.BDPWD = BDPWD;
     }
 
-    public MenuPrincipal getOwner() {
-        return owner;
+    public String getBDHost() {
+        return BDHost;
     }
 
-    public void setOwner(MenuPrincipal owner) {
-        this.owner = owner;
+    public void setBDHost(String BDHost) {
+        this.BDHost = BDHost;
     }
+
+    public String getBDDBName() {
+        return BDDBName;
+    }
+
+    public void setBDDBName(String BDDBName) {
+        this.BDDBName = BDDBName;
+    }
+
+    public String getBDUser() {
+        return BDUsername;
+    }
+
+    public void setBDUsername(String BDUser) {
+        this.BDUsername = BDUser;
+    }
+
+    public String getBDPWD() {
+        return BDPWD;
+    }
+
+    public void setBDPWD(String BDPWD) {
+        this.BDPWD = BDPWD;
+    }
+
     
     
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -71,12 +139,9 @@ public class FrameConnexion extends javax.swing.JFrame {
         tfHost = new javax.swing.JTextField();
         tfUser = new javax.swing.JTextField();
         tfPWD = new javax.swing.JTextField();
-        bSauvegarder = new javax.swing.JButton();
         bAnnuler = new javax.swing.JButton();
-        bAppliquer = new javax.swing.JButton();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Configuration de la connexion");
+        bDefault = new javax.swing.JButton();
+        bSauvegarder = new javax.swing.JButton();
 
         lHost.setText("Nom d'hôte :");
 
@@ -86,41 +151,31 @@ public class FrameConnexion extends javax.swing.JFrame {
 
         lPWD.setText("Mot de passe :");
 
-        tfDBName.setText(owner.getBDDBName());
+        tfDBName.setText(getBDDBName());
         tfDBName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfDBNameActionPerformed(evt);
             }
         });
 
-        tfHost.setText(owner.getBDHost());
+        tfHost.setText(getBDHost());
         tfHost.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfHostActionPerformed(evt);
             }
         });
 
-        tfUser.setText(owner.getBDUser());
+        tfUser.setText(getBDUser());
         tfUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfUserActionPerformed(evt);
             }
         });
 
-        tfPWD.setText(owner.getBDPWD());
+        tfPWD.setText(getBDPWD());
         tfPWD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfPWDActionPerformed(evt);
-            }
-        });
-
-        bSauvegarder.setText("Sauvegarder");
-        bSauvegarder.setMaximumSize(new java.awt.Dimension(100, 25));
-        bSauvegarder.setMinimumSize(new java.awt.Dimension(100, 25));
-        bSauvegarder.setPreferredSize(new java.awt.Dimension(100, 25));
-        bSauvegarder.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bSauvegarderActionPerformed(evt);
             }
         });
 
@@ -134,48 +189,58 @@ public class FrameConnexion extends javax.swing.JFrame {
             }
         });
 
-        bAppliquer.setText("Appliquer");
-        bAppliquer.setMaximumSize(new java.awt.Dimension(100, 25));
-        bAppliquer.setMinimumSize(new java.awt.Dimension(100, 25));
-        bAppliquer.setPreferredSize(new java.awt.Dimension(100, 25));
-        bAppliquer.addActionListener(new java.awt.event.ActionListener() {
+        bDefault.setText("Default");
+        bDefault.setMaximumSize(new java.awt.Dimension(100, 25));
+        bDefault.setMinimumSize(new java.awt.Dimension(100, 25));
+        bDefault.setPreferredSize(new java.awt.Dimension(100, 25));
+        bDefault.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bAppliquerActionPerformed(evt);
+                bDefaultActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        bSauvegarder.setText("Sauvegarder");
+        bSauvegarder.setMaximumSize(new java.awt.Dimension(100, 25));
+        bSauvegarder.setMinimumSize(new java.awt.Dimension(100, 25));
+        bSauvegarder.setPreferredSize(new java.awt.Dimension(100, 25));
+        bSauvegarder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bSauvegarderActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(bSauvegarder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(bAppliquer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(bAnnuler, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lHost)
                             .addComponent(lDBName)
                             .addComponent(lUser)
                             .addComponent(lPWD))
-                        .addGap(15, 15, 15)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tfPWD, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(tfUser, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+                                .addComponent(tfUser, javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(tfDBName, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(tfHost, javax.swing.GroupLayout.Alignment.TRAILING)))))
-                .addContainerGap(24, Short.MAX_VALUE))
+                                .addComponent(tfHost, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(bSauvegarder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                        .addComponent(bDefault, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                        .addComponent(bAnnuler, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lHost)
                     .addComponent(tfHost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -194,12 +259,10 @@ public class FrameConnexion extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bSauvegarder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bAppliquer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bDefault, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bAnnuler, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(135, Short.MAX_VALUE))
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void tfDBNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfDBNameActionPerformed
@@ -218,65 +281,32 @@ public class FrameConnexion extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfPWDActionPerformed
 
-    private void bSauvegarderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSauvegarderActionPerformed
-        this.owner.setBDHost(tfHost.getText());
-        this.owner.setBDDBName(tfDBName.getText());
-        this.owner.setBDUser(tfUser.getText());
-        this.owner.setBDPWD(tfPWD.getText());
-        this.dispose();
-    }//GEN-LAST:event_bSauvegarderActionPerformed
-
     private void bAnnulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAnnulerActionPerformed
-        this.dispose();
+        this.setBDHost(this.lastBDHost);
+        this.setBDDBName(this.lastBDDBName);
+        this.setBDUsername(this.lastBDUsername);
+        this.setBDPWD(this.lastBDPWD);
+        this.tfHost.setText(this.lastBDHost);
+        this.tfDBName.setText(this.lastBDDBName);
+        this.tfUser.setText(this.lastBDUsername);
+        this.tfPWD.setText(this.lastBDPWD);
     }//GEN-LAST:event_bAnnulerActionPerformed
 
-    private void bAppliquerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAppliquerActionPerformed
-        this.owner.setBDHost(tfHost.getText());
-        this.owner.setBDDBName(tfDBName.getText());
-        this.owner.setBDUser(tfUser.getText());
-        this.owner.setBDPWD(tfPWD.getText());
-    }//GEN-LAST:event_bAppliquerActionPerformed
+    private void bDefaultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDefaultActionPerformed
+       defaultState();
+    }//GEN-LAST:event_bDefaultActionPerformed
 
-    
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrameConnexion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrameConnexion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrameConnexion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrameConnexion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void bSauvegarderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSauvegarderActionPerformed
+        this.setBDHost(tfHost.getText());
+        this.setBDDBName(tfDBName.getText());
+        this.setBDUsername(tfUser.getText());
+        this.setBDPWD(tfPWD.getText());
+    }//GEN-LAST:event_bSauvegarderActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrameConnexion(null).setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAnnuler;
-    private javax.swing.JButton bAppliquer;
+    private javax.swing.JButton bDefault;
     private javax.swing.JButton bSauvegarder;
     private javax.swing.JLabel lDBName;
     private javax.swing.JLabel lHost;
@@ -287,5 +317,15 @@ public class FrameConnexion extends javax.swing.JFrame {
     private javax.swing.JTextField tfPWD;
     private javax.swing.JTextField tfUser;
     // End of variables declaration//GEN-END:variables
-}
 
+    private void defaultState(){
+        this.setBDHost(this.DEFAULT_BD_HOST);
+        this.setBDDBName(this.DEFAULT_BD_DBNAME);
+        this.setBDUsername(this.DEFAULT_BD_USERNAME);
+        this.setBDPWD(this.DEFAULT_BD_PASSWORD);
+        this.tfHost.setText(this.DEFAULT_BD_HOST);
+        this.tfDBName.setText(this.DEFAULT_BD_DBNAME);
+        this.tfUser.setText(this.DEFAULT_BD_USERNAME);
+        this.tfPWD.setText(this.DEFAULT_BD_PASSWORD);
+    }
+}
