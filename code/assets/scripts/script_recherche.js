@@ -17,12 +17,11 @@ dinput.addEventListener('keydown', (e) => {
 
       if (e.key === 'Enter') {
 
+         if(listIngr.includes(valeur) === false) {
+            listIngr.push(valeur);
+
          for(let i = 1; i <= opts.length; i++) {
-
             if (opts[i*2-1].value === valeur) {
-
-               if(listIngr.includes(valeur) === false) {
-                  listIngr.push(valeur);
 
                   listIngrNum.push(i);
 
@@ -56,10 +55,7 @@ dinput.addEventListener('keydown', (e) => {
                   document.getElementById("tagsD").appendChild(element);
                   update(i);
                };
-               dinput.value = '';
-               eventSource = null;
-               valeur = '';
-               i=opts.length;
+
             };
          };
       };
@@ -92,7 +88,7 @@ dinput.addEventListener('input', (e) => {
                   if (listIngrNum[j] != i)
                      listTempNum.push(listIngrNum[j]);
                }
-      
+
                listIngr = listTemp;
                listIngrNum = listTempNum
       
