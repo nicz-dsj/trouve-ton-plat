@@ -13,7 +13,6 @@ let image = document.getElementById('fiche_plat_img');
 var noteArr = 0;
 const favbutton = document.querySelector('.favbutton');
 
-
 function afficherEtoiles(note) {
   // On vérifie que la note est un nombre entier compris entre 0 et 5
   if (note >= 0 && note <= 5) {

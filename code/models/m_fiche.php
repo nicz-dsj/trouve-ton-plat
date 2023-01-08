@@ -12,20 +12,24 @@ require_once(PATH_MODELS.'Connexion.php');
 function getPlat($id){
     // Récupère l'instance de connexion à la base de données
     $connexion = Connexion::getInstance()->getBdd();
-    
     // Prépare la requête SQL
     $query = $connexion->prepare('SELECT * FROM Plat WHERE IdPlat = ?');
-    
     // Exécute la requête en passant l'ID du plat en paramètre
     $query->execute(array($id));
-    
     // Récupère les résultats sous forme de tableau associatif
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
-    
     // Ferme le curseur de la requête
     $query->closeCursor();
-    
     // Retourne les résultats
+    return $result;
+}
+
+function getIngredients($id){
+    $connexion = Connexion::getInstance()->getBdd();
+    $query = $connexion->prepare('SELECT i.IdIngredient, i.Nom FROM Ingredient i JOIN Composer c ON i.IdIngredient = c.IdIngredient WHERE c.IdPlat = ?');
+    $query->execute(array($id));
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+    $query->closeCursor();
     return $result;
 }
 

@@ -13,8 +13,6 @@
 <script src="assets/scripts/script_fiche_plat.js" defer></script>
 </head>
 
-<p><?= checkFavoris($_SESSION['id'], $id) ?></p>
-
 <!-- Fin de la page -->
 
 <div id=bg_fiche_plat>
@@ -44,6 +42,12 @@
                     </div>
                     <div id="fiche_plat_date">
                         <p id=date>Date</p>
+                    </div>
+                    <p id=ingredients>Ingrédients :<br></p>
+                    <div id="fiche_plat_ingredients">
+                        <?php for($j=0;$j<count($ingredients);$j++){ ?>
+                            <p class= "ingred" id=ingr<?php echo $j ?>><?php echo $ingredients[$j]['Nom'] ?></p>
+                        <?php } ?>
                     </div>
                     <?php
                     if(isset($_SESSION['logged']) && $_SESSION['logged'] == 1){

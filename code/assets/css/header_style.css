@@ -137,6 +137,11 @@ menu li:last-child{
     font-weight:bold;
 }
 
+li::marker{
+    caret-color: transparent;
+    color:rgba(255, 255, 255, 0);
+}
+
 @media screen and (min-width:1000px){
     .menu{
         width:300px;

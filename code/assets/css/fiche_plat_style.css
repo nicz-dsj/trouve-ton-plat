@@ -8,6 +8,14 @@
     margin-top: 20px;
 }
 
+a {
+    color: #fff;
+}
+
+a:hover{
+    color: rgb(90, 87, 87);
+}
+
 #fiche_plat{
     width: 100%;
     height: 100%;
@@ -29,6 +37,7 @@
     margin-right: 10px;
     color: #fff;
     font-size: 1vw;
+    width: 28vw;
 }
 
 #fiche_plat_img{
@@ -45,6 +54,19 @@
     width: 100%;
     height: 100%;
     -webkit-user-drag: none;
+}
+
+#fiche_plat_ingredients{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ingred{
+    /** width: get the width of the text */
+    width: 25%;
+    /** align text to the center */
+    text-align: center;
+
 }
 
 .favbutton{

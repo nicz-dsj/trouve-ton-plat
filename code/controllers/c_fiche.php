@@ -2,6 +2,7 @@
 require_once(PATH_MODELS.'m_fiche.php');
 
 $id = htmlspecialchars($_GET['id']);
+$ingredients = getIngredients($id);
 
 ?>
 <p id=platSel style="display:none;">
