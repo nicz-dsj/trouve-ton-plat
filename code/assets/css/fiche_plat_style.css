@@ -53,6 +53,7 @@
     width: 30px;
     height: 30px;
     cursor: pointer;
+    caret-color: transparent;
 }
 
 .favbutton.active{
@@ -65,4 +66,45 @@
     margin-left: 10px;
     margin-right: 10px;
     color: #fff;
+}
+
+#fiche_plat_note{
+    display:flex;
+}
+
+#note{
+    display:flex;
+    align-items: center;
+    margin-left:5px;
+    margin-top: 3px;
+}
+
+.etoile-pleine{
+    background-image: url('../img/etoile-pleine.png');
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    caret-color: transparent;
+    display:inline-flex;
+}
+
+.etoile-vide{
+    background-image: url('../img/etoile-vide.png');
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    caret-color: transparent;
+    display:inline-flex;
+}
+
+.etoile-moitie-pleine{
+    background-image: url('../img/etoile-moitie-pleine.png');
+    background-size: cover;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    caret-color: transparent;
+    display:inline-flex;
 }

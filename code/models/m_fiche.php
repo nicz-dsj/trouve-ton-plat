@@ -53,7 +53,21 @@ function getUtilisateur($id){
 function getCategorie($id){
     $connexion = Connexion::getInstance()->getBdd();
     $query = $connexion->prepare('SELECT * FROM Categorie WHERE idCategorie = ?');
-    $query = $connexion->prepare('SELECT * FROM Categorie WHERE idCategorie = ?');
+    $query->execute(array($id));
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+    $query->closeCursor();
+    return $result;
+}
+
+/**
+ * Récupère les données d'une note à partir de l'ID du plat
+ * 
+ * @param int $id L'ID de la catégorie
+ * @return array Les données de la catégorie
+ */
+function getNote($id){
+    $connexion = Connexion::getInstance()->getBdd();
+    $query = $connexion->prepare('SELECT ROUND(AVG(Note),1) as MoyenneArr FROM Note WHERE idPlat = ?');
     $query->execute(array($id));
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
     $query->closeCursor();

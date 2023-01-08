@@ -10,7 +10,84 @@ let note = document.getElementById('fiche_plat_note');
 let date = document.getElementById('fiche_plat_date');
 let recette = document.getElementById('fiche_plat_recette');
 let image = document.getElementById('fiche_plat_img');
+var noteArr = 0;
 const favbutton = document.querySelector('.favbutton');
+
+
+function afficherEtoiles(note) {
+  // On vérifie que la note est un nombre entier compris entre 0 et 5
+  if (note >= 0 && note <= 5) {
+    // On crée un tableau qui contiendra les éléments HTML représentant les étoiles
+    var etoiles = [];
+    // On parcourt toutes les étoiles (de 0 à 4)
+    if (note % 1 != 0) {
+      noteArr = Math.ceil(note);
+      var diff = noteArr - note;
+      if (diff < 0.5) {
+        note = noteArr;
+        noteArr = 0;
+      }
+    }
+    for (var i = 1; i < 6; i ++) {
+
+      // On crée un élément span qui servira à afficher l'étoile
+      var span = document.createElement('span');
+
+      if(noteArr != 0){
+        if (i == noteArr) {
+          span.classList.add('etoile-moitie-pleine');
+          noteArr = 0;
+        }
+      }
+      // Si l'indice de l'étoile est inférieur à la note, c'est une étoile pleine
+      if (i < note) {
+        span.classList.add('etoile-pleine');
+      }
+      // Sinon, si l'indice de l'étoile est égal à la note, c'est une étoile à moitié pleine
+      else if (i == note) {
+        span.classList.add('etoile-pleine');
+      }
+      // Sinon, c'est une étoile vide
+      else {
+        span.classList.add('etoile-vide');
+      }
+      // On ajoute l'événement mouseenter sur l'étoile pour qu'elle se remplisse lorsque l'utilisateur passe la souris dessus
+      span.addEventListener('mouseenter', function() {
+        this.classList.remove('etoile-vide');
+        this.classList.remove('etoile-moitie-pleine');
+        this.classList.add('etoile-pleine');
+        // On parcourt toutes les étoiles précédentes pour les remplir également
+        var precedentes = this.previousSibling;
+        while (precedentes != null) {
+          precedentes.classList.remove('etoile-vide');
+          precedentes.classList.remove('etoile-moitie-pleine');
+          precedentes.classList.add('etoile-pleine');
+          precedentes = precedentes.previousSibling;
+        }
+        // On parcourt toutes les étoiles suivantes pour les vider
+        var suivantes = this.nextSibling;
+        while (suivantes != null) {
+          suivantes.classList.remove('etoile-pleine', 'etoile-moitie-pleine');
+          suivantes.classList.add('etoile-vide');
+          suivantes = suivantes.nextSibling;
+        }
+      });
+      // On ajoute l'événement mouseleave sur l'étoile pour qu'elle se vide lorsque l'utilisateur sort la souris
+      span.addEventListener('mouseleave', function() {
+        // On remet les étoiles dans leur état initial (pleines, à moitié pleines ou vides)
+        afficherEtoiles(note);
+      });
+      etoiles.push(span);
+    }
+    // On récupère l'élément HTML qui va contenir les étoiles
+    var container = document.getElementById('container-etoiles');
+    // On vide le conteneur des étoiles
+    container.innerHTML = '';
+    // On ajoute les étoiles au conteneur
+    etoiles.forEach(function(etoile) {
+      container.appendChild(etoile);
+    });
+  }}
 
 // Crée une nouvelle requête HTTP GET
 const request = new XMLHttpRequest();
@@ -26,22 +103,28 @@ request.onload = function () {
     const jsonStringPlat = request.responseText.match(/\{(.|\n)*\}/g)[0];
     const jsonStringUser = request.responseText.match(/\{(.|\n)*\}/g)[1];
     const jsonStringCategorie = request.responseText.match(/\{(.|\n)*\}/g)[2];
+    const jsonStringNote = request.responseText.match(/\{(.|\n)*\}/g)[3];
     
     // Parse les données en JSON
     const dataPlat = JSON.parse(jsonStringPlat);
     const dataUser = JSON.parse(jsonStringUser);
     const dataCategorie = JSON.parse(jsonStringCategorie);
+    const dataNote = JSON.parse(jsonStringNote);
+    console.log(dataNote);
+    console.log(dataPlat);
 
     // Met à jour le contenu HTML des éléments du DOM avec les données du JSON
     nom.getElementsByTagName("h1")[0].innerHTML = dataPlat.Nom;
     description.getElementsByTagName("p")[0].innerHTML = dataPlat.Description;
-    categorie.getElementsByTagName("p")[0].innerHTML = dataCategorie.Nom;
+    categorie.getElementsByTagName("p")[0].innerHTML = "Catégorie : " + dataCategorie.Nom;
     createur.getElementsByTagName("h2")[0].innerHTML = `Par <a href=index.php?page=profil&id=${dataUser.idUtilisateur}>${dataUser.pseudoUtilisateur}</a>`;
     image.getElementsByTagName("img")[0].src = "assets/img/plats/" + dataPlat.IdPlat + ".jpg";
-    note.getElementsByTagName("p")[0].innerHTML = dataPlat.Note;
+    note.getElementsByTagName("p")[0].innerHTML = dataNote.MoyenneArr+"/5";
     date.getElementsByTagName("p")[0].innerHTML = dataPlat.DatePublication;
     recette.getElementsByTagName("p")[0].innerHTML = dataPlat.recette;
+    afficherEtoiles(dataNote.MoyenneArr);
 
+    
     function checkFav(){
       const xhr = new XMLHttpRequest();
       xhr.open("GET", `index.php?page=fiche&id=${dataPlat.IdPlat}&fav=check`);

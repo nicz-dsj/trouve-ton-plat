@@ -39,6 +39,7 @@
                         <p id=cat>Catégorie</p>
                     </div>
                     <div id="fiche_plat_note">
+                        <div id=container-etoiles></div>
                         <p id=note>Note</p>
                     </div>
                     <div id="fiche_plat_date">

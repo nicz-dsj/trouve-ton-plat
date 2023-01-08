@@ -30,6 +30,16 @@ if(isset($_GET['id'])){
     }
     ?>
 </p>
+
+<p id=platNote style="display:none;">
+    <?php
+    if(isset($_GET['id'])){
+        $note = getNote($id);
+        echo json_encode($note);
+    }
+    ?>
+</p>
+
 <?php
 
 if(isset($_GET['fav']) && isset($_SESSION['logged'])){
