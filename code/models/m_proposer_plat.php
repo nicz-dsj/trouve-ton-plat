@@ -36,6 +36,15 @@ function getCategorie(){
   return $result;
 }
 
+function getIngredients(){
+  $connexion = Connexion::getInstance()->getBdd();
+  $query = $connexion->prepare('SELECT * FROM Ingredient');
+  $query->execute();
+  $result = $query->fetchAll(PDO::FETCH_ASSOC);
+  $query->closeCursor();
+  return $result;
+}
+
 function ajoutImg($img,$nomPlat){
   //recuperer l'extension de l'image
   $extension = pathinfo($img['name'], PATHINFO_EXTENSION);
@@ -44,4 +53,19 @@ function ajoutImg($img,$nomPlat){
   $cheminDossier = PATH_PLATS . $nomImg;
   move_uploaded_file($img['tmp_name'], $cheminDossier);
   return $nomImg;
+}
+
+function ajoutIngr($idPlat,$idIngr){
+  $connexion = Connexion::getInstance()->getBdd();
+  $query = $connexion->prepare('INSERT INTO Composer VALUES (?, ?)');
+  // si on a qu'un seul ingrédient
+  if(!is_array($idIngr)){
+    $query->execute(array($idPlat,$idIngr));
+  }
+  // si on a plusieurs ingrédients
+  else{
+    for ($i=0; $i < count($idIngr); $i++){
+      $query->execute(array($idPlat,$idIngr[$i]));
+    }
+  }
 }

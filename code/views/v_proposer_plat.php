@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="<?= PATH_CSS?>proposer_plat.css">
 
 <script src="assets/scripts/script_hamburger.js"></script>
+<script src="assets/scripts/script_proposer_plat.js" defer></script>
 
 </head>
 <main>
@@ -50,6 +51,24 @@
                         <textarea type="text" name="recette" id="recette" placeholder="Recette" required></textarea>
                         <span id="statutRec"></span>
                         </div>     
+                        
+                        <div class="input_ingr" id="input_ingr">
+                        <label for="text">Ingrédient(s):</label>
+                        <select name="ingr" id="ingr-select" required>
+                            <?php
+                                foreach($ingredients as $ingr){
+                                    ?>
+                                    <option value = "<?php echo $ingr['IdIngredient'] ?>"><?php echo $ingr['Nom'] ?></option> 
+                                    <?php  
+                                    } 
+                                ?>
+                        </select>
+                        <!-- créer un bouton pour ajouter d'autre Ingrédient -->
+                        <button type="button" class="btn btn-primary" id="add_ingr" class="btn_ajouter">
+                            <img src="assets/img/add_symbole.png" alt="plus" width="20" height="20">
+                        </button>
+                        </div>
+
                         <!-- input file-->
                         <div class="input input_file">
                         <label for="text">Image:</label>
