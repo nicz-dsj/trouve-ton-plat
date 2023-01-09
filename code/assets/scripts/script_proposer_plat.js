@@ -84,6 +84,6 @@ savoir.addEventListener("click", function(){
 });
 moins.addEventListener("click", function(){
   savoir.classList.remove("savoir_plus");
-  savoir.innerHTML = "En savoir plus";
+  savoir.innerHTML = "En savoir plus.";
   moins.style.display = "none";
 });
