@@ -11,6 +11,8 @@ function checkNomPlat($nouvPlat){
     return $result;
   }
 
+
+
 function getMaxId(){
     $connexion = Connexion::getInstance()->getBdd();
     $query = $connexion->prepare('SELECT MAX(IdPlat) FROM Plat');
@@ -45,27 +47,19 @@ function getIngredients(){
   return $result;
 }
 
-function ajoutImg($img,$nomPlat){
+function ajoutImg($img,$idPlat){
   //recuperer l'extension de l'image
   $extension = pathinfo($img['name'], PATHINFO_EXTENSION);
   // le change par le nom du plat + l'extension
-  $nomImg = $nomPlat.'.'.$extension;
+  $nomImg = $idPlat.'.'.$extension;
   $cheminDossier = PATH_PLATS . $nomImg;
   move_uploaded_file($img['tmp_name'], $cheminDossier);
   return $nomImg;
 }
 
-function ajoutIngr($idPlat,$idIngr){
+function ajoutIngr($idPlat,$idIngr,$quantite){
   $connexion = Connexion::getInstance()->getBdd();
-  $query = $connexion->prepare('INSERT INTO Composer VALUES (?, ?)');
-  // si on a qu'un seul ingrédient
-  if(!is_array($idIngr)){
-    $query->execute(array($idPlat,$idIngr));
-  }
-  // si on a plusieurs ingrédients
-  else{
-    for ($i=0; $i < count($idIngr); $i++){
-      $query->execute(array($idPlat,$idIngr[$i]));
-    }
-  }
+  $query = $connexion->prepare('INSERT INTO Composer VALUES (?, ?,?)');
+  $query->execute(array($idPlat,$idIngr,$quantite));
+  $query->closeCursor();
 }

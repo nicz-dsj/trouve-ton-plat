@@ -63,6 +63,8 @@
                                     } 
                                 ?>
                         </select>
+                        <input type="number" name="quantite" id="quantite" placeholder="Quantité" required>
+                        <input type="hidden" id="variable_js" name="variable_js" value="1">
                         <!-- créer un bouton pour ajouter d'autre Ingrédient -->
                         <button type="button" class="btn btn-primary" id="add_ingr" class="btn_ajouter">
                             <img src="assets/img/add_symbole.png" alt="plus" width="20" height="20">
@@ -77,7 +79,7 @@
                         </div>
                         
                         <div class="input"> 
-                            <input class='btn btn-primary' name="submit" type="submit" value="Envoyer la candidature"></p>
+                            <input class='btn btn-primary' id="envoyer"name="submit" type="submit" value="Envoyer la candidature"></p>
                         </div>
 
                     </div>

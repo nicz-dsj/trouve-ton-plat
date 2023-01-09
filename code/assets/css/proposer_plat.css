@@ -146,6 +146,7 @@
     font-weight: 800;
 }
 .btn_ajouter{
+    background-color: transparent;
     margin-top: 1vh;
     width: 100%;
     height: 100%;
@@ -157,32 +158,26 @@
 .btn_ajouter button{
     border-radius: 6px;
     height:4.5vh;
-    padding-left: 10%;
-    padding-right: 10%;
-    border: #fff solid 3px;
-    background-color:rgba(0,0, 0, 0.6);
-    color: #fff;
     font-size: 1.1em;
     font-weight: 1000;
     cursor: pointer;
 }
-#input_ingr{
+.input_ingr{
+    margin-bottom:5rem;
     width: 80%;
     height: 4vh;
-    border-radius: 10px;
-    border: #fff solid 3px;
     background-color:rgba(0,0, 0, 0.5);
     color: white;
     font-size: 1.5em;
     text-align: center;
 }
-#input_ingr::placeholder{
+.input_ingr::placeholder{
     color: rgba(94, 91, 91);
 }
-#input_ingr:focus{
+.input_ingr:focus{
     outline: none;
 }
-#input_ingr label {
+.input_ingr label {
     margin: bottom 5px;
     width: 80%;
     height: 100%;
@@ -190,12 +185,22 @@
     justify-content: flex-start;
     align-items: center;
     color: #fff;
-    font-size: 1.4em;
+    font-size: 1em;
     font-weight: 800;
 }
-#input_ingr input{
-    width: 80%;
+.input_ingr input{
+    width: 10%;
     height: 4vh;
+    border-radius: 10px;
+    background-color:rgba(0,0, 0, 0.5);
+    color: white;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+#ingr-select{
+    width: 20%;
+    height: 7vh;
     border-radius: 10px;
     border: #fff solid 3px;
     background-color:rgba(0,0, 0, 0.5);
