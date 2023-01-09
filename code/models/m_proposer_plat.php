@@ -63,3 +63,24 @@ function ajoutIngr($idPlat,$idIngr,$quantite,$unite){
   $query->execute(array($idPlat,$idIngr,$quantite,$unite));
   $query->closeCursor();
 }
+
+function reecriture_recette($recette){
+  //recupere les chaines de caractères avant un saut de ligne et les met dans un tableau
+  $tab_final = array();
+  $tab = array();
+  $tab = explode("\r", $recette);
+  //retire le premier element de $tab
+  $recette_final = "ÉTAPE 1:\r".$tab[0]."\r";
+  $tab = array_slice($tab, 1);
+  //pour chaque parti du tableau on ajoute une partie spécifiant le numero de l'étape
+  for ($i=0; $i < count($tab); $i++) {
+    $tab_final[$i] = "\rÉTAPE ".($i+2)." : ".$tab[$i]."\r";
+  }
+  //on concatene les chaines de caractères du tableau
+  for ($i=0; $i < count($tab_final); $i++) {
+    $recette_final = $recette_final.$tab_final[$i];
+  }
+  // supprime le dernier retour à la ligne situé à la fin de la chaine de caractère
+  $recette_final = substr($recette_final, 0, -1);
+  return $recette_final;
+}

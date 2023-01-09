@@ -51,7 +51,9 @@
 
                     <div class="input input_recette">
                         <label for="texte">Recette:</label>
-                        <textarea type="text" name="recette" id="recette" placeholder="Recette" required></textarea>
+                        <textarea type="text" name="recette" id="recette" placeholder="Recette (exemple):Mettre de l'eau à bouillir.
+        Mettre les pâtes.
+                        Sortir les pâtes de la casserole." required></textarea>
                         <span id="statutRec"></span>
                     </div>
 

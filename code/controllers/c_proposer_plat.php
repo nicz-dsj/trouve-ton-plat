@@ -20,7 +20,8 @@ if (isset($_SESSION['logged']) && $_SESSION['logged'] = 1) {
         $idPlat = getMaxId() + 1;
         $nb_select = $_POST['variable_js'];
         $nomImg = ajoutImg($_FILES['image'],$idPlat);
-        addPlat($idPlat, $_SESSION['id'], $_POST['nomPlat'], $_POST['descr'], date("Y-m-d"), $_POST['cat'], $_POST['recette'], $nomImg);
+        $recette = reecriture_recette($_POST['recette']);
+        addPlat($idPlat, $_SESSION['id'], $_POST['nomPlat'], $_POST['descr'], date("Y-m-d"), $_POST['cat'], $recette, $nomImg);
         //si nb_select est supérieur a 1, on ajoute les ingredients
         ajoutIngr($idPlat, $_POST['ingr'], $_POST['quantite'],$_POST['unite']);
         array_push($tableau_idIngr, $_POST['ingr']);
