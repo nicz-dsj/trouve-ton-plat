@@ -29,9 +29,9 @@
                 <p class="title">Selon vos préférences de catégorie</p>
                 <div class="liste">
                 <?php
-                    for($i = 0; $i < count($platsCategorie) && $i < 10; $i++){
+                    for($i = 0; $i < count($platsCategorie) && $i < 6; $i++){
                     ?>
-                    <div class="plat" id="<?= $platsCategorie[$i]['IdPlat'] ?>">
+                    <div class="container_plat" id="<?= $platsCategorie[$i]['IdPlat'] ?>">
                         <img src="./assets/img/plats/<?= $platsCategorie[$i]['IdPlat'] ?>.jpg" width="200" height="200">
                         <p class="nomplat"><?= $platsCategorie[$i]['Nom'] ?></p>
                     </div>
@@ -49,9 +49,9 @@
                 <p class="title">Selon vos préférences d'ingrédients</p>
                 <div class="liste">
                 <?php
-                    for($i = 0; $i < count($platsIngredients) && $i < 10; $i++){
+                    for($i = 0; $i < count($platsIngredients) && $i < 6; $i++){
                     ?>
-                    <div class="plat" id="<?= $platsIngredients[$i]['IdPlat'] ?>">
+                    <div class="container_plat" id="<?= $platsIngredients[$i]['IdPlat'] ?>">
                         <img src="./assets/img/plats/<?= $platsIngredients[$i]['IdPlat'] ?>.jpg" width="200" height="200">
                         <p class="nomplat"><?= $platsIngredients[$i]['Nom'] ?></p>
                     </div>
@@ -76,9 +76,9 @@
                 <p class="title">Dernières sorties</p>
                 <div class="liste">
                 <?php
-                for($i = 0; $i < count($plats) && $i < 10; $i++){
+                for($i = 0; $i < count($plats) && $i < 6; $i++){
                     ?>
-                    <div class="plat" id="<?= $plats[0]['IdPlat'] ?>">
+                    <div class="container_plat" id="<?= $plats[$i]['IdPlat'] ?>">
                         <img src="./assets/img/plats/<?= $plats[$i]['IdPlat'] ?>.jpg" width="200" height="200">
                         <p class="nomplat"><?= $plats[$i]['Nom'] ?></p>
                     </div>
@@ -91,9 +91,9 @@
                 <p class="title">Les mieux notés</p>
                 <div class="liste">
                 <?php
-                for($i = 0; $i < count($platsMieuxNotes) && $i < 10; $i++){
+                for($i = 0; $i < count($platsMieuxNotes) && $i < 6; $i++){
                     ?>
-                    <div class="plat" id="<?= $platsMieuxNotes[$i]['IdPlat'] ?>">
+                    <div class="container_plat" id="<?= $platsMieuxNotes[$i]['IdPlat'] ?>">
                         <img src="./assets/img/plats/<?= $platsMieuxNotes[$i]['IdPlat'] ?>.jpg" width="200" height="200">
                         <p class="nomplat"><?= $platsMieuxNotes[$i]['Nom'] ?></p>
                     </div>
@@ -105,15 +105,7 @@
         </div>
     </div>
     <script src="<?= PATH_SCRIPTS?>script_hamburger.js"></script>
-    <script>
-        const plats = document.getElementsByClassName('plat');
-
-        for(let i = 0; i < plats.length; i++){
-            plats[i].addEventListener('click', function(){
-                window.location.href = `index.php?page=fiche&id=${plats[i].id}`;
-            });
-        }
-    </script>
+    <script src="<?= PATH_SCRIPTS ?>script_click_plat.js"></script>
 </body>
 
 <!--  Pied de page -->

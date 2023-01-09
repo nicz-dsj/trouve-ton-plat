@@ -38,7 +38,7 @@ function getPlats(){
 
 function getPlatsMieuxNotes(){
     $connexion = Connexion::getInstance()->getBdd();
-    $query = $connexion->prepare('SELECT * FROM Plat WHERE Note >= 3 ORDER BY Note DESC');
+    $query = $connexion->prepare('SELECT * FROM Plat p ORDER BY (SELECT ROUND(AVG(Note),1) as MoyenneArr FROM Note n WHERE n.IdPlat = p.IdPlat) DESC');
     $query->execute();
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
     $query->closeCursor();

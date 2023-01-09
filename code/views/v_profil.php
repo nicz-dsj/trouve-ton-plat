@@ -101,10 +101,10 @@
             }
             else{
                 foreach($platsFavoris as $plat){ ?>
-        <div class="plat" id="<?= $plat['IdPlat'] ?>">
-            <img src="./assets/img/plats/<?= $plat['IdPlat'] ?>.jpg" width="200" height="200">
-            <p class="nomplat"><?= $plat['Nom'] ?></p>
-        </div>
+            <div class="container_plat" id="<?= $plat['IdPlat'] ?>">
+                <img src="./assets/img/plats/<?= $plat['IdPlat'] ?>.jpg" width="200" height="200">
+                <p class="nomplat"><?= $plat['Nom'] ?></p>
+            </div>
         <?php
                 }
             }
@@ -122,7 +122,7 @@
             }
             else{
                 foreach($platsAjoutes as $plat){ ?>
-        <div class="plat" id="<?= $plat['IdPlat'] ?>">
+        <div class="container_plat" id="<?= $plat['IdPlat'] ?>">
             <img src="./assets/img/plats/<?= $plat['IdPlat'] ?>.jpg" width="200" height="200">
             <p class="nomplat"><?= $plat['Nom'] ?></p>
         </div>
@@ -134,15 +134,7 @@
     </div>
 </div>
 <script src="<?= PATH_SCRIPTS?>script_hamburger.js"></script>
-<script>
-    const plats = document.getElementsByClassName('plat');
-    
-    for(let i = 0; i < plats.length; i++){
-        plats[i].addEventListener('click', function(){
-            window.location.href = `index.php?page=fiche&id=${plats[i].id}`;
-        });
-    }
-</script>
+<script src="<?= PATH_SCRIPTS ?>script_click_plat.js"></script>
 
 
 <!--  Pied de page -->
