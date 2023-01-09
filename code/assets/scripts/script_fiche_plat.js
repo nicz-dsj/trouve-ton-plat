@@ -129,7 +129,6 @@ request.onload = function () {
      var listeEtapes = document.getElementById('liste-etapes');
      // On sépare le texte en lignes
      var lignes = texte.split('\n');
-     console.log(lignes);
      // On parcourt toutes les lignes
      lignes.forEach(function(ligne) {
       // On vérifie si la ligne commence par "ÉTAPE"
@@ -138,8 +137,12 @@ request.onload = function () {
         var infosEtape = ligne.split(':');
         // On crée un élément de liste et on lui affecte l'étape et le texte comme contenu
         var element = document.createElement('li');
-        element.innerHTML = "<br />"+ '<b>' + infosEtape[0] + '</b>: ' + infosEtape[1] + "<br />";
+        var trait = document.createElement('div');
+        console.log(trait);
+        trait.classList.add("trait");
+        element.innerHTML =  '<b>' + infosEtape[0] + '</b>: ' + infosEtape[1] + "<br />";
         // On ajoute l'élément à la liste des étapes
+        listeEtapes.appendChild(trait);
         listeEtapes.appendChild(element);
       }
       else {
