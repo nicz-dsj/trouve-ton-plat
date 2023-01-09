@@ -96,7 +96,7 @@
                         <span id="statutImage"></span>
                     </div>
 
-                    <div class="input">
+                    <div class="input last_input">
                         <input class='btn btn-primary' id="envoyer" name="submit" type="submit"
                             value="Envoyer la candidature"></p>
                     </div>
