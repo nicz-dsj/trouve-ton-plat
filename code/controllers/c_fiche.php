@@ -43,14 +43,14 @@ if(isset($_GET['id'])){
 
 <?php
 
-if(isset($_GET['fav']) && isset($_SESSION['logged'])){
-    if($_GET['fav'] == 'ajout'){
+if(isset($_POST['fav']) && isset($_SESSION['logged'])){
+    if($_POST['fav'] == 'ajout'){
         addFavoris($_SESSION['id'], $id);
     }
-    else if ($_GET['fav'] == 'suppr'){
+    else if ($_POST['fav'] == 'suppr'){
         removeFavoris($_SESSION['id'], $id);
     }
-    else if($_GET['fav'] == 'check'){
+    else if($_POST['fav'] == 'check'){
         if(checkFavoris($_SESSION['id'], $id) == true){
             echo '<p style="display: none;">favoris : oui</p>';
         }

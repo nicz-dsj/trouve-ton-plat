@@ -154,8 +154,9 @@ request.onload = function () {
 
     function checkFav(){
       const xhr = new XMLHttpRequest();
-      xhr.open("GET", `index.php?page=fiche&id=${dataPlat.IdPlat}&fav=check`);
-      xhr.send();
+      xhr.open("POST", window.location.href, true);
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      xhr.send("fav=check");
       xhr.onload = function(){
         if(xhr.readyState === 4 && xhr.status === 200){
           if(xhr.responseText.includes("favoris : oui")){
@@ -169,8 +170,9 @@ request.onload = function () {
         if(favbutton.classList.contains('active')){
           const xhr = new XMLHttpRequest();
           
-          xhr.open("GET", `index.php?page=fiche&id=${dataPlat.IdPlat}&fav=suppr`, true);
-          xhr.send();
+          xhr.open("POST", window.location.href, true);
+          xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+          xhr.send("fav=suppr");
           xhr.onload = function(){
             if(xhr.readyState === 4 && xhr.status === 200){
               favbutton.classList.toggle('active');
@@ -180,8 +182,9 @@ request.onload = function () {
         else{
           const xhr = new XMLHttpRequest();
     
-          xhr.open("GET", `index.php?page=fiche&id=${dataPlat.IdPlat}&fav=ajout`, true);
-          xhr.send();
+          xhr.open("POST", window.location.href, true);
+          xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+          xhr.send("fav=ajout");
           xhr.onload = function(){
             if(xhr.readyState === 4 && xhr.status === 200){
               favbutton.classList.toggle('active');

@@ -43,7 +43,7 @@ else if (isset($_GET['modification']) && $_GET['modification'] == "fail"){
             </fieldset>
             <fieldset class="item" id="item2">
                 <legend class="itemtitle">Informations de compte</legend>
-                <form id="updatelogin" method="post" action="index.php?page=modifierprofil&nom=<?= $utilisateur[0]['pseudoUtilisateur']?>">
+                <form id="updatelogin" method="post" action="index.php?page=modifierprofil">
                     <div class="formelement">
                         <label class="typetitle" for="login">Pseudo : </label>
                         <div class="inputwithbtn">
@@ -53,7 +53,7 @@ else if (isset($_GET['modification']) && $_GET['modification'] == "fail"){
                         <span class="helpmessage"></span>
                     </div>
                 </form>
-                <form id="updatemail" method="post" action="index.php?page=modifierprofil&nom=<?= $utilisateur[0]['pseudoUtilisateur']?>">
+                <form id="updatemail" method="post" action="index.php?page=modifierprofil">
                     <div class="formelement">
                         <label class="typetitle" for="mail">Adresse mail : </label>
                         <div class="inputwithbtn">
@@ -63,7 +63,7 @@ else if (isset($_GET['modification']) && $_GET['modification'] == "fail"){
                         <span class="helpmessage"></span>
                     </div>
                 </form>
-                <form id="updatepwd" method="post" action="index.php?page=modifierprofil&nom=<?= $utilisateur[0]['pseudoUtilisateur']?>">
+                <form id="updatepwd" method="post" action="index.php?page=modifierprofil">
                     <div class="formelement">
                         <label class="typetitle" for="pwd">Mot de passe : </label>
                         <input type="password" name="currentpwd" placeholder="Mot de passe actuel" required>
@@ -75,7 +75,7 @@ else if (isset($_GET['modification']) && $_GET['modification'] == "fail"){
                     </div>
                     <button name="updatepwdsubmit" disabled> Enregistrer les modifications </button>
                 </form>
-                <form id="updateabout" method="post" action="index.php?page=modifierprofil&nom=<?= $utilisateur[0]['pseudoUtilisateur']?>">
+                <form id="updateabout" method="post" action="index.php?page=modifierprofil">
                     <label class="typetitle" for="about">A propos : </label>
                     <input type="textarea" name="about" value="<?= $utilisateur[0]['description'] ?>">
                     <button name="updateaboutsubmit" disabled> Enregistrer les modifications </button>
@@ -98,7 +98,7 @@ else if (isset($_GET['modification']) && $_GET['modification'] == "fail"){
         <div class="content">
             <button class="back"> < </button>
             <p>Choisissez un avatar : </p>
-            <form method="post" action="index.php?page=modifierprofil&nom=<?= $utilisateur[0]['pseudoUtilisateur']?>">
+            <form method="post" action="index.php?page=modifierprofil">
                 <div class="list">
                     <input type="radio" name="avatar" id="avatar1" value="avatar1" <?= $utilisateur[0]['avatar'] == "avatar1" ? "checked" : ""?>><label for="avatar1"></label>
                     <input type="radio" name="avatar" id="avatar2" value="avatar2" <?= $utilisateur[0]['avatar'] == "avatar2" ? "checked" : ""?>><label for="avatar2"></label>
@@ -117,7 +117,7 @@ else if (isset($_GET['modification']) && $_GET['modification'] == "fail"){
         <div class="content">
             <button class="back"> < </button>
             <p>Selectionnez les catégories : </p>
-            <form method="post" action="index.php?page=modifierprofil&nom=<?= $utilisateur[0]['pseudoUtilisateur']?>">
+            <form method="post" action="index.php?page=modifierprofil">
                 <div class="list">
                     <?php
                         foreach($categories as $categorie){ ?>
@@ -146,7 +146,7 @@ else if (isset($_GET['modification']) && $_GET['modification'] == "fail"){
         <div class="content">
             <button class="back"> < </button>
             <p>Selectionnez les ingrédients : </p>
-            <form method="post" action="index.php?page=modifierprofil&nom=<?= $utilisateur[0]['pseudoUtilisateur']?>">
+            <form method="post" action="index.php?page=modifierprofil">
                 <div class="list">
                     <?php
                         foreach($ingredients as $ingredient){ ?>

@@ -115,7 +115,7 @@ function updateMail($nouv_mail, $id){
     return $n;
 }
 
-function updatePwd($nouv_pwd, $id_utilisateur){
+function updatePwd($nouv_pwd, $id){
     $connexion = Connexion::getInstance()->getBdd();
     $query = $connexion->prepare('UPDATE Utilisateur SET motDePasse = ? WHERE IdUtilisateur = ?');
     $query->execute(array($nouv_pwd, $id));
