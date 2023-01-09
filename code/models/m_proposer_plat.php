@@ -57,9 +57,9 @@ function ajoutImg($img,$idPlat){
   return $nomImg;
 }
 
-function ajoutIngr($idPlat,$idIngr,$quantite){
+function ajoutIngr($idPlat,$idIngr,$quantite,$unite){
   $connexion = Connexion::getInstance()->getBdd();
-  $query = $connexion->prepare('INSERT INTO Composer VALUES (?, ?,?)');
-  $query->execute(array($idPlat,$idIngr,$quantite));
+  $query = $connexion->prepare('INSERT INTO Composer VALUES (?, ?, ?, ?)');
+  $query->execute(array($idPlat,$idIngr,$quantite,$unite));
   $query->closeCursor();
 }

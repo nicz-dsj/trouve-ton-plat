@@ -22,7 +22,7 @@ if (isset($_SESSION['logged']) && $_SESSION['logged'] = 1) {
         $nomImg = ajoutImg($_FILES['image'],$idPlat);
         addPlat($idPlat, $_SESSION['id'], $_POST['nomPlat'], $_POST['descr'], date("Y-m-d"), $_POST['cat'], $_POST['recette'], $nomImg);
         //si nb_select est supérieur a 1, on ajoute les ingredients
-        ajoutIngr($idPlat, $_POST['ingr'], $_POST['quantite']);
+        ajoutIngr($idPlat, $_POST['ingr'], $_POST['quantite'],$_POST['unite']);
         array_push($tableau_idIngr, $_POST['ingr']);
         if ($nb_select > 1) {
             for ($i = 1; $i < $nb_select; $i++) {
@@ -30,7 +30,7 @@ if (isset($_SESSION['logged']) && $_SESSION['logged'] = 1) {
                 $idIngr = $_POST['ingr' . $i];
                 if (!in_array($idIngr, $tableau_idIngr)) {
                     array_push($tableau_idIngr, $idIngr);
-                    ajoutIngr($idPlat, $idIngr, $_POST['quantite' . $i]);
+                    ajoutIngr($idPlat, $idIngr, $_POST['quantite' . $i],$_POST['unite' . $i]);
                 }
             }
         }
