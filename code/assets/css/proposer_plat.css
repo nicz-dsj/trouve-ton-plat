@@ -90,11 +90,22 @@ form{
     text-align: center;
     resize:none;
 }
+.input_recette a{
+    width: 90%;
+    color: rgb(255, 0, 0);
+    font-size: 1em;
+    justify-content: flex-start;
+    padding-top: 1vh;
+}
+.input_recette a.savoir_plus{
+    padding-top: 1vh;
+    color:white;
+}
 .input textarea::placeholder{
-    color: rgb(255, 255, 255);
+    color: rgba(255, 255, 255, 0.41);
 }
 .input input::placeholder {
-    color: rgb(255, 255, 255);
+    color: rgba(255, 255, 255, 0.41);
 }
 .input input:focus {
     outline: none;
@@ -155,7 +166,7 @@ form{
     text-align: center;
 }
 .input_ingr::placeholder{
-    color: rgb(255, 255, 255);
+    color: rgba(255, 255, 255, 0.41);
 }
 .input_ingr:focus{
     outline: none;
@@ -177,7 +188,7 @@ form{
     border-radius: 10px;
     background-color:rgba(0,0, 0, 0.5);
     color: white;
-    font-size: 1.5em;
+    font-size: 1.4rem;
     text-align: center;
 }
 
@@ -188,7 +199,7 @@ form{
     border: #fff solid 3px;
     background-color:rgba(0,0, 0, 0.5);
     color: white;
-    font-size: 0.6em;
+    font-size: 1rem;
     text-align: center;
 }
 #unite-select{
@@ -199,7 +210,7 @@ form{
     border: #fff solid 3px;
     background-color:rgba(0,0, 0, 0.5);
     color: white;
-    font-size: 0.5em;
+    font-size: 1rem;
     text-align: center;
 }
 #quantite{
@@ -210,11 +221,11 @@ form{
     border: #fff solid 3px;
     background-color:rgba(0,0, 0, 0.5);
     color: white;
-    font-size: 0.5em;
+    font-size: 1rem;
     text-align: center;    
 }
 #quantite::placeholder{
-    color: rgb(255, 255, 255);
+    color: rgba(255, 255, 255, 0.41);
 }
 #quantite:focus{
     outline: none;
@@ -255,4 +266,7 @@ form{
 }
 .last_input{
     margin-bottom: 4vh;
+}
+option{
+    background-color:rgba(0,0, 0, 1);
 }

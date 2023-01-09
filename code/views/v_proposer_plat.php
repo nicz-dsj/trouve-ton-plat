@@ -55,6 +55,8 @@
         Mettre les pâtes.
                         Sortir les pâtes de la casserole." required></textarea>
                         <span id="statutRec"></span>
+                        <a id="savoir">En savoir plus.</a>
+                        <a id="moins" style="display: none;">Moins.</a>
                     </div>
 
                     <div class="input_ingr" id="input_ingr">

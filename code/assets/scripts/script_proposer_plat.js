@@ -1,6 +1,9 @@
 var button = document.getElementById("add_ingr");
 let nb_select_add = 1;
 var container_grid = document.getElementById("container_principal");
+var savoir = document.getElementById("savoir");
+var moins = document.getElementById("moins");
+
 
 // ajouter un nouveau select quand on clique sur le bouton
 button.addEventListener("click", function () {
@@ -73,4 +76,14 @@ button.addEventListener("click", function () {
   }
 });
 
-
+savoir.addEventListener("click", function(){
+  //change le content de savoir
+  savoir.classList.add("savoir_plus");
+  savoir.innerHTML = "Lors de la création d'un plat, vous avez pour obligation de renseigner la recette complete. Pour ceci, vous devez expliquer chaque étape de la recette, celle ci devra être écrite ligne par ligne, à chaque fin d'étape il vous faudra faire un retour à la ligne. Si ceci n'est pas fait nous ne pourrons prendre en charge votre demande de création de plat. Merci de votre compréhension.";
+  moins.style.display = "block";
+});
+moins.addEventListener("click", function(){
+  savoir.classList.remove("savoir_plus");
+  savoir.innerHTML = "En savoir plus";
+  moins.style.display = "none";
+});
