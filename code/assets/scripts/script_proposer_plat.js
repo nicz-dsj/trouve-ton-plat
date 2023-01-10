@@ -63,7 +63,7 @@ button.addEventListener("click", function () {
     div.appendChild(quantite);
     div.appendChild(unite);
     //on ajoute le select à la page avant le bouton
-    document.getElementById("container_ingr").after(div);
+    document.getElementById("container_principal").appendChild(div);
     document.getElementById("variable_js").value = nb_select_add;
 
     if (nb_select_add ==20){
@@ -83,18 +83,11 @@ button.addEventListener("click", function () {
 });
 
 button2.addEventListener("click", function () {
-  if (firstTimeClicked){
-    document.getElementById("container_principal").lastChild.remove(); //supprime un fils invisible pour le bon fonctionnement de la fonction
-    document.getElementById("container_principal").lastChild.remove();
-    nb_select_add--;
-    firstTimeClicked = false;
-  }
-  else{
+  
     if (nb_select_add-1 > 0) {
       nb_select_add--;
       document.getElementById("container_principal").lastChild.remove();
     }
-}
   if (nb_select_add == 1){
     button2.style.display = "none";
     container_grid.style.gridTemplateColumns = "1fr";
