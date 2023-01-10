@@ -222,7 +222,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
 
         jButton7.setText("Bannir/Debannir");
-        jButton7.setEnabled(false);
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
@@ -454,7 +453,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_CBUtilisateursActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
+        String item = (String) CBUtilisateurs.getSelectedItem();
+        String idUtilisateur = item.split(" ")[0];
+        bannirDebannir(idUtilisateur);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void CBPlatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBPlatsActionPerformed
@@ -475,7 +476,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void CBUtilisateursItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CBUtilisateursItemStateChanged
         String item = (String) CBUtilisateurs.getSelectedItem();
-        String idUtilisateur = item.split("0")[0];
+        String idUtilisateur = item.split(" ")[0];
         PanelUtilisateur temp = afficherUtilisateur(idUtilisateur);
         panelUtilisateurs.remove(0);
         panelUtilisateurs.add(temp, 0);
@@ -519,8 +520,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_recherche2ActionPerformed
 
     private void CBPlatsItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CBPlatsItemStateChanged
-        String item = (String) CBUtilisateurs.getSelectedItem();
-        String idPlat = item.split("0")[0];
+        String item = (String) CBPlats.getSelectedItem();
+        String idPlat = item.split(" ")[0];
+        System.out.println(idPlat);
         PanelPlat temp = afficherPlat(idPlat);
         panelPlats.remove(0);
         panelPlats.add(temp, 0);
@@ -648,15 +650,45 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private PanelUtilisateur afficherUtilisateur(String idUtilisateur) {
         String[] platsSoumis = new String[1], platsFavoris = new String[1];
         String description = new String(), pseudo = new String();
+        int cpt = 0;
 
         Statement nomOrdre = connect();
 
         ResultSet resultat;
         try {
-            resultat = nomOrdre.executeQuery("SELECT pseudoUtilisateur, description FROM Utilisateur WHERE idUtilisateur = '" + idUtilisateur);
+            //Vas chercher les informations de l'utilisateur
+            resultat = nomOrdre.executeQuery("SELECT pseudoUtilisateur, description FROM Utilisateur WHERE idUtilisateur = '" + idUtilisateur + "'");
             while (resultat.next()) {
                 pseudo = resultat.getString("pseudoUtilisateur");
                 description = resultat.getString("description");
+            }
+
+            //Vas chercher les plats favoris de l'utilisateur
+            resultat = nomOrdre.executeQuery("SELECT COUNT(idPlat) FROM Favoris WHERE IdUtilisateur = " + idUtilisateur);
+            while (resultat.next()) {
+                platsFavoris = new String[resultat.getInt(1)];
+            }
+
+            resultat = nomOrdre.executeQuery("SELECT p.IdPlat, Nom FROM Plat p, Favoris f WHERE f.IdUtilisateur = " + idUtilisateur + " AND p.IdPlat = f.IdPlat ORDER BY p.IdPlat");
+
+            cpt = 0;
+            while (resultat.next()) {
+                platsFavoris[cpt] = resultat.getString("IdPlat") + " - " + resultat.getString("Nom");
+                cpt++;
+            }
+
+            //Vas chercher les plats soumis par l'utilisateur
+            resultat = nomOrdre.executeQuery("SELECT COUNT(idPlat) FROM Plat WHERE IdUtilisateur = " + idUtilisateur);
+            while (resultat.next()) {
+                platsSoumis = new String[resultat.getInt(1)];
+            }
+
+            resultat = nomOrdre.executeQuery("SELECT IdPlat, Nom FROM Plat WHERE IdUtilisateur = " + idUtilisateur + " ORDER BY IdPlat");
+
+            cpt = 0;
+            while (resultat.next()) {
+                platsSoumis[cpt] = resultat.getString("IdPlat") + " - " + resultat.getString("Nom");
+                cpt++;
             }
         } catch (SQLException ex) {
             Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
@@ -666,42 +698,53 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     private PanelPlat afficherPlat(String idPlat) {
-        String idUtilisateur = new String(), utilisateur = new String(), nom = new String(), note = new String(), description = new String(), recette = new String(), idCategorie = new String(), categorie = new String();
-        String[][] ingredients = new String[2][1], images = new String[1][1];
+        String idUtilisateur = new String(), utilisateur = new String(), nomPlat = new String(), note = new String(), description = new String(), recette = new String(), idCategorie = new String(), categorie = new String();
+        String[] ingredients = new String[1], images = new String[1];
         int cpt = 0;
         Statement nomOrdre = connect();
         try {
-            ResultSet resultat = nomOrdre.executeQuery("SELECT * FROM Plat WHERE idPlat = " + idPlat );
-            while (resultat.next()) {
-                idUtilisateur = resultat.getString("idUtilisateur");
-                idCategorie = resultat.getString("idCategorie");
-                nom = resultat.getString("Nom");
-                description = resultat.getString("Description");
 
+            //Vas chercher les informations du plats
+            ResultSet resultat = nomOrdre.executeQuery("SELECT * FROM Plat WHERE idPlat = '" + idPlat + "'");
+            while (resultat.next()) {
+                idUtilisateur = resultat.getString("IdUtilisateur");
+                idCategorie = resultat.getString("IdCategorie");
+                nomPlat = resultat.getString("Nom");
+                description = resultat.getString("Description");
+                note = resultat.getString("Note");
                 recette = resultat.getString("recette");
             }
-            
-            resultat = nomOrdre.executeQuery("SELECT COUNT(idIngredient) FROM Composer WHERE idPlat = " + idPlat);
+
+            //Vas chercher les ingrédients du plat
+            resultat = nomOrdre.executeQuery("SELECT COUNT(idIngredient) FROM Composer WHERE idPlat = '" + idPlat + "'");
             while (resultat.next()) {
-                ingredients = new String[2][resultat.getInt(1)];
+                ingredients = new String[resultat.getInt(1)];
             }
-            
-            resultat = nomOrdre.executeQuery("SELECT idIngredient FROM Composer WHERE idPlat = " + idPlat);
-            
-            while (resultat.next()){
-                //ingredients
-            }
-            resultat = nomOrdre.executeQuery("SELECT pseudoUtilisateur FROM Utilisateur WHERE pseudoUtilisateur = " + idUtilisateur );
+
+            resultat = nomOrdre.executeQuery("SELECT i.IdIngredient, Nom FROM Ingredient i, Composer c WHERE c.IdPlat = " + idPlat + " AND c.IdIngredient = i.IdIngredient ORDER BY i.IdIngredient");
+
+            cpt = 0;
             while (resultat.next()) {
-                utilisateur = idUtilisateur + " " + resultat.getString("pseudoUtilisateur");
+                ingredients[cpt] = resultat.getString("IdIngredient") + " - " + resultat.getString("Nom");
+                cpt++;
             }
-            
-            
-                
+
+            //Vas chercher l'utilisateur ayant soumis le plat
+            resultat = nomOrdre.executeQuery("SELECT pseudoUtilisateur FROM Utilisateur WHERE idUtilisateur = '" + idUtilisateur + "'");
+            while (resultat.next()) {
+                utilisateur = resultat.getString("pseudoUtilisateur");
+            }
+
+            //Vas chercher la categorie du plat
+            resultat = nomOrdre.executeQuery("SELECT Nom FROM Categorie WHERE IdCategorie = '" + idCategorie + "'");
+            while (resultat.next()) {
+                categorie = resultat.getString("Nom");
+            }
+
         } catch (SQLException ex) {
             Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return new PanelPlat(utilisateur, nom, idPlat, categorie, note, ingredients[0], description, recette, images[0]);
+        return new PanelPlat(utilisateur, nomPlat, idPlat, categorie, note, ingredients, description, recette, images);
     }
 
     private DefaultComboBoxModel lister(String nomId, String nom, String table, String where) {
@@ -716,7 +759,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 nb = resultat.getInt(1);
             }
             liste = new String[nb];
-            resultat = nomOrdre.executeQuery("SELECT " + nomId + ", " + nom + " FROM " + table + " " + where);
+            resultat = nomOrdre.executeQuery("SELECT " + nomId + ", " + nom + " FROM " + table + " " + where + "ORDER BY " + nomId);
             int cpt = 0;
             while (resultat.next()) {
                 liste[cpt] = resultat.getString(nomId) + " - " + resultat.getString(nom);
@@ -773,5 +816,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
             Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    private void bannirDebannir(String idUtilisateur) {
+        Boolean statutBan = true;
+        Statement nomOrdre = connect();
+        
+        try {
+            ResultSet resultat = nomOrdre.executeQuery("SELECT statutBan FROM Utilisateur WHERE idUtilisateur = " + idUtilisateur);
+            while(resultat.next()){
+                statutBan = resultat.getBoolean("statutBan");
+            }
+            nomOrdre.executeUpdate("UPDATE Utilisateur SET statutBan = " + !statutBan.booleanValue() + "WHERE IdUtilisateur = " + idUtilisateur );
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
