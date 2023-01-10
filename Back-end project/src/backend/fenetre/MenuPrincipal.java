@@ -689,7 +689,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             resultat = nomOrdre.executeQuery("SELECT idIngredient FROM Composer WHERE idPlat = " + idPlat);
             
             while (resultat.next()){
-                ingredients
+                //ingredients
             }
             resultat = nomOrdre.executeQuery("SELECT pseudoUtilisateur FROM Utilisateur WHERE pseudoUtilisateur = " + idUtilisateur );
             while (resultat.next()) {
