@@ -1,12 +1,18 @@
 var button = document.getElementById("add_ingr");
+var button2 = document.getElementById("minus_ingr");
 let nb_select_add = 1;
 var container_grid = document.getElementById("container_principal");
 var savoir = document.getElementById("savoir");
 var moins = document.getElementById("moins");
+var firstTimeClicked = true;
 
 
 // ajouter un nouveau select quand on clique sur le bouton
 button.addEventListener("click", function () {
+  nb_select_moins = nb_select_add;
+  if (nb_select_add >0){
+    button2.style.display = "block";
+  }
   if (nb_select_add < 20) {
     var div = document.createElement("div");
     var select = document.createElement("select");
@@ -31,7 +37,7 @@ button.addEventListener("click", function () {
 
     quantite.setAttribute("type", "number");
     quantite.setAttribute("name", name_quantite);
-    quantite.setAttribute("placeholder", "quantité");
+    quantite.setAttribute("placeholder", "Quantité");
     quantite.setAttribute("required", "true");
     quantite.setAttribute("id","quantite");
 
@@ -73,6 +79,37 @@ button.addEventListener("click", function () {
   }
   if(nb_select_add == 4){
     container_grid.style.gridTemplateColumns = "1fr 1fr 1fr 1fr";
+  }
+});
+
+button2.addEventListener("click", function () {
+  if (firstTimeClicked){
+    document.getElementById("container_principal").lastChild.remove(); //supprime un fils invisible pour le bon fonctionnement de la fonction
+    document.getElementById("container_principal").lastChild.remove();
+    nb_select_add--;
+    firstTimeClicked = false;
+  }
+  else{
+    if (nb_select_add-1 > 0) {
+      nb_select_add--;
+      document.getElementById("container_principal").lastChild.remove();
+    }
+}
+  if (nb_select_add == 1){
+    button2.style.display = "none";
+    container_grid.style.gridTemplateColumns = "1fr";
+  }
+  if(nb_select_add == 2){
+    container_grid.style.gridTemplateColumns = "1fr 1fr";
+  }
+  if(nb_select_add == 3){
+    container_grid.style.gridTemplateColumns = "1fr 1fr 1fr";
+  }
+  if(nb_select_add == 4){
+    container_grid.style.gridTemplateColumns = "1fr 1fr 1fr 1fr";
+  }
+  if (nb_select_add < 20){
+    button.style.display = "block";
   }
 });
 

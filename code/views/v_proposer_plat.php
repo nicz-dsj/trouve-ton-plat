@@ -91,6 +91,9 @@
                         <button type="button" class="btn btn-secondary" class="btn_ajouter">
                             <img src="assets/img/add_symbole.png" alt="plus" width="20" height="20" id="add_ingr">
                         </button>
+                        <button type="button" class="btn btn-secondary" class="btn_moins">
+                            <img src="assets/img/minus_symbole.png" alt="moins" width="20" height="20" id="minus_ingr" style="display:none;">
+                        </button>
                     </div>
 
                     <!-- input file-->

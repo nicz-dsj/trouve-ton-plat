@@ -96,8 +96,10 @@ form{
     font-size: 1em;
     justify-content: flex-start;
     padding-top: 1vh;
+    cursor:pointer;
 }
 .input_recette a.savoir_plus{
+    cursor: initial;
     padding-top: 1vh;
     color:white;
 }
