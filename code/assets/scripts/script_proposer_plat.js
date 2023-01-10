@@ -1,3 +1,5 @@
+// on récupère nos éléments HTML
+
 var button = document.getElementById("add_ingr");
 var button2 = document.getElementById("minus_ingr");
 let nb_select_add = 1;
@@ -6,40 +8,46 @@ var savoir = document.getElementById("savoir");
 var moins = document.getElementById("moins");
 var firstTimeClicked = true;
 
-
 // ajouter un nouveau select quand on clique sur le bouton
 button.addEventListener("click", function () {
   nb_select_moins = nb_select_add;
-  if (nb_select_add >0){
+  // si il y a plus d'un select alors le bouton moins apparait
+  if (nb_select_add > 0) {
     button2.style.display = "block";
   }
+  //si il y a moins de 20 select alors on peut en ajouter
   if (nb_select_add < 20) {
+    //création de nos éléments
     var div = document.createElement("div");
     var select = document.createElement("select");
     var quantite = document.createElement("input");
     var unite = document.createElement("select");
 
-    var name_unite = "unite" + nb_select_add
+    var name_unite = "unite" + nb_select_add;
     var name_quantite = "quantite" + nb_select_add;
     var name_select = "ingr" + nb_select_add;
 
     nb_select_add++;
-    
-    div.classList.add("container_ingr")
-    unite.setAttribute("required","true");
-    unite.setAttribute("name",name_unite);
-    unite.setAttribute("id","unite-select")
 
+    div.classList.add("container_ingr");
+
+    //on ajoute les attributs à unite
+    unite.setAttribute("required", "true");
+    unite.setAttribute("name", name_unite);
+    unite.setAttribute("id", "unite-select");
+
+    // on ajoute les attributs à select
     select.setAttribute("required", "true");
     select.setAttribute("name", name_select);
     select.classList.add(".input_ingr");
-    select.setAttribute("id","ingr-select")
+    select.setAttribute("id", "ingr-select");
 
+    // on ajoute les attributs à quantite
     quantite.setAttribute("type", "number");
     quantite.setAttribute("name", name_quantite);
     quantite.setAttribute("placeholder", "Quantité");
     quantite.setAttribute("required", "true");
-    quantite.setAttribute("id","quantite");
+    quantite.setAttribute("id", "quantite");
 
     //recupere tous les ingrédients
     var options = document.getElementById("ingr-select").children;
@@ -53,66 +61,77 @@ button.addEventListener("click", function () {
       select.appendChild(option);
     }
 
+    // pour chaque unite, on crée une option
     for (var j = 0; j < options2.length; j++) {
-        var option2 = document.createElement("option");
-        option2.setAttribute("value", options2[j].value);
-        option2.innerHTML = options2[j].innerHTML;
-        unite.appendChild(option2);
-      }
+      var option2 = document.createElement("option");
+      option2.setAttribute("value", options2[j].value);
+      option2.innerHTML = options2[j].innerHTML;
+      unite.appendChild(option2);
+    }
+
+    // on ajoute tous nos éléments dans notre div
     div.appendChild(select);
     div.appendChild(quantite);
     div.appendChild(unite);
-    //on ajoute le select à la page avant le bouton
+
+    //on ajoute notre div dans la page au bon endroit
     document.getElementById("container_principal").appendChild(div);
+
+    //redéfinit le nombre de select dans un element HTML pour le récupérer en PHP éfficacement
     document.getElementById("variable_js").value = nb_select_add;
 
-    if (nb_select_add ==20){
-      //met en display non add_ingr
+    // si il y a 20 select alors le bouton plus disparait
+    if (nb_select_add == 20) {
       button.style.display = "none";
     }
   }
-  if(nb_select_add == 2){
+
+  // stylisation selon le nombre de select
+  if (nb_select_add == 2) {
     container_grid.style.gridTemplateColumns = "1fr 1fr";
   }
-  if(nb_select_add == 3){
+  if (nb_select_add == 3) {
     container_grid.style.gridTemplateColumns = "1fr 1fr 1fr";
   }
-  if(nb_select_add == 4){
+  if (nb_select_add == 4) {
     container_grid.style.gridTemplateColumns = "1fr 1fr 1fr 1fr";
   }
 });
 
 button2.addEventListener("click", function () {
-  
-    if (nb_select_add-1 > 0) {
-      nb_select_add--;
-      document.getElementById("container_principal").lastChild.remove();
-    }
-  if (nb_select_add == 1){
+  // on supprime la derniere div ajouté
+  if (nb_select_add - 1 > 0) {
+    nb_select_add--;
+    document.getElementById("container_principal").lastChild.remove();
+  }
+
+  //stylisation selon le nombre de select présent
+  if (nb_select_add == 1) {
     button2.style.display = "none";
     container_grid.style.gridTemplateColumns = "1fr";
   }
-  if(nb_select_add == 2){
+  if (nb_select_add == 2) {
     container_grid.style.gridTemplateColumns = "1fr 1fr";
   }
-  if(nb_select_add == 3){
+  if (nb_select_add == 3) {
     container_grid.style.gridTemplateColumns = "1fr 1fr 1fr";
   }
-  if(nb_select_add == 4){
+  if (nb_select_add == 4) {
     container_grid.style.gridTemplateColumns = "1fr 1fr 1fr 1fr";
   }
-  if (nb_select_add < 20){
+  if (nb_select_add < 20) {
     button.style.display = "block";
   }
 });
 
-savoir.addEventListener("click", function(){
+savoir.addEventListener("click", function () {
   //change le content de savoir
   savoir.classList.add("savoir_plus");
-  savoir.innerHTML = "Lors de la création d'un plat, vous avez pour obligation de renseigner la recette complete. Pour ceci, vous devez expliquer chaque étape de la recette, celle ci devra être écrite ligne par ligne, à chaque fin d'étape il vous faudra faire un retour à la ligne. Si ceci n'est pas fait nous ne pourrons prendre en charge votre demande de création de plat. Merci de votre compréhension.";
+  savoir.innerHTML =
+    "Lors de la création d'un plat, vous avez pour obligation de renseigner la recette complete. Pour ceci, vous devez expliquer chaque étape de la recette, celle ci devra être écrite ligne par ligne, à chaque fin d'étape il vous faudra faire un retour à la ligne. Si ceci n'est pas fait nous ne pourrons prendre en charge votre demande de création de plat. Merci de votre compréhension.";
   moins.style.display = "block";
 });
-moins.addEventListener("click", function(){
+moins.addEventListener("click", function () {
   savoir.classList.remove("savoir_plus");
   savoir.innerHTML = "En savoir plus.";
   moins.style.display = "none";
