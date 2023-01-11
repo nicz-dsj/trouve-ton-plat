@@ -45,8 +45,8 @@
                             if($i < 3 && $i < count($prefCategorie) - 1){
                                 echo $prefCategorie[$i]['Nom'].", ";
                             }
-                            else if($i == 3 || $i == count($prefCategorie) - 1){
-                                echo $prefCategorie[$i]['Nom'];
+                            else if($i == 3 || $i == count($prefCategorie)){
+                                echo $prefCategorie[3]['Nom'];
                             }
                             else{
                                 echo '...';
@@ -67,7 +67,7 @@
                             if($i < 3 && $i < count($prefIngredients) - 1){
                                 echo $prefIngredients[$i]['Nom'].", ";
                             }
-                            else if($i == 3 || $i == count($prefIngredients) - 1){
+                            else if($i == 3 || $i == count($prefIngredients)){
                                 echo $prefIngredients[$i]['Nom'];
                             }
                             else{

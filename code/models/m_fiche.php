@@ -85,10 +85,27 @@ function getNote($id){
  * @param int $id L'ID du plat
  */
 function addFavoris($id_utilisateur, $id_plat){
+    if (!alreadyFav($id_utilisateur,$id_plat)){
+        $connexion = Connexion::getInstance()->getBdd();
+        $query = $connexion->prepare('INSERT INTO Favoris VALUES(?,?)');
+        $query->execute(array($id_plat, $id_utilisateur));
+        $query->closeCursor();
+    }
+}
+function alreadyFav($id_utilisateur,$id_plat){
+    //verifie si un plat est deja en favoris
     $connexion = Connexion::getInstance()->getBdd();
-    $query = $connexion->prepare('INSERT INTO Favoris VALUES(?,?)');
-    $query->execute(array($id_plat, $id_utilisateur));
+    $query = $connexion->prepare('SELECT * FROM Favoris WHERE IdUtilisateur = ? AND IdPlat = ?');
+    $query->execute(array($id_utilisateur,$id_plat));
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
     $query->closeCursor();
+    //si le plat est deja en favoris, on retourne true
+    if(count($result) > 0){
+        return true;
+    }
+    //sinon on retourne false
+    return false;
+
 }
 
 /**

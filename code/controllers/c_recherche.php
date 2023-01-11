@@ -23,7 +23,6 @@ sizeof($liAssocHTML[1]);
 if (isset($_POST['frecherche'])) {
     $recherche = $_POST['frecherche'];
     $plats = recherchePlat($recherche);
-    print_r($plats);
 }
 
 require_once(PATH_VIEWS.$page.'.php');

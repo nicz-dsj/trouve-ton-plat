@@ -35,7 +35,7 @@
                         <span id="statutDescr"></span>
                     </div>
 
-                    <!--  Catégorie sous forme d'un select du plat -->
+                    <!--  Catégorie sous forme d'un selecto du plat -->
                     <div class="input">
                         <label for="text">Catégorie:</label>
                         <select name="cat" id="cat-select" required>
