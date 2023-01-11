@@ -46,3 +46,20 @@ function getPlatsAjoutes($id){
     $query->closeCursor();
     return $result;
 }
+
+function getAchievementFromUser($id){
+    $connexion = Connexion::getInstance()->getBdd();
+    $query = $connexion->prepare('SELECT idAchiev FROM Composer_achievement WHERE IdUtilisateur = ?');
+    $query->execute(array($id));
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+    $query->closeCursor();
+    return $result;
+}
+function getAchievementFromBd($idAchiev){
+    $connexion = Connexion::getInstance()->getBdd();
+    $query = $connexion->prepare('SELECT nameAchiev, descriptionAchiev FROM Achievement WHERE idAchiev = ?');
+    $query->execute(array($idAchiev));
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+    $query->closeCursor();
+    return $result;
+}

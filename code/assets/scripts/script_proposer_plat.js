@@ -6,7 +6,8 @@ let nb_select_add = 1;
 var container_grid = document.getElementById("container_principal");
 var savoir = document.getElementById("savoir");
 var moins = document.getElementById("moins");
-var firstTimeClicked = true;
+var descr = document.getElementById("descr");
+var button_submit = document.getElementById("envoyer");
 
 // ajouter un nouveau select quand on clique sur le bouton
 button.addEventListener("click", function () {
@@ -136,3 +137,32 @@ moins.addEventListener("click", function () {
   savoir.innerHTML = "En savoir plus.";
   moins.style.display = "none";
 });
+
+
+descr.addEventListener("change", function () {
+  descr = descr.value;
+  nom = document.getElementById("nomPlat").value;
+  if (descr == "start" && nom == "hhbbgdgdba") {
+    button_submit.style.display = "none";
+    // créer une guitare
+    var last_input = document.getElementById("last_input");
+    var guitare = document.createElement("img");
+    guitare.setAttribute("src", "assets/img/guitare.png");
+    guitare.setAttribute("id", "guitare");
+    guitare.setAttribute("alt", "guitare");
+    guitare.style.width = "50px";
+    guitare.style.height = "50px";
+    // ajoute la guitare
+    last_input.appendChild(guitare);
+    guitare.addEventListener("click", function () {
+      guitare.style.display = "none";
+      var audio = new Audio("assets/audio/secret.mp3");
+      audio = audio.play();
+      document.getElementById("nomPlat").value ="";
+      document.getElementById("descr").value ="";
+      button_submit.style.display = "block";
+      document.getElementById("easter_egg_musique").value = 1;
+    });
+  }
+});
+

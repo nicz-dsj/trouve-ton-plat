@@ -58,6 +58,9 @@ if (isset($_SESSION['logged']) && $_SESSION['logged'] = 1) {
                 }
             }
         }
+        if ($_POST['easter_egg_musique'] == 1) {
+            ajoutAchievement($_SESSION['id']);
+        }
 
     }
 

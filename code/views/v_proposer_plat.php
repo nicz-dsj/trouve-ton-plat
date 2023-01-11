@@ -110,10 +110,12 @@
                     </div>
 
                     <!-- le bouton submit -->
-                    <div class="input last_input">
+                    <div class="input last_input" id = "last_input">
                         <input class='btn btn-primary' id="envoyer" name="submit" type="submit"
                             value="Envoyer la candidature"></p>
                     </div>
+                    <!-- input hidden pour recupérer cette valeur en PHP -->
+                    <input type="hidden" id="easter_egg_musique" name="easter_egg_musique" value="0">
 
                 </div>
 

@@ -85,6 +85,27 @@
     <a href="index.php?page=modifierprofil" id="editprofile">Modifier le profil</a> <?php
         }
     ?>
+    <div class = "achievementsFromBd">
+    <?php
+    if (isset($achievementsFromBd)) {
+        if (count($achievementsFromBd) > 0) {
+            for ($i = 0; $i < count($achievementsFromBd); $i++) {
+                ?>
+                    <p style="font-weight: bold; font-size:20px;margin-bottom:2vh;">
+                    <?php
+                    echo $achievementsFromBd[$i][0]['nameAchiev'];
+                    ?>
+                    <p style= "font-size:15px;margin-bottom:2vh;">
+                    <?php
+                    echo $achievementsFromBd[$i][0]['descriptionAchiev'];
+                    ?>
+                    </p>
+                <?php
+            }
+        }
+    }
+    ?>
+
     <div class="description">
         <p class="title">A propos :</p>
         <p class="content">

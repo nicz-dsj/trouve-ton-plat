@@ -71,6 +71,14 @@ function ajoutIngr($idPlat,$idIngr,$quantite,$unite){
   $query->closeCursor();
 }
 
+function ajoutAchievement($idUtilisateur){
+  // cette fonction ajoute un achievement a l'utilisateur qui a propose un plat
+  $connexion = Connexion::getInstance()->getBdd();
+  $query = $connexion->prepare('INSERT INTO Composer_achievement VALUES (1, ?)');
+  $query->execute(array($idUtilisateur));
+  $query->closeCursor();
+}
+
 function reecriture_recette($recette){
   
   // cette fonction reecrit la recette pour qu'elle soit plus lisible et qu'elle soit parsé pour la fiche plat
