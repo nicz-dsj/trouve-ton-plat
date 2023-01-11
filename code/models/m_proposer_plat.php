@@ -71,12 +71,28 @@ function ajoutIngr($idPlat,$idIngr,$quantite,$unite){
   $query->closeCursor();
 }
 
-function ajoutAchievement($idUtilisateur){
+function ajoutAchievement($idUtilisateur,$idAchiev){
   // cette fonction ajoute un achievement a l'utilisateur qui a propose un plat
   $connexion = Connexion::getInstance()->getBdd();
-  $query = $connexion->prepare('INSERT INTO Composer_achievement VALUES (1, ?)');
+  $query = $connexion->prepare('INSERT INTO Composer_achievement VALUES (?, ?)');
   $query->execute(array($idUtilisateur));
   $query->closeCursor();
+}
+function checkAchievement($idUtilisateur,$idAchiev){
+  $connexion = Connexion::getInstance()->getBdd();
+  // regarde si l'utilisateur à deja l'achievement 1
+  $query = $connexion->prepare('SELECT * FROM Composer_achievement WHERE IdUtilisateur=? AND IdAchiev=?');
+  $query->execute(array($idUtilisateur));
+  $result = $query->fetch(PDO::FETCH_ASSOC);
+  $query->closeCursor();
+  // si result est vide alors l'utilisateur n'a pas encore de achievement
+  if(empty($result)){
+    return false;
+  }
+  else{
+    return true;
+  }
+
 }
 
 function reecriture_recette($recette){
@@ -99,4 +115,13 @@ function reecriture_recette($recette){
   // supprime le dernier retour à la ligne situé à la fin de la chaine de caractère
   $recette_final = substr($recette_final, 0, -1);
   return $recette_final;
+}
+function getNbPlatUser($idUtilisateur){
+  // cette fonction recupere le nombre de plat que l'utilisateur a propose
+  $connexion = Connexion::getInstance()->getBdd();
+  $query = $connexion->prepare('SELECT COUNT(*) FROM Plat WHERE IdUtilisateur=?');
+  $query->execute(array($idUtilisateur));
+  $result = $query->fetch(PDO::FETCH_ASSOC);
+  $query->closeCursor();
+  return $result["COUNT(*)"];
 }

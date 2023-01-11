@@ -5,6 +5,7 @@ require_once(PATH_MODELS.'m_proposer_plat.php');
 $categories = getCategorie();
 $ingredients = getIngredients();
 $nb_selects = 0;
+$nb_plat_user = getNbPlatUser($_SESSION['id']);
 
 // si l'utilisateur est connecté
 if (isset($_SESSION['logged']) && $_SESSION['logged'] = 1) {
@@ -36,6 +37,11 @@ if (isset($_SESSION['logged']) && $_SESSION['logged'] = 1) {
         // on réecrit la recette
         $recette = reecriture_recette($_POST['recette']);
 
+        // on met une condition si l'utilisateur à 4 plats ajouté et qu'il en rentre un nouveau il obtient un nouveau succès
+        if ($nb_plat_user==4){
+            ajoutAchievements($_SESSION['id'], 3);
+        }
+
         // on ajoute le plat à la bd
         addPlat($idPlat, $_SESSION['id'], $_POST['nomPlat'], $_POST['descr'], date("Y-m-d"), $_POST['cat'], $recette, $nomImg);
 
@@ -59,7 +65,9 @@ if (isset($_SESSION['logged']) && $_SESSION['logged'] = 1) {
             }
         }
         if ($_POST['easter_egg_musique'] == 1) {
-            ajoutAchievement($_SESSION['id']);
+            if (!checkAchievement($_SESSION['id'], 1)) {
+                ajoutAchievement($_SESSION['id'], 1);
+            }
         }
 
     }
