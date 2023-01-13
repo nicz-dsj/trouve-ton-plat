@@ -22,7 +22,7 @@ import javax.swing.DefaultComboBoxModel;
 public class MenuPrincipal extends javax.swing.JFrame {
 
     private Connection connexion;
-
+    
     //Declaration des composants IHM
     private PanelConnexion panelConnexion;
     private CardLayout cardLayout;
@@ -65,7 +65,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         CBUtilisateurs = new javax.swing.JComboBox<>();
         jButton5 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        BBan = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         recherche = new javax.swing.JTextField();
         panelEvenements = new javax.swing.JPanel();
@@ -221,10 +221,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButton7.setText("Bannir/Debannir");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        BBan.setText("Bannir/Debannir");
+        BBan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                BBanActionPerformed(evt);
             }
         });
 
@@ -264,7 +264,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(BBan, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -272,7 +272,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton7)
+                    .addComponent(BBan)
                     .addComponent(jButton5)
                     .addComponent(jLabel3)
                     .addComponent(recherche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -452,11 +452,17 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_CBUtilisateursActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void BBanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BBanActionPerformed
         String item = (String) CBUtilisateurs.getSelectedItem();
         String idUtilisateur = item.split(" ")[0];
-        bannirDebannir(idUtilisateur);
-    }//GEN-LAST:event_jButton7ActionPerformed
+        if(BBan.getText().equals("Bannir")){
+            bannir(idUtilisateur);
+        } else {
+            debannir(idUtilisateur);
+        }
+        checkBan(idUtilisateur);
+        
+    }//GEN-LAST:event_BBanActionPerformed
 
     private void CBPlatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBPlatsActionPerformed
         // TODO add your handling code here:
@@ -478,6 +484,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
         String item = (String) CBUtilisateurs.getSelectedItem();
         String idUtilisateur = item.split(" ")[0];
         PanelUtilisateur temp = afficherUtilisateur(idUtilisateur);
+     
+        checkBan(idUtilisateur);
+        
         panelUtilisateurs.remove(0);
         panelUtilisateurs.add(temp, 0);
         panelUtilisateurs.revalidate();
@@ -522,7 +531,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void CBPlatsItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CBPlatsItemStateChanged
         String item = (String) CBPlats.getSelectedItem();
         String idPlat = item.split(" ")[0];
-        System.out.println(idPlat);
+        
+        
+        
         PanelPlat temp = afficherPlat(idPlat);
         panelPlats.remove(0);
         panelPlats.add(temp, 0);
@@ -592,6 +603,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BBan;
     private javax.swing.JComboBox<String> CBPlats;
     private javax.swing.JComboBox<String> CBUtilisateurs;
     private javax.swing.JCheckBox ChBSoumis;
@@ -606,7 +618,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
@@ -818,18 +829,46 @@ public class MenuPrincipal extends javax.swing.JFrame {
         return null;
     }
 
-    private void bannirDebannir(String idUtilisateur) {
-        Boolean statutBan = true;
+    private void bannir(String idUtilisateur) {   
         Statement nomOrdre = connect();
-        
-        try {
-            ResultSet resultat = nomOrdre.executeQuery("SELECT statutBan FROM Utilisateur WHERE idUtilisateur = " + idUtilisateur);
-            while(resultat.next()){
-                statutBan = resultat.getBoolean("statutBan");
-            }
-            nomOrdre.executeUpdate("UPDATE Utilisateur SET statutBan = " + !statutBan.booleanValue() + "WHERE IdUtilisateur = " + idUtilisateur );
+        try {  
+            nomOrdre.executeUpdate("UPDATE Utilisateur SET statutBan = " + true + " WHERE idUtilisateur = " + idUtilisateur);
         } catch (SQLException ex) {
             Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void debannir(String idUtilisateur) {   
+        Statement nomOrdre = connect();
+        try {  
+            nomOrdre.executeUpdate("UPDATE Utilisateur SET statutBan = " + false + " WHERE idUtilisateur = " + idUtilisateur);
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private boolean getStatutBan(String idUtilisateur) {
+        boolean statutBan = false;
+        try {
+            
+            Statement nomOrdre = connect();
+            ResultSet resultat = nomOrdre.executeQuery("SELECT statutBan FROM Utilisateur WHERE idUtilisateur = " + idUtilisateur);
+            
+            while (resultat.next()) {
+                statutBan = resultat.getBoolean("statutBan");
+            }
+            
+                    } catch (SQLException ex) {
+            Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return statutBan;     
+    }
+    
+    private void checkBan(String idUtilisateur){
+        if(getStatutBan(idUtilisateur)){
+            BBan.setText("Debannir");
+        } else {
+            BBan.setText("Bannir");
         }
     }
 }
