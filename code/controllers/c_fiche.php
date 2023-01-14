@@ -42,6 +42,19 @@ if(isset($_GET['id'])){
 </p>
 
 <?php
+if(isset($_POST['noteNew']) && isset($_SESSION['logged'])){
+    $note = htmlspecialchars($_POST['noteNew']);
+    $id = htmlspecialchars($_POST['id']);
+    if($note >= 0 && $note <= 5){
+        $dejaAttrib = checkNote($_SESSION['id'], $id);
+        if($dejaAttrib == true){
+            updateNotePlat($_SESSION['id'], $id, $note);
+        }
+        else{
+            addNotePlat($_SESSION['id'], $id, $note);
+        }
+    }
+}
 
 if(isset($_POST['fav']) && isset($_SESSION['logged'])){
     if($_POST['fav'] == 'ajout'){

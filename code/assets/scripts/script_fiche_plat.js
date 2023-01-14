@@ -31,6 +31,8 @@ function afficherEtoiles(note) {
 
       // On crée un élément span qui servira à afficher l'étoile
       var span = document.createElement('span');
+      span.classList.add('etoile');
+      span.setAttribute("data-value", i);
 
       if(noteArr != 0){
         if (i == noteArr) {
@@ -76,6 +78,33 @@ function afficherEtoiles(note) {
         // On remet les étoiles dans leur état initial (pleines, à moitié pleines ou vides)
         afficherEtoiles(note);
       });
+
+      span.addEventListener('click', function() {
+        if (document.getElementsByClassName("con")[0].childElementCount > 1) {
+          // Get the value of the star
+          var value = this.getAttribute('data-value');
+          console.log(value);
+
+          // Send a POST request to the server
+          var request = new XMLHttpRequest();
+          request.open('POST', window.location.href, true);
+          request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+          request.send('noteNew=' + value);
+          request.onload = function() {
+            if (request.readyState === 4 && request.status === 200) {
+              // Update the stars
+              console.log("AAAAAAAAA");
+            } else {
+              // Show a message to the user
+              console.log("Erreur lors de la soumission de la note.");
+            }
+          };
+        } else {
+          // Show a message to the user
+          console.log("Vous devez être connecté pour noter un plat.");
+        }
+      });
+
       etoiles.push(span);
     }
     // On récupère l'élément HTML qui va contenir les étoiles
@@ -122,6 +151,7 @@ request.onload = function () {
     date.getElementsByTagName("p")[0].innerHTML = dataPlat.DatePublication;
     recette.getElementsByTagName("p")[0].innerHTML = dataPlat.recette;
     afficherEtoiles(dataNote.MoyenneArr);
+    const idPLAT = dataPlat.IdPlat;
 
      // On récupère l'élément qui contient le texte
      var texte = recette.getElementsByTagName("p")[0].innerHTML;
@@ -199,4 +229,3 @@ request.onload = function () {
     console.error("Erreur lors de la récupération des données");
   }
 };
-

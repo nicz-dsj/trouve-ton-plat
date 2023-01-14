@@ -16,7 +16,6 @@ define('MENU_PROPOSER_PLAT','Proposer un plat');
 
 define('TEXTE_PAGE_404','Oops, la page demandée n\'existe pas !');
 define('MESSAGE_ERREUR',"Une erreur s'est produite");
-define('MAUVAIS_PHOTO_ID',"Identifiant de photo incorrect dans l'URL");
 
 
 define('TITRE', 'Trouve Ton Plat');

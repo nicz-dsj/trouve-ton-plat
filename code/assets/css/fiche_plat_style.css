@@ -94,6 +94,9 @@ margin-bottom:10px;
     height: 30px;
     cursor: pointer;
     caret-color: transparent;
+    position: absolute;
+    top: 1%;
+    right: 1%;
 }
 
 .favbutton.active{

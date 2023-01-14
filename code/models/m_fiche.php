@@ -78,6 +78,36 @@ function getNote($id){
     return $result;
 }
 
+function checkNote($id_utilisateur, $id_plat){
+    $connexion = Connexion::getInstance()->getBdd();
+    $query = $connexion->prepare('SELECT * FROM Note WHERE IdUtilisateur = ? AND IdPlat = ?');
+    $query->execute(array($id_utilisateur,$id_plat));
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+    $query->closeCursor();
+    if(count($result) > 0){
+        return true;
+    }
+    return false;
+}
+
+function addNote($id_utilisateur, $id_plat, $note){
+    if (!checkNote($id_utilisateur, $id_plat)){
+        $connexion = Connexion::getInstance()->getBdd();
+        $query = $connexion->prepare('INSERT INTO Note VALUES(?,?,?)');
+        $query->execute(array($id_utilisateur, $id_plat, $note));
+        $query->closeCursor();
+    }
+}
+
+function updateNote($id_utilisateur, $id_plat, $note){
+    if (checkNote($id_utilisateur, $id_plat)){
+        $connexion = Connexion::getInstance()->getBdd();
+        $query = $connexion->prepare('UPDATE Note SET Note = ? WHERE IdUtilisateur = ? AND IdPlat = ?');
+        $query->execute(array($note, $id_utilisateur, $id_plat));
+        $query->closeCursor();
+    }
+}
+
 /**
  * Ajoute dans la base le plat en favori
  * 

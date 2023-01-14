@@ -81,13 +81,15 @@
                                 </select>
                                 <input type="number" name="quantite" id="quantite" placeholder="Quantité" required>
                                 <select name="unite" id="unite-select" required>        <!-- Ici, on les créer à la main car il n'y a pas d'élément unité dans la BD -->
-                                    <option value="gramme">Grammes</option>
-                                    <option value="litres">Litres</option>
-                                    <option value="unite">décilitres</option>
-                                    <option value="unite">Millilitres</option>
-                                    <option value="soupe">Cuilleres à soupe</option>
-                                    <option value="cafe">Cuilleres à café</option>
-                                    <option value="unite">Unité</option>
+                                    <option value="gramme">Gramme(s)</option>
+                                    <option value="litres">Litre(s)</option>
+                                    <option value="unite">Décilitre(s)</option>
+                                    <option value="unite">Millilitre(s)</option>
+                                    <option value="soupe">Cuillère(s) à soupe</option>
+                                    <option value="cafe">Cuillère(s) à café</option>
+                                    <option value="unite">Unité(s)</option>
+                                    <option value="sachet">Sachet(s)</option>
+                                    <option value="pincée">Pincée(s)</option>
                                 </select>
                                 <input type="hidden" id="variable_js" name="variable_js" value="1">
                             </div>

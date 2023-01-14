@@ -14,7 +14,7 @@ function getIngredients(){
 
 function getPlats(){
     $connexion = Connexion::getInstance()->getBdd();
-    $query = $connexion->prepare('SELECT * FROM Plat');
+    $query = $connexion->prepare('SELECT * FROM Plat WHERE Ajoutee = 1');
     $query->execute();
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
     $query->closeCursor();

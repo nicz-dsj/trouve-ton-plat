@@ -19,6 +19,12 @@ else if (isset($_SESSION['logged']) && $_SESSION['logged'] == 2){
     <?php
     $_SESSION = array();
 }
+else if (isset($_SESSION['logged']) && $_SESSION['logged'] == 3){
+    ?>
+    <p class='alert alert-danger'> <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span><b> Vous devez être connecté pour pouvoir proposer un plat !</b></p>
+    <?php
+    $_SESSION = array();
+}
 
 ?>
 

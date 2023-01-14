@@ -76,6 +76,7 @@ if (isset($_SESSION['logged']) && $_SESSION['logged'] = 1) {
 }
 
 else{
+    $_SESSION['logged'] = 3;
     header('Location:index.php?page=login');
 }
 
