@@ -100,8 +100,25 @@ function afficherEtoiles(note) {
             }
           };
         } else {
-          // Show a message to the user
-          console.log("Vous devez être connecté pour noter un plat.");
+          var alertElement = document.createElement("p");
+          alertElement.classList.add("alert", "alert-danger");
+
+          // Create a <span> element for the close button
+          var closeButton = document.createElement("span");
+          closeButton.classList.add("closebtn");
+
+          // Add an onclick event to the <span> element to hide the parent <p> element
+          closeButton.onclick = function() {
+            this.parentElement.style.display = "none";
+          };
+          closeButton.innerHTML = "&times;";
+          // Create a <b> element for the text
+          var text = document.createElement("b");
+          text.textContent = "Vous devez être connecté pour pouvoir noter un plat !";
+          // Append the elements
+          alertElement.appendChild(closeButton);
+          alertElement.appendChild(text);
+          document.body.appendChild(alertElement);
         }
       });
 
