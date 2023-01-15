@@ -6,6 +6,8 @@ package backend.fenetre;
 
 import com.mysql.cj.jdbc.exceptions.CommunicationsException;
 import java.awt.CardLayout;
+import java.io.File;
+import java.sql.PreparedStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -22,7 +24,7 @@ import javax.swing.DefaultComboBoxModel;
 public class MenuPrincipal extends javax.swing.JFrame {
 
     private Connection connexion;
-    
+
     //Declaration des composants IHM
     private PanelConnexion panelConnexion;
     private CardLayout cardLayout;
@@ -67,20 +69,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         BBan = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        recherche = new javax.swing.JTextField();
-        panelEvenements = new javax.swing.JPanel();
+        rechercheUtilisateur = new javax.swing.JTextField();
+        panelCreateEvent = new javax.swing.JPanel();
         panelPlats = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         CBPlats = new javax.swing.JComboBox<>();
         jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
+        BValider = new javax.swing.JButton();
+        BSupprimer = new javax.swing.JButton();
         ChBValide = new javax.swing.JCheckBox();
         ChBSoumis = new javax.swing.JCheckBox();
         jLabel13 = new javax.swing.JLabel();
-        recherche2 = new javax.swing.JTextField();
+        recherchePlat = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -103,7 +105,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
 
         jButton3.setText("Créer un évènement");
-        jButton3.setEnabled(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -128,7 +129,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jLabel4.setText("Evenements");
 
-        jButton8.setText("Créer un évènement");
+        jButton8.setText("Gérer les évènements");
         jButton8.setEnabled(false);
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -230,18 +231,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jLabel3.setText("Rechercher un utilisateur :");
 
-        recherche.setForeground(new java.awt.Color(102, 102, 102));
-        recherche.addFocusListener(new java.awt.event.FocusAdapter() {
+        rechercheUtilisateur.setForeground(new java.awt.Color(102, 102, 102));
+        rechercheUtilisateur.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                rechercheFocusGained(evt);
+                rechercheUtilisateurFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                rechercheFocusLost(evt);
+                rechercheUtilisateurFocusLost(evt);
             }
         });
-        recherche.addActionListener(new java.awt.event.ActionListener() {
+        rechercheUtilisateur.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rechercheActionPerformed(evt);
+                rechercheUtilisateurActionPerformed(evt);
             }
         });
 
@@ -260,7 +261,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(recherche, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(rechercheUtilisateur, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
@@ -275,7 +276,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                     .addComponent(BBan)
                     .addComponent(jButton5)
                     .addComponent(jLabel3)
-                    .addComponent(recherche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(rechercheUtilisateur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -287,20 +288,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jPanel3.add(panelUtilisateurs, "card2");
 
-        panelEvenements.setBackground(new java.awt.Color(255, 153, 153));
+        panelCreateEvent.setBackground(new java.awt.Color(255, 153, 153));
 
-        javax.swing.GroupLayout panelEvenementsLayout = new javax.swing.GroupLayout(panelEvenements);
-        panelEvenements.setLayout(panelEvenementsLayout);
-        panelEvenementsLayout.setHorizontalGroup(
-            panelEvenementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panelCreateEventLayout = new javax.swing.GroupLayout(panelCreateEvent);
+        panelCreateEvent.setLayout(panelCreateEventLayout);
+        panelCreateEventLayout.setHorizontalGroup(
+            panelCreateEventLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 939, Short.MAX_VALUE)
         );
-        panelEvenementsLayout.setVerticalGroup(
-            panelEvenementsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panelCreateEventLayout.setVerticalGroup(
+            panelCreateEventLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 507, Short.MAX_VALUE)
         );
 
-        jPanel3.add(panelEvenements, "card3");
+        jPanel3.add(panelCreateEvent, "card3");
 
         panelPlats.setLayout(new java.awt.BorderLayout());
 
@@ -338,19 +339,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButton11.setText("Valider");
-        jButton11.setEnabled(false);
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
+        BValider.setText("Valider");
+        BValider.setEnabled(false);
+        BValider.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
+                BValiderActionPerformed(evt);
             }
         });
 
-        jButton13.setText("Supprimer");
-        jButton13.setEnabled(false);
-        jButton13.addActionListener(new java.awt.event.ActionListener() {
+        BSupprimer.setText("Supprimer");
+        BSupprimer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton13ActionPerformed(evt);
+                BSupprimerActionPerformed(evt);
             }
         });
 
@@ -372,18 +372,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jLabel13.setText("Rechercher un plat :");
 
-        recherche2.setForeground(new java.awt.Color(102, 102, 102));
-        recherche2.addFocusListener(new java.awt.event.FocusAdapter() {
+        recherchePlat.setForeground(new java.awt.Color(102, 102, 102));
+        recherchePlat.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                recherche2FocusGained(evt);
+                recherchePlatFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                recherche2FocusLost(evt);
+                recherchePlatFocusLost(evt);
             }
         });
-        recherche2.addActionListener(new java.awt.event.ActionListener() {
+        recherchePlat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                recherche2ActionPerformed(evt);
+                recherchePlatActionPerformed(evt);
             }
         });
 
@@ -404,13 +404,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
                             .addGroup(jPanel7Layout.createSequentialGroup()
                                 .addComponent(jLabel13)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(recherche2, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(recherchePlat, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                                .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(BSupprimer, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(BValider, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel7Layout.createSequentialGroup()
                                 .addComponent(ChBValide)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -422,10 +422,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton11)
-                    .addComponent(jButton13)
+                    .addComponent(BValider)
+                    .addComponent(BSupprimer)
                     .addComponent(jLabel13)
-                    .addComponent(recherche2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(recherchePlat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -455,49 +455,65 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void BBanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BBanActionPerformed
         String item = (String) CBUtilisateurs.getSelectedItem();
         String idUtilisateur = item.split(" ")[0];
-        if(BBan.getText().equals("Bannir")){
+        if (BBan.getText().equals("Bannir")) {
             bannir(idUtilisateur);
         } else {
             debannir(idUtilisateur);
         }
         checkBan(idUtilisateur);
-        
+
     }//GEN-LAST:event_BBanActionPerformed
 
     private void CBPlatsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBPlatsActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CBPlatsActionPerformed
 
-    private void rechercheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rechercheActionPerformed
+    private void rechercheUtilisateurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rechercheUtilisateurActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rechercheActionPerformed
+    }//GEN-LAST:event_rechercheUtilisateurActionPerformed
 
-    private void rechercheFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_rechercheFocusGained
+    private void rechercheUtilisateurFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_rechercheUtilisateurFocusGained
 
-    }//GEN-LAST:event_rechercheFocusGained
+    }//GEN-LAST:event_rechercheUtilisateurFocusGained
 
-    private void rechercheFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_rechercheFocusLost
+    private void rechercheUtilisateurFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_rechercheUtilisateurFocusLost
 
-    }//GEN-LAST:event_rechercheFocusLost
+    }//GEN-LAST:event_rechercheUtilisateurFocusLost
 
     private void CBUtilisateursItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CBUtilisateursItemStateChanged
         String item = (String) CBUtilisateurs.getSelectedItem();
         String idUtilisateur = item.split(" ")[0];
         PanelUtilisateur temp = afficherUtilisateur(idUtilisateur);
-     
+
         checkBan(idUtilisateur);
-        
+
         panelUtilisateurs.remove(0);
         panelUtilisateurs.add(temp, 0);
         panelUtilisateurs.revalidate();
     }//GEN-LAST:event_CBUtilisateursItemStateChanged
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        CBUtilisateurs.setModel(lister("idUtilisateur", "pseudoUtilisateur", "Utilisateur", "WHERE pseudoUtilisateur LIKE '%" + recherche.getText() + "%'"));
+        CBUtilisateurs.setModel(lister("idUtilisateur", "pseudoUtilisateur", "Utilisateur", "WHERE pseudoUtilisateur LIKE '%" + rechercheUtilisateur.getText() + "%'"));
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-
+        String filtre = " ";
+        System.out.println(ChBValide.isSelected());
+        System.out.println(ChBSoumis.isSelected());
+        if (ChBValide.isSelected() || ChBSoumis.isSelected()) {
+            filtre += " AND ";
+            if (ChBValide.isSelected()) {
+                filtre += "Ajoutee = '1'";
+            }
+            if (ChBValide.isSelected() && ChBSoumis.isSelected()) {
+                filtre += " OR ";
+            }
+            if (ChBSoumis.isSelected()) {
+                filtre += "Ajoutee = '0'";
+            }
+            System.out.println(filtre);
+        }
+        CBPlats.setModel(lister("idPlat", "Nom", "Plat", "WHERE Nom LIKE '%" + recherchePlat.getText() + "%'" + filtre));
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void ChBValideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChBValideActionPerformed
@@ -508,32 +524,36 @@ public class MenuPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ChBSoumisActionPerformed
 
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton13ActionPerformed
+    private void BSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSupprimerActionPerformed
+        String item = (String) CBPlats.getSelectedItem();
+        String idPlat = item.split(" ")[0];
+        
+        supprimerPlat(idPlat);
+    }//GEN-LAST:event_BSupprimerActionPerformed
 
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+    private void BValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BValiderActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton11ActionPerformed
+    }//GEN-LAST:event_BValiderActionPerformed
 
-    private void recherche2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_recherche2FocusGained
+    private void recherchePlatFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_recherchePlatFocusGained
         // TODO add your handling code here:
-    }//GEN-LAST:event_recherche2FocusGained
+    }//GEN-LAST:event_recherchePlatFocusGained
 
-    private void recherche2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_recherche2FocusLost
+    private void recherchePlatFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_recherchePlatFocusLost
         // TODO add your handling code here:
-    }//GEN-LAST:event_recherche2FocusLost
+    }//GEN-LAST:event_recherchePlatFocusLost
 
-    private void recherche2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recherche2ActionPerformed
+    private void recherchePlatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recherchePlatActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_recherche2ActionPerformed
+    }//GEN-LAST:event_recherchePlatActionPerformed
 
     private void CBPlatsItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CBPlatsItemStateChanged
         String item = (String) CBPlats.getSelectedItem();
         String idPlat = item.split(" ")[0];
-        
-        
-        
+
+        BValider.setEnabled(estValide(idPlat));
+        BSupprimer.setEnabled(rootPaneCheckingEnabled);
+
         PanelPlat temp = afficherPlat(idPlat);
         panelPlats.remove(0);
         panelPlats.add(temp, 0);
@@ -604,6 +624,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BBan;
+    private javax.swing.JButton BSupprimer;
+    private javax.swing.JButton BValider;
     private javax.swing.JComboBox<String> CBPlats;
     private javax.swing.JComboBox<String> CBUtilisateurs;
     private javax.swing.JCheckBox ChBSoumis;
@@ -611,8 +633,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -635,25 +655,27 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JPanel panelEvenements;
+    private javax.swing.JPanel panelCreateEvent;
     private javax.swing.JPanel panelPlats;
     private javax.swing.JPanel panelUtilisateur;
     private javax.swing.JPanel panelUtilisateurs;
-    private javax.swing.JTextField recherche;
-    private javax.swing.JTextField recherche2;
+    private javax.swing.JTextField recherchePlat;
+    private javax.swing.JTextField rechercheUtilisateur;
     // End of variables declaration//GEN-END:variables
 
     private void initComponentPerso() {
 
         cardLayout = new CardLayout();
         panelConnexion = new PanelConnexion();
+        panelCreateEvent = new PanelCreationEvenement(this);
+        
         jPanel3.setLayout(cardLayout);
         jPanel3.add(panelUtilisateurs, "U");
         jPanel3.add(panelPlats, "P");
-        jPanel3.add(panelEvenements, "E");
+        jPanel3.add(panelCreateEvent, "E");
         jPanel3.add(panelConnexion, "C");
 
-        CBUtilisateurs.setModel(lister("idUtilisateur", "pseudoUtilisateur", "Utilisateur", "WHERE pseudoUtilisateur LIKE '%" + recherche.getText() + "%'"));
+        CBUtilisateurs.setModel(lister("idUtilisateur", "pseudoUtilisateur", "Utilisateur", "WHERE pseudoUtilisateur LIKE '%" + rechercheUtilisateur.getText() + "%'"));
         CBPlats.setModel(lister("idPlat", "nom", "Plat", ""));
 
     }
@@ -714,7 +736,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         int cpt = 0;
         Statement nomOrdre = connect();
         try {
-
             //Vas chercher les informations du plats
             ResultSet resultat = nomOrdre.executeQuery("SELECT * FROM Plat WHERE idPlat = '" + idPlat + "'");
             while (resultat.next()) {
@@ -758,7 +779,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         return new PanelPlat(utilisateur, nomPlat, idPlat, categorie, note, ingredients, description, recette, images);
     }
 
-    private DefaultComboBoxModel lister(String nomId, String nom, String table, String where) {
+    public DefaultComboBoxModel lister(String nomId, String nom, String table, String where) {
         String[] liste = new String[1];
         int nb = 0;
 
@@ -815,7 +836,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         }
     }
 
-    private Statement connect() {
+    public Statement connect() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connexion = DriverManager.getConnection("jdbc:mysql://" + this.panelConnexion.getBDHost() + "/" + this.panelConnexion.getBDDBName(), this.panelConnexion.getBDUser(), this.panelConnexion.getBDPWD());
@@ -828,47 +849,112 @@ public class MenuPrincipal extends javax.swing.JFrame {
         }
         return null;
     }
+    
+    public PreparedStatement connectPrepared(String sql) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connexion = DriverManager.getConnection("jdbc:mysql://" + this.panelConnexion.getBDHost() + "/" + this.panelConnexion.getBDDBName(), this.panelConnexion.getBDUser(), this.panelConnexion.getBDPWD());
+            return connexion.prepareStatement(sql);
+        } catch (CommunicationsException ex) {
+            Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Probleme de connexion à la base de donnee");
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 
-    private void bannir(String idUtilisateur) {   
+    private void bannir(String idUtilisateur) {
         Statement nomOrdre = connect();
-        try {  
+        try {
             nomOrdre.executeUpdate("UPDATE Utilisateur SET statutBan = " + true + " WHERE idUtilisateur = " + idUtilisateur);
         } catch (SQLException ex) {
             Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    private void debannir(String idUtilisateur) {   
+
+    private void debannir(String idUtilisateur) {
         Statement nomOrdre = connect();
-        try {  
+        try {
             nomOrdre.executeUpdate("UPDATE Utilisateur SET statutBan = " + false + " WHERE idUtilisateur = " + idUtilisateur);
         } catch (SQLException ex) {
             Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    private boolean getStatutBan(String idUtilisateur) {
+    private boolean estBan(String idUtilisateur) {
         boolean statutBan = false;
         try {
-            
+
             Statement nomOrdre = connect();
             ResultSet resultat = nomOrdre.executeQuery("SELECT statutBan FROM Utilisateur WHERE idUtilisateur = " + idUtilisateur);
-            
+
             while (resultat.next()) {
                 statutBan = resultat.getBoolean("statutBan");
             }
-            
-                    } catch (SQLException ex) {
+
+        } catch (SQLException ex) {
             Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return statutBan;     
+        return statutBan;
     }
-    
-    private void checkBan(String idUtilisateur){
-        if(getStatutBan(idUtilisateur)){
+
+    private void checkBan(String idUtilisateur) {
+        if (estBan(idUtilisateur)) {
             BBan.setText("Debannir");
         } else {
             BBan.setText("Bannir");
         }
     }
+
+    private boolean estValide(String idPlat) {
+        boolean ajoutee = false;
+        try {
+
+            Statement nomOrdre = connect();
+            ResultSet resultat = nomOrdre.executeQuery("SELECT Ajoutee FROM Plat WHERE idUtilisateur = " + idPlat);
+
+            while (resultat.next()) {
+                ajoutee = resultat.getBoolean("Ajoutee");
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return ajoutee;
+    }
+
+    private void supprimerPlat(String idPlat) {
+        try {
+
+            Statement nomOrdre = connect();
+            nomOrdre.executeUpdate("DELETE FROM Plat WHERE IdPlat = '" + idPlat + "'");
+
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void supprimerEvent(String idEvent) {
+        try {
+
+            Statement nomOrdre = connect();
+            nomOrdre.executeUpdate("DELETE FROM Evenement WHERE idEvent = '" + idEvent + "'");
+
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+   
+    /*private void deleteFile(String nomFichier) {
+        File myObj = new File(nomFichier);
+        System.out.println(myObj.getPath());
+        /*if (myObj.delete()) {
+            System.out.println("Deleted the file: " + myObj.getName());
+        } else {
+            System.out.println("Failed to delete the file.");
+        }
+    }*/
+
 }

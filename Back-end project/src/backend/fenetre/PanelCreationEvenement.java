@@ -4,6 +4,17 @@
  */
 package backend.fenetre;
 
+import java.awt.Color;
+import java.io.File;
+import java.sql.SQLException;
+import java.sql.PreparedStatement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Aro
@@ -13,8 +24,16 @@ public class PanelCreationEvenement extends javax.swing.JPanel {
     /**
      * Creates new form PanelEvenement
      */
-    public PanelCreationEvenement() {
+    File image;
+
+    MenuPrincipal menuPrincipal;
+
+    public PanelCreationEvenement(MenuPrincipal menuPrincipal) {
+        this.menuPrincipal = menuPrincipal;
+        this.image = new File("");
         initComponents();
+        initComponentsPerso();
+
     }
 
     /**
@@ -27,41 +46,69 @@ public class PanelCreationEvenement extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        TFNomEvent = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        TADescription = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        CBCategorie = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        TFDebut = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        TFFin = new javax.swing.JTextField();
+        BCreer = new javax.swing.JButton();
 
         jLabel1.setText("Nom de l'évènement : ");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        TFNomEvent.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                TFNomEventFocusLost(evt);
+            }
+        });
+
+        TADescription.setColumns(20);
+        TADescription.setRows(5);
+        TADescription.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                TADescriptionFocusLost(evt);
+            }
+        });
+        jScrollPane1.setViewportView(TADescription);
 
         jLabel2.setText("Description : ");
 
         jLabel3.setText("Catégorie :");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        CBCategorie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel4.setText("Images :");
 
         jLabel5.setText("Début :");
 
+        TFDebut.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                TFDebutFocusLost(evt);
+            }
+        });
+        TFDebut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TFDebutActionPerformed(evt);
+            }
+        });
+
         jLabel6.setText("Fin :");
 
-        jButton1.setText("Créer un nouvel évènement");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        TFFin.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                TFFinFocusLost(evt);
+            }
+        });
+
+        BCreer.setText("Créer un nouvel évènement");
+        BCreer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BCreerActionPerformed(evt);
             }
         });
 
@@ -70,36 +117,35 @@ public class PanelCreationEvenement extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TFNomEvent))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1)))
-                .addContainerGap())
+                                .addComponent(CBCategorie, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TFDebut, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(29, 29, 29)
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TFFin, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(117, 117, 117)
-                .addComponent(jButton1)
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE)
+                .addComponent(BCreer)
+                .addContainerGap(88, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,17 +153,17 @@ public class PanelCreationEvenement extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TFNomEvent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TFDebut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TFFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CBCategorie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(8, 8, 8)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -125,19 +171,56 @@ public class PanelCreationEvenement extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(BCreer)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BCreerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BCreerActionPerformed
+        String item = (String) CBCategorie.getSelectedItem();
+        String idCategorie = item.split(" ")[0];
+        
+        creerEvenement(TFNomEvent.getText(), TFDebut.getText(), TFFin.getText(), TADescription.getText(), idCategorie, "");
+    }//GEN-LAST:event_BCreerActionPerformed
+
+    private void TFDebutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFDebutActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_TFDebutActionPerformed
+
+    private void TFDebutFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TFDebutFocusLost
+        if (checkDate(TFDebut.getText())) {
+            TFDebut.setForeground(Color.green);
+        } else {
+            TFDebut.setForeground(Color.red);
+        }
+        toutBon();
+    }//GEN-LAST:event_TFDebutFocusLost
+
+    private void TFFinFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TFFinFocusLost
+        if (checkDate(TFFin.getText())) {
+            TFFin.setForeground(Color.green);
+        } else {
+            TFFin.setForeground(Color.red);
+        }
+        toutBon();
+    }//GEN-LAST:event_TFFinFocusLost
+
+    private void TFNomEventFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TFNomEventFocusLost
+        toutBon();
+    }//GEN-LAST:event_TFNomEventFocusLost
+
+    private void TADescriptionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TADescriptionFocusLost
+        toutBon();
+    }//GEN-LAST:event_TADescriptionFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton BCreer;
+    private javax.swing.JComboBox<String> CBCategorie;
+    private javax.swing.JTextArea TADescription;
+    private javax.swing.JTextField TFDebut;
+    private javax.swing.JTextField TFFin;
+    private javax.swing.JTextField TFNomEvent;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -145,9 +228,49 @@ public class PanelCreationEvenement extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
+
+    private void initComponentsPerso() {
+        CBCategorie.setModel(menuPrincipal.lister("IdCatEvent", "NomCategorie", "CategorieEvenement", ""));
+    }
+
+    private boolean checkDate(String dateString) {
+        String dateFormat = "yyyy-MM-dd";
+        SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
+        sdf.setLenient(false);
+        try {
+            Date date = sdf.parse(dateString);
+            return true;
+        } catch (ParseException e) {
+            return false;
+        }
+    }
+
+    private String searchSpecial(String text) {
+        StringBuilder sb = new StringBuilder(text);
+        int index = text.indexOf('\'');
+        while (index >= 0) {
+            sb.insert(index, '\\');
+            System.out.println("New string: " + sb.toString());
+            index =sb.toString().indexOf('\'', index + 2);
+        }
+        
+        return sb.toString();
+    }
+
+    private void creerEvenement(String nomEvenement, String dateDebut, String dateFin, String description, String categorie, String background) {
+        
+        System.out.println(categorie);
+        String sql = "INSERT INTO `Evenement` (`NomEvenement`, `DateDebut`, `DateFin`, `Description`, `Categorie`, `Bg`) VALUES ('" + nomEvenement + "', '" + dateDebut + "', '" + dateFin + "', '" + description + "', '" + categorie + "', '" + background + "')";
+        PreparedStatement nomOrdre = menuPrincipal.connectPrepared(sql);
+        try {
+            nomOrdre.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(PanelCreationEvenement.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void toutBon() {
+        BCreer.setEnabled(checkDate(TFDebut.getText()) && checkDate(TFFin.getText()) /*&& image.exists()*/ && !TADescription.getText().equals("") && !TFNomEvent.getText().equals(""));
+    }
 }
