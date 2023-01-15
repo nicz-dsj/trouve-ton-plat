@@ -96,12 +96,30 @@ if((isset($_SESSION['logged']) && $_SESSION['logged'] == 1) && isset($_SESSION['
             }
             else{
                 if(count($prefIngredients) > 0){
-                    $valeur = deleteAllPrefIngredients($utilisateur[0]['idUtilisateur']);
+                    deleteAllPrefIngredients($utilisateur[0]['idUtilisateur']);
                 }
                 addPrefIngredients($_POST['prefingredient'], $utilisateur[0]['idUtilisateur']);
             }
 
             header("Refresh:0");
+        }
+
+        if(isset($_POST['deleterequest'])){
+            if(isset($_POST['currentpwd'])){
+                if(password_verify($_POST['currentpwd'], $utilisateur[0]['motDePasse'])){
+                    echo '<div class="resultxhr" style="display:none;">true</div>';
+                }
+                else{
+                    echo '<div class="resultxhr" style="display:none;">false</div>';
+                }
+            } 
+        }
+
+        if(isset($_POST['deletesubmit'])){
+            deleteUtilisateur($utilisateur[0]['idUtilisateur']);
+            $_SESSION['logged'] = array();
+            $_SESSION['id'] = array();
+            header('Location:index.php');
         }
 }
 else{

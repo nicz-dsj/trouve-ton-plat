@@ -9,7 +9,6 @@
 <head>
     <link rel="stylesheet" href="<?= PATH_CSS ?>profil.css">
     <link rel="stylesheet" href="<?= PATH_CSS ?>style.css">
-
 </head>
 
 <div class="container_profil">
@@ -24,7 +23,7 @@
                     <?php
                     }
                 ?>
-                <p id="datejoin" style="margin-bottom:5px">A rejoint le : <?= $utilisateur[0]['dateCreation'] ?></p>
+                <p id="datejoin" style="margin-bottom:5px">A rejoint le : <?= date("d/m/Y",strtotime($utilisateur[0]['dateCreation'])) ?></p>
                 <?php
                     if((isset($_SESSION['logged']) && $_SESSION['logged'] == 1) && (isset($_SESSION['id']) && $_SESSION['id'] == $utilisateur[0]['idUtilisateur'])){ ?>
                 <p id="mail">Adresse mail : <?= $utilisateur[0]['mail'] ?> </a> <?php

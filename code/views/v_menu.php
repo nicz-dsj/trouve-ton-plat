@@ -73,8 +73,9 @@
 				<?= MENU_PROPOSER_PLAT ?>
 			</a>
 		</li>
-        <li><a href="#"> Evènements</a></li>
+        <li><a href="index.php?page=evenements"> Évènements</a></li>
         <li><a href="index.php?page=decouvrir"> Découvrir</a></li>
+		<li><a href="index.php?page=a_propos"> À propos</a></li>
       </ul>
 
   </div>

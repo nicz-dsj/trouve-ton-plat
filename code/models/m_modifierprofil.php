@@ -154,3 +154,10 @@ function deleteAllPrefIngredients($id){
     $query->execute(array($id));
     $query->closeCursor();
 }
+
+function deleteUtilisateur($id){
+    $connexion = Connexion::getInstance()->getBdd();
+    $query = $connexion->prepare('DELETE FROM Utilisateur WHERE IdUtilisateur = ?');
+    $query->execute(array($id));
+    $query->closeCursor();
+}

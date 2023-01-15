@@ -294,19 +294,26 @@ form .helpmessage{
     padding: 2em;
 }
 
-#item4 a{
+#item4 button{
     background-color: transparent;
     border: 1px white solid;
     border-radius: 5px;
     color: white;
+    font-size: 15px;
     font-weight: bold;
     transition: 0.5s;
     padding: 12px;
     text-decoration: none;
 }
 
-#item4 a:hover{
+#item4 button:hover{
+    background-color: white;
+    color: black;
+}
+
+#item4 .supprbtn:hover{
     background-color: red;
+    color: white;
 }
 
 .container_overmenu{
@@ -466,4 +473,48 @@ form .helpmessage{
 #prefcategoriemenu form input[type="checkbox"], #prefingredientmenu form input[type="checkbox"]{
     width: 20px;
     height: 20px;
+}
+
+#suppressionmenu form{
+    display: flex;
+    flex-direction: column;
+}
+
+#suppressionmenu form input{
+    color: white;
+    background-color: rgba(0,0,0,0.5);
+    border: 2px solid white;
+    border-radius: 5px;
+    width: 90%;
+    height: 3em;
+    padding: 0 5px 0;
+}
+
+#suppressionmenu form input:focus{
+    outline: none;
+}
+
+#suppressionmenu .helpmessage{
+    margin-bottom: 10px;
+}
+
+#suppressionmenu form button{
+    width: 91%;
+    height: 3em;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 0 5px 0;
+    transition: 0.5s;
+}
+
+#suppressionmenu form button:hover{
+    background-color: rgb(179, 33, 33);
+}
+
+#suppressionmenu form button:disabled{
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.432);
 }

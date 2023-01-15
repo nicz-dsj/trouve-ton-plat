@@ -73,7 +73,8 @@
             </fieldset>
             <fieldset class="item" id="item4">
                 <legend class="itemtitle">Compte</legend>
-                <a href="index.php?page=supprimercompte">Fermer le compte</a>
+                <button class="databtn">Accéder aux données enregistrées</button>
+                <button class="supprbtn">Fermer le compte</button>
             </fieldset>
         </div>
     </div>
@@ -154,8 +155,23 @@
             </form>
         </div>
     </div>
+    <div class="container_overmenu" id="suppressionmenu">
+        <div class="content">
+            <button class="back"> < </button>
+            <p>Fermer le compte : </p>
+            <form method="post" action="index.php?page=modifierprofil">
+                <input type="password" name="currentpwd" placeholder="Mot de passe actuel">
+                <span class="helpmessage"></span>
+                <input type="password" name="currentpwd" placeholder="Confirmer le mot de passe">
+                <span class="helpmessage"></span>
+                <button type="submit" name="deletesubmit" disabled>Fermer le compte</button>
+            </form>
+        </div>
+    </div>
 </div>
 <script src="./assets/scripts/script_modifierprofil.js"></script>
+<script src="./assets/scripts/script_modifierprofil_data.js"></script>
+<script src="./assets/scripts/script_modifierprofil_supprcompte.js"></script>
 <script src="<?= PATH_SCRIPTS ?>script_hamburger.js"></script>
 
 <!--  Pied de page -->
