@@ -6,22 +6,6 @@
 <!--  Zone message d'alerte -->
 <?php require_once(PATH_VIEWS . 'alert.php'); ?>
 
-<?php
-
-if(isset($_GET['modification']) && $_GET['modification'] == "success"){
-    ?>
-    <p class='alert alert-success'><span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span><b> Profil mis à jour</b></p>
-    <?php
-
-}
-else if (isset($_GET['modification']) && $_GET['modification'] == "fail"){
-    ?>
-    <p class='alert alert-danger'> <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span><b> Erreur lors de la mise a jour du profil</b></p>
-    <?php
-}
-
-?>
-
 <head>
     <link rel="stylesheet" href="<?= PATH_CSS ?>modifier_profil.css">
     <link rel="stylesheet" href="<?= PATH_CSS ?>style.css">
@@ -30,8 +14,7 @@ else if (isset($_GET['modification']) && $_GET['modification'] == "fail"){
 <div class="container_page">
     <div class="container_editpage">
         <a href="index.php?page=profil&id=<?= $utilisateur[0]['idUtilisateur'] ?>" class="back"> < </a>
-        <fieldset class="container_form">
-            <legend class="title">Modifier le profil</legend>
+        <div class="container_form">
             <fieldset class="item" id="item1">
                 <legend class="itemtitle">Avatar</legend>
                 <div class="container_editavatar">
@@ -92,7 +75,7 @@ else if (isset($_GET['modification']) && $_GET['modification'] == "fail"){
                 <legend class="itemtitle">Compte</legend>
                 <a href="index.php?page=supprimercompte">Fermer le compte</a>
             </fieldset>
-        </fieldset>
+        </div>
     </div>
     <div class="container_overmenu" id="avatarmenu">
         <div class="content">

@@ -92,85 +92,65 @@ function changeAvatar($nouv_avatar, $id){
     $connexion = Connexion::getInstance()->getBdd();
     $query = $connexion->prepare('UPDATE Utilisateur SET avatar = ? WHERE IdUtilisateur = ?');
     $query->execute(array($nouv_avatar, $id));
-    $n = $query->rowCount();
     $query->closeCursor();
-    return $n;
 }
 
 function updateLogin($nouv_nom_utilisateur, $id){
     $connexion = Connexion::getInstance()->getBdd();
     $query = $connexion->prepare('UPDATE Utilisateur SET pseudoUtilisateur = ? WHERE IdUtilisateur = ?');
     $query->execute(array($nouv_nom_utilisateur, $id));
-    $n = $query->rowCount();
     $query->closeCursor();
-    return $n;
 }
 
 function updateMail($nouv_mail, $id){
     $connexion = Connexion::getInstance()->getBdd();
     $query = $connexion->prepare('UPDATE Utilisateur SET mail = ? WHERE IdUtilisateur = ?');
     $query->execute(array($nouv_mail, $id));
-    $n = $query->rowCount();
     $query->closeCursor();
-    return $n;
 }
 
 function updatePwd($nouv_pwd, $id){
     $connexion = Connexion::getInstance()->getBdd();
     $query = $connexion->prepare('UPDATE Utilisateur SET motDePasse = ? WHERE IdUtilisateur = ?');
     $query->execute(array($nouv_pwd, $id));
-    $n = $query->rowCount();
     $query->closeCursor();
-    return $n;
 }
 
 function updateAbout($nouv_about, $id){
     $connexion = Connexion::getInstance()->getBdd();
     $query = $connexion->prepare('UPDATE Utilisateur SET description = ? WHERE IdUtilisateur = ?');
     $query->execute(array($nouv_about, $id));
-    $n = $query->rowCount();
     $query->closeCursor();
-    return $n;
 }
 
 function addPrefCategories($categories, $id){
     $connexion = Connexion::getInstance()->getBdd();
-    $n = 0;
     foreach($categories as $categorie){
         $query = $connexion->prepare('INSERT INTO PreferenceCategorie VALUES(?,?)');
         $query->execute(array($id, $categorie));
-        $n++;
     }
     $query->closeCursor();
-    return $n;
 }
 
 function deleteAllPrefCategories($id){
     $connexion = Connexion::getInstance()->getBdd();
     $query = $connexion->prepare('DELETE FROM PreferenceCategorie WHERE IdUtilisateur = ?');
     $query->execute(array($id));
-    $n = $query->rowCount();
     $query->closeCursor();
-    return $n;
 }
 
 function addPrefIngredients($ingredients, $id){
     $connexion = Connexion::getInstance()->getBdd();
-    $n = 0;
     foreach($ingredients as $ingredient){
         $query = $connexion->prepare('INSERT INTO PreferenceIngredient VALUES(?,?)');
         $query->execute(array($id, $ingredient));
-        $n++;
     }
     $query->closeCursor();
-    return $n;
 }
 
 function deleteAllPrefIngredients($id){
     $connexion = Connexion::getInstance()->getBdd();
     $query = $connexion->prepare('DELETE FROM PreferenceIngredient WHERE IdUtilisateur = ?');
     $query->execute(array($id));
-    $n = $query->rowCount();
     $query->closeCursor();
-    return $n;
 }

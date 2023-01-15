@@ -9,13 +9,7 @@ if((isset($_SESSION['logged']) && $_SESSION['logged'] == 1) && isset($_SESSION['
         $prefIngredients = getPrefIngredients($_SESSION['id']);
 
         if(isset($_POST['avatarsubmit']) && isset($_POST['avatar'])){
-            $valeur = changeAvatar($_POST['avatar'], $utilisateur[0]['idUtilisateur']);
-            if($valeur > 0){
-                header("Location:index.php?page=modifierprofil&modification=success");
-            }
-            else{
-                header("Location:index.php?page=modifierprofil&modification=fail");
-            }
+            changeAvatar($_POST['avatar'], $utilisateur[0]['idUtilisateur']);
             header("Refresh:0");
         }
 
@@ -50,55 +44,28 @@ if((isset($_SESSION['logged']) && $_SESSION['logged'] == 1) && isset($_SESSION['
 
         if(isset($_POST['updateloginsubmit'])){
             if(isset($_POST['login'])){
-                $valeur = updateLogin($_POST['login'], $utilisateur[0]['idUtilisateur']);
-                if($valeur > 0){
-                    $_SESSION['user'] = $_POST['login'];
-                    header("Location:index.php?page=modifierprofil&modification=success");
-                }
-                else{
-                    header("Location:index.php?page=modifierprofil&modification=fail");
-                }
+                updateLogin($_POST['login'], $utilisateur[0]['idUtilisateur']);
                 header("Refresh:0");
             }
         }
 
         if(isset($_POST['updatemailsubmit'])){
             if(isset($_POST['mail'])){
-                $valeur = updateMail($_POST['mail'], $utilisateur[0]['idUtilisateur']);
-                if($valeur > 0){
-                    header("Location:index.php?page=modifierprofil&modification=success");
-                }
-                else{
-                    header("Location:index.php?page=modifierprofil&modification=fail");
-                }
+                updateMail($_POST['mail'], $utilisateur[0]['idUtilisateur']);
                 header("Refresh:0");
             }
         }
 
         if(isset($_POST['updatepwdsubmit'])){
             if(isset($_POST['newpwd'])){
-                $valeur = updatePwd(password_hash($_POST['newpwd'],PASSWORD_DEFAULT), $utilisateur[0]['idUtilisateur']);
-                if($valeur > 0){
-                    $_SESSION['user'] = array();
-                    $_SESSION['logged'] = array();
-                    header("Location:index.php?page=login");
-                }
-                else{
-                    header("Location:index.php?page=modifierprofil&modification=fail");
-                }
+                updatePwd(password_hash($_POST['newpwd'],PASSWORD_DEFAULT), $utilisateur[0]['idUtilisateur']);
                 header("Refresh:0");
             }
         }
 
         if(isset($_POST['updateaboutsubmit'])){
             if(isset($_POST['about'])){
-                $valeur = updateAbout($_POST['about'], $utilisateur[0]['idUtilisateur']);
-                if($valeur > 0){
-                    header("Location:index.php?page=modifierprofil&modification=success");
-                }
-                else{
-                    header("Location:index.php?page=modifierprofil&modification=fail");
-                }
+                updateAbout($_POST['about'], $utilisateur[0]['idUtilisateur']);
                 header("Refresh:0");
             }
         }
@@ -107,25 +74,16 @@ if((isset($_SESSION['logged']) && $_SESSION['logged'] == 1) && isset($_SESSION['
             $valeur;
             if(!isset($_POST['prefcategorie'])){
                 if(count($prefCategorie) > 0){
-                    $valeur = deleteAllPrefCategories($utilisateur[0]['idUtilisateur']);
-                }
-                else{
-                    $valeur = 1;
+                    deleteAllPrefCategories($utilisateur[0]['idUtilisateur']);
                 }
             }
             else{
                 if(count($prefCategorie) > 0){
-                    $valeur = deleteAllPrefCategories($utilisateur[0]['idUtilisateur']);
+                    deleteAllPrefCategories($utilisateur[0]['idUtilisateur']);
                 }
-                $valeur = addPrefCategories($_POST['prefcategorie'], $utilisateur[0]['idUtilisateur']);
+                addPrefCategories($_POST['prefcategorie'], $utilisateur[0]['idUtilisateur']);
             }
-
-            if($valeur > 0){
-                header("Location:index.php?page=modifierprofil&modification=success");
-            }
-            else{
-                header("Location:index.php?page=modifierprofil&modification=fail");
-            }
+            
             header("Refresh:0");
         }
 
@@ -133,25 +91,16 @@ if((isset($_SESSION['logged']) && $_SESSION['logged'] == 1) && isset($_SESSION['
             $valeur;
             if(!isset($_POST['prefingredient'])){
                 if(count($prefIngredients) > 0){
-                    $valeur = deleteAllPrefIngredients($utilisateur[0]['idUtilisateur']);
-                }
-                else{
-                    $valeur = 1;
+                    deleteAllPrefIngredients($utilisateur[0]['idUtilisateur']);
                 }
             }
             else{
                 if(count($prefIngredients) > 0){
                     $valeur = deleteAllPrefIngredients($utilisateur[0]['idUtilisateur']);
                 }
-                $valeur = addPrefIngredients($_POST['prefingredient'], $utilisateur[0]['idUtilisateur']);
+                addPrefIngredients($_POST['prefingredient'], $utilisateur[0]['idUtilisateur']);
             }
 
-            if($valeur > 0){
-                header("Location:index.php?page=modifierprofil&modification=success");
-            }
-            else{
-                header("Location:index.php?page=modifierprofil&modification=fail");
-            }
             header("Refresh:0");
         }
 }
