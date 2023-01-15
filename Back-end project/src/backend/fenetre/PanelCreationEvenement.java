@@ -21,9 +21,7 @@ import java.util.logging.Logger;
  */
 public class PanelCreationEvenement extends javax.swing.JPanel {
 
-    /**
-     * Creates new form PanelEvenement
-     */
+    
     File image;
 
     MenuPrincipal menuPrincipal;
@@ -180,7 +178,7 @@ public class PanelCreationEvenement extends javax.swing.JPanel {
         String item = (String) CBCategorie.getSelectedItem();
         String idCategorie = item.split(" ")[0];
         
-        creerEvenement(TFNomEvent.getText(), TFDebut.getText(), TFFin.getText(), TADescription.getText(), idCategorie, "");
+        creerEvenement(searchSpecial(TFNomEvent.getText()), TFDebut.getText(), TFFin.getText(), searchSpecial(TADescription.getText()), idCategorie, "");
     }//GEN-LAST:event_BCreerActionPerformed
 
     private void TFDebutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFDebutActionPerformed
@@ -234,6 +232,11 @@ public class PanelCreationEvenement extends javax.swing.JPanel {
         CBCategorie.setModel(menuPrincipal.lister("IdCatEvent", "NomCategorie", "CategorieEvenement", ""));
     }
 
+    /**
+     * Vérifie si la date est au bon format
+     * @param dateString
+     * @return 
+     */
     private boolean checkDate(String dateString) {
         String dateFormat = "yyyy-MM-dd";
         SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
@@ -246,6 +249,12 @@ public class PanelCreationEvenement extends javax.swing.JPanel {
         }
     }
 
+    
+    /**
+     * Permet de chercher formater les chaines de caractères pour pouvoir les passer en paramètre de la requête insert
+     * @param text
+     * @return 
+     */
     private String searchSpecial(String text) {
         StringBuilder sb = new StringBuilder(text);
         int index = text.indexOf('\'');
@@ -258,6 +267,16 @@ public class PanelCreationEvenement extends javax.swing.JPanel {
         return sb.toString();
     }
 
+    
+    /**
+     * Rajoute l'evenement dans la base de donnée
+     * @param nomEvenement
+     * @param dateDebut
+     * @param dateFin
+     * @param description
+     * @param categorie
+     * @param background 
+     */
     private void creerEvenement(String nomEvenement, String dateDebut, String dateFin, String description, String categorie, String background) {
         
         System.out.println(categorie);
@@ -270,6 +289,10 @@ public class PanelCreationEvenement extends javax.swing.JPanel {
         }
     }
 
+    
+    /**
+     * Active le bouton si les données sont correctes, le desactive sinon
+     */
     private void toutBon() {
         BCreer.setEnabled(checkDate(TFDebut.getText()) && checkDate(TFFin.getText()) /*&& image.exists()*/ && !TADescription.getText().equals("") && !TFNomEvent.getText().equals(""));
     }

@@ -46,8 +46,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jSeparator1 = new javax.swing.JSeparator();
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
@@ -83,6 +81,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         ChBSoumis = new javax.swing.JCheckBox();
         jLabel13 = new javax.swing.JLabel();
         recherchePlat = new javax.swing.JTextField();
+        panelEvenement = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel17 = new javax.swing.JLabel();
+        CBEvenement = new javax.swing.JComboBox<>();
+        jButton11 = new javax.swing.JButton();
+        BSupprimer1 = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
+        rechercheEvenement = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -130,7 +137,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jLabel4.setText("Evenements");
 
         jButton8.setText("Gérer les évènements");
-        jButton8.setEnabled(false);
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
@@ -192,7 +198,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panelUtilisateur.setLayout(panelUtilisateurLayout);
         panelUtilisateurLayout.setHorizontalGroup(
             panelUtilisateurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 939, Short.MAX_VALUE)
+            .addGap(0, 963, Short.MAX_VALUE)
         );
         panelUtilisateurLayout.setVerticalGroup(
             panelUtilisateurLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -264,7 +270,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                         .addComponent(rechercheUtilisateur, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 201, Short.MAX_VALUE)
                         .addComponent(BBan, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -294,7 +300,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panelCreateEvent.setLayout(panelCreateEventLayout);
         panelCreateEventLayout.setHorizontalGroup(
             panelCreateEventLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 939, Short.MAX_VALUE)
+            .addGap(0, 963, Short.MAX_VALUE)
         );
         panelCreateEventLayout.setVerticalGroup(
             panelCreateEventLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -309,7 +315,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 939, Short.MAX_VALUE)
+            .addGap(0, 963, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -348,6 +354,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
 
         BSupprimer.setText("Supprimer");
+        BSupprimer.setEnabled(false);
         BSupprimer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BSupprimerActionPerformed(evt);
@@ -407,7 +414,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                                 .addComponent(recherchePlat, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
                                 .addComponent(BSupprimer, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(BValider, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -441,6 +448,109 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panelPlats.add(jPanel7, java.awt.BorderLayout.NORTH);
 
         jPanel3.add(panelPlats, "card2");
+
+        panelEvenement.setLayout(new java.awt.BorderLayout());
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 963, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 414, Short.MAX_VALUE)
+        );
+
+        panelEvenement.add(jPanel2, java.awt.BorderLayout.CENTER);
+
+        jLabel17.setText("Evenement :");
+
+        CBEvenement.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4" }));
+        CBEvenement.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CBEvenementItemStateChanged(evt);
+            }
+        });
+        CBEvenement.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CBEvenementActionPerformed(evt);
+            }
+        });
+
+        jButton11.setText("Rechercher");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
+
+        BSupprimer1.setText("Supprimer");
+        BSupprimer1.setEnabled(false);
+        BSupprimer1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BSupprimer1ActionPerformed(evt);
+            }
+        });
+
+        jLabel14.setText("Rechercher un évènement :");
+
+        rechercheEvenement.setForeground(new java.awt.Color(102, 102, 102));
+        rechercheEvenement.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                rechercheEvenementFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                rechercheEvenementFocusLost(evt);
+            }
+        });
+        rechercheEvenement.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rechercheEvenementActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(jLabel17)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(CBEvenement, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(jLabel14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rechercheEvenement, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BSupprimer1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BSupprimer1)
+                    .addComponent(jLabel14)
+                    .addComponent(rechercheEvenement, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton11))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CBEvenement, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        panelEvenement.add(jPanel8, java.awt.BorderLayout.NORTH);
+
+        jPanel3.add(panelEvenement, "card5");
 
         getContentPane().add(jPanel3, java.awt.BorderLayout.CENTER);
         setJMenuBar(jMenuBar1);
@@ -527,12 +637,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void BSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSupprimerActionPerformed
         String item = (String) CBPlats.getSelectedItem();
         String idPlat = item.split(" ")[0];
-        
+
         supprimerPlat(idPlat);
     }//GEN-LAST:event_BSupprimerActionPerformed
 
     private void BValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BValiderActionPerformed
-        // TODO add your handling code here:
+        String item = (String) CBPlats.getSelectedItem();
+        String idPlat = item.split(" ")[0];
+        valider(idPlat);
     }//GEN-LAST:event_BValiderActionPerformed
 
     private void recherchePlatFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_recherchePlatFocusGained
@@ -551,8 +663,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         String item = (String) CBPlats.getSelectedItem();
         String idPlat = item.split(" ")[0];
 
-        BValider.setEnabled(estValide(idPlat));
-        BSupprimer.setEnabled(rootPaneCheckingEnabled);
+        BValider.setEnabled(!estValide(idPlat));
+        BSupprimer.setEnabled(true);
 
         PanelPlat temp = afficherPlat(idPlat);
         panelPlats.remove(0);
@@ -581,8 +693,45 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
+        cardLayout.show(jPanel3, "ME");
     }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void CBEvenementItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CBEvenementItemStateChanged
+        String item = (String) CBEvenement.getSelectedItem();
+        String idEvent = item.split(" ")[0];
+
+        PanelEvenement temp = afficherEvenement(idEvent);
+        panelEvenement.remove(0);
+        panelEvenement.add(temp, 0);
+        panelEvenement.revalidate();
+    }//GEN-LAST:event_CBEvenementItemStateChanged
+
+    private void CBEvenementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBEvenementActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CBEvenementActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void BSupprimer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSupprimer1ActionPerformed
+        String item = (String) CBEvenement.getSelectedItem();
+        String idEvent = item.split(" ")[0];
+
+        supprimerEvent(idEvent);
+    }//GEN-LAST:event_BSupprimer1ActionPerformed
+
+    private void rechercheEvenementFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_rechercheEvenementFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rechercheEvenementFocusGained
+
+    private void rechercheEvenementFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_rechercheEvenementFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rechercheEvenementFocusLost
+
+    private void rechercheEvenementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rechercheEvenementActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rechercheEvenementActionPerformed
 
     /**
      * @param args the command line arguments
@@ -625,7 +774,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BBan;
     private javax.swing.JButton BSupprimer;
+    private javax.swing.JButton BSupprimer1;
     private javax.swing.JButton BValider;
+    private javax.swing.JComboBox<String> CBEvenement;
     private javax.swing.JComboBox<String> CBPlats;
     private javax.swing.JComboBox<String> CBUtilisateurs;
     private javax.swing.JCheckBox ChBSoumis;
@@ -633,6 +784,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -641,24 +793,28 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel panelCreateEvent;
+    private javax.swing.JPanel panelEvenement;
     private javax.swing.JPanel panelPlats;
     private javax.swing.JPanel panelUtilisateur;
     private javax.swing.JPanel panelUtilisateurs;
+    private javax.swing.JTextField rechercheEvenement;
     private javax.swing.JTextField recherchePlat;
     private javax.swing.JTextField rechercheUtilisateur;
     // End of variables declaration//GEN-END:variables
@@ -668,11 +824,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         cardLayout = new CardLayout();
         panelConnexion = new PanelConnexion();
         panelCreateEvent = new PanelCreationEvenement(this);
-        
+
         jPanel3.setLayout(cardLayout);
         jPanel3.add(panelUtilisateurs, "U");
         jPanel3.add(panelPlats, "P");
         jPanel3.add(panelCreateEvent, "E");
+        jPanel3.add(panelEvenement, "ME");
         jPanel3.add(panelConnexion, "C");
 
         CBUtilisateurs.setModel(lister("idUtilisateur", "pseudoUtilisateur", "Utilisateur", "WHERE pseudoUtilisateur LIKE '%" + rechercheUtilisateur.getText() + "%'"));
@@ -701,9 +858,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             while (resultat.next()) {
                 platsFavoris = new String[resultat.getInt(1)];
             }
-
             resultat = nomOrdre.executeQuery("SELECT p.IdPlat, Nom FROM Plat p, Favoris f WHERE f.IdUtilisateur = " + idUtilisateur + " AND p.IdPlat = f.IdPlat ORDER BY p.IdPlat");
-
             cpt = 0;
             while (resultat.next()) {
                 platsFavoris[cpt] = resultat.getString("IdPlat") + " - " + resultat.getString("Nom");
@@ -730,6 +885,28 @@ public class MenuPrincipal extends javax.swing.JFrame {
         return new PanelUtilisateur(pseudo, description, platsSoumis, platsFavoris);
     }
 
+    private PanelEvenement afficherEvenement(String idEvent) {
+        String nom = new String(), debut = new String(), fin = new String(), categorie = new String(), description = new String();
+        Statement nomOrdre = connect();
+
+        ResultSet resultat;
+        try {
+            resultat = nomOrdre.executeQuery("SELECT * FROM Evenement WHERE idEvenement = '" + idEvent + "'");
+            while (resultat.next()) {
+                nom = resultat.getString("NomEvenement");
+                debut = resultat.getString("DateDebut");
+                fin = resultat.getString("DateFin");
+                categorie = resultat.getString("Categorie");
+                description = resultat.getString("Description");
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return new PanelEvenement(idEvent, nom, debut, fin, categorie, description);
+    }
+
     private PanelPlat afficherPlat(String idPlat) {
         String idUtilisateur = new String(), utilisateur = new String(), nomPlat = new String(), note = new String(), description = new String(), recette = new String(), idCategorie = new String(), categorie = new String();
         String[] ingredients = new String[1], images = new String[1];
@@ -752,9 +929,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             while (resultat.next()) {
                 ingredients = new String[resultat.getInt(1)];
             }
-
             resultat = nomOrdre.executeQuery("SELECT i.IdIngredient, Nom FROM Ingredient i, Composer c WHERE c.IdPlat = " + idPlat + " AND c.IdIngredient = i.IdIngredient ORDER BY i.IdIngredient");
-
             cpt = 0;
             while (resultat.next()) {
                 ingredients[cpt] = resultat.getString("IdIngredient") + " - " + resultat.getString("Nom");
@@ -849,7 +1024,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         }
         return null;
     }
-    
+
     public PreparedStatement connectPrepared(String sql) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -934,7 +1109,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     private void supprimerEvent(String idEvent) {
         try {
 
@@ -946,7 +1121,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         }
     }
 
-   
     /*private void deleteFile(String nomFichier) {
         File myObj = new File(nomFichier);
         System.out.println(myObj.getPath());
@@ -956,5 +1130,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
             System.out.println("Failed to delete the file.");
         }
     }*/
+    private void valider(String idPlat) {
+        Statement nomOrdre = connect();
+        try {
+            nomOrdre.executeUpdate("UPDATE Plat SET Ajoutee = '1' WHERE IdPlat = '" + idPlat + "'");
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
 }
