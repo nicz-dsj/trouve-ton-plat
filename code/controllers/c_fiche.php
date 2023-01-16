@@ -90,14 +90,14 @@ if(isset($_GET['id'])){
 <?php
 if(isset($_POST['noteNew']) && isset($_SESSION['logged'])){
     $note = htmlspecialchars($_POST['noteNew']);
-    $id = htmlspecialchars($_POST['id']);
+    $id = htmlspecialchars($_GET['id']);
     if($note >= 0 && $note <= 5){
         $dejaAttrib = checkNote($_SESSION['id'], $id);
         if($dejaAttrib == true){
-            updateNotePlat($_SESSION['id'], $id, $note);
+            updateNote($_SESSION['id'], $id, $note);
         }
         else{
-            addNotePlat($_SESSION['id'], $id, $note);
+            addNote($_SESSION['id'], $id, $note);
         }
     }
 }

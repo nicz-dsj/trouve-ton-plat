@@ -209,7 +209,7 @@ request.onload = function () {
     description.getElementsByTagName("p")[0].innerHTML = dataPlat.Description;
     categorie.getElementsByTagName("p")[0].innerHTML = "Catégorie : " + dataCategorie.Nom;
     createur.getElementsByTagName("h2")[0].innerHTML = `Par <a href=index.php?page=profil&id=${dataUser.idUtilisateur}>${dataUser.pseudoUtilisateur}</a>`;
-    image.getElementsByTagName("img")[0].src = "assets/img/plats/" + dataPlat.IdPlat + ".jpg";
+    image.getElementsByTagName("img")[0].src = "assets/img/plats/" + dataPlat.img;
     note.getElementsByTagName("p")[0].innerHTML = dataNote.MoyenneArr+"/5";
     if(dataNote.MoyenneArr == null){
       note.getElementsByTagName("p")[0].innerHTML = "Pas encore noté";

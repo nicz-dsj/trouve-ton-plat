@@ -68,7 +68,7 @@
             ?>">
 
                 <div class="container_plat_img">
-                    <img src="assets/img/plats/<?php echo $plat['IdPlat'] ?>.jpg" alt="Image de <?php echo $plat['Nom'] ?>">
+                    <img src="assets/img/plats/<?php echo $plat['img'] ?>" alt="Image de <?php echo $plat['Nom'] ?>">
                 </div>
                 <div class="container_plat_texte">
                     <h2><?php echo $plat['Nom'] ?></h2>

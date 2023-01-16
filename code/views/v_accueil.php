@@ -19,8 +19,8 @@
 <div class="container_page_banderole">
       <img src="assets/img/image_decouverte.jpg" alt="accueil" />
       <div class ="texte_decouverte">
-        <h2> Découvrez de nouvelles recettes:</h2>
-        <p> Trouvez des recettes de plats à partir d'ingrédients que vous avez chez vous </p>
+        <h2> Recette du jour :</h2>
+        <p> <?var_dump($platJour)?> </p>
       </div>
     </div>
     <div class="container_page_videos">
