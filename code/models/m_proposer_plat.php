@@ -45,7 +45,7 @@ function getCategorie(){
 function getIngredients(){
   // cette fonction recupere tous les ingredients de la base de donnees
   $connexion = Connexion::getInstance()->getBdd();
-  $query = $connexion->prepare('SELECT * FROM Ingredient');
+  $query = $connexion->prepare('SELECT * FROM Ingredient ORDER BY Nom');
   $query->execute();
   $result = $query->fetchAll(PDO::FETCH_ASSOC);
   $query->closeCursor();

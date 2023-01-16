@@ -78,6 +78,20 @@ function getNote($id){
     return $result;
 }
 
+function getSimilaires($idPlat){
+    $connexion = Connexion::getInstance()->getBdd();
+
+    $plat = getPlat($idPlat);
+    $idCategorie = $plat[0]['IdCategorie'];
+    
+    $query = $connexion->prepare('SELECT * FROM Plat WHERE IdCategorie = ? AND IdPlat != ?');
+    $query->execute(array($idCategorie, $idPlat));
+    $result = $query->fetchAll();
+    $query->closeCursor();
+
+    return $result;
+}
+
 function checkNote($id_utilisateur, $id_plat){
     $connexion = Connexion::getInstance()->getBdd();
     $query = $connexion->prepare('SELECT * FROM Note WHERE IdUtilisateur = ? AND IdPlat = ?');

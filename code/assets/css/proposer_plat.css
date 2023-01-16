@@ -272,3 +272,6 @@ form{
 option{
     background-color:rgba(0,0, 0, 1);
 }
+#envoyer, #image, #file-uplaod-button, select{
+    cursor:pointer;
+}

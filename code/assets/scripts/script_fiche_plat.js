@@ -93,10 +93,47 @@ function afficherEtoiles(note) {
           request.onload = function() {
             if (request.readyState === 4 && request.status === 200) {
               // Update the stars
-              console.log("AAAAAAAAA");
+              var alertElement = document.createElement("p");
+              alertElement.classList.add("alert", "alert-success");
+
+              // Create a <span> element for the close button
+              var closeButton = document.createElement("span");
+              closeButton.classList.add("closebtn");
+
+              // Add an onclick event to the <span> element to hide the parent <p> element
+              closeButton.onclick = function() {
+                this.parentElement.style.display = "none";
+              };
+              closeButton.innerHTML = "&times;";
+              // Create a <b> element for the text
+              var text = document.createElement("b");
+              text.textContent = "Note ajoutée !";
+              // Append the elements
+              alertElement.appendChild(closeButton);
+              alertElement.appendChild(text);
+              document.body.appendChild(alertElement);
             } else {
               // Show a message to the user
               console.log("Erreur lors de la soumission de la note.");
+              var alertElement = document.createElement("p");
+              alertElement.classList.add("alert", "alert-danger");
+
+              // Create a <span> element for the close button
+              var closeButton = document.createElement("span");
+              closeButton.classList.add("closebtn");
+
+              // Add an onclick event to the <span> element to hide the parent <p> element
+              closeButton.onclick = function() {
+                this.parentElement.style.display = "none";
+              };
+              closeButton.innerHTML = "&times;";
+              // Create a <b> element for the text
+              var text = document.createElement("b");
+              text.textContent = "Erreur lors de la soumission de la note.";
+              // Append the elements
+              alertElement.appendChild(closeButton);
+              alertElement.appendChild(text);
+              document.body.appendChild(alertElement);
             }
           };
         } else {
@@ -149,6 +186,14 @@ request.onload = function () {
     const jsonStringUser = request.responseText.match(/\{(.|\n)*\}/g)[1];
     const jsonStringCategorie = request.responseText.match(/\{(.|\n)*\}/g)[2];
     const jsonStringNote = request.responseText.match(/\{(.|\n)*\}/g)[3];
+    var jsonStringSim = request.responseText.match(/\{(.|\n)*\}/g)[4];
+    var i = 4;
+    var dataSim = [];
+    while(jsonStringSim != undefined){
+      i++;
+      dataSim[i-5] = JSON.parse(jsonStringSim);
+      jsonStringSim = request.responseText.match(/\{(.|\n)*\}/g)[i];
+    }
     
     // Parse les données en JSON
     const dataPlat = JSON.parse(jsonStringPlat);
@@ -157,6 +202,7 @@ request.onload = function () {
     const dataNote = JSON.parse(jsonStringNote);
     console.log(dataNote);
     console.log(dataPlat);
+    console.log(dataSim[0]);
 
     // Met à jour le contenu HTML des éléments du DOM avec les données du JSON
     nom.getElementsByTagName("h1")[0].innerHTML = dataPlat.Nom;
@@ -165,6 +211,9 @@ request.onload = function () {
     createur.getElementsByTagName("h2")[0].innerHTML = `Par <a href=index.php?page=profil&id=${dataUser.idUtilisateur}>${dataUser.pseudoUtilisateur}</a>`;
     image.getElementsByTagName("img")[0].src = "assets/img/plats/" + dataPlat.IdPlat + ".jpg";
     note.getElementsByTagName("p")[0].innerHTML = dataNote.MoyenneArr+"/5";
+    if(dataNote.MoyenneArr == null){
+      note.getElementsByTagName("p")[0].innerHTML = "Pas encore noté";
+    }
     date.getElementsByTagName("p")[0].innerHTML = dataPlat.DatePublication;
     recette.getElementsByTagName("p")[0].innerHTML = dataPlat.recette;
     afficherEtoiles(dataNote.MoyenneArr);
@@ -198,6 +247,19 @@ request.onload = function () {
         dernierElement.innerHTML += ligne;
       }
     });
+    for(var i = 0; i < dataSim.length; i++){
+      var platSim = document.createElement('div');
+      platSim.classList.add("platSim");
+      var imgSim = document.createElement('img');
+      imgSim.src = "assets/img/plats/" + dataSim[i].IdPlat + ".jpg";
+      var nomSim = document.createElement('p');
+      nomSim.innerHTML = dataSim[i].Nom;
+      document.getElementById('plats_sim').appendChild(platSim);
+      platSim.appendChild(imgSim);
+      platSim.appendChild(nomSim);
+    }
+
+
 
     function checkFav(){
       const xhr = new XMLHttpRequest();

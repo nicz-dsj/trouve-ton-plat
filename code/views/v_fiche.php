@@ -64,6 +64,10 @@
                 <ul id=liste-etapes></ul>
             </div>
 
+            <h3>Plats similaires :</h3>
+            <div id="plats_sim">
+            </div>
+
         </div>
 </div>
 
