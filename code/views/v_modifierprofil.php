@@ -169,8 +169,8 @@
         </div>
     </div>
 </div>
-<script src="./assets/scripts/script_modifierprofil.js"></script>
-<script src="./assets/scripts/script_modifierprofil_data.js"></script>
+<script src="./assets/scripts/script_modifierprofil_page.js"></script>
+<script src="./assets/scripts/script_modifierprofil_modifdonnees.js"></script>
 <script src="./assets/scripts/script_modifierprofil_supprcompte.js"></script>
 <script src="<?= PATH_SCRIPTS ?>script_hamburger.js"></script>
 

@@ -1,6 +1,18 @@
-const votemenu = document.getElementById('votemenu');
-const plats = votemenu.getElementsByClassName('container_plat_event');
-const effacerVote = votemenu.querySelector('#erasevotebtn');
+const voteBtn = document.querySelector('.votebtn')
+const voteMenu = document.getElementById('votemenu');
+const back2 = voteMenu.querySelector('.back');
+const plats = voteMenu.getElementsByClassName('container_plat_event');
+const effacerVote = voteMenu.querySelector('#erasevotebtn');
+
+voteBtn.addEventListener('click', function(){
+    voteMenu.style.display = "flex";
+    body.style.overflowY = "hidden";
+});
+
+back2.addEventListener('click', function(){
+    voteMenu.style.display = "none";
+    body.style.overflowY = "scroll";
+});
 
 function vote(id){
     const xhr = new XMLHttpRequest();

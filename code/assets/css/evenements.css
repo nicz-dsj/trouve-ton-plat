@@ -1,3 +1,7 @@
+button{
+    cursor: pointer;
+}
+
 .container_page{
     background-color: rgba(0, 0, 0, 0.7);
     color: white;
@@ -217,6 +221,64 @@
     margin-bottom: 20px;
 }
 
+#candidaturemenu input, #candidature textarea, #candidature select{
+    margin-bottom: 15px;
+}
+
+#candidaturemenu input[type="text"], #candidaturemenu input[type="number"], #candidaturemenu input[type="submit"], #candidaturemenu textarea, #candidaturemenu select, #candidaturemenu button{
+    border: 2px solid white;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 0.5em;
+}
+
+#candidaturemenu button{
+    margin-bottom: 10px;
+}
+
+#candidaturemenu input[type="submit"], #candidaturemenu button{
+    transition: 0.5s;
+}
+
+#candidaturemenu input[type="submit"]:hover, #candidaturemenu button:hover{
+    background-color: white;
+    color: black;
+}
+
+#candidaturemenu input:focus, #candidaturemenu textarea:focus{
+    outline: none;
+}
+
+#candidaturemenu textarea{
+    resize: none;
+    height: 100px;
+}
+
+#candidaturemenu .ingredients{
+    display: flex;
+    justify-content: center;
+}
+
+#candidaturemenu .ingredients select, #candidaturemenu .ingredients input{
+    margin: 5px;
+    margin-bottom: 10px;
+}
+
+#candidaturemenu .buttons{
+    display: flex;
+    justify-content: center;
+}
+
+#candidaturemenu .buttons button{
+    width: 5em;
+    margin: 1em;
+}
+
+#candidaturemenu #supprcandidature{
+    width: 100%;
+}
+
 #candidature{
     margin-top: 10px;
     display: flex;
@@ -226,60 +288,6 @@
 #candidature label{
     font-weight: bold;
     margin-bottom: 5px;
-}
-
-#candidature input, #candidature textarea, #candidature select{
-    margin-bottom: 15px;
-}
-
-#candidature input[type="text"], #candidature input[type="number"], #candidature input[type="submit"], #candidature textarea, #candidature select, #candidature button{
-    border: 2px solid white;
-    border-radius: 5px;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    padding: 0.5em;
-}
-
-#candidature button{
-    margin-bottom: 10px;
-}
-
-#candidature input[type="submit"], #candidature button{
-    transition: 0.5s;
-}
-
-#candidature input[type="submit"]:hover, #candidature button:hover{
-    background-color: white;
-    color: black;
-}
-
-#candidature input:focus, #candidature textarea:focus{
-    outline: none;
-}
-
-#candidature textarea{
-    resize: none;
-    height: 100px;
-}
-
-#candidature .ingredients{
-    display: flex;
-    justify-content: center;
-}
-
-#candidature .ingredients select, #candidature .ingredients input{
-    margin: 5px;
-    margin-bottom: 10px;
-}
-
-#candidature .buttons{
-    display: flex;
-    justify-content: center;
-}
-
-#candidature .buttons button{
-    width: 5em;
-    margin: 1em;
 }
 
 #votemenu .empty{

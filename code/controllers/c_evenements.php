@@ -52,19 +52,24 @@ if(isset($_GET['id'])){
             unset($_POST);
             header('Location:index.php?page=evenements&id='.$event[0]['IdEvenement']);
         }
+
+        if(isset($_POST['deleteplat'])){
+            $idPlat = $userPlatEvent[0]['IdPlatEvent'];
+            deletePlat($idPlat);
+        }
     
         if(isset($_POST['voteplatid'])){
             if(haveVote($_SESSION['id'])){
-                updateVote($_SESSION['id'], $_POST['voteplatid']);
+                updateVote($_SESSION['id'], $_POST['voteplatid'], $event[0]['IdEvenement']);
             }
             else{
-                addVote($_SESSION['id'], $_POST['voteplatid']);
+                addVote($_SESSION['id'], $_POST['voteplatid'], $event[0]['IdEvenement']);
             }
             header("Refresh:0");
         }
 
         if(isset($_POST['erase_vote'])){
-            deleteVote($_SESSION['id']);
+            deleteVote($_SESSION['id'], $event[0]['IdEvenement']);
             header("Refresh:0");
         }
     }

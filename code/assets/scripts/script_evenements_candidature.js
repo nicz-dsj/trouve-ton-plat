@@ -1,28 +1,14 @@
-const body = document.getElementsByTagName('body')[0];
-const overmenu = document.getElementsByClassName('container_overmenu');
-const page = document.querySelector('.container_page');
-const pagebuttons = page.getElementsByTagName('button');
+const candidatureMenu = document.getElementById('candidaturemenu');
+const candidatureBtn = document.querySelector('.participate');
+const back = candidatureMenu.querySelector('.back');
 
-const back = document.querySelectorAll('.back');
-
-pagebuttons[0].addEventListener('click', function(){
-    overmenu[0].style.display = "flex";
+candidatureBtn.addEventListener('click', function(){
+    candidatureMenu.style.display = "flex";
     body.style.overflowY = "hidden";
 });
 
-back[0].addEventListener('click', function(){
-    overmenu[0].style.display = "none";
-    body.style.overflowY = "scroll";
-});
-
-pagebuttons[1].addEventListener('click', function(){
-    overmenu[1].style.display = "flex";
-    body.style.overflowY = "hidden";
-});
-
-
-back[1].addEventListener('click', function(){
-    overmenu[1].style.display = "none";
+back.addEventListener('click', function(){
+    candidatureMenu.style.display = "none";
     body.style.overflowY = "scroll";
 });
 
@@ -31,6 +17,7 @@ const ingredients = candidature.querySelector(".ingredients");
 const buttons = candidature.querySelector('.buttons');
 const ajout = document.getElementById("ajout_ingredient");
 const suppr = document.getElementById("suppr_ingredient");
+const supprCandidature = document.getElementById("supprcandidature");
 
 ajout.addEventListener('click', function(){
     const nouvIngredient = ingredients.cloneNode(true);
@@ -43,4 +30,12 @@ suppr.addEventListener('click', function(){
     if(allIngredients.length > 1){
         allIngredients[allIngredients.length - 1].remove();
     }
+});
+
+supprCandidature.addEventListener('click', function(){
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", window.location.href, true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send(`deleteplat=true`);
+    location.reload();
 });

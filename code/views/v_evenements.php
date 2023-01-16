@@ -153,6 +153,7 @@
                 <input type="file" name="image" id="image" required>
                 <input name="submitplat" type="submit" id="envoyer" value="Soumettre">
             </form>
+            <button type="button" id="supprcandidature">Supprimer la candidature</button>
         </div>
     </div>
     <?php
@@ -194,13 +195,13 @@
         }
     ?>
 </div>
-<script src="./assets/scripts/script_evenements.js"></script>
+<script src="./assets/scripts/script_evenements_page.js"></script>
 <?php
 if(isset($_SESSION['logged']) && $_SESSION['logged'] == 1){?>
-<script src="./assets/scripts/script_evenements_overmenu.js"></script>
+<script src="./assets/scripts/script_evenements_candidature.js"></script>
 <?php
     if($event[0]['Categorie'] == 2){?>
-<script src="./assets/scripts/script_vote.js"></script>
+<script src="./assets/scripts/script_evenements_vote.js"></script>
 <?php
     }
 }

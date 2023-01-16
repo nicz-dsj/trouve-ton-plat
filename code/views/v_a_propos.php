@@ -71,3 +71,4 @@
         </div>
     </div>
 </div>
+<script src="<?= PATH_SCRIPTS ?>script_hamburger.js"></script>

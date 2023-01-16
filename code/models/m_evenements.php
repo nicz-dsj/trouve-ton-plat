@@ -117,6 +117,17 @@ function deleteIngredients($idPlat){
     $query->closeCursor();
 }
 
+function deletePlat($idPlat){
+    $connexion = Connexion::getInstance()->getBdd();
+    $query = $connexion->prepare("DELETE FROM PlatEvenement WHERE IdPlatEvent = ?");
+    $query->execute(array($idPlat));
+    $query = $connexion->prepare("DELETE FROM ComposerEvenement WHERE IdPlatEvent = ?");
+    $query->execute(array($idPlat));
+    $query = $connexion->prepare("DELETE FROM Vote WHERE IdPlatEvent = ?");
+    $query->execute(array($idPlat));
+    $query->closeCursor();
+}
+
 function getMaxIdPlat($idEvent){
     $connexion = Connexion::getInstance()->getBdd();
     $query = $connexion->prepare("SELECT MAX(IdPlatEvent) FROM PlatEvenement WHERE IdEvenement = ?");
@@ -170,24 +181,24 @@ function haveVote($idUtilisateur){
     }
 }
 
-function addVote($idUtilisateur, $idPlat){
+function addVote($idUtilisateur, $idPlat, $idEvent){
     $connexion = Connexion::getInstance()->getBdd();
-    $query = $connexion->prepare("INSERT INTO Vote VALUES(?, ?)");
-    $query->execute(array($idUtilisateur, $idPlat));
+    $query = $connexion->prepare("INSERT INTO Vote VALUES(?, ?, ?)");
+    $query->execute(array($idUtilisateur, $idPlat, $idEvent));
     $query->closeCursor();
 }
 
-function updateVote($idUtilisateur, $idPlat){
+function updateVote($idUtilisateur, $idPlat, $idEvent){
     $connexion = Connexion::getInstance()->getBdd();
-    $query = $connexion->prepare("UPDATE Vote SET IdPlatEvent = ? WHERE IdUtilisateur = ?");
-    $query->execute(array($idPlat, $idUtilisateur));
+    $query = $connexion->prepare("UPDATE Vote SET IdPlatEvent = ? WHERE IdUtilisateur = ? AND IdEvenement = ?");
+    $query->execute(array($idPlat, $idUtilisateur, $idEvent));
     $query->closeCursor();
 }
 
-function deleteVote($idUtilisateur){
+function deleteVote($idUtilisateur, $idEvent){
     $connexion = Connexion::getInstance()->getBdd();
-    $query = $connexion->prepare("DELETE FROM Vote WHERE IdUtilisateur = ?");
-    $query->execute(array($idUtilisateur));
+    $query = $connexion->prepare("DELETE FROM Vote WHERE IdUtilisateur = ? AND IdEvenement = ?");
+    $query->execute(array($idUtilisateur, $idEvent));
     $query->closeCursor();
 }
 
