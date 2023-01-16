@@ -164,9 +164,9 @@ margin-bottom:10px;
     display: flex;
     flex-wrap: wrap;
     color: #fff;
+    justify-content: space-evenly;
 }
 .platSim{
-    margin-left:20px; 
     margin-bottom: 2vh;
     margin-top: 2vh;
     width:25vh;

@@ -86,37 +86,6 @@ if(isset($_GET['id'])){
     ?>
 </div>
 
-<div id=platsSim3 style="display:none;">
-    <?php
-    if(isset($_GET['id'])){
-        if($test >= 4){
-            $rand4 = rand(0,$test-1);
-            while($rand1 == $rand4 || $rand2 == $rand4 || $rand3 == $rand4){
-                $rand4 = rand(0,$test-1);
-            }
-
-            $similaires3 = getSimilaires($id);
-            echo json_encode($similaires3[$rand4]);
-        }
-    }
-    ?>
-</div>
-
-<div id=platsSim4 style="display:none;">
-    <?php
-    if(isset($_GET['id'])){
-        if($test >= 5){
-            $rand5 = rand(0,$test-1);
-            while($rand1 == $rand5 || $rand2 == $rand5 || $rand3 == $rand5 || $rand4 == $rand5){
-                $rand5 = rand(0,$test-1);
-            }
-            
-            $similaires4 = getSimilaires($id);
-            echo json_encode($similaires4[$rand5]);
-        }
-    }
-    ?>
-</div>
 
 <?php
 if(isset($_POST['noteNew']) && isset($_SESSION['logged'])){

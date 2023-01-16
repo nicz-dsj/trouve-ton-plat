@@ -247,6 +247,10 @@ request.onload = function () {
         dernierElement.innerHTML += ligne;
       }
     });
+    var trait = document.createElement('div');
+    trait.classList.add("trait");
+    listeEtapes.appendChild(trait);
+    
     for(var i = 0; i < dataSim.length; i++){
       var platSim = document.createElement('div');
       platSim.classList.add("platSim");
@@ -257,8 +261,22 @@ request.onload = function () {
       document.getElementById('plats_sim').appendChild(platSim);
       platSim.appendChild(imgSim);
       platSim.appendChild(nomSim);
+      platSim.id = dataSim[i].IdPlat;
     }
 
+    const plats = document.getElementsByClassName("platSim");
+
+    //ajouter un listener pour chaque plat
+    for (let i = 0; i < plats.length; i++) {
+        plats[i].addEventListener('click', function () {
+            //obtenir l'id du plat cliqué
+            const id = plats[i].id;
+            //obtenir l'url de la page
+            const url = window.location.href;
+            //rediriger vers la page fiche
+            window.location.href = "index.php?page=fiche&id=" + id;
+        });
+    }
 
 
     function checkFav(){
