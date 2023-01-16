@@ -39,7 +39,10 @@ if (isset($_SESSION['logged']) && $_SESSION['logged'] = 1) {
 
         // on met une condition si l'utilisateur à 4 plats ajouté et qu'il en rentre un nouveau il obtient un nouveau succès
         if ($nb_plat_user==4){
-            ajoutAchievements($_SESSION['id'], 3);
+            ajoutAchievement($_SESSION['id'], 3);
+        }
+        if ($nb_plat_user == 9){
+            ajoutAchievement($_SESSION['id'], 4);
         }
 
         // on ajoute le plat à la bd

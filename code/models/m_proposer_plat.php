@@ -75,7 +75,7 @@ function ajoutAchievement($idUtilisateur,$idAchiev){
   // cette fonction ajoute un achievement a l'utilisateur qui a propose un plat
   $connexion = Connexion::getInstance()->getBdd();
   $query = $connexion->prepare('INSERT INTO Composer_achievement VALUES (?, ?)');
-  $query->execute(array($idUtilisateur));
+  $query->execute(array($idAchiev,$idUtilisateur));
   $query->closeCursor();
 }
 function checkAchievement($idUtilisateur,$idAchiev){
