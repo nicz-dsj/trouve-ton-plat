@@ -17,7 +17,7 @@ button{
 
 .container_page{
     background-color: rgba(0, 0, 0, 0.7);
-    height: 200vh;
+    height: 250vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -45,7 +45,7 @@ button{
 }
 
 .container_editpage fieldset{
-    border: 2px dashed white;
+    border: 2px solid white;
     border-radius: 5px;
 }
 

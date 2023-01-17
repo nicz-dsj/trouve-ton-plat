@@ -11,15 +11,14 @@
 
 .container_informations{
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
     margin-bottom: 2em;
 }
 
 .user{
     padding: 1em 1.5em 1em;
     border-radius: 10px;
-    border: 2px dashed white;
+    border: 2px solid white;
     display: flex;
     margin-bottom: 0.5em;
 }
@@ -85,7 +84,7 @@
 .preferences{
     padding: 0.6em;
     border-radius: 10px;
-    border: 2px dashed white;
+    border: 2px solid white;
 }
 
 .preferences .title{
@@ -100,12 +99,6 @@
 
 .preferences .list{
     margin: 0.6em;
-}
-
-@media screen and (max-width: 1000px) {
-    .container_informations{
-        flex-direction: column;
-    }
 }
 
 

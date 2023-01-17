@@ -48,6 +48,16 @@
     align-items: center;
 }
 
+@media screen and (max-width: 1200px) {
+    .liste{
+        display: flex;
+        flex-direction: column;
+    }
+    .item{
+        width: 100%;
+    }
+}
+
 .item .name{
     font-size: 20px;
     text-align: center;

@@ -18,7 +18,7 @@ if(isset($_GET['id'])){
     }
 
     if($event[0]['Categorie'] == 2){
-        if(haveVote($_SESSION['id'])){
+        if(isset($_SESSION['id']) && haveVote($_SESSION['id'])){
             $platVote = getPlatVote($_SESSION['id']);
         }
     }

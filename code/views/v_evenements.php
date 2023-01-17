@@ -13,7 +13,7 @@
 <div class="container_page">
     <div class="container_event">
         <div class="event_header">
-            <img class="left_side" src="./assets/img/evenements/<?= $event[0]['Bg'] ?>" width="854" height="480">
+            <img class="left_side" src="./assets/img/event.jpg" width="854" height="480">
             <div class="right_side">
                 <div class="event_info">
                     <h2 class="title"><?= $event[0]['NomEvenement'] ?></h2>
@@ -103,6 +103,7 @@
                 if(haveParticipation($_SESSION['id'], $event[0]['IdEvenement'])){
                     ?>
                     <span>Vous avez candidaté avec : <?= $userPlatEvent[0]['Nom'] ?></span>
+                    <button type="button" id="supprcandidature">Supprimer la candidature</button>
                     <?php
                 }
             ?>
@@ -153,7 +154,6 @@
                 <input type="file" name="image" id="image" required>
                 <input name="submitplat" type="submit" id="envoyer" value="Soumettre">
             </form>
-            <button type="button" id="supprcandidature">Supprimer la candidature</button>
         </div>
     </div>
     <?php
@@ -207,3 +207,6 @@ if(isset($_SESSION['logged']) && $_SESSION['logged'] == 1){?>
 }
 ?>
 <script src="<?= PATH_SCRIPTS ?>script_hamburger.js"></script>
+
+<!--  Pied de page -->
+<?php require_once(PATH_VIEWS . 'footer.php'); 
