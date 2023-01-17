@@ -9,7 +9,6 @@
 <head>
     <link rel="stylesheet" href="<?= PATH_CSS ?>profil.css">
     <link rel="stylesheet" href="<?= PATH_CSS ?>style.css">
-
 </head>
 
 <div class="container_profil">
@@ -24,7 +23,7 @@
                     <?php
                     }
                 ?>
-                <p id="datejoin" style="margin-bottom:5px">A rejoint le : <?= $utilisateur[0]['dateCreation'] ?></p>
+                <p id="datejoin" style="margin-bottom:5px">A rejoint le : <?= date("d/m/Y",strtotime($utilisateur[0]['dateCreation'])) ?></p>
                 <?php
                     if((isset($_SESSION['logged']) && $_SESSION['logged'] == 1) && (isset($_SESSION['id']) && $_SESSION['id'] == $utilisateur[0]['idUtilisateur'])){ ?>
                 <p id="mail">Adresse mail : <?= $utilisateur[0]['mail'] ?> </a> <?php
@@ -41,16 +40,12 @@
                         echo 'Aucune préférence';
                     }
                     else{
-                        for($i = 0; $i < count($prefCategorie) && $i <= 4; $i++){
-                            if($i < 3 && $i < count($prefCategorie) - 1){
+                        for($i = 0; $i < count($prefCategorie); $i++){
+                            if($i < count($prefCategorie) - 1){
                                 echo $prefCategorie[$i]['Nom'].", ";
                             }
-                            else if($i == 3 || $i == count($prefCategorie)){
-                                echo $prefCategorie[3]['Nom'];
-                            }
                             else{
-                                echo '...';
-                                break;
+                                echo $prefCategorie[3]['Nom'];
                             }
                         }
                     }
@@ -63,16 +58,12 @@
                         echo 'Aucune préférence';
                     }
                     else{
-                        for($i = 0; $i < count($prefIngredients) && $i <= 4; $i++){
-                            if($i < 3 && $i < count($prefIngredients) - 1){
+                        for($i = 0; $i < count($prefIngredients); $i++){
+                            if($i < count($prefIngredients) - 1){
                                 echo $prefIngredients[$i]['Nom'].", ";
                             }
-                            else if($i == 3 || $i == count($prefIngredients)){
-                                echo $prefIngredients[$i]['Nom'];
-                            }
                             else{
-                                echo '...';
-                                break;
+                                echo $prefIngredients[$i]['Nom'];
                             }
                         }
                     }

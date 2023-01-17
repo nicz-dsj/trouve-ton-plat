@@ -116,6 +116,7 @@ function reecriture_recette($recette){
   $recette_final = substr($recette_final, 0, -1);
   return $recette_final;
 }
+
 function getNbPlatUser($idUtilisateur){
   // cette fonction recupere le nombre de plat que l'utilisateur a propose
   $connexion = Connexion::getInstance()->getBdd();

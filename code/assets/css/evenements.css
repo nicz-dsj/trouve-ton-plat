@@ -1,0 +1,346 @@
+button{
+    cursor: pointer;
+}
+
+.container_page{
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    height: 250vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.container_event{
+    padding: 7em;
+    position: absolute;
+}
+
+.event_header{
+    display: flex;
+    align-items: center;
+}
+
+.event_header img{
+    border-radius: 10px;
+    width: 40vw;
+    height: calc(40vw / 1.77);
+}
+
+.event_header .right_side{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.event_header .event_info{
+    width: 20vw;
+    margin-left: 1em;
+    border-radius: 10px;
+    border: 2px solid white;
+    padding: 2em;
+    text-align: justify;
+}
+
+@media screen and (max-width: 1500px){
+    .event_header{
+        flex-direction: column;
+    }
+    .event_header img{
+        width: 70vw;
+        height: calc(70vw / 1.77);
+    }
+    .event_header .event_info{
+        width: 40vw;
+        margin-left: 0;
+        margin-top: 2em;
+    }
+}
+
+.event_header button{
+    width: 20em;
+    margin: 5px;
+    border: 2px solid white;
+    border-radius: 5px;
+    background-color: transparent;
+    color: white;
+    padding: 0.5em;
+    transition: 0.5s;
+}
+
+.event_header button:hover{
+    background-color: white;
+    color: black;
+}
+
+.event_info .title{
+    font-weight: bold;
+}
+
+.event_info .description, .event_info .title{
+    margin-bottom: 20px;
+}
+
+#gagnant{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url('../img/winner.gif');
+    height: 30vh;
+}
+
+#gagnant #pseudo_gagnant{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#pseudo_gagnant a{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#pseudo_gagnant a:hover{
+    text-decoration: underline;
+    color: red;
+}
+
+.champ{
+    margin: 5em 0;
+}
+
+.champ h2{
+    border-bottom: 3px dotted white;
+}
+
+.container_liste{
+    display: flex;
+    flex-direction: row;
+    width: 80vw;
+    overflow-x: scroll;
+}
+
+.container_liste::-webkit-scrollbar {
+    height: 8px;
+    margin: 10px;
+}
+
+.container_liste::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+
+.container_liste::-webkit-scrollbar-thumb {
+    background: white; 
+    border-radius: 8px;
+}
+
+.container_liste .empty{
+    margin: 1em;
+}
+
+.container_plat_event{
+    margin-left:10px;
+    margin-right:10px;
+    margin-top: 3vh;
+    width:20vh;
+    height: 100%;
+    background-color: rgb(0, 0, 0);
+    border : 2px solid #fff;
+    border-radius: 7px;
+    text-align: center;
+    transition: 0.25s;
+    font-weight: bold;
+    margin-bottom: 2em;
+}
+
+.container_plat_event img{
+    margin: 0 auto;
+    width: 20vh;
+    height: 20vh;
+    border-bottom: 2px solid #fff;
+    border-radius: 7px;
+}
+
+.container_liste .event{
+    padding: 20px;
+    background-color: black;
+    border : 2px solid #fff;
+    border-radius: 7px;
+    margin: 20px;
+    transition: 0.25s;
+    font-weight: bold;
+    margin-bottom: 2em;
+}
+
+.container_plat_event:hover, .event:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.container_overmenu{
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    z-index: 2;
+}
+
+.container_overmenu .content .back{
+    background-color: transparent;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 1px solid white;
+    color: white;
+    transition: 0.5s;
+    margin-bottom: 20px;
+}
+
+.container_overmenu .content .back:hover{
+    color: black;
+    background-color: white;
+}
+
+.container_overmenu .content{
+    margin-top: 3em;
+    padding: 2em;
+    background-color: black;
+    color: white;
+    width: 50vw;
+    height: 65vh;
+    border-radius: 10px;
+    overflow-y: scroll;
+    position: fixed;
+}
+
+.container_overmenu .content::-webkit-scrollbar {
+    width: 8px;
+    margin: 10px;
+}
+
+.container_overmenu .content::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+
+.container_overmenu .content::-webkit-scrollbar-thumb {
+    background: white; 
+    border-radius: 8px;
+}
+
+.container_overmenu .content h2{
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#candidaturemenu input, #candidature textarea, #candidature select{
+    margin-bottom: 15px;
+}
+
+#candidaturemenu input[type="text"], #candidaturemenu input[type="number"], #candidaturemenu input[type="submit"], #candidaturemenu textarea, #candidaturemenu select, #candidaturemenu button{
+    border: 2px solid white;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 0.5em;
+}
+
+#candidaturemenu button{
+    margin-bottom: 10px;
+}
+
+#candidaturemenu input[type="submit"], #candidaturemenu button{
+    transition: 0.5s;
+}
+
+#candidaturemenu input[type="submit"]:hover, #candidaturemenu button:hover{
+    background-color: white;
+    color: black;
+}
+
+#candidaturemenu input:focus, #candidaturemenu textarea:focus{
+    outline: none;
+}
+
+#candidaturemenu textarea{
+    resize: none;
+    height: 100px;
+}
+
+#candidaturemenu .ingredients{
+    display: flex;
+    justify-content: center;
+}
+
+#candidaturemenu .ingredients select, #candidaturemenu .ingredients input{
+    margin: 5px;
+    margin-bottom: 10px;
+}
+
+#candidaturemenu .buttons{
+    display: flex;
+    justify-content: center;
+}
+
+#candidaturemenu .buttons button{
+    width: 5em;
+    margin: 1em;
+}
+
+#candidaturemenu #supprcandidature{
+    width: 100%;
+}
+
+#candidature{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+#candidature label{
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#votemenu .empty{
+    width: 100%;
+    text-align: center;
+}
+
+#votemenu .container_liste_plats_event{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#votemenu .erasevote{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#votemenu #erasevotebtn{
+    margin-top: 20px;
+    border: 2px solid white;
+    background-color: transparent;
+    border-radius: 5px;
+    color: white;
+    padding: 1.5em 5em;
+    transition: 0.5s;
+}
+
+#votemenu #erasevotebtn:hover{
+    background-color: white;
+    color: black;
+}
+
+#votemenu #erasevotebtn:disabled{
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.432);
+    opacity: 0.432;
+}

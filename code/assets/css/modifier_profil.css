@@ -1,4 +1,10 @@
+button{
+    cursor: pointer;
+}
+
 .back{
+    margin-left: 5px;
+    margin-top: 5px;
     background-color: transparent;
     padding: 12px;
     border-radius: 5px;
@@ -10,23 +16,20 @@
 }
 
 .container_page{
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 250vh;
     display: flex;
-    height: 200vh;
     flex-direction: column;
     align-items: center;
     position: relative;
 }
 
 .container_editpage{
-    width: 70vw;
+    width: 100%;
     position: absolute;
-    top: 20px;
-    padding: 2em;
-    background-color: rgba(0, 0, 0, 0.5);
     color: white;
     display: flex;
     flex-direction: column;
-    border-radius: 10px;
 }
 
 .container_editpage .back{
@@ -42,7 +45,7 @@
 }
 
 .container_editpage fieldset{
-    border: 2px dashed white;
+    border: 2px solid white;
     border-radius: 5px;
 }
 
@@ -295,24 +298,31 @@ form .helpmessage{
     padding: 2em;
 }
 
-#item4 a{
+#item4 button{
     background-color: transparent;
     border: 1px white solid;
     border-radius: 5px;
     color: white;
+    font-size: 15px;
     font-weight: bold;
     transition: 0.5s;
     padding: 12px;
     text-decoration: none;
 }
 
-#item4 a:hover{
+#item4 button:hover{
+    background-color: white;
+    color: black;
+}
+
+#item4 .supprbtn:hover{
     background-color: red;
+    color: white;
 }
 
 .container_overmenu{
     width: 100%;
-    height: 200vh;
+    height: 100%;
     display: none;
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.5);
@@ -467,4 +477,48 @@ form .helpmessage{
 #prefcategoriemenu form input[type="checkbox"], #prefingredientmenu form input[type="checkbox"]{
     width: 20px;
     height: 20px;
+}
+
+#suppressionmenu form{
+    display: flex;
+    flex-direction: column;
+}
+
+#suppressionmenu form input{
+    color: white;
+    background-color: rgba(0,0,0,0.5);
+    border: 2px solid white;
+    border-radius: 5px;
+    width: 90%;
+    height: 3em;
+    padding: 0 5px 0;
+}
+
+#suppressionmenu form input:focus{
+    outline: none;
+}
+
+#suppressionmenu .helpmessage{
+    margin-bottom: 10px;
+}
+
+#suppressionmenu form button{
+    width: 91%;
+    height: 3em;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 0 5px 0;
+    transition: 0.5s;
+}
+
+#suppressionmenu form button:hover{
+    background-color: rgb(179, 33, 33);
+}
+
+#suppressionmenu form button:disabled{
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.432);
 }
