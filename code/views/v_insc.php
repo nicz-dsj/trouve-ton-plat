@@ -9,6 +9,7 @@
 <!--  Début de la page -->
 <head>
 <link rel="stylesheet" href="<?= PATH_CSS?>connexion_style.css"> 
+<link rel="icon" type="image/png" href="assets/img/logo_ttp.png" />
 </head>
 
 <!--  Fin de la page -->

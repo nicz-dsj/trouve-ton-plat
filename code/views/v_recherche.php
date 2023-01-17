@@ -10,6 +10,7 @@
 
 <head>
     <link rel="stylesheet" href="<?= PATH_CSS ?>recherche_plat_style.css">
+    <link rel="icon" type="image/png" href="assets/img/logo_ttp.png" />
 
     <script src="assets/scripts/script_hamburger.js"></script>
     <script src="assets/scripts/script_recherche.js" defer></script>

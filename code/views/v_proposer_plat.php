@@ -13,6 +13,7 @@
 
     <script src="assets/scripts/script_hamburger.js"></script>
     <script src="assets/scripts/script_proposer_plat.js" defer></script>
+    <link rel="icon" type="image/png" href="assets/img/logo_ttp.png" />
 
 </head>
 <main>
