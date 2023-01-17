@@ -41,7 +41,7 @@ function getPlat($id){
 
 function updatePlatJour($id, $date, $newdate, $newid){
     $connexion = Connexion::getInstance()->getBdd();
-    $query = $connexion->prepare('UPDATE Plat_jour SET IdPlat = ? AND DateJ = ? WHERE IdPlat = ? AND DateJ = ?');
+    $query = $connexion->prepare('UPDATE Plat_jour SET IdPlat = ?,DateJ = ? WHERE IdPlat = ? AND DateJ = ?');
     $query->execute(array($newid, $newdate, $id, $date));
     $query->closeCursor();
 }

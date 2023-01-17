@@ -7,7 +7,7 @@
 }
 
 body {
-    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 /* POUR LA PAGE D'ACCUEIL */
@@ -18,11 +18,35 @@ body {
     width: 100%;
     background: rgba(0,0, 0, 0.4);
 }
+
+h1{
+    color: #fff;
+    font-size: 3vh;
+    font-weight: 700;
+    text-align: center;
+}
+
+.container_page_banderole img{
+    cursor:pointer;
+    opacity: 0;
+    -webkit-user-drag: none;
+    object-fit: cover;
+    object-position: center;
+}
+
+.banderole{
+    background-size: cover;
+    background-position: 0px 0px;
+    background-repeat: no-repeat;
+    animation: animatedBackground 6s linear infinite alternate;
+}
+
 .texte_decouverte{
     color: #fff;
     font-size: 1.5em;
     font-weight: 700;
     z-index: 1;
+    text-align: center;
 }
 .texte_decouverte p{
     margin-left:3vh;
@@ -62,3 +86,12 @@ body {
     overflow: hidden;
     font-size: 2.6vh;
 }
+
+@keyframes animatedBackground {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 0 100%;
+    }
+  }

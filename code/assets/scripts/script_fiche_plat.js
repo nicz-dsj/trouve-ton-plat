@@ -112,6 +112,8 @@ function afficherEtoiles(note) {
               alertElement.appendChild(closeButton);
               alertElement.appendChild(text);
               document.body.appendChild(alertElement);
+              location.reload();
+              
             } else {
               // Show a message to the user
               console.log("Erreur lors de la soumission de la note.");
