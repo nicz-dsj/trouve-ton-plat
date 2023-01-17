@@ -230,7 +230,7 @@ request.onload = function () {
      // On parcourt toutes les lignes
      lignes.forEach(function(ligne) {
       // On vérifie si la ligne commence par "ÉTAPE"
-      if (ligne.startsWith(encodeURI('ÉTAPE'))) {
+      if (ligne.startsWith('ÉTAPE')) {
         // Si c'est le cas, on sépare l'étape du texte
         var infosEtape = ligne.split(':');
         // On crée un élément de liste et on lui affecte l'étape et le texte comme contenu
