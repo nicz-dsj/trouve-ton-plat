@@ -8,6 +8,7 @@
 
 <head>
 <link rel="stylesheet" href="<?= PATH_CSS?>evenements.css">
+<link rel="icon" type="image/png" href="assets/img/logo_ttp.png" />
 </head>
 
 <div class="container_page">

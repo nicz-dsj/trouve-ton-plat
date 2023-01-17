@@ -1,5 +1,9 @@
+<head>
+<link rel="icon" type="image/png" href="assets/img/logo_ttp.png" />
+</head>
 <?php
 require(PATH_ASSETS.'/fpdf185/fpdf.php');
+
 
 $pdf = new FPDF();
 $pdf->SetTitle(utf8_decode('Données enregistrées'));

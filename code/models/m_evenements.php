@@ -219,3 +219,26 @@ function getGagnant($idEvent){
     $query->closeCursor();
     return $result;
 }
+
+function ajoutAchievement($idUtilisateur,$idAchiev){
+    // cette fonction ajoute un achievement a l'utilisateur qui a propose un plat
+    $connexion = Connexion::getInstance()->getBdd();
+    $query = $connexion->prepare('INSERT INTO Composer_achievement VALUES (?, ?)');
+    $query->execute(array($idAchiev,$idUtilisateur));
+    $query->closeCursor();
+}
+function checkAchievement($idUtilisateur, $idAchiev){
+    $connexion = Connexion::getInstance()->getBdd();
+    // regarde si l'utilisateur à deja l'achievement 1
+    $query = $connexion->prepare('SELECT * FROM Composer_achievement WHERE IdUtilisateur=? AND IdAchiev=?');
+    $query->execute(array($idUtilisateur));
+    $result = $query->fetch(PDO::FETCH_ASSOC);
+    $query->closeCursor();
+    // si result est vide alors l'utilisateur n'a pas encore de achievement
+    if (empty($result)) {
+        return false;
+    } else {
+        return true;
+    }
+}
+  

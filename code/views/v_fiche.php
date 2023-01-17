@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="<?= PATH_CSS?>fiche_plat_style.css">
 <script src="assets/scripts/script_hamburger.js"></script>
 <script src="assets/scripts/script_fiche_plat.js" defer></script>
+<link rel="icon" type="image/png" href="assets/img/logo_ttp.png" />
 </head>
 
 <!-- Fin de la page -->

@@ -9,6 +9,7 @@
 <head>
 <link rel="stylesheet" href="<?= PATH_CSS?>decouvrir.css">
 <link rel="stylesheet" href="<?= PATH_CSS?>style.css">
+<link rel="icon" type="image/png" href="assets/img/logo_ttp.png" />
 </head>
 
 <body>

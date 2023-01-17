@@ -48,6 +48,9 @@ if(isset($_GET['id'])){
                 for($i = 0; $i < count($_POST['ingredient']); $i++){
                     addIngredient($idPlat, $_POST['ingredient'][$i], $_POST['quantite'][$i], $_POST['unite'][$i]);
                 }
+                if (!checkAchievement($_SESSION['id'], 5)) {
+                    ajoutAchievement($_SESSION['id'], 5);
+                }
             }
             unset($_POST);
             header('Location:index.php?page=evenements&id='.$event[0]['IdEvenement']);

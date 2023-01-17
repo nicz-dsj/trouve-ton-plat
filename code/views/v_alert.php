@@ -2,6 +2,7 @@
 ?>
 
 <link href="<?= PATH_CSS ?>alert.css" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/img/logo_ttp.png" />
 
 <?php
 if(isset($alert))
