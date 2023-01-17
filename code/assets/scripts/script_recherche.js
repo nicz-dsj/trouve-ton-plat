@@ -20,7 +20,7 @@ dinput.addEventListener('keydown', (e) => {
          if(listIngr.includes(valeur) === false) {
             listIngr.push(valeur);
 
-         for(let i = 1; i <= opts.length; i++) {
+         for(let i = 1; i < opts.length/2; i++) {
             if (opts[i*2-1].value === valeur) {
 
                   listIngrNum.push(i);
@@ -28,6 +28,7 @@ dinput.addEventListener('keydown', (e) => {
                   var element = document.createElement("div");
                   element.classList.add("tagsIn")
                   element.innerHTML = valeur;
+                  document.getElementsByClassName("container_scroll")[0].style.height = "61vh";
 
 
                   element.addEventListener('click', (e) => {
@@ -67,14 +68,18 @@ dinput.addEventListener('input', (e) => {
     if(listIngr.includes(valeur) === false) {
       listIngr.push(valeur);
 
-      for(let i = 1; i <= opts.length; i++) {
+      for(let i = 1; i < opts.length/2; i++) {
          if (opts[i*2-1].value === valeur) {
+
+            console.log(valeur);
+            console.log(i);
             
             listIngrNum.push(i);
 
             var element = document.createElement("div");
             element.classList.add("tagsIn")
             element.innerHTML = valeur;
+            document.getElementsByClassName("container_scroll")[0].style.height = "61vh";
    
             element.addEventListener('click', (e) => {
 
@@ -110,8 +115,19 @@ function update(j){
    let plats = document.getElementsByClassName("container_plat");
    
    for(let i = 0; i < plats.length; i++){
-      if(!(plats[i].dataset.ing.includes(j))){
-         plats[i].style.display="none";
+      if(j.toString().length == 1){
+         if(!(plats[i].dataset.ing.includes("-"+j+"-")) && !(plats[i].dataset.ing[0] == j)){
+            plats[i].style.display="none";
+         }
+      }
+      else {
+         var temp = "";
+         for(let k = 0; k < j.toString().length; k++){
+            var temp = temp + plats[i].dataset.ing[k];
+         }
+         if(!(plats[i].dataset.ing.includes("-"+j+"-")) && !(temp == j)){
+            plats[i].style.display="none";
+         }
       }
    };
 
@@ -125,8 +141,19 @@ function update(j){
 function updateDel(j){
    let plats = document.getElementsByClassName("container_plat");
    for(let i = 0; i < plats.length; i++){
-      if(!(plats[i].dataset.ing.includes(j))){
-         plats[i].style.display="";
+      if(j.toString().length == 1){
+         if(!(plats[i].dataset.ing.includes("-"+j+"-")) && !(plats[i].dataset.ing[0] == j)){
+            plats[i].style.display="";
+         }
+      }
+      else {
+         var temp = "";
+         for(let k = 0; k < j.toString().length; k++){
+            var temp = temp + plats[i].dataset.ing[k];
+         }
+         if(!(plats[i].dataset.ing.includes("-"+j+"-")) && !(temp == j)){
+            plats[i].style.display="";
+         }
       }
    };
    for(let k= 0; k < listIngrNum.length; k++){

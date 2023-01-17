@@ -132,6 +132,7 @@ body{
     border-radius: 7px;
     text-align: center;
     transition: 0.25s;
+    display: unset;
 }
 
 .container_plat:hover{
