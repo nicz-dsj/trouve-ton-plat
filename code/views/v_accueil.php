@@ -32,23 +32,18 @@
           <source src="assets/vid/video_cuisine.mp4">
         </video>
         <div class="texte_video">
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam repellendus molestiae tenetur ad quis sunt nobis,
-            similique corrupti nam id autem ipsum soluta cumque nihil eveniet, voluptatibus quidem? Fuga, eaque. Lorem ipsum dolor
-           sit amet consectetur adipisicing elit. Excepturi delectus dicta quos, voluptatum in quaerat, laudantium totam culpa amet
-           iusto unde rem eligendi et repellendus odit vel! Ratione, vero minus. Lorem ipsum dolor sit amet consectetur adipisicing
-           elit. Pariatur, illo animi et repellendus odit vel! Ratione</p>
-        </div>
+          <p>Notre site vous permet de rechercher des recettes en utilisant des ingrédients spécifiques ou en entrant le nom d'un plat.</p><br><p> Vous pouvez également proposer vos propres recettes à notre communauté en soumettant votre plat pour validation par nos administrateurs.</p><br><p>
+              Nous organisons régulièrement des événements communautaires dans lesquels les membres peuvent participer en préparant un plat spécifique demandé par le site. </p><br><p>C'est un excellent moyen de découvrir de nouvelles recettes et de partager vos talents culinaires avec d'autres membres de la communauté.</p>
+          </div>
       </div>
       <div class="video">
         <video autoplay muted loop class="video">
-          <source src="assets/vid/video_cuisine.mp4">
+          <source src="assets/vid/vid2.mp4">
         </video>
         <div class="texte_video">
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam repellendus molestiae tenetur ad quis sunt nobis,
-            similique corrupti nam id autem ipsum soluta cumque nihil eveniet, voluptatibus quidem? Fuga, eaque. Lorem ipsum dolor
-           sit amet consectetur adipisicing elit. Excepturi delectus dicta quos, voluptatum in quaerat, laudantium totam culpa amet
-           iusto unde rem eligendi et repellendus odit vel! Ratione, vero minus. Lorem ipsum dolor sit amet consectetur adipisicing
-           elit. Pariatur, illo animi et repellendus odit vel! Ratione</p>
+          <p>Enfin, notre dernière fonctionnalité vous permet de découvrir des recettes en fonction des dernières sorties ou de vos préférences ajoutées lors de votre inscription.</p><br><p> Que vous soyez un cuisinier débutant ou expérimenté, notre site est là pour vous aider à explorer de nouvelles idées de recettes et à partager vos propres créations culinaires.</p><br><p>
+              Nous espérons que vous apprécierez votre expérience sur notre site et nous attendons avec impatience de voir vos propres recettes partagées avec notre communauté. Bon appétit !</p>
+        </p>
         </div>
       </div>
     </div>

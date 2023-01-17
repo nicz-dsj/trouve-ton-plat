@@ -74,6 +74,10 @@ h1{
 .texte_video{
     overflow: hidden;
     position:absolute;
+    padding-left: 2vh;
+    padding-right: 2vh;
+    /*met une scroll bar si le texte est trop long */
+    overflow-y: scroll;
     top: 0;
     right:0;
     font-size: 2vh;
@@ -83,9 +87,13 @@ h1{
     height: 100%;
     text-align: center;
 }
+/*rend la scroll bar invisible */
+.texte_video::-webkit-scrollbar {
+    display: none;
+}
 .texte_video p{
     overflow: hidden;
-    font-size: 2.6vh;
+    font-size: 2.7vh;
 }
 
 @keyframes animatedBackground {
