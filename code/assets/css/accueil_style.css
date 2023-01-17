@@ -16,7 +16,7 @@ body {
     flex-direction: column;
     height: 100%;
     width: 100%;
-    background: rgba(0,0, 0, 0.4);
+    background: rgba(0,0, 0, 0.7);
 }
 
 h1{
@@ -25,6 +25,7 @@ h1{
     font-weight: 700;
     text-align: center;
 }
+
 
 .container_page_banderole img{
     cursor:pointer;
