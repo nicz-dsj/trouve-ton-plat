@@ -129,7 +129,7 @@ savoir.addEventListener("click", function () {
   //change le content de savoir
   savoir.classList.add("savoir_plus");
   savoir.innerHTML =
-    "Lors de la création d'un plat, vous avez pour obligation de renseigner la recette complete. Pour ceci, vous devez expliquer chaque étape de la recette, celle ci devra être écrite ligne par ligne, à chaque fin d'étape il vous faudra faire un retour à la ligne. Si ceci n'est pas fait nous ne pourrons prendre en charge votre demande de création de plat. Merci de votre compréhension.";
+    "Lors de la création d'un plat, vous avez pour obligation de renseigner la recette complète. Pour ceci, veuillez expliquer chaque étape ligne par ligne, en revenant à la ligne pour créer une nouvelle étape. Le non-respect de ces conditions nous verrons dans l'obligation de refuser votre proposition . Merci de votre compréhension.";
   moins.style.display = "block";
 });
 moins.addEventListener("click", function () {

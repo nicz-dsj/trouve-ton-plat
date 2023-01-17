@@ -7,7 +7,6 @@ let description = document.getElementById('fiche_plat_desc');
 let createur = document.getElementById('fiche_plat_creat');
 let categorie = document.getElementById('fiche_plat_cat');
 let note = document.getElementById('fiche_plat_note');
-let date = document.getElementById('fiche_plat_date');
 let recette = document.getElementById('fiche_plat_recette');
 let image = document.getElementById('fiche_plat_img');
 var noteArr = 0;
@@ -208,15 +207,14 @@ request.onload = function () {
 
     // Met à jour le contenu HTML des éléments du DOM avec les données du JSON
     nom.getElementsByTagName("h1")[0].innerHTML = dataPlat.Nom;
-    description.getElementsByTagName("p")[0].innerHTML = dataPlat.Description;
     categorie.getElementsByTagName("p")[0].innerHTML = "Catégorie : " + dataCategorie.Nom;
-    createur.getElementsByTagName("h2")[0].innerHTML = `Par <a href=index.php?page=profil&id=${dataUser.idUtilisateur}>${dataUser.pseudoUtilisateur}</a>`;
+    createur.getElementsByTagName("h2")[0].innerHTML = `Par <a href=index.php?page=profil&id=${dataUser.idUtilisateur}>${dataUser.pseudoUtilisateur}</a>, le `+ dataPlat.DatePublication ;
+    description.getElementsByTagName("p")[0].innerHTML = dataPlat.Description;
     image.getElementsByTagName("img")[0].src = "assets/img/plats/" + dataPlat.img;
     note.getElementsByTagName("p")[0].innerHTML = dataNote.MoyenneArr+"/5";
     if(dataNote.MoyenneArr == null){
       note.getElementsByTagName("p")[0].innerHTML = "Pas encore noté";
     }
-    date.getElementsByTagName("p")[0].innerHTML = dataPlat.DatePublication;
     recette.getElementsByTagName("p")[0].innerHTML = dataPlat.recette;
     afficherEtoiles(dataNote.MoyenneArr);
     const idPLAT = dataPlat.IdPlat;

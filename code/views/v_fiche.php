@@ -28,21 +28,19 @@
                     <div id="fiche_plat_nom">
                         <h1 id=nom>NOM</h1>
                     </div>
-                    <div id="fiche_plat_desc">
-                        <p id=description>Description</p>
-                    </div>
                     <div id="fiche_plat_creat">
                         <h2 id=creat>Utilisateur</h2>
-                    </div>
-                    <div id="fiche_plat_cat">
-                        <p id=cat>Catégorie</p>
                     </div>
                     <div id="fiche_plat_note">
                         <div id=container-etoiles></div>
                         <p id=note>Note</p>
                     </div>
-                    <div id="fiche_plat_date">
-                        <p id=date>Date</p>
+                    <div id="fiche_plat_desc">
+                        <p id=description>Description</p>
+                    </div>
+                    <br>
+                    <div id="fiche_plat_cat" style="display:none;">
+                        <p id=cat>Catégorie</p>
                     </div>
                     <p id=ingredients>Ingrédients :<br></p>
                     <div id="fiche_plat_ingredients">

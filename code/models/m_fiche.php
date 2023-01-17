@@ -84,7 +84,7 @@ function getSimilaires($idPlat){
     $plat = getPlat($idPlat);
     $idCategorie = $plat[0]['IdCategorie'];
     
-    $query = $connexion->prepare('SELECT * FROM Plat WHERE IdCategorie = ? AND IdPlat != ?');
+    $query = $connexion->prepare('SELECT * FROM Plat WHERE IdCategorie = ? AND IdPlat != ? AND Ajoutee=1');
     $query->execute(array($idCategorie, $idPlat));
     $result = $query->fetchAll();
     $query->closeCursor();

@@ -85,10 +85,11 @@ h3{
 }
 
 .ingred{
-    /** width: get the width of the text */
-    width: 25%;
-    /** align text to the center */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
+    width: 25%;
     border: 1px solid #fff;
     border-radius: 7px;
     caret-color: transparent;

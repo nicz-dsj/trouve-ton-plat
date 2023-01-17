@@ -91,6 +91,10 @@
                                     <option value="unite">Unité(s)</option>
                                     <option value="sachet">Sachet(s)</option>
                                     <option value="pincée">Pincée(s)</option>
+                                    <option value="tranche">Tranche(s)</option>
+                                    <option value="poignée">Poignée(s)</option>
+                                    <option value="noix">Noix</option>
+
                                 </select>
                                 <input type="hidden" id="variable_js" name="variable_js" value="1">
                             </div>

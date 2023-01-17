@@ -31,7 +31,7 @@ function getPrefIngredients($id){
 
 function getPlats(){
     $connexion = Connexion::getInstance()->getBdd();
-    $query = $connexion->prepare('SELECT * FROM Plat ORDER BY DatePublication DESC');
+    $query = $connexion->prepare('SELECT * FROM Plat WHERE Ajoutee=1 ORDER BY DatePublication DESC');
     $query->execute();
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
     $query->closeCursor();
@@ -40,7 +40,7 @@ function getPlats(){
 
 function getPlatsMieuxNotes(){
     $connexion = Connexion::getInstance()->getBdd();
-    $query = $connexion->prepare('SELECT * FROM Plat p ORDER BY (SELECT ROUND(AVG(Note),1) as MoyenneArr FROM Note n WHERE n.IdPlat = p.IdPlat) DESC');
+    $query = $connexion->prepare('SELECT * FROM Plat p WHERE p.Ajoutee=1 ORDER BY (SELECT ROUND(AVG(Note),1) as MoyenneArr FROM Note n WHERE n.IdPlat = p.IdPlat) DESC');
     $query->execute();
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
     $query->closeCursor();
