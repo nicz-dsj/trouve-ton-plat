@@ -46,7 +46,7 @@
                                 echo $prefCategorie[$i]['Nom'].", ";
                             }
                             else{
-                                echo $prefCategorie[3]['Nom'];
+                                echo $prefCategorie[$i]['Nom'];
                             }
                         }
                     }
