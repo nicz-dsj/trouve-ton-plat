@@ -89,10 +89,10 @@ function getPlat($idUtilisateur, $idEvent){
     return $result;
 }
 
-function addPlat($idEvent, $idUtilisateur, $desc, $recette, $date, $img, $idPlat, $nomPlat, $idCategorie){
+function addPlat($idPlat, $idEvent, $idUtilisateur, $desc, $recette, $date, $img, $nomPlat, $idCategorie){
     $connexion = Connexion::getInstance()->getBdd();
-    $query = $connexion->prepare("INSERT INTO PlatEvenement VALUES(?,?,?,?,?,?,0,?,?,?)");
-    $query->execute(array($idEvent, $idUtilisateur, $desc, $recette, $date, $img, $idPlat, $nomPlat, $idCategorie));
+    $query = $connexion->prepare("INSERT INTO PlatEvenement VALUES(?,?,?,?,?,?,?,?,?)");
+    $query->execute(array($idPlat, $idEvent, $idUtilisateur, $desc, $recette, $date, $img, $nomPlat, $idCategorie));
     $query->closeCursor();
 }
 
@@ -128,10 +128,10 @@ function deletePlat($idPlat){
     $query->closeCursor();
 }
 
-function getMaxIdPlat($idEvent){
+function getMaxIdPlat(){
     $connexion = Connexion::getInstance()->getBdd();
-    $query = $connexion->prepare("SELECT MAX(IdPlatEvent) FROM PlatEvenement WHERE IdEvenement = ?");
-    $query->execute(array($idEvent));
+    $query = $connexion->prepare("SELECT MAX(IdPlatEvent) FROM PlatEvenement");
+    $query->execute(array());
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
     $query->closeCursor();
     return $result[0]['MAX(IdPlatEvent)'];
@@ -231,7 +231,7 @@ function checkAchievement($idUtilisateur, $idAchiev){
     $connexion = Connexion::getInstance()->getBdd();
     // regarde si l'utilisateur à deja l'achievement 1
     $query = $connexion->prepare('SELECT * FROM Composer_achievement WHERE IdUtilisateur=? AND IdAchiev=?');
-    $query->execute(array($idUtilisateur));
+    $query->execute(array($idUtilisateur, $idAchiev));
     $result = $query->fetch(PDO::FETCH_ASSOC);
     $query->closeCursor();
     // si result est vide alors l'utilisateur n'a pas encore de achievement
