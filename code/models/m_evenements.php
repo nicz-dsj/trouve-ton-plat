@@ -231,7 +231,7 @@ function checkAchievement($idUtilisateur, $idAchiev){
     $connexion = Connexion::getInstance()->getBdd();
     // regarde si l'utilisateur à deja l'achievement 1
     $query = $connexion->prepare('SELECT * FROM Composer_achievement WHERE IdUtilisateur=? AND IdAchiev=?');
-    $query->execute(array($idUtilisateur));
+    $query->execute(array($idUtilisateur, $idAchiev));
     $result = $query->fetch(PDO::FETCH_ASSOC);
     $query->closeCursor();
     // si result est vide alors l'utilisateur n'a pas encore de achievement
