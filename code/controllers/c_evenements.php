@@ -41,10 +41,10 @@ if(isset($_GET['id'])){
                 }
             }
             else{
-                $idPlat = getMaxIdPlat($event[0]['IdEvenement']) + 1;
+                $idPlat = getMaxIdPlat() + 1;
                 $recette = reecriture_recette($_POST['recette']);
                 $nomImg = ajoutImg($_FILES['image'],$idPlat);
-                addPlat($event[0]['IdEvenement'], $_SESSION['id'], $_POST['description'], $recette, date('Y-m-d'), $nomImg, $idPlat, $_POST['nomplat'], $_POST['categorie']);
+                addPlat($idPlat, $event[0]['IdEvenement'], $_SESSION['id'], $_POST['description'], $recette, date('Y-m-d'), $nomImg, $_POST['nomplat'], $_POST['categorie']);
                 for($i = 0; $i < count($_POST['ingredient']); $i++){
                     addIngredient($idPlat, $_POST['ingredient'][$i], $_POST['quantite'][$i], $_POST['unite'][$i]);
                 }
