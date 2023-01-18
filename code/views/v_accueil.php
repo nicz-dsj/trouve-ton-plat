@@ -19,12 +19,12 @@
     <div class="container_page_banderole"></div>
       <br><h1> Bienvenue sur le site Trouve ton plat ! </h1><br>
     <div class="container_page_banderole">
-      <div style="background-image: url(assets/img/plats/<?echo($platJour[0]["img"])?>);" class="banderole" id="<?echo($platJour[0]["IdPlat"])?>">
-      <img src="assets/img/image_decouverte.jpg" alt="accueil" />
+      <div id="imgCont">
+        <img src="assets/img/plats/<?php echo($platJour[0]['img'])?>" alt="Image_Plat_Du_Jour" id="<?php echo($platJour[0]['IdPlat'])?>" class="platJIMG"/>
       </div>
       <div class ="texte_decouverte">
         <h2> Recette du jour :</h2>
-        <p> <?echo($platJour[0]["Nom"])?> </p>
+        <p> <?php echo($platJour[0]["Nom"])?> </p>
       </div>
     </div>
     <div class="container_page_videos">

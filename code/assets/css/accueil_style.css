@@ -17,6 +17,7 @@ body {
     height: 100%;
     width: 100%;
     background: rgba(0,0, 0, 0.7);
+    background-image: url("../img/image_decouverte.png");
 }
 
 h1{
@@ -26,13 +27,21 @@ h1{
     text-align: center;
 }
 
+#imgCont{
+    margin: 0 auto;
+    width: 35vh;
+    height: 35vh;
+    border: 2px solid #fff;
+    border-radius: 7px;
+    cursor:pointer;
+
+}
 
 .container_page_banderole img{
-    cursor:pointer;
-    opacity: 0;
+    border-radius: 7px;
+    width: 100%;
+    height: 100%;
     -webkit-user-drag: none;
-    object-fit: cover;
-    object-position: center;
 }
 
 .banderole{
@@ -50,13 +59,11 @@ h1{
     text-align: center;
 }
 .texte_decouverte p{
-    margin-left:3vh;
     margin-top:0.5vh;
     margin-bottom: 1vh;
     font-size: 2vh;
 }
 .texte_decouverte h2{
-    margin-left:3vh;
     margin-top:1vh;
     font-size: 3vh;
 }

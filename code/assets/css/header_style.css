@@ -23,7 +23,7 @@ body{
 .logo_ttp{
     flex-direction: column;
     position: absolute;
-    top: 2px;
+    top: 1vh;
     left: 50%;
     transform: translate(-50%, 0);
     z-index: 1;
@@ -32,7 +32,7 @@ body{
 }
 .con{
     float:right;
-    margin-top:20px;
+    margin-top:4vh;
     z-index: 1;
     position:absolute;
     display: flex;
@@ -80,7 +80,7 @@ body{
     float:left;
     height:25px;
     width:40px;
-    margin-top: 20px;
+    margin-top: 4vh;
     display:flex;
     flex-direction: column;
     justify-content: space-between;
