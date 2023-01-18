@@ -45,3 +45,12 @@ function updatePlatJour($id, $date, $newdate, $newid){
     $query->execute(array($newid, $newdate, $id, $date));
     $query->closeCursor();
 }
+
+function getFavMax(){
+    $connexion = Connexion::getInstance()->getBdd();
+    $query = $connexion->prepare('SELECT IdPlat, COUNT(*) as count FROM Favoris GROUP BY IdPlat ORDER BY count DESC LIMIT 1');
+    $query->execute();
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+    $query->closeCursor();
+    return $result;
+}

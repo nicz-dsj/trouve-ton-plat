@@ -19,9 +19,31 @@
     <div class="container_page_banderole"></div>
       <br><h1> Bienvenue sur le site Trouve ton plat ! </h1><br>
     <div class="container_page_banderole">
-      <div id="imgCont">
-        <img src="assets/img/plats/<?php echo($platJour[0]['img'])?>" alt="Image_Plat_Du_Jour" id="<?php echo($platJour[0]['IdPlat'])?>" class="platJIMG"/>
+
+      <div id="line1"> </div>
+      <div id="line2"> </div>
+      <div id="line3"> </div>
+      <div id="line4"> </div>
+      <div id="line5"> </div>
+      <div id="line6"> </div>
+      <div id="carousselImages">
+        <div id="gaucheCont">
+          <img src="assets/img/flecheGauche.png"></img>
+        </div>
+        <div id="imgCont">
+          <img src="assets/img/plats/<?php echo($platJour[0]['img'])?>" alt="Image_Plat_Du_Jour" id="<?php echo($platJour[0]['IdPlat'])?>" class="platJIMG"/>
+        </div>
+        <div id="imgCont2">
+          <img src="assets/img/aleat" alt="Plat_Aleat" class="platJIMG"/>
+        </div>
+        <div id="imgCont3">
+          <img src="assets/img/plats/<?php echo($platPop[0]['img'])?>" alt="Plat_populaire" id="<?php echo($platPop[0]['IdPlat'])?>" class="platJIMG"/>
+        </div>
+        <div id="droiteCont">
+          <img src="assets/img/flecheDroite.png"></img>
+        </div>
       </div>
+
       <div class ="texte_decouverte">
         <h2> Recette du jour :</h2>
         <p> <?php echo($platJour[0]["Nom"])?> </p>

@@ -17,7 +17,6 @@ body {
     height: 100%;
     width: 100%;
     background: rgba(0,0, 0, 0.7);
-    background-image: url("../img/image_decouverte.png");
 }
 
 h1{
@@ -27,13 +26,140 @@ h1{
     text-align: center;
 }
 
+#carousselImages{
+    display: flex;
+    flex-direction: row;
+}
+
+#droiteCont{
+    margin: 90px;
+    width: 15vh;
+    height: 15vh;
+    cursor:pointer;
+}
+
+#droiteCont img{
+    border-radius: 7px;
+    width: 100%;
+    height: 100%;
+    -webkit-user-drag: none;
+    filter: invert(100%);
+    -webkit-filter: invert(100%);
+}
+
+#line1{
+    border-bottom: 6px solid rgb(255, 255, 255);
+    border-radius: 6px;
+    width: 8vw;
+    transform: rotate(45deg);
+    transform-origin: left;
+    left: 63%;
+    position: absolute;
+    top: 41%;
+}
+
+#line2{
+    border-bottom: 6px solid rgb(255, 255, 255);
+    border-radius: 6px;
+    width: 8vw;
+    transform: rotate(-45deg);
+    transform-origin: left;
+    left: 63%;
+    position: absolute;
+    top: 30%;
+}
+
+#line3{
+    border-bottom: 6px solid rgb(255, 255, 255);
+    border-radius: 6px;
+    width: 8vw;
+    transform-origin: left;
+    left: 63%;
+    position: absolute;
+    top: 35%;
+}
+
+#line4{
+    border-bottom: 6px solid rgb(255, 255, 255);
+    border-radius: 6px;
+    width: 8vw;
+    transform: rotate(-45deg);
+    transform-origin: left;
+    right: 61%;
+    position: absolute;
+    top: 51%;
+}
+
+#line5{
+    border-bottom: 6px solid rgb(255, 255, 255);
+    border-radius: 6px;
+    width: 8vw;
+    transform: rotate(45deg);
+    transform-origin: left;
+    left: 31%;
+    position: absolute;
+    top: 19%;
+}
+
+#line6{
+    border-bottom: 6px solid rgb(255, 255, 255);
+    border-radius: 6px;
+    width: 8vw;
+    transform-origin: left;
+    right: 63%;
+    position: absolute;
+    top: 35%;
+}
+
+#gaucheCont{
+    margin: 90px;
+    width: 15vh;
+    height: 15vh;
+    cursor:pointer;
+}
+
+#gaucheCont img{
+    border-radius: 7px;
+    width: 100%;
+    height: 100%;
+    -webkit-user-drag: none;
+    filter: invert(100%);
+    -webkit-filter: invert(100%);
+}
+
 #imgCont{
-    margin: 0 auto;
+    margin: auto;
     width: 35vh;
     height: 35vh;
     border: 2px solid #fff;
     border-radius: 7px;
     cursor:pointer;
+    position: relative;
+    left:0vh;
+}
+
+#imgCont2{
+    margin: auto;
+    width: 35vh;
+    height: 35vh;
+    border: 2px solid #fff;
+    border-radius: 7px;
+    cursor:pointer;
+    position: relative;
+    display:none;
+    right:-150vh;
+
+}
+
+#imgCont3{
+    margin: auto;
+    width: 35vh;
+    height: 35vh;
+    border: 2px solid #fff;
+    border-radius: 7px;
+    cursor:pointer;
+    position: relative;
+    display:none;
 
 }
 
@@ -48,7 +174,6 @@ h1{
     background-size: cover;
     background-position: 0px 0px;
     background-repeat: no-repeat;
-    animation: animatedBackground 6s linear infinite alternate;
 }
 
 .texte_decouverte{
@@ -103,11 +228,37 @@ h1{
     font-size: 2.7vh;
 }
 
-@keyframes animatedBackground {
-    from {
-      background-position: 0 0;
+.milVgau{
+    animation: milVgau 2s;
+}
+
+.droVmil{
+    animation: droVmil 2s;
+}
+
+@keyframes milVgau {
+    0% {
+        left:32.5vh;
     }
-    to {
-      background-position: 0 100%;
+    100% {
+        left: -150vh;
     }
-  }
+}
+
+@keyframes droVmil {
+    0% {
+        right:-150vh;
+    }
+    100% {
+        right: 32.5vh;
+    }
+}
+
+@keyframes gauVmil {
+    0% {
+        left:-150vh;
+    }
+    100% {
+        left: 32.5vh;
+    }
+}

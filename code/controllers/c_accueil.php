@@ -12,6 +12,6 @@ if($platJour[0]['DateJ'] != date('Y-m-d')){
     $platJour = getPlatJour();
 }
 $platJour = getPlat($platJour[0]['IdPlat']);
-
+$platPop = getPlat(getFavMax()[0]['IdPlat']);
 //appel de la vue
 require_once(PATH_VIEWS.$page.'.php');
