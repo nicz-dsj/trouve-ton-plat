@@ -16,20 +16,24 @@
     <div class="container_page">
         <h1>** Découvrir des plats **</h1>
         <?php
+        // Dans le cas où on est connecté
         if(isset($_SESSION['logged']) && $_SESSION['logged'] == 1){
             ?>
         <div class="container_item" id="preferences">
         <?php
+            // Dans le cas où l'utilisateur a des préférences
             if(count($prefCategories) > 0 || count($prefIngredients) > 0){
             ?>
-            <h2>🥣 Découvrez de nouveaux plats à réaliser chez vous selon vos préférences <?= $utilisateur[0]['pseudoUtilisateur'] ?> !</h2>
+            <h2>🥣 Découvrez de nouveaux plats à réaliser chez vous selon vos préférences <?= $utilisateur['pseudoUtilisateur'] ?> !</h2>
             <?php
+                // Dans le cas où l'utilisateur a des préférences de catégories de plats
                 if(count($prefCategories) > 0){
                 ?>
             <div class="container_liste" id="categorie">
                 <p class="title">Selon vos préférences de catégorie</p>
                 <div class="liste">
                 <?php
+                    // Affichage des plats selon les préférences de catégorie de plats
                     for($i = 0; $i < count($platsCategorie) && $i < 6; $i++){
                     ?>
                     <div class="container_plat" id="<?= $platsCategorie[$i]['IdPlat'] ?>">
@@ -43,13 +47,14 @@
             </div>
                 <?php
                 }
-
+                // Dans le cas où l'utilisateur a des préférences d'ingrédients
                 if(count($prefIngredients) > 0){
                 ?>
             <div class="container_liste" id="ingredients">
                 <p class="title">Selon vos préférences d'ingrédients</p>
                 <div class="liste">
                 <?php
+                    // Affichage des plats selon les préférences d'ingrédients
                     for($i = 0; $i < count($platsIngredients) && $i < 6; $i++){
                     ?>
                     <div class="container_plat" id="<?= $platsIngredients[$i]['IdPlat'] ?>">
@@ -77,6 +82,7 @@
                 <p class="title">Dernières sorties</p>
                 <div class="liste">
                 <?php
+                // Affichage des plats ajoutés
                 for($i = 0; $i < count($plats) && $i < 6; $i++){
                     ?>
                     <div class="container_plat" id="<?= $plats[$i]['IdPlat'] ?>">
@@ -92,6 +98,7 @@
                 <p class="title">Les mieux notés</p>
                 <div class="liste">
                 <?php
+                // Affichage des plats les mieux notés
                 for($i = 0; $i < count($platsMieuxNotes) && $i < 6; $i++){
                     ?>
                     <div class="container_plat" id="<?= $platsMieuxNotes[$i]['IdPlat'] ?>">

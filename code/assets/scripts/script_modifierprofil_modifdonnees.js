@@ -1,19 +1,32 @@
+// Variables de vérification de champs
 let pseudoConfirm = false, mailConfirm = false, currentPwdConfirm = false, newPwdConfirm = false, confirmPwdConfirm = false;
+// Fromat de mot de passe
 const regexMail = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,'g');
 
+// Barre de modification du nom d'utilisateur
 const login = document.getElementById('updatelogin').getElementsByTagName('input')[0];
+// Barre de modification de l'adresse mail
 const mail = document.getElementById('updatemail').getElementsByTagName('input')[0];
+// Barres de modification et de vérification de mot de passe
 const pwd = document.getElementById('updatepwd').getElementsByTagName('input');
+// Messages d'erreurs et de succès
 const loginMessage = document.getElementById('updatelogin').querySelector('.helpmessage');
 const mailMessage = document.getElementById('updatemail').querySelector('.helpmessage');
 const pwdMessage = document.getElementById('updatepwd').getElementsByClassName('helpmessage');
+// Boutons pour soumettre les modifications
 const loginSubmit = document.getElementById('updatelogin').getElementsByTagName('button')[0];
 const mailSubmit = document.getElementById('updatemail').getElementsByTagName('button')[0];
 const pwdSubmit = document.getElementById('updatepwd').getElementsByTagName('button')[0];
 
+// Champ de texte de modification de la description
 const about = document.getElementById('updateabout').getElementsByTagName('input')[0];
+// Description actuelle
+const actualAbout = about.value;
+
+// Boutons pour soumettre les modifications
 const aboutSubmit = document.getElementById('updateabout').getElementsByTagName('button')[0];
 
+// Fonction permettant de vérifier si le nom d'utilisateur est déjà utilisé
 function checkLogin(){
     const xhr = new XMLHttpRequest();
     xhr.open("POST", window.location.href, true);
@@ -36,6 +49,7 @@ function checkLogin(){
     xhr.send(`updaterequest=true&login=${login.value}`);
 }
 
+// Fonction permettant de vérifier si l'adresse mail est déjà utilisé
 function checkMail(){
     const xhr = new XMLHttpRequest();
     xhr.open("POST", window.location.href, true);
@@ -66,6 +80,7 @@ function checkMail(){
     xhr.send(`updaterequest=true&mail=${mail.value}`);
 }
 
+// Fonction permettant de vérifier si le mot de passe correspond à celui actuel
 function checkCurrentPwd(){
     const xhr = new XMLHttpRequest();
     xhr.open("POST", window.location.href, true);
@@ -88,6 +103,7 @@ function checkCurrentPwd(){
     xhr.send(`updaterequest=true&currentpwd=${pwd[0].value}`);
 }
 
+// Fonction permettant de vérifier si le nouveau correspond au format attendu du mot de passe et permettant de confirmer le nouveau mot de passe
 function checkNewPwd(){
     if(pwd[1].value.length < 8){
         pwdMessage[1].textContent = "Ce mot de passe est trop court !"
@@ -116,6 +132,8 @@ function checkNewPwd(){
     }
 }
 
+
+// Fonction permettant de valider les vérifications
 function verifUpdate(){
     if(pseudoConfirm === true){
         loginSubmit.disabled = false;
@@ -139,6 +157,7 @@ function verifUpdate(){
     }
 }
 
+// Event listener sur la barre de saisie de nom d'utilisateur
 login.addEventListener('keyup', function(){
     if(login.value.length > 0){
         checkLogin();
@@ -151,6 +170,7 @@ login.addEventListener('keyup', function(){
     }
 });
 
+// Event listener sur la barre de saisie d'adresse mail
 mail.addEventListener('keyup', function(){
     if(mail.value.length > 0){
         checkMail();
@@ -163,6 +183,7 @@ mail.addEventListener('keyup', function(){
     }
 });
 
+// Event listener sur la première barre de saisie de mot de passe (saisie mot de passe actuel)
 pwd[0].addEventListener('keyup', function(){
     if(pwd[0].value.length > 0){
         checkCurrentPwd();
@@ -175,6 +196,7 @@ pwd[0].addEventListener('keyup', function(){
     }
 });
 
+// Event listener sur la deuxième barre de saisie de mot de passe (saisie nouveau mot de passe)
 pwd[1].addEventListener('keyup', function(){
     if(pwd[1].value.length > 0){
         checkNewPwd();
@@ -187,10 +209,17 @@ pwd[1].addEventListener('keyup', function(){
     }
 });
 
+// Event listener sur la trosième barre de saisie de mot de passe (confirmation nouveau mot de passe)
 pwd[2].addEventListener('keyup', function(){
     checkNewPwd();
 });
 
+// Event listener sur le champ de texte de modification de la description du profil utilisateur
 about.addEventListener('keyup', function(){
-    aboutSubmit.disabled = false;
+    if(actualAbout == about.value){
+        aboutSubmit.disabled = true;
+    }
+    else{
+        aboutSubmit.disabled = false;
+    }
 });
