@@ -17,21 +17,24 @@
             <img class="left_side" src="./assets/img/event.jpg" width="854" height="480">
             <div class="right_side">
                 <div class="event_info">
-                    <h2 class="title"><?= $event[0]['NomEvenement'] ?></h2>
-                    <p class="description"> <?= $event[0]['Description'] ?></p>
+                    <h2 class="title"><?= $event['NomEvenement'] ?></h2>
+                    <p class="description"> <?= $event['Description'] ?></p>
                     <p class="status">Actuellement <?= $nbparticipants ?> participant(s) à l'évènement</p>
                 </div>
                 <?php
-                    if(strtotime(date('Y-m-d')) > strtotime($event[0]['DateFin'])){
+                    // Dans le cas où la date actuelle est supérieure à la date de fin de l'évènement courant
+                    if(strtotime(date('Y-m-d')) > strtotime($event['DateFin'])){
                         ?>
                         <span class="message">Cet évènement est passé</span>
                         <?php
                     }
                     else{
+                        // Dans le cas où on est connecté
                         if(isset($_SESSION['logged']) && $_SESSION['logged'] == 1){ ?>
-                            <button class="participate"><?= haveParticipation($_SESSION['id'], $event[0]['IdEvenement']) ?  "Mettre a jour la candidature" : "Participer à l'évènement" ?></button>
+                            <button class="participate"><?= haveParticipation($_SESSION['id'], $event['IdEvenement']) ?  "Mettre a jour la candidature" : "Participer à l'évènement" ?></button>
                         <?php
-                            if($event[0]['Categorie'] == 2){ ?>
+                            // Dans le cas où l'évènement est de catégorie 2 (évènement de type vote par la communauté)
+                            if($event['Categorie'] == 2){ ?>
                                 <button class="votebtn">Voter</button>
                             <?php
                             }
@@ -43,12 +46,13 @@
             </div>
         </div>
         <?php
-            if(count($gagnant) > 0){
+            // Dans le cas où le gagant de l'évènement est set
+            if(isset($gagnant)){
                 ?>
                 <div class="champ" id="gagnant">
                     <h2>Gagnant de l'évènement :</h2>
                     <div id="pseudo_gagnant">
-                        <a href="index.php?page=profil&id=<?= $gagnant[0]['idUtilisateur'] ?>"><?= $gagnant[0]['pseudoUtilisateur']?></a>
+                        <a href="index.php?page=profil&id=<?= $gagnant['idUtilisateur'] ?>"><?= $gagnant['pseudoUtilisateur'] ?></a>
                     </div>
                 </div>
                 <?php
@@ -58,11 +62,13 @@
             <h2>Plats participants</h2>
             <div class="container_liste">
             <?php
+            // Dans le cas où il y a pas de plats participants à l'évènement
             if(count($plats) == 0){ ?>
                 <div class="empty">Aucun plat n'a été ajouté</div>
             <?php
             }
             else{
+                // Affichage des plats participants
                 foreach($plats as $plat){ ?>
                 <div class="container_plat_event" id="<?= $plat['IdPlatEvent'] ?>">
                     <img src="./assets/img/plats_events/<?= $plat['Img'] ?>" width="200" height="200">
@@ -78,11 +84,13 @@
             <h2>Autres évènements en cours</h2>
             <div class="container_liste">
                 <?php
+                    // Dans le cas où il y a d'autres évènements en cours
                     if(count($currentEvents) == 0){?>
                 <div class="empty">Aucun autre évènement est en cours</div>
                 <?php
                     }
                     else{
+                        // Affichage des autres évènements en cours
                         foreach($currentEvents as $value){?>
                         <div class="event" id="<?= $value['IdEvenement'] ?>">
                             <p><?= $value['NomEvenement'] ?></p>
@@ -95,20 +103,25 @@
         </div>
     </div>
     <?php
-        if(isset($_SESSION['logged']) && $_SESSION['logged'] == 1){ ?>
+        // Dans le cas ou l'on est connecté
+        if(isset($_SESSION['logged']) && $_SESSION['logged'] == 1){ 
+            // Affichage des menus flottants
+        ?>
     <div class="container_overmenu" id="candidaturemenu">
         <div class="content">
             <button class="back"> < </button>
-            <h2><?= haveParticipation($_SESSION['id'], $event[0]['IdEvenement']) ?  "Mettre a jour la candidature" : "Participer à l'évènement" ?></h2>
+            <h2><?= haveParticipation($_SESSION['id'], $event['IdEvenement']) ?  "Mettre a jour la candidature" : "Participer à l'évènement" ?></h2>
             <?php
-                if(haveParticipation($_SESSION['id'], $event[0]['IdEvenement'])){
+                // Dans le cas où l'on participe à l'évènement
+                if(haveParticipation($_SESSION['id'], $event['IdEvenement'])){
+                    // Affichage du plat auquel on a soumis une candidature et possibilité de supprimer sa candidature (requête XMLHttpRequest de JavaScript)
                     ?>
-                    <span>Vous avez candidaté avec : <?= $userPlatEvent[0]['Nom'] ?></span>
+                    <span>Vous avez candidaté avec : <?= $userPlatEvent['Nom'] ?></span>
                     <button type="button" id="supprcandidature">Supprimer la candidature</button>
                     <?php
                 }
             ?>
-            <form id="candidature" action="index.php?page=evenements&id=<?= $event[0]['IdEvenement'] ?>" method="post" name="proposer" enctype="multipart/form-data">
+            <form id="candidature" action="index.php?page=evenements&id=<?= $event['IdEvenement'] ?>" method="post" name="proposer" enctype="multipart/form-data">
                 <label>Nom du plat</label>
                 <input type="text" name="nomplat" id="nomplat" required>
                 <label>Description</label>
@@ -116,6 +129,7 @@
                 <label>Catégorie</label>
                 <select name="categorie" required>
                     <?php
+                    // Affichage des catégories de plats
                     foreach($categories as $categorie){
                         ?>
                     <option value="<?= $categorie['IdCategorie'] ?>"><?= $categorie['Nom'] ?></option>
@@ -129,6 +143,7 @@
                 <div class="ingredients">
                     <select name="ingredient[]" class="select_ingredients" required>
                         <?php
+                        // Affichage des ingrédients
                         foreach($ingredients as $ingredient){
                             ?>
                         <option value="<?= $ingredient['IdIngredient'] ?>"><?= $ingredient['Nom'] ?></option>
@@ -158,24 +173,28 @@
         </div>
     </div>
     <?php
-    if($event[0]['Categorie'] == 2){ ?>
+            // Dans le cas ou la catégorie d'évènement est de catégorie 2 (évènements de type vote de communauté)
+            if($event['Categorie'] == 2){ ?>
     <div class="container_overmenu" id="votemenu">
         <div class="content">
             <button class="back"> < </button>
             <h2>Voter</h2>
             <?php 
-                if(count($platVote) > 0){?>
-            <span>Vous avez voté : <?= $platVote[0]['Nom'] ?>
+                // Dans le cas ou le plat auquel on a voté est set
+                if(isset($platVote)){?>
+            <span>Vous avez voté : <?= $platVote['Nom'] ?>
             <?php
                 }
             ?>
             <div class="container_liste_plats_event">
             <?php
+            // Dans le cas où il y a pas de plats participants à l'évènement
             if(count($plats) == 0){ ?>
                 <div class="empty">Aucun plat n'a été ajouté</div>
             <?php
             }
             else{
+                // Affichage des plats paticipant à l'évènement
                 foreach($plats as $plat){ ?>
                 <div class="container_plat_event" id="<?= $plat['IdPlatEvent'] ?>">
                     <img src="./assets/img/plats_events/<?= $plat['Img'] ?>" width="200" height="200">
@@ -187,21 +206,23 @@
             ?>
             </div>
             <div class="erasevote">
-                <button id="erasevotebtn" <?= !haveVote($_SESSION['id']) ? "disabled" : ""?>>Effacer le vote</button>
+                <button id="erasevotebtn" <?= !haveVote($_SESSION['id'], $event['IdEvenement']) ? "disabled" : ""?>>Effacer le vote</button>
             </div>
         </div>
     </div>
     <?php
-    }
+            }
         }
     ?>
 </div>
 <script src="./assets/scripts/script_evenements_page.js"></script>
 <?php
+// Dans le cas ou l'on est connecté
 if(isset($_SESSION['logged']) && $_SESSION['logged'] == 1){?>
 <script src="./assets/scripts/script_evenements_candidature.js"></script>
 <?php
-    if($event[0]['Categorie'] == 2){?>
+    // Dans le cas ou la catégorie d'évènement est de catégorie 2 (évènements de type vote de communauté)
+    if($event['Categorie'] == 2){?>
 <script src="./assets/scripts/script_evenements_vote.js"></script>
 <?php
     }

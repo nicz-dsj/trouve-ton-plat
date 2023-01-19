@@ -20,10 +20,9 @@
     display: flex;
     margin-bottom: 0.5em;
     flex-direction: column;
+    text-align: center;
     align-items: center;
 }
-
-
 
 .user #avatar{
     border-radius: 100%;
@@ -33,22 +32,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-}
-
-@media screen and (max-width: 500px) {
-    .user{
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .user #avatar{
-        margin: 0;
-        margin-bottom: 5px;
-    }
-    
-    .user .text{
-        align-items: center;
-    }
 }
 
 .user #username{

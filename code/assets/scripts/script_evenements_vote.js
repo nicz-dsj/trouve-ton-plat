@@ -1,19 +1,27 @@
-const voteBtn = document.querySelector('.votebtn')
+// Boutton permettant d'afficher le menu flottant de vote
+const voteBtn = document.querySelector('.votebtn');
+// Menu flottant de vote
 const voteMenu = document.getElementById('votemenu');
+// Boutton de retour
 const back2 = voteMenu.querySelector('.back');
+// Liste des plats participants
 const plats = voteMenu.getElementsByClassName('container_plat_event');
+// Boutton d'effacement de vote
 const effacerVote = voteMenu.querySelector('#erasevotebtn');
 
+// Permettant d'afficher le menu flottant de vote
 voteBtn.addEventListener('click', function(){
     voteMenu.style.display = "flex";
     body.style.overflowY = "hidden";
 });
 
+// Permettant de quitter le menu flottant de vote
 back2.addEventListener('click', function(){
     voteMenu.style.display = "none";
     body.style.overflowY = "scroll";
 });
 
+// Fonction permettant d'ajouter un vote
 function vote(id){
     const xhr = new XMLHttpRequest();
     xhr.open("POST", window.location.href, true);
@@ -21,6 +29,7 @@ function vote(id){
     xhr.send(`voteplatid=${id}`);
 }
 
+// Fonction permettant de supprimer le vote
 function eraseVote(){
     const xhr = new XMLHttpRequest();
     xhr.open("POST", window.location.href, true);
@@ -28,6 +37,7 @@ function eraseVote(){
     xhr.send("erase_vote=true");
 }
 
+// Permettant de voter le plat auquel on  a cliqué dessus
 for(let i = 0; i < plats.length; i++){
     plats[i].addEventListener('click', function(){
         vote(plats[i].id);
@@ -35,6 +45,7 @@ for(let i = 0; i < plats.length; i++){
     });
 }
 
+// Permettant d'effacer le vote
 effacerVote.addEventListener('click', function(){
     eraseVote();
     location.reload();
