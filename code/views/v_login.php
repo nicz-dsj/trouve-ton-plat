@@ -11,7 +11,6 @@ if(isset($_SESSION['logged']) && $_SESSION['logged'] == 1){
     ?>
     <p class='alert alert-success'><b> Vous êtes connecté(e)</b></p>
     <?php
-
 }
 else if (isset($_SESSION['logged']) && $_SESSION['logged'] == 2){
     ?>

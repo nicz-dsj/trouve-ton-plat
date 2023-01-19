@@ -1,5 +1,4 @@
 <?php
-
 ?>
 <!-- Menu du site -->
 <div class ="bar">

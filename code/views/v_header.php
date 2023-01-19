@@ -14,7 +14,6 @@ ini_set("display_errors",1);
     <link rel="stylesheet" href="assets/css/header_style.css" />
   </head>
 
-
 	<body>
 
 		<!-- En-tête -->
