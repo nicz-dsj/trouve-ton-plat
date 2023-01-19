@@ -1,3 +1,5 @@
+// Corps de page
+const body2 = document.getElementsByTagName('body')[0];
 // Boutton permettant d'afficher le menu flottant de vote
 const voteBtn = document.querySelector('.votebtn');
 // Menu flottant de vote
@@ -12,13 +14,13 @@ const effacerVote = voteMenu.querySelector('#erasevotebtn');
 // Permettant d'afficher le menu flottant de vote
 voteBtn.addEventListener('click', function(){
     voteMenu.style.display = "flex";
-    body.style.overflowY = "hidden";
+    body2.style.overflowY = "hidden";
 });
 
 // Permettant de quitter le menu flottant de vote
 back2.addEventListener('click', function(){
     voteMenu.style.display = "none";
-    body.style.overflowY = "scroll";
+    body2.style.overflowY = "scroll";
 });
 
 // Fonction permettant d'ajouter un vote

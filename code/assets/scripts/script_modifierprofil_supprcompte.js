@@ -1,8 +1,6 @@
 // Variables de confirmations de mot de passe
 let currentPwdConfirm2 = false, confirmPwdConfirm2 = false;
 
-// Menu flottant de suppression de compte
-const supprComptePage2 = document.getElementById('suppressionmenu');
 // Barres de saisie de mot de passe
 const pwd2 = supprComptePage.getElementsByTagName('input');
 // Messages d'erreur

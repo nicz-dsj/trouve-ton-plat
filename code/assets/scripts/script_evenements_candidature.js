@@ -1,3 +1,5 @@
+// Corps de page
+const body = document.getElementsByTagName('body')[0];
 // Menu flottant contenant le formulaire de candidature
 const candidatureMenu = document.getElementById('candidaturemenu');
 // Boutton permettant d'afficher le menu flottant contenant le formulaire de candidature
@@ -21,6 +23,8 @@ back.addEventListener('click', function(){
 const candidature = document.getElementById("candidature");
 // Champ de selection d'ingrédient
 const ingredients = candidature.querySelector(".ingredients");
+// Les bouttons d'ajout et de suppression d'ingredient
+const buttons = candidature.querySelector(".buttons");
 // Boutton d'ajout d'un ingrédient
 const ajout = document.getElementById("ajout_ingredient");
 // Boutton de suppression d'un ingredient
