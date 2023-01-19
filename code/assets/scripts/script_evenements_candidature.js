@@ -32,9 +32,12 @@ const suppr = document.getElementById("suppr_ingredient");
 
 // Permettant d'ajouter nouveau un champ d'ingredient
 ajout.addEventListener('click', function(){
-    const nouvIngredient = ingredients.cloneNode(true);
-    nouvIngredient.name = nouvIngredient.name;
-    candidature.insertBefore(nouvIngredient, buttons);
+    const allIngredients = candidature.querySelectorAll('.ingredients');
+    if(allIngredients.length <= 20){
+        const nouvIngredient = ingredients.cloneNode(true);
+        nouvIngredient.name = nouvIngredient.name;
+        candidature.insertBefore(nouvIngredient, buttons);
+    }
 });
 
 // Permettant de supprimer le dernier champ d'ingredient
