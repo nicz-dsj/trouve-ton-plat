@@ -84,8 +84,8 @@
                                 <select name="unite" id="unite-select" required>        <!-- Ici, on les créer à la main car il n'y a pas d'élément unité dans la BD -->
                                     <option value="gramme">Gramme(s)</option>
                                     <option value="litres">Litre(s)</option>
-                                    <option value="unite">Décilitre(s)</option>
-                                    <option value="unite">Millilitre(s)</option>
+                                    <option value="deci">Décilitre(s)</option>
+                                    <option value="milli">Millilitre(s)</option>
                                     <option value="soupe">Cuillère(s) à soupe</option>
                                     <option value="cafe">Cuillère(s) à café</option>
                                     <option value="unite">Unité(s)</option>

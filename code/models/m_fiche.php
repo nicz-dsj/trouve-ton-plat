@@ -24,14 +24,19 @@ function getPlat($id){
     return $result;
 }
 
+/**
+ * Récupère le nom, l'id, la quantité et le type d'ingrédients d'un plat à partir de son ID et de la table Composer. Le nom de l'ingrédient est récupéré à partir de la table Ingredient
+ * 
+ */
 function getIngredients($id){
     $connexion = Connexion::getInstance()->getBdd();
-    $query = $connexion->prepare('SELECT i.IdIngredient, i.Nom FROM Ingredient i JOIN Composer c ON i.IdIngredient = c.IdIngredient WHERE c.IdPlat = ?');
+    $query = $connexion->prepare('SELECT Nom, Ingredient.IdIngredient, Quantite, unite FROM Ingredient, Composer WHERE IdPlat = ? AND Ingredient.IdIngredient = Composer.IdIngredient');
     $query->execute(array($id));
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
     $query->closeCursor();
     return $result;
 }
+
 
 /**
  * Récupère les données d'un utilisateur à partir de son ID

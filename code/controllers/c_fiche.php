@@ -3,6 +3,51 @@ require_once(PATH_MODELS.'m_fiche.php');
 
 $id = htmlspecialchars($_GET['id']);
 $ingredients = getIngredients($id);
+for($i=0;$i<count($ingredients);$i++){
+    if($ingredients[$i]['Quantite'] > 1 && $ingredients[$i]['unite'] == 'gramme'){
+        $ingredients[$i]['unite'] = 'grammes';
+    }
+    else if($ingredients[$i]['Quantite'] == 1 && $ingredients[$i]['unite'] == 'litres'){
+        $ingredients[$i]['unite'] = 'litre';
+    }
+    else if($ingredients[$i]['Quantite'] > 1 && $ingredients[$i]['unite'] == 'deci'){
+        $ingredients[$i]['unite'] = 'décilitres';
+    }
+    else if($ingredients[$i]['Quantite'] > 1 && $ingredients[$i]['unite'] == 'milli'){
+        $ingredients[$i]['unite'] = 'millilitres';
+    }
+    else if($ingredients[$i]['Quantite'] > 1 && $ingredients[$i]['unite'] == 'soupe'){
+        $ingredients[$i]['unite'] = 'cuillères à soupe';
+    }
+    else if($ingredients[$i]['Quantite'] == 1 && $ingredients[$i]['unite'] == 'soupe'){
+        $ingredients[$i]['unite'] = 'cuillère à soupe';
+    }
+    else if($ingredients[$i]['Quantite'] > 1 && $ingredients[$i]['unite'] == 'cafe'){
+        $ingredients[$i]['unite'] = 'cuillères à café';
+    }
+    else if($ingredients[$i]['Quantite'] == 1 && $ingredients[$i]['unite'] == 'cafe'){
+        $ingredients[$i]['unite'] = 'cuillère à café';
+    }
+    else if($ingredients[$i]['Quantite'] > 1 && $ingredients[$i]['unite'] == 'unite'){
+        $ingredients[$i]['unite'] = 'unités';
+    }
+    else if($ingredients[$i]['Quantite'] == 1 && $ingredients[$i]['unite'] == 'unite'){
+        $ingredients[$i]['unite'] = 'unité';
+    }
+    else if($ingredients[$i]['Quantite'] > 1 && $ingredients[$i]['unite'] == 'sachet'){
+        $ingredients[$i]['unite'] = 'sachets';
+    }
+    else if($ingredients[$i]['Quantite'] > 1 && $ingredients[$i]['unite'] == 'pincée'){
+        $ingredients[$i]['unite'] = 'pincées';
+    }
+    else if($ingredients[$i]['Quantite'] > 1 && $ingredients[$i]['unite'] == 'tranche'){
+        $ingredients[$i]['unite'] = 'tranches';
+    }
+    else if($ingredients[$i]['Quantite'] > 1 && $ingredients[$i]['unite'] == 'poignée'){
+        $ingredients[$i]['unite'] = 'poignées';
+    };
+
+}
 
 ?>
 <p id=platSel style="display:none;">
@@ -70,7 +115,7 @@ if(isset($_GET['id'])){
     ?>
 </div>
 
-<div id=platsSim2 style="display:none;">
+<div id=platsSim3 style="display:none;">
     <?php
     if(isset($_GET['id'])){
         if($test >= 3){

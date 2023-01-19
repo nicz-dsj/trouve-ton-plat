@@ -35,17 +35,13 @@
                         <div id=container-etoiles></div>
                         <p id=note>Note</p>
                     </div>
-                    <div id="fiche_plat_desc">
-                        <p id=description>Description</p>
-                    </div>
-                    <br>
                     <div id="fiche_plat_cat" style="display:none;">
                         <p id=cat>Catégorie</p>
                     </div>
                     <p id=ingredients>Ingrédients :<br></p>
                     <div id="fiche_plat_ingredients">
                         <?php for($j=0;$j<count($ingredients);$j++){ ?>
-                            <p class= "ingred" id=ingr<?php echo $j ?>><?php echo $ingredients[$j]['Nom'] ?></p>
+                            <p class= "ingred" id=ingr<?php echo $j ?>><?php echo $ingredients[$j]['Nom'] ?>:<br><?php echo $ingredients[$j]['Quantite'] ?> <?php echo $ingredients[$j]['unite'] ?></p>
                         <?php } ?>
                     </div>
                     <?php
@@ -58,6 +54,9 @@
                 </div>
             </div>
 
+            <div id="fiche_plat_desc">
+                        <p id=description>Description</p>
+            </div>
             <div id="fiche_plat_recette">
                 <p id=recette style="display:none;">Recette</p>
                 <ul id=liste-etapes></ul>
