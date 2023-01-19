@@ -12,6 +12,7 @@ for($i=0; $i<intval(getAssocSize()[0]["COUNT(*)"])+2;$i++){
 
 for($i=1; $i<sizeof($liAssoc);$i++){
 
+    // j = 0 j plus petit que la taille de la ligne i de la matrice liAssoc et j est incrémenté de 1 à chaque tour de boucle
     for($j=0; $j<sizeof($liAssoc[$i]);$j++){
         $liAssocHTML[$i][$j] = $liAssoc[$i][$j]["IdIngredient"];
     }
