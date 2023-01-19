@@ -28,13 +28,14 @@ public class PanelUtilisateur extends javax.swing.JPanel {
         afficher(idUtilisateur);
     }
 
-    public PanelUtilisateur(String Pseudo, String Description, String[] CBPSoumis, String[] CBPFavoris, String image) {
+    public PanelUtilisateur(String Pseudo, String Description, String[] CBPSoumis, String[] CBPFavoris, String avatar) {
         initComponents();
         this.CBPFavoris.setModel(new DefaultComboBoxModel(CBPFavoris));
         this.CBPSoumis.setModel(new DefaultComboBoxModel(CBPSoumis));
         this.description.setText(Description);
         this.pseudo.setText(Pseudo);
-        this.panelImage = new PanelImage(image);
+        this.SPImage.remove(0);
+        this.SPImage.add( new PanelImage("avatars\\" + avatar));
     }
 
     private void afficher(String idUtilisateur) {
@@ -88,8 +89,8 @@ public class PanelUtilisateur extends javax.swing.JPanel {
         this.CBPSoumis.setModel(new DefaultComboBoxModel(platsSoumis));
         this.description.setText(description);
         this.pseudo.setText(pseudo);
-        this.panelImage = new PanelImage(avatar);
-
+        this.SPImage.remove(0);
+        this.SPImage.add( new PanelImage("avatars\\" + avatar + ".png"));
     }
 
     /**
@@ -101,7 +102,6 @@ public class PanelUtilisateur extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelImage = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -111,19 +111,7 @@ public class PanelUtilisateur extends javax.swing.JPanel {
         CBPFavoris = new javax.swing.JComboBox<>();
         jLabel15 = new javax.swing.JLabel();
         pseudo = new javax.swing.JLabel();
-
-        panelImage.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout panelImageLayout = new javax.swing.GroupLayout(panelImage);
-        panelImage.setLayout(panelImageLayout);
-        panelImageLayout.setHorizontalGroup(
-            panelImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        panelImageLayout.setVerticalGroup(
-            panelImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        SPImage = new javax.swing.JScrollPane();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 102, 102));
@@ -170,8 +158,8 @@ public class PanelUtilisateur extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(panelImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(SPImage, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
@@ -196,19 +184,17 @@ public class PanelUtilisateur extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(panelImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(pseudo))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(SPImage, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
@@ -233,13 +219,13 @@ public class PanelUtilisateur extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CBPFavoris;
     private javax.swing.JComboBox<String> CBPSoumis;
+    private javax.swing.JScrollPane SPImage;
     private javax.swing.JTextArea description;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JPanel panelImage;
     private javax.swing.JLabel pseudo;
     // End of variables declaration//GEN-END:variables
 

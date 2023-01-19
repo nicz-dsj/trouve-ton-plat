@@ -4,6 +4,7 @@
  */
 package backend.fenetre;
 
+import java.io.File;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -42,12 +43,13 @@ public class PanelPlat extends javax.swing.JPanel {
         this.ingredients.setModel(new DefaultComboBoxModel(ingredients));
         this.description.setText(description);
         this.recette.setText(recette);
-        this.panelImage = new PanelImage(image);
+        this.SPImage.remove(0);
+        this.SPImage.add( new PanelImage("plats\\" + image));
     }
     
     private void afficher(String idPlat) {
         String idUtilisateur = new String(), utilisateur = new String(), nomPlat = new String(), note = new String(), description = new String(), recette = new String(), idCategorie = new String(), categorie = new String(), img = new String();
-        String[] ingredients = new String[1], images = new String[1];
+        String[] ingredients = new String[1];
         int cpt = 0;
         Statement nomOrdre = menuPrincipal.connect();
         try {
@@ -98,6 +100,8 @@ public class PanelPlat extends javax.swing.JPanel {
         this.ingredients.setModel(new DefaultComboBoxModel(ingredients));
         this.description.setText(description);
         this.recette.setText(recette);
+        this.SPImage.remove(0);
+        this.SPImage.add( new PanelImage("plats/" + img));
     }
 
     /**
@@ -128,7 +132,7 @@ public class PanelPlat extends javax.swing.JPanel {
         idPlat = new javax.swing.JLabel();
         categorie = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        panelImage = new javax.swing.JPanel();
+        SPImage = new javax.swing.JScrollPane();
 
         setForeground(new java.awt.Color(102, 102, 102));
 
@@ -138,7 +142,7 @@ public class PanelPlat extends javax.swing.JPanel {
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel11.setText("Images :");
+        jLabel11.setText("Image :");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(102, 102, 102));
@@ -195,19 +199,6 @@ public class PanelPlat extends javax.swing.JPanel {
         jLabel12.setForeground(new java.awt.Color(102, 102, 102));
         jLabel12.setText("Categorie :");
 
-        panelImage.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout panelImageLayout = new javax.swing.GroupLayout(panelImage);
-        panelImage.setLayout(panelImageLayout);
-        panelImageLayout.setHorizontalGroup(
-            panelImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        panelImageLayout.setVerticalGroup(
-            panelImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -249,8 +240,8 @@ public class PanelPlat extends javax.swing.JPanel {
                                         .addComponent(jLabel4)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(pseudo, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(panelImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 16, Short.MAX_VALUE)))
+                            .addComponent(SPImage, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -291,7 +282,7 @@ public class PanelPlat extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(SPImage, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(12, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -302,6 +293,7 @@ public class PanelPlat extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane SPImage;
     private javax.swing.JLabel categorie;
     private javax.swing.JTextArea description;
     private javax.swing.JLabel idPlat;
@@ -319,7 +311,6 @@ public class PanelPlat extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel nomPlat;
     private javax.swing.JLabel note;
-    private javax.swing.JPanel panelImage;
     private javax.swing.JLabel pseudo;
     private javax.swing.JTextArea recette;
     // End of variables declaration//GEN-END:variables

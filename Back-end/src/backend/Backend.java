@@ -5,6 +5,10 @@
 package backend;
 
 import backend.fenetre.MenuPrincipal;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -17,6 +21,9 @@ public class Backend {
      */
     public static void main(String[] args) {
         new MenuPrincipal().setVisible(true);
+        String filePath = new File("").getAbsolutePath();
+        filePath = new File("../code").getAbsolutePath();
+        //System.out.println(filePath);
     }
     
     
