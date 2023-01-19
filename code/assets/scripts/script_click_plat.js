@@ -3,6 +3,7 @@ const plats = document.getElementsByClassName("container_plat");
 
 //ajouter un listener pour chaque plat
 for (let i = 0; i < plats.length; i++) {
+    console.log(plats[i].id);
     plats[i].addEventListener('click', function () {
         //obtenir l'id du plat cliqué
         const id = plats[i].id;
@@ -12,3 +13,4 @@ for (let i = 0; i < plats.length; i++) {
         window.location.href = "index.php?page=fiche&id=" + id;
     });
 }
+

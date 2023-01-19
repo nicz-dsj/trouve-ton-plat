@@ -26,28 +26,78 @@
       <div id="line4"> </div>
       <div id="line5"> </div>
       <div id="line6"> </div>
-      <div id="carousselImages">
-        <div id="gaucheCont">
-          <img src="assets/img/flecheGauche.png"></img>
-        </div>
-        <div id="imgCont">
-          <img src="assets/img/plats/<?php echo($platJour[0]['img'])?>" alt="Image_Plat_Du_Jour" id="<?php echo($platJour[0]['IdPlat'])?>" class="platJIMG"/>
-        </div>
-        <div id="imgCont2">
-          <img src="assets/img/aleat" alt="Plat_Aleat" class="platJIMG"/>
-        </div>
-        <div id="imgCont3">
-          <img src="assets/img/plats/<?php echo($platPop[0]['img'])?>" alt="Plat_populaire" id="<?php echo($platPop[0]['IdPlat'])?>" class="platJIMG"/>
-        </div>
-        <div id="droiteCont">
-          <img src="assets/img/flecheDroite.png"></img>
-        </div>
-      </div>
 
-      <div class ="texte_decouverte">
-        <h2> Recette du jour :</h2>
-        <p> <?php echo($platJour[0]["Nom"])?> </p>
-      </div>
+    <div id="firstCont">
+    <section class="carousel" aria-label="Gallery">
+      <ol class="carousel__viewport">
+        <li id="carousel__slide1"
+            tabindex="0"
+            class="carousel__slide">
+          <div id=<?php echo($platJour[0]['IdPlat'])?> class="container_plat" >
+            <img src="assets/img/plats/<?php echo($platJour[0]['img'])?>" alt="Image_Plat_Du_Jour" id="<?php echo($platJour[0]['IdPlat'])?>"/>
+          </div>
+          <div class ="texte_decouverte">
+            <h2> Recette du jour :</h2>
+            <p> <?php echo($platJour[0]["Nom"])?> </p>
+          </div>
+          <div class="carousel__snapper">
+            <a href="#carousel__slide3"
+              class="carousel__prev">Go to last slide</a>
+            <a href="#carousel__slide2"
+              class="carousel__next">Go to next slide</a>
+          </div>
+        </li>
+        <li id="carousel__slide2"
+            tabindex="0"
+            class="carousel__slide">
+            <div id="<?php echo($rand)?>" class="container_plat">
+              <img src="assets/img/aleat.jpg" alt="Plat_Aleat" id="yeah"/>
+            </div>
+          <div class ="texte_decouverte">
+            <h2> Plat aléatoire</h2>
+          </div>
+          <div class="carousel__snapper"></div>
+          <a href="#carousel__slide1"
+            class="carousel__prev">Go to previous slide</a>
+          <a href="#carousel__slide3"
+            class="carousel__next">Go to next slide</a>
+        </li>
+        <li id="carousel__slide3"
+            tabindex="0"
+            class="carousel__slide">
+          <div id=<?php echo($platPop[0]['IdPlat'])?> class="container_plat">
+            <img src="assets/img/plats/<?php echo($platPop[0]['img'])?>" alt="Plat_populaire" id="<?php echo($platPop[0]['IdPlat'])?>"/>
+          </div>
+          <div class ="texte_decouverte">
+            <h2> Plat populaire :</h2>
+            <p> <?php echo($platPop[0]["Nom"])?> </p>
+          </div>
+          <div class="carousel__snapper"></div>
+          <a href="#carousel__slide2"
+            class="carousel__prev">Go to previous slide</a>
+          <a href="#carousel__slide1"
+            class="carousel__next">Go to next slide</a>
+        </li>
+      </ol>
+      <aside class="carousel__navigation">
+        <ol class="carousel__navigation-list">
+          <li class="carousel__navigation-item">
+            <a href="#carousel__slide1"
+              class="carousel__navigation-button">Go to slide 1</a>
+          </li>
+          <li class="carousel__navigation-item">
+            <a href="#carousel__slide2"
+              class="carousel__navigation-button">Go to slide 2</a>
+          </li>
+          <li class="carousel__navigation-item">
+            <a href="#carousel__slide3"
+              class="carousel__navigation-button">Go to slide 3</a>
+          </li>
+        </ol>
+      </aside>
+    </section>
+    </div>
+
     </div>
     <div class="container_page_videos">
       <div class = "video">
@@ -72,6 +122,8 @@
     </div>
     <script src="assets/scripts/script_hamburger.js"></script>
     <script src="assets/scripts/script_accueil.js"></script>
+    <script src="assets/scripts/script_click_plat.js" defer></script>
+
   </body>
 </html>
 
