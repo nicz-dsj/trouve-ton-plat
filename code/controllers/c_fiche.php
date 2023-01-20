@@ -4,6 +4,7 @@ require_once(PATH_MODELS.'m_fiche.php');
 $id = htmlspecialchars($_GET['id']);
 $ingredients = getIngredients($id);
 for($i=0;$i<count($ingredients);$i++){
+    $ingredients[$i]["Nom"] = $ingredients[$i]["Nom"].":";
     if($ingredients[$i]['Quantite'] > 1 && $ingredients[$i]['unite'] == 'gramme'){
         $ingredients[$i]['unite'] = 'grammes';
     }
@@ -28,11 +29,35 @@ for($i=0;$i<count($ingredients);$i++){
     else if($ingredients[$i]['Quantite'] == 1 && $ingredients[$i]['unite'] == 'cafe'){
         $ingredients[$i]['unite'] = 'cuillère à café';
     }
-    else if($ingredients[$i]['Quantite'] > 1 && $ingredients[$i]['unite'] == 'unite'){
-        $ingredients[$i]['unite'] = 'unités';
-    }
     else if($ingredients[$i]['Quantite'] == 1 && $ingredients[$i]['unite'] == 'unite'){
-        $ingredients[$i]['unite'] = 'unité';
+        if ($ingredients[$i]['Nom'] == "Sel:" || $ingredients[$i]['Nom'] == "Poivre:" || $ingredients[$i]['Nom'] == "Huile d'olive:" || $ingredients[$i]['Nom'] == "Eau:"
+        ||$ingredients[$i]['Nom'] == "Huile:" || $ingredients[$i]['Nom'] == "Vinaigre:" || $ingredients[$i]['Nom'] == "Curry:"){
+            $ingredients[$i]['Nom'] = rtrim($ingredients[$i]['Nom'], ':');
+            $ingredients[$i]['Quantite'] = '';
+            $ingredients[$i]['unite'] = '';
+        }else{
+        $ingredients[$i]['Nom'] = $ingredients[$i]['Quantite'].' '.rtrim($ingredients[$i]['Nom'], ':');
+        $ingredients[$i]['Quantite'] = '';
+        $ingredients[$i]['unite'] = '';
+        };
+    }
+    else if($ingredients[$i]['Quantite'] > 1 && $ingredients[$i]['unite'] == 'unite'){
+        if($ingredients[$i]['Nom'][strlen($ingredients[$i]['Nom'])-2] != 's'){
+            if($ingredients[$i]['Nom'] == "Pomme de terre:"){
+                $ingredients[$i]['Nom'] = $ingredients[$i]['Quantite'].' '."Pommes de terre";
+                $ingredients[$i]['Quantite'] = '';
+                $ingredients[$i]['unite'] = '';
+            }
+            else{
+                $ingredients[$i]['Nom'] = $ingredients[$i]['Quantite'].' '.rtrim($ingredients[$i]['Nom'], ':')."s";
+                $ingredients[$i]['Quantite'] = '';
+                $ingredients[$i]['unite'] = '';
+            };
+        }else if ($ingredients[$i]['Nom'][strlen($ingredients[$i]['Nom'])-2] == 's'){
+            $ingredients[$i]['Nom'] = $ingredients[$i]['Quantite'].' '.rtrim($ingredients[$i]['Nom'], ':');
+            $ingredients[$i]['Quantite'] = '';
+            $ingredients[$i]['unite'] = '';
+        };
     }
     else if($ingredients[$i]['Quantite'] > 1 && $ingredients[$i]['unite'] == 'sachet'){
         $ingredients[$i]['unite'] = 'sachets';

@@ -1,6 +1,7 @@
 <?php
 //appel du modèle
 require_once(PATH_MODELS.'m_accueil.php');
+date_default_timezone_set('Europe/Paris');
 
 $users = test();
 $platJour = getPlatJour();

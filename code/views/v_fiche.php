@@ -41,7 +41,7 @@
                     <p id=ingredients>Ingrédients :<br></p>
                     <div id="fiche_plat_ingredients">
                         <?php for($j=0;$j<count($ingredients);$j++){ ?>
-                            <p class= "ingred" id=ingr<?php echo $j ?>><?php echo $ingredients[$j]['Nom'] ?>:<br><?php echo $ingredients[$j]['Quantite'] ?> <?php echo $ingredients[$j]['unite'] ?></p>
+                            <p class= "ingred" id=ingr<?php echo $j ?>><?php echo $ingredients[$j]['Nom']?><br><?php echo $ingredients[$j]['Quantite'] ?> <?php echo $ingredients[$j]['unite'] ?></p>
                         <?php } ?>
                     </div>
                     <?php
